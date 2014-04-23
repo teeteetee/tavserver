@@ -12,7 +12,7 @@ var routes = require('./routes');
 
 //var mongo = require('mongodb');
 //var monk = require('monk');
-//var app = express();
+var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
