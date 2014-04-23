@@ -1,0 +1,148 @@
+doctype html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Bootstrap 101 Template
+    //
+       Bootstrap 
+    link(href='bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    //
+       HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries 
+    //
+       WARNING: Respond.js doesn't work if you view the page via file:// 
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+    style
+     :css
+      body {
+      background-color:#333;
+      min-width:1024px;
+      }
+      .container {
+      padding:0px;
+      max-width:1352px;
+      margin-left:21.5%;
+      width:78.5%;
+      background-color:#333;
+      }
+      .row {
+      padding:0px;
+      margin:0px;
+      }
+      .col-xs-6 {
+      padding:0px;
+      margin:0px;
+      min-width:400px;
+      }
+      .col-xs-12 {
+      padding:0px;
+      margin:0px;
+      min-width:400px;
+      }
+      .btn {
+      width: 200px;
+      margin:10px;
+      border-radius:0px;
+      background-color:#333;
+      color:gray;
+      box-shadow:0px 3px 10px #000000;
+      border:1px solid gray;
+      }
+      .btn:hover {
+      background-color:#663333;
+      color:white;
+      }
+      .gold:hover {
+      background-color:#CCCC66;
+      color:dimgray;
+      }
+      .menu {
+      text-align:center;
+      min-width:220px;
+      }
+      .form-control {
+      border-radius:0px;
+      text-align:center;
+      background-color:#ddd;
+      border-right:0px;
+      border-left:0px;
+      }
+      .form-control:focus {
+      background-color:white;
+      margin-bottom:10px;
+      }
+      .info:hover {
+      color:white;
+      }
+      .imageblock {
+      border-top:1px solid gray;
+      height:50%;
+      min-width:802px;
+      }
+      img {
+      max-width:100%;
+      height:auto;
+      }
+      input {
+      margin-bottom:10px;
+      }
+      h1 {
+      margin:5px;
+      color:white;
+      }
+      p{
+      margin-left:5px;
+      margin-right:5px;
+      }
+      .inside {
+      border-right:1px solid grey;
+      min-width:400px;
+      }
+      .onimg {
+      min-width:400px;
+      }
+      oncol {
+      height:100px;
+      background-color:#333;
+      opacity:0.5;
+      box-shadow: iset 0 20px 20px -20px rgba(0,0,0,0.8);
+      color:grey;
+      border-right:1px solid grey;
+      }
+  body
+    //
+      box-shadow:0px 1px 24px #FFFFFF;
+    //
+      Fixed menu
+    .fixed.menu(style='height: 1000px; position: fixed; width: 21.5%; float: left; border-right: 1px solid grey;')
+      .symbol(style='height: 150px; background-color: #333; text-align: center; vertical-align: middle;')
+        img(src='bootstrap/images/provEye2.svg', width='100', style='margin-top: 30px;')
+      .menu
+        input.form-control(type='text', placeholder='Other place?', style='box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.8);')
+        button.btn.btn-default(type='button') Advanced search
+        button.btn.btn-default(type='button') Map
+        button.btn.gold.btn-default(type='button') Tops
+    //
+      end of fixed menu
+    .container
+     .row.imageblock
+       .col-xs-6
+           .row.inside
+             .col-xs-12
+               a(href='http://localhost:3000/places/#{redir}' terget='_blank')
+                img.onimg(src='#{mainpreview}') 
+
+           .row
+             div.col-xs-12.oncol
+              #{textpreview}
+              
+       
+    //
+       jQuery (necessary for Bootstrap's JavaScript plugins) 
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    //
+       Include all compiled plugins (below), or include individual files as needed 
+    script(src='bootstrap/js/bootstrap.min.js')
