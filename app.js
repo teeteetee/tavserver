@@ -10,17 +10,15 @@ var routes = require('./routes');
 //var users = require('./routes/user');
 //var searchresults = require('./routes/searchresults');
 
-var mongo = require('mongodb');
-var monk = require('monk');
-var db = monk('localhost:27017/tav');
-
-var app = express();
+//var mongo = require('mongodb');
+//var monk = require('monk');
+//var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(favicon('public/images/favicon.ico'));
+app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
@@ -32,28 +30,31 @@ app.use(app.router);
 //app.get('/users', users.list);
 
 app.get('/', function (req,res) {
-    res.sendfile('public/bootstrap/index.html')
+    res.sendfile('public/bootstrap/indexRETHINKtopsegment.html')
+    console.log('request registered')
 });
-app.get('/places/:placename', function (req,res) {
-    console.log(req.params.placename);
-    res.sendfile('public/bootstrap/ppXTRBIG.html')
-});
+//app.get('/places/:placename', function (req,res) {
+ //   console.log(req.params.placename);
+ //   res.sendfile('public/bootstrap/ppXTRBIG.html')
+//});
 
 
-app.post('/search', function(req,res) {
-    var b = req.body.search;
-    console.log(b);
-   places = db.get('places');
-   var docs;
-    places.findOne({name:b},function(err,docs){
-        console.log(docs);
-      res.render('searchresults',{mainpreview : docs.mainpreview , textpreview : docs.textpreview, redir : docs.redir});
-    });
+//app.post('/search', function(req,res) {
+   // var b = req.body.search;
+  //  console.log(b);
+  // places = db.get('places');
+  // var docs;
+  //  places.findOne({name:b},function(err,docs){
+    //    console.log(docs);
+  //    res.render('searchresults',{mainpreview : docs.mainpreview , textpreview : docs.textpreview, redir : docs.redir});
+   // });
     
     
 
   
-});
+//});
+
+
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
@@ -84,5 +85,6 @@ app.use(function(err, req, res, next) {
     });
 });
 
+console.log('server running');
 
 module.exports = app;
