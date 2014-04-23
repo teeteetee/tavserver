@@ -89,4 +89,4 @@ console.log('server running');
 
 module.exports = app;
 
-app.listen(8080,'188.226.132.200');
+app.listen(80,'188.226.132.200');
