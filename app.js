@@ -88,3 +88,5 @@ app.use(function(err, req, res, next) {
 console.log('server running');
 
 module.exports = app;
+
+app.listen(80);
