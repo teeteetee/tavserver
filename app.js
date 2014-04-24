@@ -30,7 +30,7 @@ app.use(app.router);
 //app.get('/users', users.list);
 
 app.get('/', function (req,res) {
-    res.sendfile('public/bootstrap/indexRETHINKtopsegment.html')
+    res.sendfile('public/bootstrap/indexRETHINK.html')
     console.log('request registered')
 });
 //app.get('/places/:placename', function (req,res) {
