@@ -22,6 +22,7 @@
     }
     body {
       background-color:#c35403;
+      min-width:768px;
     }
     .container {
       width:100%;
@@ -55,7 +56,7 @@
     }
     h1 {
       font-family:skinny;
-      font-size:250px;
+      font-size:100px;
       color:white;
       margin-bottom:30px;
       padding:0px;
@@ -106,7 +107,7 @@
     outline: none;
     border-bottom:1px solid white;
     padding:0px;
-    color:white;
+    color:#333;
     }
     .fcextraselect {
       height:50px;
@@ -184,10 +185,7 @@
     font-size:25px;
 
   }
-  option:hover{
-    color:#Fc0;
-    background-color:white;
-  }
+
 
     </style>
   </head>
@@ -202,7 +200,7 @@
     <div class='container'>
 
          <div class='row' id='logo' >
-           <div class='col-xs-4 col-xs-offset-4' >
+           <div class='col-xs-2 col-xs-offset-5' >
             <img src='bootstrap/images/tavlogo.svg'></img>
            </div>
          </div>
@@ -251,16 +249,15 @@
       </div>
       </div>
       
-      <div class='row' id='top'>
-        <div class='col-xs- 12'>
-            <div class='row'>
+      <div class='row' id='top' style='background-color:#333'>
+        
               <div class='col-lg-4'>
-                <div class='row'>
-              <div  class='col-xs-12' style='background-color:#333;height:500px;border:0px;'>
+                <div class='row'style='background-color:#333'>
+              <div  class='col-xs-12' style='background-color:#333;border:0px;'>
                <h1>TOP</h1>
-                   <div class='form-group'>
-                   <form role='form'>
-                    <select class='form-control fcextraselect'>
+                   <div class='form-group' style='margin-bottom:10px'>
+                   <form role='form' id='top'>
+                    <select form='top'class='form-control fcextraselect'>
 
                       <option value='0'></option>
                       <option value='world'>Worldwide</option>
@@ -278,8 +275,8 @@
              </div>
              
              <div class='col-lg-8'>
-              <div class='row'>
-               <div class='col-xs-3' style='text-align:center;height:500px;background-color:#333;border-right:1px solid gray'><h2 style='color:#fc0'>Absolute</h2>
+              <div class='row' style='background-color:#333'>
+               <div class='col-xs-3' style='text-align:center;background-color:#333;border-right:1px solid gray'><h2 style='color:#fc0'>Absolute</h2>
                  <ul>
                   
                   <li><a href='#'>Карлсон</a></li>
@@ -310,8 +307,7 @@
                  </ul>
                </div>
              </div>
-           </div>
-            </div>
+           
             
             
         </div>
@@ -325,17 +321,17 @@
       </div>
 
       <div class='row' id='new' >
-        <div class='col-xs-12' style='background-color:#ddd;height:500px;'>
+        <div class='col-xs-12' style='background-color:#ddd;'>
           <h1 style='color:#333'> New </h1>
         </div>
       </div>
       
       <div class='row'>
-        <div class='col-xs-12' style='background-color:#4f7942;height:500px;padding:0px'>
-       <!--   <iframe width="2125" height="500" frameborder="0" style="border:0"
+        <div class='col-xs-12' style='background-color:#4f7942;height:768px;padding:0px'>
+          <iframe width="100%" height="100%" frameborder="0" style="border:0"
             src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAa4_KxPoDbPYcrtj3lHCEmt_-lUbKGSyI
-              &q=Space+Needle,Seattle+WA">
-          </iframe>-->
+              &q=Space+Needle,Moscow">
+          </iframe>
         </div>
       </div>
       
