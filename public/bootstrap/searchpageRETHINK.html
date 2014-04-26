@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Top and views</title>
+
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    @font-face {
+      font-family:skinny;
+      src: url('bootstrap/fonts/longname/texgyreadventor-regular.otf');
+    }
+    body {
+      background-color:gray;
+      min-width:480px;
+    }
+    .container {
+
+      width:100%;
+      padding:0px;
+      margin:0px;
+    }
+    .row {
+
+      margin:0px;
+      padding:0px;
+
+    }
+    .col-xs-12 {
+      padding:0px;
+    }
+    .xs12add {
+    padding:none;
+    
+    background-color:gray;
+    
+    padding:0px;
+    }
+    .fcextra {
+    height:7vw;
+      border-radius:0px;
+      text-align:left;
+      background-color:gray;
+      border:none;
+      font-family:skinny;
+    font-size:6vw;
+    box-shadow:none;
+    outline: none;
+    border-bottom:1px solid white;
+    padding:0px;
+    color:#333;
+    }
+    .form-control {
+
+    }
+    input {
+    
+      background-color:#c35403;
+      padding-top:2px;
+      padding-bottom:2px;
+
+    }
+   .form-control:focus {
+    border-bottom:1px solid white;
+    box-shadow:none;
+    outline: none;
+  }
+  .form-control:active {
+    box-shadow:none;
+    outline: none;
+
+  }
+   .form-group {
+    height:7vw;
+    text-align:right;
+    margin-bottom:-20px;
+   }
+   
+
+   .rust {
+    margin:auto;
+    color:white;
+    text-shadow: 0px 0px 2px rgba(150, 150, 150, 1);
+   }
+   .placename{
+    
+   }
+   .preview{
+    
+   }
+   .center {
+    text-align:center;
+   }
+   a {
+    color:white;
+   }
+   a:focus, a:hover{
+    color:#ff9600;
+    outline:none;
+  }
+    h2 {
+      font-family:skinny;
+      font-size:6vw;
+    }
+    img {
+      border-bottom:1px solid white;
+    }
+    </style>
+  </head>
+  <body>
+    <!--<div class='navbar navbar-default navbar-fixed-top'>
+    </div>-->
+    <div class='container'>
+
+      <div class='row' style='position:fixed;width:100%;z-index:7;' id='searchinput'>  
+       <div class='col-xs-12 xs12add'> 
+       <form role='form' action='/search' method='post' name='search'>  
+        <div class='form-group has-feedback'>
+        <input type="text" class="form-control fcextra" autofocus >
+        <span class='glyphicon glyphicon-search from-control-feedback rust' style='margin-right:5px; top:-6vw; font-size:5vw;'></span>
+        </div>
+      </form>
+      </div>
+      </div>
+
+
+   <div class='row blank' style='height:10vw'></div>
+
+
+     <div class='row searchresults'>
+      <div class='col-xs-12' >
+        <div class='row center'>
+          <div class='col-xs-12 center placename'>
+            <a href='#'><h2>Mario</h2></a>
+          </div>
+        </div>
+        <div class='row center'>
+          <div class='col-xs-12 center preview'>
+            <a href='#'><img src='images/mariopreview.jpg'></img></a>
+          </div>
+        </div>
+        
+      </div>
+     </div>
+
+
+
+    </div>
+    
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
