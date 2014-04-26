@@ -10,8 +10,9 @@ var routes = require('./routes');
 //var users = require('./routes/user');
 //var searchresults = require('./routes/searchresults');
 
-//var mongo = require('mongodb');
+var mongo = require('mongodb');
 var monk = require('monk');
+var db = monk('localhost:27017/test');
 var app = express();
 
 // view engine setup
@@ -40,22 +41,16 @@ app.get('/', function (req,res) {
 
 
 app.post('/search', function(req,res) {
-    //var b = "'"+req.body.search+"'";
-    //console.log(b);
-    //places = db.get('places');
-    //var docs;
-    //places.findOne({name:b},function(err,docs){
-    //    console.log(docs);
-    //    if (docs.length>0) {
-    //  res.render('searchresults',{mainpreview : docs.mainpreview , textpreview : docs.textpreview, redir : docs.redir});}
-    //   else {
-    //    res.send('you know, some shit went wrong, basicly. Appears like we dont seem to have this object in our db.');
-    //    res.end();
-    //   }
-    //});
-     res.sendfile('public/bootstrap/searchpageRETHINK.html')
-     console.log('srp sent')
-    });
+    var b =req.body.search;
+    console.log(b);
+    places = db.get('places');
+    var docs;
+    places.find({placename:b},function(err,docs){
+        console.log(docs);
+        res.render('searchresults',{"searchresults":docs});}
+       });
+     
+     
 
 
 
