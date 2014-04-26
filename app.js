@@ -53,7 +53,7 @@ app.post('/search', function(req,res) {
     //    res.end();
     //   }
     //});
-     res.sendfile('public/bootstrap/serachpageRETHINK.html')
+     res.sendfile('public/bootstrap/searchpageRETHINK.html')
      console.log('srp sent')
     });
 
