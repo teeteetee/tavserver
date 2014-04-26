@@ -12,7 +12,7 @@ var routes = require('./routes');
 
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/test');
+var db = monk('localhost:27017/tav');
 var app = express();
 
 // view engine setup
@@ -45,7 +45,7 @@ app.post('/search', function(req,res) {
     console.log(b);
     places = db.get('places');
     var docs;
-    places.find({placename:b},function(err,docs){
+    places.find({'placename':b},function(err,docs){
         console.log(docs);
         res.render('searchresults',{"searchresults":docs});
        });
