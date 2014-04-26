@@ -47,8 +47,9 @@ app.post('/search', function(req,res) {
     var docs;
     places.find({placename:b},function(err,docs){
         console.log(docs);
-        res.render('searchresults',{"searchresults":docs});}
+        res.render('searchresults',{"searchresults":docs});
        });
+    });
      
      
 
