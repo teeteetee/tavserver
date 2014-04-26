@@ -11,7 +11,7 @@ var routes = require('./routes');
 //var searchresults = require('./routes/searchresults');
 
 //var mongo = require('mongodb');
-//var monk = require('monk');
+var monk = require('monk');
 var app = express();
 
 // view engine setup
@@ -39,20 +39,23 @@ app.get('/', function (req,res) {
 //});
 
 
-//app.post('/search', function(req,res) {
-   // var b = req.body.search;
-  //  console.log(b);
-  // places = db.get('places');
-  // var docs;
-  //  places.findOne({name:b},function(err,docs){
+app.post('/search', function(req,res) {
+    //var b = "'"+req.body.search+"'";
+    //console.log(b);
+    //places = db.get('places');
+    //var docs;
+    //places.findOne({name:b},function(err,docs){
     //    console.log(docs);
-  //    res.render('searchresults',{mainpreview : docs.mainpreview , textpreview : docs.textpreview, redir : docs.redir});
-   // });
-    
-    
-
-  
-//});
+    //    if (docs.length>0) {
+    //  res.render('searchresults',{mainpreview : docs.mainpreview , textpreview : docs.textpreview, redir : docs.redir});}
+    //   else {
+    //    res.send('you know, some shit went wrong, basicly. Appears like we dont seem to have this object in our db.');
+    //    res.end();
+    //   }
+    //});
+     res.sendfile('public/bootstrap/serachpageRETHINK.html')
+     console.log('srp sent')
+    });
 
 
 
