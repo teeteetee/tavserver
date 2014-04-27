@@ -27,8 +27,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname + '/public')));
 app.use(app.router);
 
-//app.get('/', routes.index);
-//app.get('/users', users.list);
 
 app.get('/', function (req,res) {
     res.sendfile('public/bootstrap/indexRETHINK.html')
@@ -43,7 +41,7 @@ app.get('/', function (req,res) {
 app.post('/search', function(req,res) {
     var b =req.body.search;
     console.log(b);
-    places = db.get('places');
+    var places = db.get('places');
     var docs;
     places.find({'placename':b},function(err,docs){
         console.log(docs);
