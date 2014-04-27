@@ -42,7 +42,7 @@ app.post('/search', function(req,res) {
     var searchquery = req.body.search;
     console.log(searchquery);
     var docs;
-    places.find({'placename':'Mario'},function(err,docs){
+    places.find({'placename':searchquery},function(err,docs){
         console.log(docs);
         res.render('searchresults',{"searchresults":docs});
        });
