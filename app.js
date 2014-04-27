@@ -11,8 +11,8 @@ var routes = require('./routes');
 //var searchresults = require('./routes/searchresults');
 
 var mongo = require('mongodb');
-var monk = require('monk');
-var db = monk('localhost:27017/tav');
+var db = require('monk')('localhost/tav');
+var places = db.get('places');
 var app = express();
 
 // view engine setup
@@ -41,7 +41,6 @@ app.get('/', function (req,res) {
 app.post('/search', function(req,res) {
     var userquery = req.body.search;
     console.log(userquery);
-    var places = db.get('places');
     var docs;
     places.find({'placename':userquery},function(err,docs){
         console.log(docs);
@@ -50,7 +49,7 @@ app.post('/search', function(req,res) {
     });
      
      
-//{'placename':b}
+
 
 
 /// catch 404 and forwarding to error handler
