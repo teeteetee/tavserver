@@ -39,18 +39,18 @@ app.get('/', function (req,res) {
 
 
 app.post('/search', function(req,res) {
-    var b = "'"+req.body.search+"'";
+    var userquery = req.body.search;
     console.log(b);
     var places = db.get('places');
     var docs;
-    places.find({'placename':b},function(err,docs){
+    places.find({'placename':userquery},function(err,docs){
         console.log(docs);
         res.render('searchresults',{"searchresults":docs});
        });
     });
      
      
-
+//{'placename':b}
 
 
 /// catch 404 and forwarding to error handler
@@ -86,4 +86,5 @@ console.log('server running');
 
 module.exports = app;
 
-app.listen(80,'188.226.132.200');
+//app.listen(80,'188.226.132.200');
+app.listen(3000);
