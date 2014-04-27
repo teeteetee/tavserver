@@ -40,7 +40,7 @@ app.get('/', function (req,res) {
 
 app.post('/search', function(req,res) {
     var userquery = req.body.search;
-    console.log(b);
+    console.log(userquery);
     var places = db.get('places');
     var docs;
     places.find({'placename':userquery},function(err,docs){
