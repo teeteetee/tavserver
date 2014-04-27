@@ -39,10 +39,10 @@ app.get('/', function (req,res) {
 
 
 app.post('/search', function(req,res) {
-    var userquery = "'"+req.body.search+"'";
-    console.log(userquery);
+    var searchquery = req.body.search;
+    console.log(searchquery);
     var docs;
-    places.find({},function(err,docs){
+    places.find({placename:searchquery},function(err,docs){
         console.log(docs);
         res.render('searchresults',{"searchresults":docs});
        });
