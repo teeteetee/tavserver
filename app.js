@@ -39,7 +39,7 @@ app.get('/', function (req,res) {
 
 
 app.post('/search', function(req,res) {
-    var b =req.body.search;
+    var b = "'"+req.body.search+"'";
     console.log(b);
     var places = db.get('places');
     var docs;
