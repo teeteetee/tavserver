@@ -39,7 +39,7 @@ app.get('/', function (req,res) {
 
 
 app.post('/search', function(req,res) {
-    var searchquery = req.body.search;
+    var searchquery = "'"+req.body.search+"'";
     console.log(searchquery);
     var docs;
     places.find({'placename':searchquery},function(err,docs){
