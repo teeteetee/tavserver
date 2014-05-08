@@ -143,7 +143,7 @@
     margin-right:100px;
   }
   a {
-    color:#333;
+    color:white;
     
   }
   a:focus, a:hover{
@@ -161,6 +161,7 @@
     margin:2px;
   }
   ul {
+
     text-align:center;
     list-style-type:none;
     padding:0px;
@@ -220,7 +221,22 @@
   .has-feedback {
     height:130px;
   }
+  #maphead {
+    border-bottom:1px solid white;
+  }
+  #footer {
+    background-color:white;
+  }
+  #footerlinks{
+    background-color:white;
+  }
+  #map {
+     background-color:gray;
+     
+   }
     </style>
+  
+  
   
   
   
@@ -268,7 +284,7 @@
 
       <div class='row colorchange bordersides' id='tour'>
           <div class='col-xs-12' style='margin-bottom:10px'>
-            <a href='#'><h4>Tour  <span class='glyphicon glyphicon-circle-arrow-right'></span></h4></a>
+            <a href='#' style='color:#333'><h4>Tour  <span class='glyphicon glyphicon-circle-arrow-right'></span></h4></a>
           </div>
          </div>
       
@@ -429,10 +445,22 @@
           </div>
         </div>
       </div>
+
+
+      <div class='row' id='separatorone'>
+        <div class='col-xs-4 col-xs-offset-4' style='height:30px'>
+        </div>
+      </div>
+
+      <div class='row' id='maphead'>
+        <div class='col-xs-12' style='background-color:#333'>
+          <h5 style='color:#ddd'> Map</h5>
+        </div>
+      </div>
       
       <div id='map' class='row'>
-        <div class='col-xs-12' style='background-color:#4f7942;height:500px;padding:0px'>
-          <iframe width="100%" height="100%" frameborder="0" style="border:0"
+        <div class='col-xs-10 col-xs-offset-1' style='background-color:#4f7942;height:500px;padding:0px'>
+          <iframe width="100%" height="100%" frameborder="0" style="border:0px "
             src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAa4_KxPoDbPYcrtj3lHCEmt_-lUbKGSyI
               &q=Space+Needle,Moscow">
           </iframe>
@@ -440,13 +468,20 @@
       </div>
 
 
+      <div class='row' id='separatorone'>
+        <div class='col-xs-12' style='height:30px'>
+        </div>
+      </div>
+
+
+
       <div class='row ' id='footerlinks'>
         <div class='col-xs-12' style='text-align:center;'>
           <div class='row'>
-            <div class='col-xs-3'><a href='#'>Login</a></div>
-            <div class='col-xs-3'><a href='#'>Partners</a></div>
-            <div class='col-xs-3'><a href='#'>HR</a></div>
-            <div class='col-xs-3'><a href='#'>Contact</a></div>
+            <div class='col-xs-3'><a style='color:#333' href='#'>Login</a></div>
+            <div class='col-xs-3'><a style='color:#333' href='#'>Partners</a></div>
+            <div class='col-xs-3'><a style='color:#333' href='#'>HR</a></div>
+            <div class='col-xs-3'><a style='color:#333' href='#'>Contact</a></div>
           </div>
         </div>
       </div>
