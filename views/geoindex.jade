@@ -76,7 +76,7 @@ head
       text-align:right;
       margin-bottom:-20px;
       }
-      }
+      
       .searchglyphcolor {
       margin:auto;
       color:#333;
@@ -297,6 +297,19 @@ head
     //
        Include all compiled plugins (below), or include individual files as needed 
     script(src='/bootstrap/js/bootstrap.min.js')
+    script.
+        var viewportmeta = document.querySelector && document.querySelector('meta[name="viewport"]'),
+          ua = navigator.userAgent,
+
+        gestureStart = function () {viewportmeta.content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";},
+
+        scaleFix = function () {
+            if (viewportmeta && /iPhone|iPad/.test(ua) && !/Opera Mini/.test(ua)) {
+            viewportmeta.content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+           document.addEventListener("gesturestart", gestureStart, false);
+                 }
+              };
+        scaleFix();
     .container
       #logo.row.colorchange.bordersides
         .col-xs-4.col-xs-offset-4.colorchange
