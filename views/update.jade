@@ -1,0 +1,187 @@
+doctype html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Admin
+    //
+       Bootstrap 
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    //
+       HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries 
+    //
+       WARNING: Respond.js doesn't work if you view the page via file:// 
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+    style
+     :css
+      @font-face {
+      font-family:code;
+      src: url('/bootstrap/fonts/CODElight.otf');
+      }
+      body {
+      background-color:#102f3a;
+      min-width:480px;
+      }
+      h5 {
+      font-family:code;
+      font-size:8vw;
+      padding:0px;
+      }
+      h2 {
+      font-family:code;
+      font-size:3vw;
+      color:gray;
+      }
+      a {
+      color:#333;
+      }
+      .row {
+      padding:0px;
+      margin:0px;
+      }
+      a:focus, a:hover{
+      outline:none;
+      text-decoration: none;
+      }
+      .container {
+      width:100%;
+      height:100%;
+      padding:0px;
+      padding-top:0px;
+      padding-bottom:5px;
+      }
+      label {
+      color: #ddd;
+      }
+      .col-xs-8 {
+      padding-top:20px;
+      }
+      #header {
+      background-color:#336666;
+      border-bottom:1px solid white;
+      text-align:center;
+      }
+      #fields {
+      padding-top:20px;
+      padding-bottom:30px;
+      padding-left:10px;
+      padding-right:10px;
+      }
+      button {
+      margin-left:28.2vw;
+      margin-top:50px;
+      margin-bottom:50px;
+      }
+      #jsonfield {
+      background-color:#ddd;
+      color:#333;
+      border-radius:6px;
+      }
+      #inform {
+      padding-top:20px;
+      }
+      .form-group {
+      border-top:1px solid gray;
+      padding-top:5px;
+      }
+  body
+    .container
+      #header.row
+        .col-xs-12
+          h5(style='color: #ddd;')  Updating #{nameeng}
+      #fields.row
+        #jsonfield.col-sm-4
+          pre
+            #{jsondata}
+        .col-sm-8
+          form(style='text-align: left;', role='form', action='/admin/update', method='post', enctype='multipart/form-data')
+            #inform.row
+              .col-sm-6
+                .form-group
+                  label(for='placename')  Placename (for db ,start lower case) 
+                  input#placename.form-control(type='text',value='#{placename}' name='placename')
+                .form-group
+                  label(for='nameru')  Name rus (for web,start upper case)  
+                  input#nameru.form-control(type='text', name='nameru')
+                .form-group
+                  label(for='nameen')  Name eng (for web,start upper case) 
+                  input#nameen.form-control(type='text', name='nameen')
+                .form-group
+                  label(for='telephone')  Telephone  
+                  input#telephone.form-control(type='text', name='telephone')
+                .form-group
+                  label(for='www')  Web page  
+                  input#www.form-control(type='text', name='www')
+                .form-group
+                  label(for='ppredir')  Ppredir  
+                  input#ppredir.form-control(type='text', name='ppredir')
+                .form-group
+                  label(for='cigars')  Cigars ? 
+                  input#cigars.form-control(type='checkbox', name='cigars')
+                .form-group
+                  label(for='shisha')  Shisha ? 
+                  input#shisha.form-control(type='checkbox', name='shisha')
+                .form-group
+                  label(for='workinghours')  Workinghours  
+                  input#workinghours.form-control(type='text', name='workinghours')
+                .form-group
+                  label(for='textru')  Text rus  
+                  input#textru.form-control(type='text', name='textru')
+                .form-group
+                  label(for='texten')  Text eng  
+                  input#texten.form-control(type='text', name='texten')
+              .col-sm-6
+                .form-group
+                  label(for='blankbool')  Blank ?  
+                  input#blankbool.form-control(type='checkbox', name='blankbool')
+                .form-group
+                  label(for='blanktextru')  Blanktext rus  
+                  input#blanktextru.form-control(type='text', name='blanktextru')
+                .form-group
+                  label(for='blanktexten')  Blanktext eng  
+                  input#blanktexten.form-control(type='text', name='blanktexten')
+                .form-group
+                  label(for='fid')  Fotographer id  
+                  input#fid.form-control(type='text', name='fid')
+                .form-group
+                  label(for='topbool')  Top ?  
+                  input#topbool.form-control(type='checkbox', name='topbool')
+                .form-group
+                  label(for='toptype')  Top type  
+                  select#toptype.form-control(name='toptype')
+                    option(value='')
+                    option(value='1') Absolute
+                    option(value='2') Rooftop
+                    option(value='3') Terrace
+                    option(value='4') Cuisine  
+                .form-group
+                  label(for='city')  City  
+                  input#city.form-control(type='text', name='city')
+                .form-group
+                  label(for='country')  Country  
+                  input#country.form-control(type='text', name='country')
+                .form-group
+                  label(for='yearnow')  Year now  
+                  input#yearnow.form-control(type='text', name='yearnow')
+                .form-group
+                  label(for='yearfounded')  Year founded  
+                  input#yearfounded.form-control(type='text', name='yearfounded')
+                .form-group
+                  label(for='kind')  Kind  
+                  select#kind.form-control(name='kind')
+                    option(value='')
+                    option(value='property') Property
+                    option(value='place') Place
+                .form-group
+                  label(for='sort')  Sort  
+                  input#sort.form-control(type='text', name='sort')
+            button.btn.btn-lg.btn-success(formaction='/admin/update',type='submit')  Update
+    //
+       jQuery (necessary for Bootstrap's JavaScript plugins) 
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    //
+       Include all compiled plugins (below), or include individual files as needed 
+    script(src='js/bootstrap.min.js')

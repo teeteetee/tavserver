@@ -1,0 +1,124 @@
+doctype html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Top and Views 
+    //
+       Bootstrap 
+    link(href='/bootstrapcss/css/bootstrap.min.css', rel='stylesheet')
+    
+    style
+     :css
+      @font-face{
+      font-family:code;
+      src: url('/bootstrap/fonts/CODElight.otf');
+      }
+      @font-face{
+      font-family:codebold;
+      src: url('/bootstrap/fonts/CODE Bold.otf');
+      font-weight:bold;
+      }
+      body {
+      background-color:#ddd;
+      min-width:480px;
+      }
+      .container {
+      height:100%;
+      width:100%;
+      padding:60px;
+      padding-bottom:20px;
+      margin:0px;
+      }
+      h5 {
+      font-family:code;
+      font-size:8vw;
+      color:#ddd;
+      padding:0px;
+      }
+      h1 {
+      font-family:code;
+      font-size:8vw;
+      color:#333;
+      }
+      a {
+      font-family:code;
+      outline:none;
+      text-decoration:none;
+      }
+      a:focus, a:hover{
+      outline:none;
+      text-decoration: none;
+      }
+      .row {
+      margin:0px;
+      padding:0px;
+      }
+      h2 {
+      font-family:code;
+      color:white;
+      }
+      h3 {
+      font-family:code;
+      color:black;
+      font-size:2vw;
+      }
+      .col-xs-4 {
+      padding:0px;
+      margin:0px;
+      }
+      #header {
+      }
+      #infoblock {
+      background-color:#766353;
+      }
+      .col-xs-2{
+      padding:0px;
+      margin:0px;
+      }
+      .col-xs-10{
+      padding:0px;
+      margin:0px;
+      }
+  body
+    .container
+      #header.row
+        .col-xs-8(style='background-color: #333;')
+          a( href='/geo/#{city}')
+           h5  #{placename}
+        .col-xs-4(style='text-align: center;')
+          .row(style='background-color: white;')
+            .col-xs-2(style='background-color: #e1473b;')
+              h5(style='color: #e1473b;') .
+            .col-xs-10(style='line-height: 0.3; background-color: white; padding: 0px;')
+              a(href='#')
+                h5(style='padding: 0px; margin: 0px; font-family: codebold; color: #333; font-size: 9vw;') Top
+      #pano.row(style='height: 500px; width: 100%; background-color: gray;')
+        
+          <script type="text/javascript" src="/js/pano2vr_player.js">
+                 </script>
+                 <div id="container2" style="width:100%;height:480px;">
+                 This content requires HTML5/CSS3, WebGL, or Adobe Flash Player Version 9 or higher.
+                </div>
+                 <script type="text/javascript">
+              
+              
+                   // create the panorama player with the container
+                   pano=new pano2vrPlayer("container2");
+                  pano.readConfigUrl("#{xml}");
+                
+                 </script>
+      #infoblock.row(style='background-color: #e1473b;')
+        .col-md-6
+          h2 Telephone: #{telephone}
+          h2 Web: #{web}
+          h2 Shisha: #{shisha}
+          h2 Cigars: #{cigars}
+          h2 Working: #{workinghours}
+          h2 Year founded: #{yearfounded}
+        .col-md-6
+      #footer.row
+        .col-xs-12(style='font-family: skinny; text-align: center;')
+          a(style='color: #333;', href='/')
+            h3 Top and views.

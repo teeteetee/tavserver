@@ -1,0 +1,101 @@
+doctype html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    
+    title Geo
+    //
+       Bootstrap 
+    link(href='bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    //
+       HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries 
+    //
+       WARNING: Respond.js doesn't work if you view the page via file:// 
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+    style
+     :css
+      @font-face {
+      font-family:code;
+      src: url('bootstrap/fonts/CODElight.otf');
+      }
+      body {
+      min-width:480px;
+      }
+      h5 {
+      font-family:code;
+      font-size:8vw;
+      color:#333;
+      padding:0px;
+      }
+      h2 {
+      font-family:code;
+      font-size:3vw;
+      color:gray;
+      }
+      a {
+      color:white;
+      }
+      a:focus, a:hover{
+      outline:none;
+      text-decoration: none;
+      }
+      .container {
+      width:100%;
+      height:100%;
+      padding:60px;
+      padding-top:60px;
+      text-align:center;
+      }
+      #header {
+      background-color:#336666;
+      border-bottom:1px solid white;
+      }
+      img {
+      width:100%;
+      height:100%;
+      }
+      .city {
+      border-top:1px solid #333;
+      }
+      #moscow:hover {
+      background-color:#ccccff;
+      }
+      #london:hover {
+      background-color:#ccff99;
+      }
+      #newyork:hover {
+      background-color:#cccc99;
+      }
+      #mexico:hover {
+      background-color:#ccffcc;
+      }
+      #losangeles:hover {
+      background-color:#ffccff;
+      }
+  body
+    .container
+      #moscow.row
+        .col-xs-12
+          a(href='/geo/moscow')
+            h5 Moscow
+      #london.row.city
+        .col-xs-12
+          a(href='/geo/london')
+            h5 London
+      #newyork.row.city
+        .col-xs-12
+          a(href='/geo/newyork')
+            h5 New York
+      #mexico.row.city
+        .col-xs-12
+          a(href='/geo/mexico')
+            h5 Mexico
+      #losangeles.row.city
+        .col-xs-12
+          a(href='/geo/losangeles')
+            h5 Los Angeles
+    

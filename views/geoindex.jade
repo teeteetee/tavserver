@@ -9,6 +9,7 @@ head
     //
        Bootstrap 
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    
     style
      :css
       @font-face {
@@ -295,7 +296,7 @@ head
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
     //
        Include all compiled plugins (below), or include individual files as needed 
-    script(src='js/bootstrap.min.js')
+    script(src='/bootstrap/js/bootstrap.min.js')
     .container
       #logo.row.colorchange.bordersides
         .col-xs-4.col-xs-offset-4.colorchange
@@ -322,12 +323,48 @@ head
       #location.row
         .col-xs-12(style='text-align: center;')
           a(href='/geo')
-            h5 Worldwide
-            h2(style='font-family:skinny;') Select your city
+            h5 #{city}
       #separatorone.row
         .col-xs-4.col-xs-offset-4(style='height: 30px; border-top: 1px solid #333;')
       
-       
+      #top.row
+        .col-xs-12(style='background-color: #8f874e;')
+          h5(style='color: #ddd;')  TOP 
+      #toplists.row
+        .col-xs-3
+          h2 Absolute
+          ul
+            each place, i in first
+              li
+                a(href='#{place.ppredir}') #{place.nameen}
+        .col-xs-3.grayish
+          h2 Rooftop
+          ul
+            each secondplace, i in second
+             li
+               a(href='#{secondplace.ppredir}') #{secondplace.nameen}
+        .col-xs-3
+          h2 Terrace
+          ul
+            each thirdplace, i in third
+             li
+               a(href='#{thirdplace.ppredir}') #{thirdplace.nameen}
+        .col-xs-3.grayish(style='height: 100%;')
+          h2 Cuisine
+          ul
+            each fourthplace, i in fourth
+             li
+               a(href='#{fourthplace.ppredir}') #{fourthplace.nameen}
+      #separatorone.row
+        .col-xs-4.col-xs-offset-4(style='height: 30px;')
+      
+      #new.row
+        .col-xs-12(style='padding-top: 10px; padding-bottom: 10px;')
+          a(href='/news/#{city}')
+            h5(style='display: inline;')  New 
+            div(style='margin-top: -4vw; vertical-align: middle; display: inline-block; margin-left: 56.2vw; background-color: #333; height: 5vw; width: 5vw; border-radius: 50%;')
+              img(src='/images/arrow-right.png')
+      
       #property.row
         .col-xs-12(style='padding-top: 10px; padding-bottom: 10px;')
           a(href='/property')
@@ -336,7 +373,7 @@ head
               img(src='/images/arrow-right.png')
       #yachtsjets.row
         .col-xs-12(style='padding-top: 10px; padding-bottom: 10px;', v='v')
-          a(href='/yachtsjets')
+          a(href='yachtsjets')
             h5(style='display: inline;') Yachts & Jets
             div(style='margin-top: -4vw; vertical-align: middle; display: inline-block; margin-left: 20.7vw; background-color: #333; height: 5vw; width: 5vw; border-radius: 50%;')
               img(src='/images/arrow-right.png')
@@ -353,8 +390,18 @@ head
             div(style='margin-top: -4vw; vertical-align: middle; display: inline-block; margin-left: 36.7vw; background-color: #32b4ba; height: 5vw; width: 5vw; border-radius: 50%;')
               img(src='/images/arrow-right.png')
       #separatorone.row
-        .col-xs-4.col-xs-offset-4(style='height: 20px;')
-     
+        .col-xs-4.col-xs-offset-4(style='height: 30px;')
+      
+      #showmap.row(style='border-bottom: 1px solid #333; border-top: 1px solid #333; cursor: pointer;')
+        .col-xs-12(style='text-align: center;')
+          h5(style='color: #ddd;')
+            | Map
+            span.glyphicon.glyphicon-hand-down(style='font-size: 5vw; margin: 0px;')
+      #map.row(style='display: none;')
+        .col-xs-12(style='height: 45vw; padding: 0px;')
+          iframe(width='100%', height='100%', frameborder='0', style='border: 0px;', src='https://www.google.com/maps/embed/v1/place?key=AIzaSyAa4_KxPoDbPYcrtj3lHCEmt_-lUbKGSyI&q=#{city}')
+      #maplinebottom.row
+        .col-xs-12(style='margin-top: 20px;')
       #footerlinks.row
         #login.col-xs-3
           a(style='display: block; color: #333;', href='/login') Login
@@ -363,9 +410,15 @@ head
         #hr.col-xs-3
           a(style='display: block; color: #333;', href='/hr') HR
         #contact.col-xs-3
-          a(style='display: block; color: #333;', href='/contact') Contact
+          a(style='display: block; color: #333;', href='/contacts') Contact
       #footer.row
         .col-xs-12(style='font-family: skinny; padding: 5px; text-align: center;')
-          a(style='color: #333;', href='/')
+          a(style='color: #333;', href='#')
             h4 Top and views.
-      
+      script.
+        $('#showmap').click(function() {
+        $('#map').slideToggle('slow');
+        if ($("#map").is(':visible')) {
+        $("html, body").animate({scrollTop: $("#map").offset().top});
+        }
+        });
