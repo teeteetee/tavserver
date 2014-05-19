@@ -26,8 +26,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-//app.use('/', routes);
-//app.use('/users', users);
 
 app.get('/', function(req,res) {
         res.render('index');
@@ -598,5 +596,8 @@ app.use(function(err, req, res, next) {
     });
 });
 
+console.log('and we are up and running !')
 
 module.exports = app;
+
+app.listen(80,'188.226.132.200');
