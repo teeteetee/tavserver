@@ -52,6 +52,14 @@ app.get('/yachtsjets',function(req,res){
   res.render('yachtsjets');
 });
 
+app.get('/yachts',function(req,res){
+  res.render('blank');
+});
+
+app.get('/jets',function(req,res){
+  res.render('blank');
+});
+
 app.get('/admin', function(req,res) {
 	res.render('adminsearch');
 });
