@@ -5,8 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
@@ -26,8 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-//app.use('/', routes);
-//app.use('/users', users);
+
 
 app.get('/', function(req,res) {
         res.render('index');
