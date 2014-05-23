@@ -44,6 +44,18 @@ app.get('/partners', function(req,res){
   res.render('blank');
 });
 
+app.get('/campuses', function(req,res){
+  res.render('blank');
+});
+
+app.get('/property', function(req,res){
+  res.render('blank');
+});
+
+app.get('/places', function(req,res){
+  res.render('blank');
+});
+
 app.get('/advsearch',function(req,res){
   res.render('advsearch');
 });
