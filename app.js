@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-
+var users = require('./routes/users');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
@@ -19,13 +19,15 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(favicon('public/images/tavlogo2blue.png'));
+app.use(favicon('/images/tavlogobw.png'));
 app.use(logger('dev'));
 app.use(require('connect').bodyParser());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+//app.use('/', routes);
+//app.use('/users', users);
 
 app.get('/', function(req,res) {
         res.render('index');
@@ -33,27 +35,23 @@ app.get('/', function(req,res) {
 });
 
 app.get('/contact', function(req,res){
-  res.render('contact');
+  res.render('blank');
 });
 
-app.get('/hr', function(req,res){
-  res.render('hr');
+app.get('/job', function(req,res){
+  res.render('blank');
 });
 
 app.get('/partners', function(req,res){
-  res.render('partners');
-});
-
-app.get('/login', function(req,res){
-  res.render('login')
-});
-
-app.get('/tour', function(req,res){
-  res.render('tour');
+  res.render('blank');
 });
 
 app.get('/advsearch',function(req,res){
   res.render('advsearch');
+});
+
+app.get('/yachtsjets',function(req,res){
+  res.render('yachtsjets');
 });
 
 app.get('/admin', function(req,res) {
@@ -69,7 +67,7 @@ app.get('/places/:place', function(req,res){
   var reqplace = req.params.place;
   places.findOne({placename : reqplace},function(err,placedoc){
 
-    if (placedoc.length > 0)
+    if (placedoc !== null)
                             {
 
     var top = placedoc.topbool;
@@ -596,8 +594,6 @@ app.use(function(err, req, res, next) {
     });
 });
 
-console.log('and we are up and running !')
 
 module.exports = app;
-
 app.listen(80,'188.226.132.200');
