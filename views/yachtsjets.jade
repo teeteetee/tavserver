@@ -1,0 +1,55 @@
+doctype html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Top and views
+    //
+       Bootstrap 
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    style
+     :css
+      @font-face {
+      font-family:code;
+      src: url('/bootstrap/fonts/CODElight.otf');
+      }
+      .container {
+      width:100%;
+      padding:0px;
+      margin:0px;
+      }
+      .row {
+      margin:0px;
+      padding:0px;
+      }
+      .col-xs-6 {
+      margin:0px;
+      padding:0px;
+      }
+      .col-xs-5 {
+      margin:0px;
+      padding:0px;
+      }
+      .col-xs-2 {
+      margin:0px;
+      padding:0px;
+      }
+      h5 {
+      font-family:code;
+      font-size:8vw;
+      padding:0px;
+      color:#333;
+      }
+      #halfed {
+      text-align:center;
+      }
+  body
+    .container
+      #halfed.row
+        a(href='/yachts')
+          .col-xs-6(style='height: 700px; background-color: #000033;')
+            h5(style='color: white; margin-top: 40%;')  Yachts
+        a(href='/jets')
+          .col-xs-6(style='height: 700px; background-color: #ccccff;')
+            h5(style='color: #333; margin-top: 40%;') Jets

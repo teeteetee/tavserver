@@ -8,7 +8,7 @@ head
     title Geo
     //
        Bootstrap 
-    link(href='bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
     //
        HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries 
     //
@@ -20,7 +20,7 @@ head
      :css
       @font-face {
       font-family:code;
-      src: url('bootstrap/fonts/CODElight.otf');
+      src: url('/bootstrap/fonts/CODElight.otf');
       }
       body {
       min-width:480px;
@@ -73,29 +73,43 @@ head
       #mexico:hover {
       background-color:#ccffcc;
       }
-      #losangeles:hover {
+      #LA:hover {
       background-color:#ffccff;
       }
+      #spb:hover {
+      background-color:#ccccff;
+      }
+      #vancouver:hover {
+      background-color:#ccccff;
+      }
+
   body
     .container
       #moscow.row
         .col-xs-12
-          a(href='/geo/moscow')
+          a(href='/geo/Moscow')
             h5 Moscow
       #london.row.city
         .col-xs-12
-          a(href='/geo/london')
-            h5 London
+          a(href='/geo/London')
+            h5 London  
       #newyork.row.city
         .col-xs-12
-          a(href='/geo/newyork')
-            h5 New York
+          a(href='/geo/NY')
+            h5 NY          
+      #spb.row.city
+        .col-xs-12
+          a(href='/geo/SPB')
+            h5 SPB
       #mexico.row.city
         .col-xs-12
-          a(href='/geo/mexico')
+          a(href='/geo/Mexico')
             h5 Mexico
-      #losangeles.row.city
+      #LA.row.city
         .col-xs-12
-          a(href='/geo/losangeles')
-            h5 Los Angeles
-    
+          a(href='/geo/LA')
+            h5 LA
+      #vancouver.row.city
+        .col-xs-12
+          a(href='/geo/Vancouver')
+            h5 Vancouver
