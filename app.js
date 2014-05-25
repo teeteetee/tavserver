@@ -99,12 +99,13 @@ app.post('/admin',function(req,res) {
   var log = req.body.login;
   var pass = req.body.password;
   var adminlogin = 'kookoojoo999';
-  var adminpass = 'lomotom787;'
+  var adminpass = 'lomotom787';
+  var message = '<script> alert(Wrong login/pass);</script>';
   console.log(log,pass);
   if (log !== adminlogin && pass !== adminpass) 
                                                {
                                                 console.log('somebody trying to access admin directory');
-                                                res.render('adminauth',{'message' : 'Wrong login or password.'});
+                                                res.render('adminauth',{'message' : message });
                                                }
   else
        {
