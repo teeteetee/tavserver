@@ -103,7 +103,7 @@ app.get('/propertyhotels/buy', function(req,res){
   res.render('blank');
 });
 
-app.get('propertyhotels/stay', function(req,res){
+app.get('/propertyhotels/stay', function(req,res){
   res.render('blank');
 });
 
