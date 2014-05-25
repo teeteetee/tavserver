@@ -100,7 +100,7 @@ app.post('/admin',function(req,res) {
   var pass = req.body.password;
   var adminlogin = 'kookoojoo999';
   var adminpass = 'lomotom787';
-  var message = '<script> alert(Wrong login/pass);</script>';
+  var message = 'Wrong log/pass.';
   console.log(log,pass);
   if (log !== adminlogin && pass !== adminpass) 
                                                {
