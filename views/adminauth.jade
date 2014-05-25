@@ -1,0 +1,36 @@
+doctype html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Authorised only
+    //
+       Bootstrap 
+    link(href='bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    style
+     :css
+      body {
+      min-width:480px;
+      }
+      .container {
+      width:100%;
+      padding:5vw;
+      }
+      #authform {
+      margin-top:20vw;
+      text-align:center;
+      }
+      #message {
+      text-align:center;
+      }
+  body
+    .container
+      #authform.row
+        .col-xs-12
+          form(role='form', action='/admin', method='post')
+            input#login(type='text', name='login')
+            input#pass(type='text', name='pasword')
+      #message.row
+        .col-xs-2.col-xs-offset-5
+           #{message}

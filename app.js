@@ -40,6 +40,8 @@ app.get('/job', function(req,res){
   res.render('blank');
 });
 
+
+
 app.get('/partners', function(req,res){
   res.render('blank');
 });
@@ -85,12 +87,28 @@ app.get('/jets',function(req,res){
 });
 
 app.get('/admin', function(req,res) {
-	res.render('adminsearch');
+	res.render('adminauth','message' : '<p>Authorised staff only</p>');
 });
 
 app.get('/new/:city', function(req,res){
   var reqcity = req.params.city;
   res.send('news for '+reqcity+' supposed to be here');
+});
+
+app.post('/admin',function(req,res) {
+  var log = req.body.login;
+  var pass = req.body.pass;
+  var adminlogin = 'kookoojoo999';
+  var adminpass = 'lomotom787;'
+
+  if (log === adminlogin && pass === adminpass) 
+                                               {
+                                                res.render('adminsearch');
+                                               }
+  else
+       {
+        res.render('adminauth','message' : 'Wrong login or password.');
+       }
 });
 
 app.get('/places/:place', function(req,res){
