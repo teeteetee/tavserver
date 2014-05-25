@@ -101,14 +101,15 @@ app.post('/admin',function(req,res) {
   var adminlogin = 'kookoojoo999';
   var adminpass = 'lomotom787;'
   console.log(log,pass);
-  if (log === adminlogin && pass === adminpass) 
+  if (log !== adminlogin && pass !== adminpass) 
                                                {
-                                                res.render('adminsearch');
+                                                console.log('somebody trying to access admin directory');
+                                                res.render('adminauth',{'message' : 'Wrong login or password.'});
                                                }
   else
        {
-        console.log('somebody trying to access admin directory');
-        res.render('adminauth',{'message' : 'Wrong login or password.'});
+        console.log('admin directory entered')
+        res.render('adminsearch');
        }
 });
 
