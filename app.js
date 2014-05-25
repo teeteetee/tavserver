@@ -100,7 +100,7 @@ app.post('/admin',function(req,res) {
   var pass = req.body.pass;
   var adminlogin = 'kookoojoo999';
   var adminpass = 'lomotom787;'
-
+  console.log(log,pass);
   if (log === adminlogin && pass === adminpass) 
                                                {
                                                 res.render('adminsearch');
