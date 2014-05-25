@@ -27,6 +27,9 @@ head
       #login {
       margin-right:0.5vw;
       }
+      .btn-default {
+      border-radius:0px
+      }
   body
     .container
       #authform.row
@@ -34,6 +37,7 @@ head
           form(role='form', action='/admin', method='post')
             input#login(type='text', name='login')
             input#pass(type='text', name='pasword')
+            button.btn-default(type='submit')
       #message.row
         .col-xs-12
           #{message}
