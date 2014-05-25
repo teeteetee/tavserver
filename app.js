@@ -102,7 +102,7 @@ app.post('/admin',function(req,res) {
   var adminpass = 'lomotom787';
   var message = 'Wrong log/pass.';
   console.log(log,pass);
-  if (log !== adminlogin && pass !== adminpass) 
+  if (log !== adminlogin || pass !== adminpass) 
                                                {
                                                 console.log('somebody trying to access admin directory');
                                                 res.render('adminauth',{'message' : message });
@@ -306,7 +306,7 @@ app.post('/adminsr/updatepage', function(req,res) {
        var placedata = JSON.stringify(singleplace,null,2);
         var nameeng = singleplace.nameen;
         var updateplacename = singleplace.placename;
-		res.render('update', {jsondata : placedata,'nameeng':nameeng, 'placename': updateplacename});
+		res.render('update', {'jsondata' : placedata,'nameeng':nameeng, 'placename': updateplacename});
 	});
 	
 });
@@ -430,9 +430,25 @@ app.post('/search', function(req,res){
 
 app.get('/upload', function(req,res) {
 	    console.log('got request on /upload');
-	    res.render('upload');
+	    res.render('uploadauth');
 	    });
-    
+
+app.post('/uploadauth', function(req,res){
+  var masterlogin = 'tooleetoo676';
+  var masterpassword = 'cloderstam555';
+  var login = req.body.login;
+  var pass = req.body.password;
+
+  if (masterlogin !== login || masterpassword !== pass ) 
+                                                        {
+                                                          res.render('uploadauth');
+                                                        }
+  else 
+      {
+        res.render('upload');
+      }                                                      
+
+});  
 //app.get('/places/:place', function(req,res) {
 //	var reqplace = req.params.place;
 //	console.log(reqplace);
