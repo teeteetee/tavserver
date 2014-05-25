@@ -1,0 +1,60 @@
+doctype html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Top and views
+    //
+       Bootstrap 
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    style
+     :css
+      @font-face {
+      font-family:skinny;
+      src:url('/bootstrap/fonts/CODElight.otf');
+      }
+      body {
+      background-color:white;
+      min-width:480px;
+      }
+      .container {
+      width:100%;
+      padding-top:0px;
+      padding:5vw;
+      padding-bottom:1vw;
+      margin:0px;
+      }
+      .row {
+      margin:0px;
+      padding:0px;
+      }
+      h5 {
+      font-family:skinny;
+      font-size:8vw;
+      color:#333;
+      padding:0px;
+      }
+      .col-xs-4 {
+      text-align:center;
+      }
+      .col-xs-4:hover{
+      background-color:#80aba9;
+      }
+      a:active, a:hover, a:focus {
+      text-decoration:none;
+      outline:none;
+      }
+  body
+    .container
+      .row(style='margin-top: 10vw;')
+        .col-xs-4(style='border-right: 1px solid #333;')
+          a(href='/property/buy')
+            h5 Buy
+        .col-xs-4(style='border-right: 1px solid #333;')
+          a(href='/property/stay')
+            h5 Stay
+        .col-xs-4
+          a(href='/property/sell')
+            h5 Sell
+    

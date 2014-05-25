@@ -49,6 +49,18 @@ app.get('/campuses', function(req,res){
 });
 
 app.get('/property', function(req,res){
+  res.render('property');
+});
+
+app.get('/property/buy', function(req,res){
+  res.render('blank');
+});
+
+app.get('/property/stay', function(req,res){
+  res.render('blank');
+});
+
+app.get('/property/sell', function(req,res){
   res.render('blank');
 });
 
