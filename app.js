@@ -95,6 +95,22 @@ app.get('/new/:city', function(req,res){
   res.send('news for '+reqcity+' supposed to be here');
 });
 
+app.get('/propertyhotels',function(req,res){
+  res.render('buystaysell');
+});
+
+app.get('/propertyhotels/buy', function(req,res){
+  res.render('blank');
+});
+
+app.get('propertyhotels/stay', function(req,res){
+  res.render('blank');
+});
+
+app.get('/propertyhotels/sell', function(req,res){
+   res.render('blank');
+});
+
 app.post('/admin',function(req,res) {
   var log = req.body.login;
   var pass = req.body.password;
