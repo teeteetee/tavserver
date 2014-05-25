@@ -87,7 +87,7 @@ app.get('/jets',function(req,res){
 });
 
 app.get('/admin', function(req,res) {
-	res.render('adminauth',{'message' : '<p>Authorised staff only</p>'});
+	res.render('adminauth',{'message' : ''});
 });
 
 app.get('/new/:city', function(req,res){
