@@ -87,7 +87,7 @@ app.get('/jets',function(req,res){
 });
 
 app.get('/admin', function(req,res) {
-	res.render('adminauth','message' : '<p>Authorised staff only</p>');
+	res.render('adminauth',{'message' : '<p>Authorised staff only</p>'});
 });
 
 app.get('/new/:city', function(req,res){
@@ -107,7 +107,7 @@ app.post('/admin',function(req,res) {
                                                }
   else
        {
-        res.render('adminauth','message' : 'Wrong login or password.');
+        res.render('adminauth',{'message' : 'Wrong login or password.'});
        }
 });
 
