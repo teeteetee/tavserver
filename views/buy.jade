@@ -1,0 +1,153 @@
+doctype html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title top and views
+    //
+       Bootstrap 
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    style
+     :css
+      @font-face {
+      font-family:skinny;
+      src: url('/bootstrap/fonts/CODElight.otf');
+      }
+      @font-face {
+      font-family:this;
+      src:url('/bootstrap/fonts/20 Attentica 4F UltraLight.ttf');
+      }
+      body {
+      background-color:white;
+      min-width:480px;
+      }
+      .container {
+      width:100%;
+      padding-top:0px;
+      padding:5vw;
+      padding-bottom:1vw;
+      margin:0px;
+      }
+      .row {
+      margin:0px;
+      padding:0px;
+      }
+      #header {
+      border-bottom:1px solid #333;
+      background-color: #2b4140;
+      }
+      #propertytype {
+      border-bottom:1px solid #333;
+      }
+      h5 {
+      font-family:skinny;
+      font-size:7vw;
+      color:#333;
+      padding:0px;
+      }
+      h2 {
+      font-family:this;
+      margin-top:0px;
+      margin-bottom:0px;
+      font-size:4vw;
+      color:#333;
+      font-weight:100;
+      }
+      #buy {
+      background-color:#80aba9;
+      }
+      #stay:hover {
+      background-color:#80aba9;
+      }
+      #sell:hover {
+      background-color:#80aba9;
+      }
+      a:active, a:hover, a:focus {
+      text-decoration:none;
+      outline:none;
+      }
+      select {
+      font-family:this;
+      font-size:7vw;
+      }
+      .gray {
+      background-color:#ddd;
+      }
+      #search {
+      padding-top:1vw;
+      padding-bottom:2vw;
+      background-color:#ddd;
+      }
+      .form-group {
+      display:inline-block;
+      margin:2vw;
+      }
+      .btn-lg {
+      border-radius:0px;
+      font-size:inherit;
+      height:inherit;
+      }
+  body
+    .container
+      .row
+        #header.col-xs-12
+          h5(style='color: white;') Property & Hotels
+      #propertytype.row
+        #buy.col-xs-4(style='border-right: 1px solid #333;')
+          a(href='/propertyhotels/buy')
+            h2 Buy
+        #stay.col-xs-4(style='border-right: 1px solid #333;')
+          a(href='/propertyhotels/stay')
+            h2 Stay
+        #sell.col-xs-4
+          a(href='/propertyhotels/sell')
+            h2 Sell
+      #search.row
+        .col-xs-12
+          form(role='form', method='post', action='/propertyhotels/buy')
+            .form-group
+              label(for='flat')
+                h2 Flat
+              input#flat(type='checkbox', name='flat')
+            .form-group
+              label(for='penthouse')
+                h2 Penthouse
+              input#penthouse(type='checkbox', name='penthouse')
+            .form-group
+              label(for='apartment')
+                h2 Apartment
+              input#apartment(type='checkbox', name='apartment')
+            .form-group
+              label(for='house')
+                h2 House
+              input#house(type='checkbox', name='house')
+            .row(style='border-bottom: 1px solid #333;')
+            .form-group
+              label(for='scaleone')
+                h2 &lt 100 
+              input#scaleone(type='checkbox', name='scaleone')
+            .form-group
+              label(for='scaletwo')
+                h2 100-300 
+              input#scaletwo(type='checkbox', name='scaletwo')
+            .form-group
+              label(for='scalethree')
+                h2 &gt300 
+              input#scalethree(type='checkbox', name='scalethree')
+            .row(style='border-bottom: 1px solid #333;')
+            .form-group
+              label(for='scaleone')
+                h2 &lt 5m$ 
+              input#scaleone(type='checkbox', name='scaleone')
+            .form-group
+              label(for='scaletwo')
+                h2 5-10m$ 
+              input#scaletwo(type='checkbox', name='scaletwo')
+            .form-group
+              label(for='scalethree')
+                h2 &gt 10m$ 
+              input#scalethree(type='checkbox', name='scalethree')
+            button.btn-lg.btn-danger.form-control(type='submit')
+              h2 Find it
+    
