@@ -97,7 +97,7 @@ app.get('/new/:city', function(req,res){
 
 app.post('/admin',function(req,res) {
   var log = req.body.login;
-  var pass = req.body.pass;
+  var pass = req.body.password;
   var adminlogin = 'kookoojoo999';
   var adminpass = 'lomotom787;'
   console.log(log,pass);
@@ -107,6 +107,7 @@ app.post('/admin',function(req,res) {
                                                }
   else
        {
+        console.log('somebody trying to access admin directory');
         res.render('adminauth',{'message' : 'Wrong login or password.'});
        }
 });
