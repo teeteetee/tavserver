@@ -87,7 +87,7 @@ app.get('/jets',function(req,res){
 });
 
 app.get('/admin', function(req,res) {
-	res.render('adminauth',{'message' : ''});
+	res.render('adminauth',{'message' : null});
 });
 
 app.get('/new/:city', function(req,res){
