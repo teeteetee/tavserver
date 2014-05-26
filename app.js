@@ -104,11 +104,23 @@ app.get('/propertyhotels/buy', function(req,res){
 });
 
 app.get('/propertyhotels/stay', function(req,res){
-  res.render('blank');
+  res.render('stay');
 });
 
 app.get('/propertyhotels/sell', function(req,res){
    res.render('blank');
+});
+
+app.post('propertyhotels/buy',function(req,res){
+  res.render('blank');
+});
+
+app.post('propertyhotels/stay',function(req,res){
+  res.render('blank');
+});
+
+app.post('propertyhotels/sell',function(req,res){
+  res.render('blank');
 });
 
 app.post('/admin',function(req,res) {

@@ -1,0 +1,193 @@
+doctype html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Topa and views
+    //
+       Bootstrap 
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    style
+     :css
+      @font-face {
+      font-family:skinny;
+      src: url('/bootstrap/fonts/CODElight.otf');
+      }
+      @font-face {
+      font-family:this;
+      src:url('/bootstrap/fonts/20 Attentica 4F UltraLight.ttf');
+      }
+      body {
+      background-color:white;
+      min-width:480px;
+      }
+      .container {
+      width:100%;
+      padding-top:0px;
+      padding:5vw;
+      padding-bottom:1vw;
+      margin:0px;
+      }
+      .row {
+      margin:0px;
+      padding:0px;
+      }
+      #header {
+      border-bottom:1px solid #333;
+      background-color: #2b4140;
+      }
+      #propertytype {
+      border-bottom:1px solid #333;
+      }
+      h5 {
+      font-family:skinny;
+      font-size:7vw;
+      color:#333;
+      padding:0px;
+      }
+      h2 {
+      font-family:this;
+      margin-top:0px;
+      margin-bottom:0px;
+      font-size:4vw;
+      color:#333;
+      font-weight:100;
+      }
+      #buy:hover {
+      background-color:#80aba9;
+      }
+      #stay {
+      background-color:#80aba9;
+      }
+      #sell:hover {
+      background-color:#80aba9;
+      }
+      a:active, a:hover, a:focus {
+      text-decoration:none;
+      outline:none;
+      }
+      select {
+      font-family:this;
+      font-size:7vw;
+      }
+      .gray {
+      background-color:#ddd;
+      }
+      #search {
+      padding-top:1vw;
+      padding-bottom:2vw;
+      background-color:#ddd;
+      }
+      .form-group {
+      display:inline-block;
+      margin:2vw;
+      }
+      .btn-lg {
+      border-radius:0px;
+      font-size:inherit;
+      height:inherit;
+      margin-top:2vw;
+      }
+      #propertytype h2 {
+      color:gray;
+      }
+  body
+    .container
+      .row
+        #header.col-xs-12
+          h5(style='color: white;') Property & Hotels
+      #propertytype.row
+        #buy.col-xs-4(style='border-right: 1px solid #333;')
+          a(href='/property/buy')
+            h2 Buy
+        #stay.col-xs-4(style='border-right: 1px solid #333;')
+          a(href='/property/stay')
+            h2 Stay
+        #sell.col-xs-4
+          a(href='sell')
+            h2 Sell
+      #search.row
+        .col-xs-12
+          form(role='form', method='post', action='/property/stay')
+            .row
+              .col-xs-12(style='text-align: center;')
+                .form-group
+                  label(for='flat')
+                    h2 Flat
+                  input#flat(type='checkbox', name='flat')
+                .form-group
+                  label(for='penthouse')
+                    h2 Penthouse
+                  input#penthouse(type='checkbox', name='penthouse')
+                .form-group
+                  label(for='apartment')
+                    h2 Apartment
+                  input#apartment(type='checkbox', name='apartment')
+                .form-group
+                  label(for='house')
+                    h2 House
+                  input#house(type='checkbox', name='house')
+                .form-group
+                  label(for='hotel')
+                    h2 Hotel
+                  input#hotel(type='checkbox', name='hotel')
+            .row(style='border-bottom: 1px solid gray;')
+            .row
+              .col-xs-3(style='border-right: 3px solid white;')
+                .form-group
+                  label
+                    h2(style='color: gray;') Area
+              .col-xs-9
+                .form-group
+                  label(for='scaleone')
+                    h2 &lt 100 
+                  input#scaleone(type='checkbox', name='scaleone')
+                .form-group
+                  label(for='scaletwo')
+                    h2 100-300 
+                  input#scaletwo(type='checkbox', name='scaletwo')
+                .form-group
+                  label(for='scalethree')
+                    h2 &gt300 
+                  input#scalethree(type='checkbox', name='scalethree')
+            .row(style='border-bottom: 1px solid gray;')
+            .row
+              .col-xs-3(style='border-right: 3px solid white;')
+                .form-group
+                  label
+                    h2(style='color: gray;') № of rooms
+              .col-xs-9
+                .form-group
+                  label(for='ltthree')
+                    h2 &lt 3
+                  input#ltthree(type='checkbox', name='ltthree')
+                .form-group
+                  label(for='threetofive')
+                    h2 3-5 
+                  input#threetofive(type='checkbox', name='threetofive')
+                .form-group
+                  label(for='gtfive')
+                    h2 &gt 5 
+                  input#gtfive(type='checkbox', name='gtfive')
+            .row(style='border-bottom: 1px solid gray;')
+            .row
+              .col-xs-3(style='border-right: 3px solid white;')
+                .form-group
+                  label
+                    h2(style='color: gray;') Price per night
+              .col-xs-9
+                .form-group
+                  label(for='one')
+                    h2 &lt 1k$ 
+                  input#one(type='checkbox', name='one')
+                .form-group
+                  label(for='onetofive')
+                    h2 1k$-5k$ 
+                  input#onetofive(type='checkbox', name='onetofive')
+                .form-group
+                  label(for='gtfive')
+                    h2 &gt5k$ 
+                  input#gtfive(type='checkbox', name='gtfive')
+            button.btn-lg.btn-danger.form-control(type='submit')
+              h2(style='color: white;') Find it
