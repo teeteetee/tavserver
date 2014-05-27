@@ -37,7 +37,7 @@ app.get('/contact', function(req,res){
 });
 
 app.get('/job', function(req,res){
-  res.render('blank');
+  res.render('job');
 });
 
 
