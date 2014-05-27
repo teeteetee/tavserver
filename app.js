@@ -111,6 +111,18 @@ app.get('/propertyhotels/sell', function(req,res){
    res.render('blank');
 });
 
+app.get('/job/photographer',function(req,res){
+  res.render('photographer');
+});
+
+app.get('/job/office',function(req,res){
+  res.render('office');
+});
+
+app.get('/job/it',function(req,res){
+  res.render('it');
+});
+
 app.post('propertyhotels/buy',function(req,res){
   res.render('blank');
 });
@@ -122,6 +134,7 @@ app.post('propertyhotels/stay',function(req,res){
 app.post('propertyhotels/sell',function(req,res){
   res.render('blank');
 });
+
 
 app.post('/admin',function(req,res) {
   var log = req.body.login;
