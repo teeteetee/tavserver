@@ -9,10 +9,9 @@ head
        Bootstrap 
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
     style
-     :css
       @font-face {
       font-family:skinny;
-      src: url('/bootstrap/fonts/CODElight.woff');
+      src: url('/bootstrap/fonts/CODElight.otf');
       }
       @font-face {
       font-family:this;
@@ -24,8 +23,8 @@ head
       }
       .container {
       width:100%;
-      padding-top:0px;
       padding:5vw;
+      padding-top:0px;
       padding-bottom:1vw;
       margin:0px;
       }
@@ -42,6 +41,12 @@ head
       }
       h5 {
       font-family:skinny;
+      font-size:7vw;
+      color:#333;
+      padding:0px;
+      }
+      h3 {
+      font-family:this;
       font-size:7vw;
       color:#333;
       padding:0px;
@@ -107,14 +112,7 @@ head
       padding:0px;
       }
       .colorchange {
-      background-color:#ddd;
-      }
-      #places {
-      border-top:1px solid #333;
-      border-bottom:1px solid #333;
-      }
-      #places:hover {
-      background-color:#80aba9;
+      background-color:white;
       }
       #places:hover h5 {
       color:#333;
@@ -128,38 +126,45 @@ head
       #footerlinks{
       font-size:1vw;
       background-color:white;
-      border-top:1px solid #333;
-      border-bottom:1px solid #333;
+      border-top:4px solid #ddd;
+      border-bottom:4px solid #ddd;
       }
       #map {
       background-color:gray;
       }
       #showmap {
-      background-color: #2b4140;
+      background-color: white;
+      cursor:pointer;
       }
-      #property {
-      border-bottom:1px solid #333;
+      #showmap:hover {
+      background-color:#ccccff;
+      }
+      #places:hover {
+      background-color:#ccccff;
       }
       #property:hover {
-      background-color:#80aba9;
+      background-color:#ccccff;
+      }
+      #campuses:hover{
+      background-color:#ccccff;
       }
       #property:hover h5{
       color:#333;
       }
-      #yachtsjets {
-      border-bottom:1px solid #333;
-      }
       #yachtsjets:hover {
-      background-color:#80aba9;
+      background-color:#ccccff;
+      }
+      #yourcity:hover {
+      background-color:#ccccff;
       }
       #yachtsjets:hover h5{
       color:#333;
       }
       #partners {
-      border-right:1px solid #333;
+      border-right:4px solid #ddd;
       }
       #hr {
-      border-right:1px solid #333;
+      border-right:4px solid #ddd;
       }
       #partners:hover{
       background-color:#e1b6bc;
@@ -170,17 +175,24 @@ head
       #hr:hover{
       background-color:#a5aac5;
       }
-      #campuses {
-      border-bottom:1px solid #333;
-      }
-      #campuses:hover{
-      background-color:#80aba9;
-      }
       #campuses:hover h5{
       color:#333;
       }
-      #location {
+      #yourcity {
       cursor:pointer;
+      }
+      #yourcity:hover h5 {
+      color:#333;
+      }
+      #topdivider {
+      border-bottom:4px solid #ddd;
+      }
+      .bb {
+      border-bottom:4px solid #ddd;
+      background-color:white;
+      }
+      #logotextsmall {
+      text-align:center;
       }
   body
     //
@@ -188,88 +200,72 @@ head
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
     //
        Include all compiled plugins (below), or include individual files as needed 
-    script(src='/js/bootstrap.min.js')
+    script(src='js/bootstrap.min.js')
     .container
-      #logo.row.colorchange.bordersides
-        .col-xs-4.col-xs-offset-4.colorchange
-          img(src='/images/tavlogoblue.svg')
-      #logotext.row.colorchange.bordersides
-        .col-xs-12.colorchange(style='text-align: center;')
-          h1
-            | Top and views
-            h1
      
-      #separatorone.row
-        .col-xs-4.col-xs-offset-4
-      #location.row
-        .col-xs-12(style='text-align: center; background-color: #2b4140;')
+      #yourcity.row.bb
+        .col-xs-10
           a(href='/geo')
-            h5(style='font-size: 10vw; font-family: skinny; color: white; margin-bottom: 0px;') Worldwide
-          .row
-            .col-xs-2
-              a(href='/geo')
-                span.glyphicon.glyphicon-chevron-down(style='color: white; font-size: 3vw; margin: 0px;')
-            .col-xs-8
-              a(href='/geo')
-                h2(style='margin: 0px; color: white;') Choose your city
-            .col-xs-2
-              a(href='/geo')
-                span.glyphicon.glyphicon-chevron-down(style='color: white; font-size: 3vw; margin: 0px;')
-      #separatorone.row
-        .col-xs-4.col-xs-offset-4
-      #separatorone.row
-        .col-xs-4.col-xs-offset-4(style='height: 30px;')
-      #places.row
+            h5(style='margin-top: 3vw;') Your city
+        .col-xs-2
+          a(href='/geo')
+            span.glyphicon.glyphicon-chevron-right(style='color: #ff6600; font-size: 5vw; margin: 3vw;')
+      #places.row.bb
         .col-xs-10
           a(href='/places')
             h5(style='margin-top: 3vw;') Places
         .col-xs-2
           a(href='/places')
             span.glyphicon.glyphicon-chevron-right(style='color: #2b4140; font-size: 5vw; margin: 3vw;')
-      #property.row
+      #property.row.bb
         .col-xs-10
           a(href='/propertyhotels')
             h5(style='margin-top: 3vw;') Property  & Hotels
         .col-xs-2
           a(href='/propertyhotels')
             span.glyphicon.glyphicon-chevron-right(style='color: #2b4140; font-size: 5vw; margin: 3vw;')
-      #yachtsjets.row
+      #yachtsjets.row.bb
         .col-xs-10
           a(href='/yachtsjets')
             h5(style='margin-top: 3vw;') Yachts & Jets * 
         .col-xs-2
           a(href='/yachtsjets')
             span.glyphicon.glyphicon-chevron-right(style='color: #2b4140; font-size: 5vw; margin: 3vw;')
-      #campuses.row
+      #campuses.row.bb
         .col-xs-10
           a(href='/campuses')
             h5(style='margin-top: 3vw;') Campuses *
         .col-xs-2
           a(href='/campuses')
             span.glyphicon.glyphicon-chevron-right(style='color: #2b4140; font-size: 5vw; margin: 3vw;')
-      #separatorone.row
-        .col-xs-4.col-xs-offset-4(style='height: 30px;')
-      #showmap.row(style='border-bottom: 1px solid #333; border-top: 1px solid #333; cursor: pointer;')
+      
+      #showmap.row
+        
+        .col-xs-10
+          h5(style='margin-top: 3vw;') On map
         .col-xs-2
-        .col-xs-8(style='text-align: center;')
-          h5(style='color: #ddd;')  Map 
-        .col-xs-2
-          span.glyphicon.glyphicon-chevron-down(style='color: white; font-size: 5vw; margin: 2vw;')
+          span.glyphicon.glyphicon-chevron-right(style='color: #2b4140; font-size: 5vw; margin: 3vw;')
       #map.row(style='display: none;')
         .col-xs-12(style='height: 45vw; padding: 0px;')
-          iframe(width='100%', height='100%', frameborder='0', style='border: 0px;', src='https://www.google.com/maps/embed/v1/place?key=AIzaSyAa4_KxPoDbPYcrtj3lHCEmt_-lUbKGSyI&q=Moscow')
-      #maplinebottom.row
-        .col-xs-12(style='margin-top: 20px;')
+          .row
+            .col-xs-4(style='height: 5vw; background-color: gray; border-right: 1px solid #333;') Place
+            .col-xs-4(style='height: 5vw; background-color: gray; border-right: 1px solid #333;') Property
+            .col-xs-4(style='height: 5vw; background-color: gray;') Campus
+          .row
+            .col-xs-12(style='margin: 0px; padding: 0px; height: 40vw;')
+              iframe(width='100%', height='100%', frameborder='0', style='border: 0px;', src='https://www.google.com/maps/embed/v1/place?key=AIzaSyAa4_KxPoDbPYcrtj3lHCEmt_-lUbKGSyI&q=Moscow')
+     
       #footerlinks.row
         #partners.col-xs-4
-          a(style='display: block; color: #333; font-family: this; font-size: 3vw;', href='/partners') Partners
+          a(style='display: block; color: #333; font-family: this; font-size: 3vw;', href='/partnership') Partners
         #hr.col-xs-4
-          a(style='display: block; color: #333; font-family: this; font-size: 3vw;', href='/job') Job
+          a(style='display: block; color: #333; font-family: this; font-size: 3vw;', href='/job')
+            | job
         #contact.col-xs-4
           a(style='display: block; color: #333; font-family: this; font-size: 3vw;', href='/contact') Contact
       #footer.row
         .col-xs-12(style='font-family: skinny; padding: 5px; text-align: center;')
-          a(style='color: #333;', href='#')
+          a(style='color: #333;', href='/')
             h4(style='font-family: this; font-weight: lighter;') Top and views.
       script.
         $('#showmap').click(function() {
