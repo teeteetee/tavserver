@@ -1,0 +1,324 @@
+doctype html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Top and views
+    //
+       Bootstrap 
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    link(href='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css', rel='stylesheet')
+    style
+     :css
+      @font-face {
+      font-family:skinny;
+      src: url('/bootstrap/fonts/CODElight.otf');
+      }
+      @font-face {
+      font-family:this;
+      src:url('/bootstrap/fonts/20 Attentica 4F UltraLight.ttf');
+      }
+      body {
+      background-color:white;
+      min-width:480px;
+      }
+      .container {
+      width:100%;
+      padding:5vw;
+      padding-top:0px;
+      padding-bottom:1vw;
+      margin:0px;
+      }
+      .row {
+      margin:0px;
+      padding:0px;
+      }
+      h1 {
+      font-family:skinny;
+      font-size:11vw;
+      color:#333;
+      padding:0px;
+      text-shadow: 0px 0px 2px rgba(150, 150, 150, 1);
+      }
+      h5 {
+      font-family:skinny;
+      font-size:7vw;
+      color:#333;
+      padding:0px;
+      }
+      h3 {
+      font-family:this;
+      font-size:7vw;
+      color:#333;
+      padding:0px;
+      }
+      h2 {
+      font-family:this;
+      margin-top:1vw;
+      margin-bottom:1vw;
+      font-size:4vw;
+      color:gray;
+      font-weight:100;
+      }
+      h4{
+      font-size:2.8vw;
+      font-family:this;
+      }
+      h6 {
+      background-color:#fc0;
+      font-family:this;
+      margin-top:auto;
+      margin-bottom:1vw;
+      font-size:14vw;
+      color:white;
+      font-weight:100;
+      display:inline;
+      }
+      .center {
+      text-align:center;
+      }
+      span {
+      margin-right:100px;
+      }
+      a {
+      color:white;
+      }
+      a:focus, a:hover{
+      color:#c35403;
+      outline:none;
+      text-decoration: none;
+      }
+      .col-xs-3 {
+      padding-right:1vw;
+      padding-left:1vw;
+      }
+      .col-xs-2 {
+      padding:0px;
+      }
+      .col-lg-4 {
+      padding:0px;
+      }
+      .col-lg-8 {
+      padding:0px;
+      }
+      .col-xs-12 {
+      padding:0px;
+      }
+      #places {
+      cursor:pointer;
+      }
+      #places:hover h5 {
+      color:#333;
+      }
+      #places:hover {
+      background-color:#ece6f9;
+      }
+      .bb {
+      border-bottom:0.3vw solid #ddd;
+      background-color:white;
+      }
+      input
+      {
+      font-family:this;
+      font-size:4vw;
+      }
+      .form-group {
+      margin-top:15px;
+      }
+      .btn-lg {
+      border-radius:0px;
+      height:inherit;
+      background-color:#99ccff;
+      }
+      .space {
+      height:3vw;
+      }
+      .col-xs-5 {
+      padding:0px;
+      }
+      #restprop {
+      background-color:#ddd;
+      display:none;
+      }
+      #map {
+      background-color:gray;
+      }
+      #showmap {
+      background-color: white;
+      cursor:pointer;
+      }
+      #showmap:hover {
+      background-color:#ffffcc;
+      }
+      .gray {
+      background-color:#ddd;
+      }
+      .darkgray {
+      background-color:gray;
+      }
+      .triangle {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 0;
+      height: 0;
+      border-left: 4vw solid transparent;
+      border-right: 4vw solid transparent;
+      border-bottom: 5vw solid gray;
+      z-index: 0;
+      font-size:0;
+      line-height:0;
+      }
+      label {
+      font-family:this;
+      font-size:3vw;
+      color:gray;
+      }
+      select  {
+      font-family:this;
+      font-size:4vw;
+      }
+  body
+    .container
+      script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
+      #places.row.bb
+        .col-xs-2
+          a(href='/')
+            span.glyphicon.glyphicon-chevron-left(style='color: #ddd; font-size: 5vw; margin: 1vw;')
+        .col-xs-8(style='text-align: center;')
+          a(href='/')
+            h5(style='Display: inline;') Places
+        .col-xs-2
+      #search.row
+        .col-xs-12
+          form(role='form',action='/places',method='post')
+            .form-group
+              label(for='city')
+                h2 City:
+              select#city
+                option(value='moscow') Moscow
+                option(value='london') London
+                option(value='spb') SPB
+                option(value='ny') NY
+                option(value='la') LA
+            .row.bb
+            .form-group
+              label(for='searchbox')
+                h2 By name:
+              input#searchbox(type='text')
+      .row
+        .col-xs-5
+          .row.bb.space
+          .row.space
+        .col-xs-2(style='text-align: center;')
+          h2(style='color: #c35204;') Or
+        .col-xs-5
+          .row.bb.space
+          .row.space
+      #advsearch.row.bb
+        .col-xs-12
+          label(for='types')
+            h2 By type:
+          #types.row
+            .col-xs-6.gray
+              .form-group
+                label(for='fitness')
+                  h2(style='color: #333;') Fitness
+                input#fitness(type='checkbox')
+              .form-group
+                label(for='mealdrink')
+                  h2(style='color: #333;') Meal & drink
+                input#mealdrink(type='checkbox')
+            .col-xs-6.gray
+              .form-group
+                label(for='coworcing')
+                  h2(style='color: #333;') Coworking
+                input#coworcing(type='checkbox')
+              .form-group
+                label(for='beauty')
+                  h2(style='color: #333;') Spa & beauty
+                input#beauty(type='checkbox')
+          #restprop.row
+            .col-xs-12
+              .row
+                .col-xs-1(style='height: 3vw;')
+                  .triangle
+              .row
+                .col-xs-6.darkgray
+                  .form-group
+                    label(for='rooftop')
+                      h2(style='color: #333;') Rooftop
+                    input#rooftop(type='checkbox')
+                  .form-group
+                    label(for='terrace')
+                      h2(style='color: #333;') Terrace
+                    input#terrace(type='checkbox')
+                .col-xs-6.darkgray
+                  .form-group
+                    label(for='cigars')
+                      h2(style='color: #333;') Cigars
+                    input#cigars(type='checkbox')
+                  .form-group
+                    label(for='shisha')
+                      h2(style='color: #333;') Shisha
+                    input#shisha(type='checkbox')
+          .row
+            .col-xs-12
+              button.btn-lg.form-control(type='submit')
+                h2(style='color: white;')  Find it
+      .row
+        .col-xs-5
+          .row.bb.space
+          .row.space
+        .col-xs-2(style='text-align: center;')
+          h2(style='color: #c35204;') Or
+        .col-xs-5
+          .row.bb.space
+          .row.space
+      #showmap.row
+        .col-xs-10
+          h5(style='display: inline;') On map
+        .col-xs-2
+          span.glyphicon.glyphicon-chevron-down(style='color: #669999; font-size: 5vw; margin: 1vw;')
+      #map.row(style='display: none; text-align: center;')
+        .col-xs-12(style='height: 45vw; padding: 0px;')
+          .row(style='border-top: 0.3vw solid #ddd;')
+            .col-xs-4(style='height: 5vw; background-color: white; border-right: 0.3vw solid #ddd;')
+              form(role='form', action='')
+                .form-group
+                  label(for='placemarks') Place
+                  input#placemarks(type='checkbox')
+            .col-xs-4(style='height: 5vw; background-color: white; border-right: 0.3vw solid #ddd;')
+              form(role='form', action='')
+                .form-group
+                  label(for='propertymarks') Property
+                  input#propertymarks(type='checkbox')
+            .col-xs-4(style='height: 5vw; background-color: white;')
+              form(role='form', action='')
+                .form-group
+                  label(for='campusmarks') Campus
+                  input#campusmarks(type='checkbox')
+          .row
+            #mapitself.col-xs-12(style='margin: 0px; padding: 0px; height: 40vw;')
+      .row.bb
+    //
+       jQuery (necessary for Bootstrap's JavaScript plugins) 
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    //
+       Include all compiled plugins (below), or include individual files as needed 
+    script(src='/bootstrap/js/bootstrap.min.js')
+    script.
+      $('#mealdrink').click(function() {
+      $('#restprop').slideToggle('slow');
+      if ($("#restprop").is(':visible')) {
+      $("html, body").animate({scrollTop: $("#restprop").offset().top});
+      }
+      });
+      $('#showmap').click(function() {
+      $('#map').slideToggle('slow');
+      var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([55.753,  37.622], 14);
+      if ($("#map").is(':visible')) {
+      $("html, body").animate({scrollTop: $("#map").offset().top});
+      }
+      });

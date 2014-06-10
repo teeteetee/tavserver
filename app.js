@@ -67,7 +67,7 @@ app.get('/property/sell', function(req,res){
 });
 
 app.get('/places', function(req,res){
-  res.render('blank');
+  res.render('places');
 });
 
 app.get('/advsearch',function(req,res){
@@ -133,6 +133,10 @@ app.post('propertyhotels/stay',function(req,res){
 
 app.post('propertyhotels/sell',function(req,res){
   res.render('blank');
+});
+
+app.post('places', function(req,res){
+  res.render('blank')
 });
 
 
