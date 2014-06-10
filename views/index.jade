@@ -272,8 +272,7 @@ head
                   input#campusmarks(type='checkbox')
           .row
             #mapitself.col-xs-12(style='margin: 0px; padding: 0px; height: 40vw;')
-              script.
-                var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([55.753,  37.622], 14);
+              
       #footerlinks.row
         #partners.col-xs-4
           a(style='display: block; color: gray; font-family: this; font-size: 3vw;', href='/partners') Partners
@@ -288,6 +287,7 @@ head
       script.
         $('#showmap').click(function() {
         $('#map').slideToggle('slow');
+        var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([55.753,  37.622], 14);
         if ($("#map").is(':visible')) {
         $("html, body").animate({scrollTop: $("#map").offset().top});
         }
