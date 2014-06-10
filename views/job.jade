@@ -11,8 +11,8 @@ head
     style
      :css
       @font-face {
-      font-family:skinny;
-      src: url('/bootstrap/fonts/CODElight.otf');
+      font-family:this;
+      src:url('fonts/20 Attentica 4F UltraLight.ttf');
       }
       body {
       background-color:white;
@@ -31,7 +31,7 @@ head
       }
       h2 {
       font-family:this;
-      margin-top:0px;
+      margin-top:45vh;
       margin-bottom:0px;
       font-size:4vw;
       color:#333;
@@ -39,6 +39,7 @@ head
       }
       .col-xs-4 {
       text-align:center;
+      height:100vh;
       }
       .col-xs-4:hover{
       background-color:#80aba9;
@@ -49,11 +50,11 @@ head
       }
   body
     .container
-      .row(style='margin-top: 10vw;')
-        .col-xs-4(style='border-right: 1px solid #333;')
+      .row
+        .col-xs-4(style='border-right: 0.3vw solid #ddd;')
           a(href='/job/office')
             h2 Office
-        .col-xs-4(style='border-right: 1px solid #333;')
+        .col-xs-4(style='border-right: 0.3vw solid #ddd;')
           a(href='/job/photographer')
             h2 Photo
         .col-xs-4
