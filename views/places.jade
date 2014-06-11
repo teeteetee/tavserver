@@ -4,7 +4,7 @@ head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    title Top and views
+    title Bootstrap 101 Template
     //
        Bootstrap 
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
@@ -112,7 +112,7 @@ head
       color:#333;
       }
       #places:hover {
-      background-color:#ece6f9;
+      background-color:#ffffcc;
       }
       .bb {
       border-bottom:0.3vw solid #ddd;
@@ -129,13 +129,17 @@ head
       .btn-lg {
       border-radius:0px;
       height:inherit;
-      background-color:#99ccff;
+      background-color:#dde6f2;
+      border:0px;
       }
       .space {
-      height:3vw;
+      height:2.5vw;
       }
       .col-xs-5 {
       padding:0px;
+      }
+      .col-xs-6 {
+      text-align:center;
       }
       #restprop {
       background-color:#ddd;
@@ -147,9 +151,6 @@ head
       #showmap {
       background-color: white;
       cursor:pointer;
-      }
-      #showmap:hover {
-      background-color:#ffffcc;
       }
       .gray {
       background-color:#ddd;
@@ -177,7 +178,31 @@ head
       }
       select  {
       font-family:this;
-      font-size:4vw;
+      font-size:5vw;
+      }
+      .checkbox {
+      margin:0px
+      }
+      #cityselect {
+      background-color:#84ace0;
+      }
+      #advsearch {
+      background-color:#a6c6ef;
+      }
+      #byname {
+      background-color:#a6c6ef;
+      }
+      .middle {
+      background-color:#a6c6ef;
+      }
+      #showmap {
+      background-color:#81ea93;
+      }
+      .green {
+      background-color:#81ea93;
+      }
+      .lightgreen {
+      background-color:#b8f4c3;
       }
   body
     .container
@@ -192,57 +217,59 @@ head
         .col-xs-2
       #search.row
         .col-xs-12
-          form(role='form',action='/places',method='post')
-            .form-group
-              label(for='city')
-                h2 City:
-              select#city
-                option(value='moscow') Moscow
-                option(value='london') London
-                option(value='spb') SPB
-                option(value='ny') NY
-                option(value='la') LA
-            .row.bb
-            .form-group
-              label(for='searchbox')
-                h2 By name:
-              input#searchbox(type='text')
-      .row
+          form(role='form', method='post',action='/places')
+            #cityselect.row
+              .col-xs-12
+                .form-group
+                  label(for='city', style='margin-left: 1vw;')
+                    h2 City:
+                  select#city
+                    option(value='moscow') Moscow
+                    option(value='london') London
+                    option(value='spb') SPB
+                    option(value='ny') NY
+                    option(value='la') LA
+            #byname.row
+              .form-group(style='margin-bottom: 0px;')
+                label(for='searchbox', style='margin-left: 1vw;')
+                  h2 By name:
+                input#searchbox(type='text')
+      .row.middle
         .col-xs-5
-          .row.bb.space
+          .row.bb.space.middle
           .row.space
-        .col-xs-2(style='text-align: center;')
-          h2(style='color: #c35204;') Or
+        .col-xs-2.middle(style='text-align: center;')
+          h2(style='color: #c35204; margin: 0px;') Or
         .col-xs-5
-          .row.bb.space
+          .row.bb.space.middle
           .row.space
-      #advsearch.row.bb
+      #advsearch.row
         .col-xs-12
-          label(for='types')
+          label(for='types', style='margin-left: 1vw;')
             h2 By type:
-          #types.row
-            .col-xs-6.gray
-              .form-group
+          #types.row.middle
+            .col-xs-6
+              .form-group(style='margin-top: 0px; margin-bottom: 0px;')
                 label(for='fitness')
                   h2(style='color: #333;') Fitness
                 input#fitness(type='checkbox')
-              .form-group
+              .form-group(style='margin-top: 0px; margin-bottom: 0px;')
                 label(for='mealdrink')
                   h2(style='color: #333;') Meal & drink
                 input#mealdrink(type='checkbox')
-            .col-xs-6.gray
-              .form-group
+            .col-xs-6
+              .form-group(style='margin-top: 0px; margin-bottom: 0px;')
                 label(for='coworcing')
                   h2(style='color: #333;') Coworking
                 input#coworcing(type='checkbox')
-              .form-group
+              .form-group(style='margin-top: 0px; margin-bottom: 0px;')
                 label(for='beauty')
                   h2(style='color: #333;') Spa & beauty
                 input#beauty(type='checkbox')
           #restprop.row
             .col-xs-12
-              .row
-                .col-xs-1(style='height: 3vw;')
+              .row.middle
+                .col-xs-1.col-xs-offset-2(style='height: 3vw;')
                   .triangle
               .row
                 .col-xs-6.darkgray
@@ -266,39 +293,30 @@ head
           .row
             .col-xs-12
               button.btn-lg.form-control(type='submit')
-                h2(style='color: white;')  Find it
-      .row
-        .col-xs-5
-          .row.bb.space
-          .row.space
-        .col-xs-2(style='text-align: center;')
-          h2(style='color: #c35204;') Or
-        .col-xs-5
-          .row.bb.space
-          .row.space
+                h2(style='color: #333;')  Find it
       #showmap.row
         .col-xs-10
-          h5(style='display: inline;') On map
+          h5(style='display: inline;') Look on map
         .col-xs-2
           span.glyphicon.glyphicon-chevron-down(style='color: #669999; font-size: 5vw; margin: 1vw;')
       #map.row(style='display: none; text-align: center;')
         .col-xs-12(style='height: 45vw; padding: 0px;')
-          .row(style='border-top: 0.3vw solid #ddd;')
-            .col-xs-4(style='height: 5vw; background-color: white; border-right: 0.3vw solid #ddd;')
+          .row.lightgreen(style='border-top: 0.3vw solid white;')
+            .col-xs-4(style='height: 5vw; border-right: 0.3vw solid white;')
               form(role='form', action='')
-                .form-group
+                .form-group(style='margin: 0px;')
                   label(for='placemarks') Place
-                  input#placemarks(type='checkbox')
-            .col-xs-4(style='height: 5vw; background-color: white; border-right: 0.3vw solid #ddd;')
+                  input#placemarks.checkbox(type='checkbox')
+            .col-xs-4(style='height: 5vw; border-right: 0.3vw solid white;')
               form(role='form', action='')
-                .form-group
+                .form-group(style='margin: 0px;')
                   label(for='propertymarks') Property
-                  input#propertymarks(type='checkbox')
-            .col-xs-4(style='height: 5vw; background-color: white;')
+                  input#propertymarks.checkbox(type='checkbox')
+            .col-xs-4(style='height: 5vw;')
               form(role='form', action='')
-                .form-group
+                .form-group(style='margin: 0px;')
                   label(for='campusmarks') Campus
-                  input#campusmarks(type='checkbox')
+                  input#campusmarks.checkbox(type='checkbox')
           .row
             #mapitself.col-xs-12(style='margin: 0px; padding: 0px; height: 40vw;')
       .row.bb
@@ -307,7 +325,7 @@ head
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
     //
        Include all compiled plugins (below), or include individual files as needed 
-    script(src='/bootstrap/js/bootstrap.min.js')
+    script(src='/js/bootstrap.min.js')
     script.
       $('#mealdrink').click(function() {
       $('#restprop').slideToggle('slow');
