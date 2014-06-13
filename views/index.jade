@@ -46,6 +46,8 @@ head
       font-size:7vw;
       color:#333;
       padding:0px;
+      margin-top:0px;
+      margin-bottom:0px;
       }
       h3 {
       font-family:this;
@@ -227,7 +229,7 @@ head
       border-top:0.3vw solid #ddd;
       }
       #en {
-      text-decoration:underline
+      text-decoration:underline;
       }
       #en:hover {
       background-color:#669999;
@@ -263,21 +265,21 @@ head
       #yourcity.row.bb.fivemargin
         .col-xs-10
           a(href='/geo')
-            h5(style='Display: inline;') Your city
+            h5 Your city
         .col-xs-2
           a(href='/geo')
             span.glyphicon.glyphicon-chevron-right(style='color: #ff3300; font-size: 5vw; margin: 1vw;')
       #places.row.bb.fivemargin
         .col-xs-10
           a(href='/places')
-            h5(style='display: inline;') Places
+            h5 Places
         .col-xs-2
           a(href='/places')
             span.glyphicon.glyphicon-chevron-right(style='color: #2b4140; font-size: 5vw; margin: 1vw;')
       #property.row.bb.fivemargin
         .col-xs-10
           a(href='/property')
-            h5(style='display: inline;') Property  & Hotels
+            h5 Property  & Hotels
         .col-xs-2
           a(href='/property')
             span.glyphicon.glyphicon-chevron-right(style='color: #2b4140; font-size: 5vw; margin: 1vw;')
@@ -287,7 +289,7 @@ head
             h5(style='display: inline;') Yachts & Jets
             h2(style='display: inline; color: #ddd;') Comming soon
         .col-xs-2
-          a(href='/yachtsjets')
+          a(href='/yachtsjetsl')
             span.glyphicon.glyphicon-chevron-right(style='color: #2b4140; font-size: 5vw; margin: 1vw;')
       #campuses.row.bb.fivemargin
         .col-xs-10
@@ -304,7 +306,6 @@ head
           span.glyphicon.glyphicon-chevron-down(style='color: #669999; font-size: 5vw; margin: 1vw;')
       #map.row(style='display: none; text-align: center;')
         .col-xs-12(style='height: 100vh; padding: 0px;')
-          
           .row
             #mapitself.col-xs-12(style='margin: 0px; padding: 0px; height: 100vh; border-top: 0.3vw solid #333; border-bottom: 0.3vw solid #333;')
       #lang.row.fivemargin
@@ -332,11 +333,11 @@ head
         #hr.col-xs-4
           a(style='display: block; color: gray; font-family: this; font-size: 3vw;', href='/job') Job
         #contact.col-xs-4
-          a(style='display: block; color: gray; font-family: this; font-size: 3vw;', href='/contact') Contact
-      #footer.fivemargin.row
+          a(style='display: block; color: gray; font-family: this; font-size: 3vw;', href='/contacts') Contact
+      #footer fivemargin.row
         .col-xs-12(style='font-family: skinny; padding: 5px; text-align: center;')
           a(style='color: gray;', href='/')
-            h4(style='font-family: this; font-weight: lighter;') Top and views. 2014
+            h4(style='font-family: this; font-weight: lighter;') Top and views.
       script.
         $('#showmap').click(function() {
         $('#map').slideToggle('slow');
