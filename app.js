@@ -55,7 +55,7 @@ app.get('/property', function(req,res){
 });
 
 app.get('/property/buy', function(req,res){
-  res.render('blank');
+  res.render('buy');
 });
 
 app.get('/property/stay', function(req,res){
