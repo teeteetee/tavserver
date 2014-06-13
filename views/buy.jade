@@ -4,18 +4,20 @@ head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    title Top and views
+    title Bootstrap 101 Template
+    //
        Bootstrap 
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    link(href='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css', rel='stylesheet')
     style
      :css
       @font-face {
       font-family:skinny;
-      src: url('fonts/CODElight.otf');
+      src: url('/bootstrap/fonts/CODElight.otf');
       }
       @font-face {
       font-family:this;
-      src:url('fonts/20 Attentica 4F UltraLight.ttf');
+      src:url('/bootstrap/fonts/20 Attentica 4F UltraLight.ttf');
       }
       body {
       background-color:white;
@@ -23,8 +25,7 @@ head
       }
       .container {
       width:100%;
-      padding-top:0px;
-      padding:5vw;
+      padding:0px;
       padding-bottom:1vw;
       margin:0px;
       }
@@ -32,12 +33,24 @@ head
       margin:0px;
       padding:0px;
       }
-      #header {
-      border-bottom:1px solid #333;
-      background-color: #2b4140;
+      #propertyhotels {
+      cursor:pointer;
+      }
+      #propertyhotels:hover h5 {
+      color:white;
+      }
+      #propertyhotels:hover {
+      background-color:#c35204;
+      }
+      .bb {
+      border-bottom:0.3vw solid #ddd;
+      background-color:white;
+      }
+      .bt {
+      border-top:0.3vw solid #ddd;
       }
       #propertytype {
-      border-bottom:1px solid gray;
+      border-bottom:0.3vw solid #ddd;
       }
       h5 {
       font-family:skinny;
@@ -53,7 +66,11 @@ head
       color:#333;
       font-weight:100;
       }
-      #buy {
+      h4{
+      font-size:2.8vw;
+      font-family:this;
+      }
+      #buy:hover {
       background-color:#80aba9;
       }
       #stay:hover {
@@ -74,39 +91,85 @@ head
       background-color:#ddd;
       }
       #search {
-      padding-top:1vw;
-      padding-bottom:2vw;
-      background-color:#ddd;
+      padding-bottom:1vw;
+      background-color:#a6c6ef;
       }
       .form-group {
       display:inline-block;
       margin:2vw;
       }
       .btn-lg {
+      padding:0px;
       border-radius:0px;
       font-size:inherit;
       height:inherit;
       margin-top:2vw;
+      background-color:#dde6f2;
+      }
+      .sidemargin {
+      margin-left:1vw;
+      margin-right:1vw;
+      }
+      .middle {
+      background-color:#a6c6ef;
+      }
+      #showmap {
+      cursor:pointer;
+      }
+      .green {
+      background-color:#81ea93;
+      }
+      .lightgreen {
+      background-color:#b8f4c3;
+      }
+      .sidepadding {
+      padding-left:6vw;
+      padding-right:6vw;
+      }
+      .sidemargin {
+      margin-left:1vw;
+      margin-right:1vw;
+      }
+      .fivemargin {
+      margin-right:5vw;
+      margin-left:5vw;
+      }
+      .sixmargin {
+      margin-left:6vw;
+      margin-right:6vw;
+      }
+      #propertytypelower {
+      background-color:#84ace0;
+      }
+      label {
+      font-family:this;
+      font-size:3vw;
+      color:gray;
       }
   body
     .container
-      .row
-        #header.col-xs-12
-          h5(style='color: white;') Property & Hotels
-      #propertytype.row
-        #buy.col-xs-4(style='border-right: 1px solid gray;')
+      script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
+      #propertyhotels.row.bb.fivemargin
+        .col-xs-2
+          a(href='/')
+            span.glyphicon.glyphicon-chevron-left(style='color: #ddd; font-size: 5vw; margin: 1vw;')
+        .col-xs-10(style='text-align: center;')
+          a(href='/')
+            h5(style='Display: inline;') Property & Hotels
+      #propertytype.row.fivemargin
+        #buy.col-xs-4(style='border-right: 0.3vw solid #ddd;')
           a(href='/property/buy')
-            h2 Buy
-        #stay.col-xs-4(style='border-right: 1px solid gray;')
+            h2(style='color: gray;') Buy
+        #stay.col-xs-4(style='border-right: 0.3vw solid #ddd;')
           a(href='/property/stay')
-            h2 Stay
+            h2(style='color: gray;') Stay
         #sell.col-xs-4
-          a(href='sell')
-            h2 Sell
-      #search.row
-        .col-xs-12
+          a(href='/sell')
+            h2(style='color: gray;') Sell
+      #search.row.sixmargin
+        .col-xs-12(style='padding: 0px;')
           form(role='form', method='post', action='/property/buy')
-            .row
+            #propertytypelower.row
               .col-xs-12(style='text-align: center;')
                 .form-group
                   label(for='flat')
@@ -128,9 +191,8 @@ head
                   label(for='office')
                     h2 Office
                   input#office(type='checkbox', name='office')
-            .row(style='border-bottom: 1px solid #333;')
-            .row
-              .col-xs-3(style='border-right: 3px solid white;')
+            .row(style='padding-left: 1vw; padding-right: 1vw; padding-top: 1vw;')
+              .col-xs-3(style='border-right: 0.3vw solid #ddd;')
                 .form-group
                   label
                     h2(style='color: gray;') Area
@@ -147,9 +209,9 @@ head
                   label(for='scalethree')
                     h2 &gt300 
                   input#scalethree(type='checkbox', name='scalethree')
-            .row(style='border-bottom: 1px solid #333;')
-            .row
-              .col-xs-3(style='border-right: 3px solid white;')
+            .row(style='border-bottom: 0.3vw solid #ddd; margin-left: 1vw; margin-right: 1vw;')
+            .row(style='padding-left: 1vw; padding-right: 1vw;')
+              .col-xs-3(style='border-right: 0.3vw solid #ddd;')
                 .form-group
                   label
                     h2(style='color: gray;') Price
@@ -166,5 +228,34 @@ head
                   label(for='scalethree')
                     h2 &gt 10m$ 
                   input#scalethree(type='checkbox', name='scalethree')
-            button.btn-lg.btn-danger.form-control(type='submit')
-              h2(style='color: #ddd;') Find it
+            .row
+              .col-xs-12(style='padding-right: 1vw; padding-left: 1vw;')
+                button.btn-lg.form-control(type='submit')
+                  h2(style='margin-top: 1vw; margin-bottom: 1vw; color: #c35204;') Find it
+      #showmap.row.bb.bt.fivemargin
+        .col-xs-10
+          h5(style='display: inline;') Look on map
+        .col-xs-2
+          span.glyphicon.glyphicon-chevron-down(style='color: gray; font-size: 5vw; margin: 1vw;')
+      #map.row(style='display: none; text-align: center;')
+        .col-xs-12(style='height: 100vh; padding: 0px;')
+          
+          .row
+            #mapitself.col-xs-12(style='border-top: 0.3vw solid #333; border-bottom: 0.3vw solid #333; margin: 0px; padding: 0px; height: 100vh;')
+      #footer.row
+        .col-xs-12(style='text-align: center;')
+          a(style='color: gray;', href='#')
+            h4(style='font-weight: lighter;') Top and views.
+    
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    
+    script(src='/js/bootstrap.min.js')
+    script.
+      $('#showmap').click(function() {
+      $('#map').slideToggle('slow');
+      var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([55.753,  37.622], 14);
+      map.scrollWheelZoom.disable();
+      if ($("#map").is(':visible')) {
+      $("html, body").animate({scrollTop: $("#map").offset().top});
+      }
+      });
