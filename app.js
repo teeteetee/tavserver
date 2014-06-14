@@ -51,7 +51,7 @@ app.get('/campuses', function(req,res){
 });
 
 app.get('/property', function(req,res){
-  res.render('property');
+  res.render('buystaysell');
 });
 
 app.get('/property/buy', function(req,res){
