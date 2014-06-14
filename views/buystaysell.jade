@@ -55,22 +55,16 @@ head
       z-index:7;
       }
       #buy {
-      border-right:4px solid #ddd;
-      cursor:pointer;
+      border-right:0.3vw solid #ddd;
+      }
+      #stay {
+      border-right:0.3vw solid #ddd;
       }
       #buy:hover {
       background-color:#ccccff;
       }
-      #stay {
-      border-right:4px solid #ddd;
-      cursor:pointer;
-      }
       #stay:hover {
       background-color:#ccccff;
-      }
-      #sell {
-      border-right:4px solid #ddd;
-      cursor:pointer;
       }
       #sell:hover {
       background-color:#ccccff;
@@ -78,12 +72,12 @@ head
   body
     .container
       #halfed.row
-        a(href='/propertyhotels/buy')
+        a(href='/property/buy')
           #buy.col-xs-4(style='height: 100vh;')
-            h5(style='margin-top: 45vh;') Buy
-        a(href='/propertyhotels/stay')
+            h5(style='margin-top: 45vh;')  Buy
+        a(href='/property/stay')
           #stay.col-xs-4(style='height: 100vh;')
             h5(style='margin-top: 45vh;') Stay 
-        a(href='/propertyhotels/sell')
+        a(href='/property/sell')
           #sell.col-xs-4(style='height: 100vh;')
             h5(style='margin-top: 45vh;') Sell 
