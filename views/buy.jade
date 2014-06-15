@@ -4,7 +4,7 @@ head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    title Top and views
+    title Bootstrap 101 Template
     //
        Bootstrap 
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
@@ -86,6 +86,13 @@ head
       select {
       font-family:this;
       font-size:7vw;
+      background-color:#84ace0;
+      border:0px;
+      width:100%;
+      }
+      select:focus,select:active {
+      outline:none;
+      text-decoration:none;
       }
       .gray {
       background-color:#ddd;
@@ -151,10 +158,10 @@ head
       script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
       #propertyhotels.row.bb.fivemargin
         .col-xs-2
-          a(href='/')
+          a(href='C:/bootstrap-3.1.1-dist/geoindex')
             span.glyphicon.glyphicon-chevron-left(style='color: #ddd; font-size: 5vw; margin: 1vw;')
         .col-xs-10(style='text-align: center;')
-          a(href='/')
+          a(href='C:/bootstrap-3.1.1-dist/geoindex')
             h5(style='Display: inline;') Property & Hotels
       #propertytype.row.fivemargin
         #buy.col-xs-4(style='border-right: 0.3vw solid #ddd;')
@@ -168,29 +175,17 @@ head
             h2(style='color: gray;') Sell
       #search.row.sixmargin
         .col-xs-12(style='padding: 0px;')
-          form(role='form', method='post', action='/property/buy')
+          form(role='form', method='POST', action='#')
             #propertytypelower.row
               .col-xs-12(style='text-align: center;')
-                .form-group
-                  label(for='flat')
-                    h2 Flat
-                  input#flat(type='checkbox', name='flat')
-                .form-group
-                  label(for='penthouse')
-                    h2 Penthouse
-                  input#penthouse(type='checkbox', name='penthouse')
-                .form-group
-                  label(for='apartment')
-                    h2 Apartment
-                  input#apartment(type='checkbox', name='apartment')
-                .form-group
-                  label(for='house')
-                    h2 House
-                  input#house(type='checkbox', name='house')
-                .form-group
-                  label(for='office')
-                    h2 Office
-                  input#office(type='checkbox', name='office')
+                
+                select#types(name='types')
+                  option(value='flat') Flat
+                  option(value='penthouse') Penthouse
+                  option(value='apartment') Apartment
+                  option(value='house') House
+                  option(value='office') Office
+                
             .row(style='padding-left: 1vw; padding-right: 1vw; padding-top: 1vw;')
               .col-xs-3(style='border-right: 0.3vw solid #ddd;')
                 .form-group
@@ -241,7 +236,7 @@ head
         .col-xs-12(style='height: 100vh; padding: 0px;')
           .row
             #mapitself.col-xs-12(style='border-top: 0.3vw solid #333; border-bottom: 0.3vw solid #333; margin: 0px; padding: 0px; height: 100vh;')
-      #footer.bt.fivemargin.row
+      #footer.row.bt.fivemargin
         .col-xs-12(style='text-align: center;')
           a(style='color: gray;', href='/')
             h4(style='font-weight: lighter;') Top and views.
@@ -250,7 +245,7 @@ head
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
     //
        Include all compiled plugins (below), or include individual files as needed 
-    script(src='/js/bootstrap.min.js')
+    script(src='js/bootstrap.min.js')
     script.
       $('#showmap').click(function() {
       $('#map').slideToggle('slow');
