@@ -59,7 +59,7 @@ app.get('/property/buy', function(req,res){
 });
 
 app.get('/property/stay', function(req,res){
-  res.render('blank');
+  res.render('stay');
 });
 
 app.get('/property/sell', function(req,res){
@@ -93,22 +93,6 @@ app.get('/admin', function(req,res) {
 app.get('/new/:city', function(req,res){
   var reqcity = req.params.city;
   res.send('news for '+reqcity+' supposed to be here');
-});
-
-app.get('/propertyhotels',function(req,res){
-  res.render('buystaysell');
-});
-
-app.get('/propertyhotels/buy', function(req,res){
-  res.render('buy');
-});
-
-app.get('/propertyhotels/stay', function(req,res){
-  res.render('stay');
-});
-
-app.get('/propertyhotels/sell', function(req,res){
-   res.render('blank');
 });
 
 app.get('/job/photographer',function(req,res){
@@ -516,12 +500,25 @@ app.post('/uploadauth', function(req,res){
 app.post('/upload',function(req,res) {
 	console.log('starting doin something');
 
-var vfirstsideimg;
-var vseconsideimg;
-var vthirdsideimg;
-var vfourthsideimg;
-var vfifthsideimg;
-var vsixthsideimg;
+
+function imgvariables (n) {
+  for (i=1;i<=n;i++) {
+    eval("var img_"+i+" = "+i);
+    eval("console.log(img_"+i+")");
+  }
+}
+
+var photonum = req.body.photonum
+
+imgvariables(photonum);
+
+
+//var vfirstsideimg;
+//var vseconsideimg;
+//var vthirdsideimg;
+//var vfourthsideimg;
+//var vfifthsideimg;
+//var vsixthsideimg;
 var vmainpreviewimg;
 var vxmlfile;
 
@@ -546,12 +543,19 @@ if (req.files.firstside.name != 0 && req.files.secondside.name != 0 && req.files
 
 {
 console.log('files:ok');
-upload(req.files.firstside.path,req.files.firstside.name,vfirstsideimg);
-upload(req.files.secondside.path,req.files.secondside.name,vseconsideimg);
-upload(req.files.thirdside.path,req.files.thirdside.name,vthirdsideimg);
-upload(req.files.fourthside.path,req.files.fourthside.name,vfourthsideimg);
-upload(req.files.fifthside.path,req.files.fifthside.name,vfifthsideimg);
-upload(req.files.sixthside.path,req.files.sixthside.name,vsixthsideimg);
+
+function uploadloop(imgname,n) {
+   for(i=1;i<=n;i++) {
+    eval("upload(req.files.img_"+i+".path,req.files.img_"+i+".name,img_"+i);
+   }
+}
+
+//upload(req.files.firstside.path,req.files.firstside.name,vfirstsideimg);
+//upload(req.files.secondside.path,req.files.secondside.name,vseconsideimg);
+//upload(req.files.thirdside.path,req.files.thirdside.name,vthirdsideimg);
+//upload(req.files.fourthside.path,req.files.fourthside.name,vfourthsideimg);
+//upload(req.files.fifthside.path,req.files.fifthside.name,vfifthsideimg);
+//upload(req.files.sixthside.path,req.files.sixthside.name,vsixthsideimg);
 upload(req.files.mainpreview.path,req.files.mainpreview.name,vmainpreviewimg);
 upload(req.files.xml.path,req.files.xml.name,vxmlfile);
 
