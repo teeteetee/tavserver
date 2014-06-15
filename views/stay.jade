@@ -36,7 +36,9 @@ head
       border-bottom:1px solid #333;
       background-color: #2b4140;
       }
-      
+      #propertytype {
+      border-bottom:1px solid gray;
+      }
       h5 {
       font-family:skinny;
       font-size:7vw;
@@ -71,6 +73,13 @@ head
       select {
       font-family:this;
       font-size:7vw;
+      background-color:#84ace0;
+      border:0px;
+      width:100%;
+      }
+      select:focus,select:active {
+      outline:none;
+      text-decoration:none;
       }
       .gray {
       background-color:#ddd;
@@ -167,27 +176,14 @@ head
         .col-xs-12(style='margin: 0px; padding: 0px;')
           form(role='form', method='post', action='/property/stay')
             #propertytypelower.row
-              .col-xs-12(style='margin: 0px; padding: 0px; text-align: center;')
-                .form-group
-                  label(for='flat')
-                    h2 Flat
-                  input#flat(type='checkbox', name='flat')
-                .form-group
-                  label(for='penthouse')
-                    h2 Penthouse
-                  input#penthouse(type='checkbox', name='penthouse')
-                .form-group
-                  label(for='apartment')
-                    h2 Apartment
-                  input#apartment(type='checkbox', name='apartment')
-                .form-group
-                  label(for='house')
-                    h2 House
-                  input#house(type='checkbox', name='house')
-                .form-group
-                  label(for='hotel')
-                    h2 Hotel
-                  input#hotel(type='checkbox', name='hotel')
+              .col-xs-12(style='margin: 0px; padding-left: 1vw; padding-right: 1vw; text-align: center;')
+                select#types(name='types')
+                  option(value='hotel') Hotel
+                  option(value='flat') Flat
+                  option(value='penthouse') Penthouse
+                  option(value='apartment') Apartment
+                  option(value='house') House
+                  option(value='office') Office
             .row.bb(style='margin: 1vw; margin-bottom: 0px;')
               .col-xs-3(style='border-right: 0.3vw solid #ddd;')
                 .form-group
