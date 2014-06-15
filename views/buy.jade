@@ -4,7 +4,7 @@ head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    title Bootstrap 101 Template
+    title Top and views
     //
        Bootstrap 
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
@@ -70,7 +70,7 @@ head
       font-size:2.8vw;
       font-family:this;
       }
-      #buy:hover {
+      #buy {
       background-color:#80aba9;
       }
       #stay:hover {
@@ -164,7 +164,7 @@ head
           a(href='/property/stay')
             h2(style='color: gray;') Stay
         #sell.col-xs-4
-          a(href='/sell')
+          a(href='/property/sell')
             h2(style='color: gray;') Sell
       #search.row.sixmargin
         .col-xs-12(style='padding: 0px;')
@@ -239,16 +239,17 @@ head
           span.glyphicon.glyphicon-chevron-down(style='color: gray; font-size: 5vw; margin: 1vw;')
       #map.row(style='display: none; text-align: center;')
         .col-xs-12(style='height: 100vh; padding: 0px;')
-          
           .row
             #mapitself.col-xs-12(style='border-top: 0.3vw solid #333; border-bottom: 0.3vw solid #333; margin: 0px; padding: 0px; height: 100vh;')
       #footer.row
         .col-xs-12(style='text-align: center;')
-          a(style='color: gray;', href='#')
+          a(style='color: gray;', href='/')
             h4(style='font-weight: lighter;') Top and views.
-    
+    //
+       jQuery (necessary for Bootstrap's JavaScript plugins) 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
-    
+    //
+       Include all compiled plugins (below), or include individual files as needed 
     script(src='/js/bootstrap.min.js')
     script.
       $('#showmap').click(function() {
