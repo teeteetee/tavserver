@@ -107,18 +107,6 @@ app.get('/job/it',function(req,res){
   res.render('it');
 });
 
-app.post('propertyhotels/buy',function(req,res){
-  res.render('blank');
-});
-
-app.post('propertyhotels/stay',function(req,res){
-  res.render('blank');
-});
-
-app.post('propertyhotels/sell',function(req,res){
-  res.render('blank');
-});
-
 app.post('places', function(req,res){
   res.render('blank')
 });
@@ -419,6 +407,9 @@ app.get('/geo', function(req,res){
 
 app.get('/geo/:city', function(req,res){
     var vreqcity = req.params.city;
+
+    if (vreqcity === 'newyork') {vreqcity = 'New York'};
+    if (vreqcity === 'losangeles') {vreqcity = 'Los Angeles'}
     var absolute = [];
     var rooftop = [];
     var terrace = [];
