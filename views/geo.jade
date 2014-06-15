@@ -4,32 +4,36 @@ head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    
-    title Top and views
+    title top and views
     //
        Bootstrap 
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
-    
+  
     style
      :css
       @font-face {
       font-family:code;
       src: url('/bootstrap/fonts/CODElight.otf');
       }
+      @font-face {
+      font-family:this;
+      src:url('/bootstrap/fonts/20 Attentica 4F UltraLight.ttf');
+      }
       body {
       min-width:480px;
       }
       h5 {
       font-family:code;
-      font-size:7vw;
+      font-size:8vw;
       color:#333;
       padding:0px;
       display:inline;
       }
       h2 {
-      font-family:code;
+      font-family:this;
       font-size:3vw;
-      color:gray;
+      color:#ddd;
+      display:inline;
       }
       a {
       color:white;
@@ -40,8 +44,15 @@ head
       }
       .container {
       width:100%;
-      padding:5vw;
-      text-align:center;
+      height:100%;
+      }
+      #header {
+      background-color:#336666;
+      border-bottom:1px solid white;
+      }
+      img {
+      width:100%;
+      height:100%;
       }
       .city {
       border-top:0.3vw solid #ddd;
@@ -55,39 +66,36 @@ head
       #newyork:hover {
       background-color:#cccc99;
       }
-      #mexico:hover {
+      #stpetersburg:hover {
       background-color:#ccffcc;
       }
-      #LA:hover {
+      #losangeles:hover {
       background-color:#ffccff;
       }
-      #spb:hover {
-      background-color:#ccccff;
-      }
-      #vancouver:hover {
-      background-color:#ccccff;
-      }
-
   body
     .container
-      #moscow.row
-        .col-xs-12
-          a(href='/geo/moscow')
+      a(href='/geo/moscow')
+        #moscow.row
+          .col-xs-10.col-xs-offset-2
             h5 Moscow
-      #london.row.city
-        .col-xs-12
-          a(href='/geo/london')
-            h5 London  
-      #newyork.row.city
-        .col-xs-12
-          a(href='/geo/ny')
-            h5 NY          
-      #spb.row.city
-        .col-xs-12
-          a(href='/geo/spb')
-            h5 SPB
-      #LA.row.city
-        .col-xs-12
-          a(href='/geo/la')
-            h5 LA
-      
+      a(href='/geo/london')
+        #london.row.city
+          .col-xs-10.col-xs-offset-2
+            h5 London
+            h2 Comming Soon
+      a(href='/geo/st.petersburg')
+        #stpetersburg.row.city
+          .col-xs-10.col-xs-offset-2
+            h5 St.Petersburg
+            h2 Comming Soon
+      a(href='/new york')
+        #newyork.row.city
+          .col-xs-10.col-xs-offset-2
+            h5 New York
+            h2 Comming Soon
+      a(href='/los angeles')
+        #losangeles.row.city
+          .col-xs-10.col-xs-offset-2
+            h5 Los Angeles
+            h2 Comming Soon
+    
