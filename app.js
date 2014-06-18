@@ -157,7 +157,7 @@ app.post('/property/buy', function(req,res){
   var vmscaletwo = req.body.mscaletwo;
   var vmscalethree = req.body.mscalethree;
 
-  property.find({ptype: })
+  //property.find({ptype: })
 });
 
 app.post('/admin',function(req,res) {
