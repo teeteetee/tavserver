@@ -7,17 +7,17 @@ head
     title Top and views
     //
        Bootstrap 
-    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/bootsrtap/css/bootstrap.min.css', rel='stylesheet')
     link(href='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css', rel='stylesheet')
     style
      :css
       @font-face {
       font-family:skinny;
-      src: url('/bootstrap/fonts/CODElight.otf');
+      src: url('/bootsrtap/fonts/CODElight.otf');
       }
       @font-face {
       font-family:this;
-      src:url('/bootstrap/fonts/20 Attentica 4F UltraLight.ttf');
+      src:url('/bootsrtap/fonts/20 Attentica 4F UltraLight.ttf');
       }
       body {
       background-color:white;
@@ -148,6 +148,16 @@ head
       #propertytypelower {
       background-color:#84ace0;
       }
+      #city {
+      background-color:#84ace0;
+      }
+      .in {
+      text-align:center;
+      background-color:#84ace0;
+      }
+      .mt {
+      height:2vw;
+      }
       label {
       font-family:this;
       font-size:3vw;
@@ -178,14 +188,29 @@ head
           form(role='form', method='POST', action='#')
             #propertytypelower.row
               .col-xs-12(style='text-align: center;')
-                
                 select#types(name='types')
                   option(value='flat') Flat
                   option(value='penthouse') Penthouse
                   option(value='apartment') Apartment
                   option(value='house') House
                   option(value='office') Office
-                
+            .row.in
+              .col-xs-5
+                .row.bb.mt.in
+                .row
+              .col-xs-2
+                h2(style='color: gray;') in
+              .col-xs-5
+                .row.bb.mt.in
+                .row
+            #city.row
+              .col-xs-12
+                select#types(name='types')
+                  option(value='moscow') Moscow
+                  option(value='london') London
+                  option(value='stpetersburg') St.Petersburg
+                  option(value='newyork') New York
+                  option(value='losangeles') los angeles
             .row(style='padding-left: 1vw; padding-right: 1vw; padding-top: 1vw;')
               .col-xs-3(style='border-right: 0.3vw solid #ddd;')
                 .form-group
