@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
-  , places = db.get('places'), news = db.get('news'), tops = db.get('tops');
+  , places = db.get('places'),property = db.get('property'), news = db.get('news'), tops = db.get('tops');
 var fs = require('fs');
 
 var app = express();
@@ -31,6 +31,29 @@ app.get('/', function(req,res) {
         res.render('index');
         
 });
+
+//subdomain magic 
+app.get('*', function(req, res, next){ 
+  if(req.headers.host == 'm.topandviews.com')  //if it's a sub-domain
+    req.url = '/m' + req.url;  //append some text yourself
+  next(); 
+}); 
+
+app.get('*', function(req, res, next){ 
+  if(req.headers.host == 'm.topandviews.com')  //if it's a sub-domain
+    req.url = '/m' + req.url;  //append some text yourself
+  next(); 
+}); 
+
+app.get('*', function(req, res, next){ 
+  if(req.headers.host == 'm.topandviews.com')  //if it's a sub-domain
+    req.url = '/m' + req.url;  //append some text yourself
+  next(); 
+}); 
+
+//done with subdomains
+
+//full version starts here, mobile will be below
 
 app.get('/contact', function(req,res){
   res.render('blank');
@@ -107,10 +130,35 @@ app.get('/job/it',function(req,res){
   res.render('it');
 });
 
-app.post('places', function(req,res){
+app.get('/geo/:city/places',function(req,res){
+  var geocity = req.params.city;
+  res.render('geoplaces',{'city': geocity});
+});
+
+app.get('geo/:city/property',function(req,res){
+  var geocity = req.params.city;
+  res.render('geoproperty',{'city': geocity});
+});
+
+app.post('/places', function(req,res){
   res.render('blank')
 });
 
+app.post('/property/buy', function(req,res){
+  var vflat = req.body.flat;
+  var vpenthouse = req.body.penthouse;
+  var vapartment = req.body.apartment;
+  var vhouse = req.body.house;
+  var voffice = req.body.office;
+  var vscaleone = req.body.scaleone;
+  var vscaletwo = req.body.scaletwo;
+  var vscalethree = req.body.scalethree;
+  var vmscaleone = req.body.mscaleone;
+  var vmscaletwo = req.body.mscaletwo;
+  var vmscalethree = req.body.mscalethree;
+
+  property.find({ptype: })
+});
 
 app.post('/admin',function(req,res) {
   var log = req.body.login;
@@ -669,6 +717,17 @@ yearnow : vyearnow
 };
 
 });
+
+//mobile version starts here
+
+app.get('/m',function(req,res){
+  res.render('mindex')
+});
+app.get('/m/geo', function(req,res){
+  res.render('mgeo')
+});
+
+//mobile version's end
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
