@@ -740,7 +740,7 @@ app.get('/m/',function(req,res){
   res.render('mindex');
 });
 
-app.get('/m/geo', function(req,res){
+app.get('/m/mgeo', function(req,res){
   res.render('mgeo');
 });
 
