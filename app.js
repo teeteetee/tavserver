@@ -721,7 +721,7 @@ yearnow : vyearnow
 
 //mobile version starts here
 
-app.get('/m',function(req,res){
+app.get('/m/',function(req,res){
   res.render('mindex');
 });
 
