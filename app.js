@@ -35,21 +35,21 @@ app.get('/', function(req,res) {
 //subdomain magic 
 app.get('*', function(req, res, next){ 
   if(req.headers.host == 'm.topandviews.com')  //if it's a sub-domain
-    req.url = '/m' + req.url;  //append some text yourself
-  next(); 
+   { req.url = '/m' + req.url;  //append some text yourself
+  next();} 
 }); 
 
-app.get('*', function(req, res){ 
+app.get('*', function(req, res, next){ 
   if(req.headers.host == 'm.topandviews.co.uk')  //if it's a sub-domain
-    req.url = '/m' + req.url;  //append some text yourself
-    res.render('mindex');
+    {req.url = '/m' + req.url;  //append some text yourself
+    next();}
   
 }); 
 
 app.get('*', function(req, res, next){ 
   if(req.headers.host == 'm.topandviews.ru')  //if it's a sub-domain
-    req.url = '/m' + req.url;  //append some text yourself
-  next(); 
+    {req.url = '/m' + req.url;  //append some text yourself
+  next(); }
 }); 
 
 //done with subdomains
