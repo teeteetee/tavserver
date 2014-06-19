@@ -39,10 +39,9 @@ app.get('*', function(req, res, next){
   next(); 
 }); 
 
-app.get('*', function(req, res, next){ 
+app.get('*', function(req, res){ 
   if(req.headers.host == 'm.topandviews.co.uk')  //if it's a sub-domain
     req.url = '/m' + req.url;  //append some text yourself
-  next() {
     res.render('mindex');
   }; 
 }); 
