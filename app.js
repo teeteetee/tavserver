@@ -51,9 +51,9 @@ app.get('*', function(req,res,next) {
     if(req.headers.host === 'm.topandviews.ru')  //if it's a sub-domain
     {console.log('got a mobile version request on .ru ');
     req.url = '/m' + req.url;  //append some text yourself
-    console.log(req.url);
+    console.log(req.url);}
     else {next();}
-       }
+       
      }
    }
 
