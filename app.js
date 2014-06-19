@@ -39,18 +39,25 @@ app.get('*', function(req,res,next) {
     req.url = '/m' + req.url; 
     console.log(req.url); //append some text yourself
   next();} 
+  else {
 
   if(req.headers.host === 'm.topandviews.co.uk')  //if it's a sub-domain
     {console.log('got a mobile version request on co.uk ');
     req.url = '/m' + req.url;  //append some text yourself
     console.log(req.url);
-    next();}
-
+    next();} 
+     else {
+  
     if(req.headers.host === 'm.topandviews.ru')  //if it's a sub-domain
     {console.log('got a mobile version request on .ru ');
     req.url = '/m' + req.url;  //append some text yourself
     console.log(req.url);
-  next(); }
+    else {next();}
+       }
+     }
+   }
+
+
 }); 
 
 
