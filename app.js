@@ -40,13 +40,13 @@ app.get('*', function(req, res, next){
 }); 
 
 app.get('*', function(req, res, next){ 
-  if(req.headers.host == 'm.topandviews.com')  //if it's a sub-domain
+  if(req.headers.host == 'm.topandviews.co.uk')  //if it's a sub-domain
     req.url = '/m' + req.url;  //append some text yourself
   next(); 
 }); 
 
 app.get('*', function(req, res, next){ 
-  if(req.headers.host == 'm.topandviews.com')  //if it's a sub-domain
+  if(req.headers.host == 'm.topandviews.ru')  //if it's a sub-domain
     req.url = '/m' + req.url;  //append some text yourself
   next(); 
 }); 
@@ -721,11 +721,35 @@ yearnow : vyearnow
 //mobile version starts here
 
 app.get('/m',function(req,res){
-  res.render('mindex')
+  res.render('mindex');
 });
+
 app.get('/m/geo', function(req,res){
-  res.render('mgeo')
+  res.render('mgeo');
 });
+
+app.get('/m/places',function (req,res){
+  res.render('blank');
+});
+
+app.get('/m/property',function (req,res){
+  res.render('blank');
+});
+
+app.get('/m/yachtsjets',function (req,res){
+  res.render('blank');
+});
+
+app.get('/m/campuses',function (req,res){
+  res.render('blank');
+});
+
+app.get('/m/languages',function (req,res){
+  res.render('blank');
+});
+
+
+
 
 //mobile version's end
 
