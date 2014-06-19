@@ -33,7 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('*', function(req, res, next){ 
   if(req.headers.host == 'm.topandviews.com')  //if it's a sub-domain
    {console.log('got a mobile version request on .com ');
-    req.url = '/m' + req.url;  //append some text yourself
+    req.url = '/m' + req.url; 
+    console.log(req.url); //append some text yourself
   next();} 
 }); 
 
@@ -41,6 +42,7 @@ app.get('*', function(req, res, next){
   if(req.headers.host == 'm.topandviews.co.uk')  //if it's a sub-domain
     {console.log('got a mobile version request on co.uk ');
     req.url = '/m' + req.url;  //append some text yourself
+    console.log(req.url);
     next();}
   
 }); 
@@ -49,6 +51,7 @@ app.get('*', function(req, res, next){
   if(req.headers.host == 'm.topandviews.ru')  //if it's a sub-domain
     {console.log('got a mobile version request on .ru ');
     req.url = '/m' + req.url;  //append some text yourself
+    console.log(req.url);
   next(); }
 }); 
 
