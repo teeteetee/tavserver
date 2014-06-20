@@ -37,8 +37,7 @@ head
       font-weight:100;
       }
       .bb {
-      border-bottom:0.3vh solid #ddd;
-      background-color:white;
+      border-bottom:0.3vh solid #333;
       }
       #topblock {
       display:none;
@@ -69,9 +68,44 @@ head
       outline:none;
       text-decoration: none;
       }
+      #newblock {
+      background-color:#ffcc66;
+      }
+      #topblock {
+      background-color:#99cccc;
+      }
+      .col-xs-12 {
+      margin:0px;
+      padding:0px;
+      }
+      #absoluteblock {
+      display:hidden;
+      }
+      #rooftopblock {
+      display:hidden;
+      }
+      #terraceblock {
+      display:hidden;
+      }
+      #cuisineblock {
+      display:hidden;
+      }
       a {
       padding:0px;
       margin:0px;
+      }
+      li {
+      font-family:this;
+      color:#ddd;
+      font-size:8vw;
+      height:8vw;
+      }
+      li a {
+      color:#333;
+      }
+      ul {
+      list-style-type:none;
+      padding:0px;
       }
   body
     //
@@ -93,7 +127,50 @@ head
           h2 New
       #topblock.row
         .col-xs-12
-          h2 topblock
+          #absolute.row.bb
+            .col-xs-10
+              h2(style='font-size: 10vw; border-bottom: 0.6vh solid #333;') Absolute
+            .col-xs-2
+              span.glyphicon.glyphicon-chevron-down(style='color: #333; font-size: 7vw; margin: 1vw;')
+          #absoluteblock.row
+            .col-xs-12
+              ul
+                each place, i in first
+                  li
+                    a(href='#{place.ppredir}') #{place.nameen}
+          #rooftop.row.bb
+            .col-xs-10
+              h2(style='font-size: 10vw; border-bottom: 0.6vh solid #333;') Rooftop
+            .col-xs-2
+              span.glyphicon.glyphicon-chevron-down(style='color: #333; font-size: 7vw; margin: 1vw;')
+          #rooftopblock.row
+            .col-xs-12
+              ul
+                each secondplace, i in second
+                  li
+                    a(href='#{secondplace.ppredir}') #{secondplace.nameen}
+          #terrace.row.bb
+            .col-xs-10
+              h2(style='font-size: 10vw; border-bottom: 0.6vh solid #333;') Terrace
+            .col-xs-2
+              span.glyphicon.glyphicon-chevron-down(style='color: #333; font-size: 7vw; margin: 1vw;')
+          #terraceblock.row
+            .col-xs-12
+              ul
+                each thirdplace, i in third
+                  li
+                    a(href='#{thirdplace.ppredir}') #{thirdplace.nameen}
+          #cuisine.row.bb
+            .col-xs-10
+              h2(style='font-size: 10vw; border-bottom: 0.6vh solid #333;') Cuisine
+            .col-xs-2
+              span.glyphicon.glyphicon-chevron-down(style='color: #333; font-size: 7vw; margin: 1vw;')
+          #cuisineblock.row
+            .col-xs-12
+              ul
+                each fourthplace, i in fourth
+                  li
+                    a(href='#{fourthplace.ppredir}') #{fourthplace.nameen}
       #newblock.row
         .col-xs-12
           h2 newblock
@@ -133,6 +210,10 @@ head
       }
       else {
       $('#topblock').slideToggle("slow");
+      $('#absoluteblock').slideToggle("slow");
+      $('#rooftopblock').slideToggle("slow");
+      $('#terraceblock').slideToggle("slow");
+      $('#cuisineblock').slideToggle("slow");
       }
       });
       $('#new').click(function() {
@@ -142,6 +223,58 @@ head
       }
       else {
       $('#newblock').slideToggle("slow");
+      }
+      });
+      $('#absolute').click(function(){
+      if ($('#rooftopblock').is(":visible") === false && $('#terraceblock').is(":visible") === false && $('#cuisineblock').is(":visible") === false )
+      {$('#absoluteblock').slideToggle("slow");}
+      else
+      {if($('#rooftopblock').is(":visible") === true )
+      { $('#rooftopblock').slideToggle("slow");}
+      if($('#terraceblock').is(":visible") === true )
+      { $('#terraceblock').slideToggle("slow");}
+      if($('#cuisineblock').is(":visible") === true )
+      { $('#cuisineblock').slideToggle("slow");}
+      $('#absoluteblock').slideToggle("slow");
+      }
+      });
+      $('#rooftop').click(function(){
+      if ($('#absoluteblock').is(":visible") === false && $('#terraceblock').is(":visible") === false && $('#cuisineblock').is(":visible") === false )
+      {$('#rooftopblock').slideToggle("slow");}
+      else
+      {if($('#absoluteblock').is(":visible") === true )
+      { $('#absoluteblock').slideToggle("slow");}
+      if($('#terraceblock').is(":visible") === true )
+      { $('#terraceblock').slideToggle("slow");}
+      if($('#cuisineblock').is(":visible") === true )
+      { $('#cuisineblock').slideToggle("slow");}
+      $('#rooftopblock').slideToggle("slow");
+      }
+      });
+      $('#terrace').click(function(){
+      if ($('#rooftopblock').is(":visible") === false && $('#absoluteblock').is(":visible") === false && $('#cuisineblock').is(":visible") === false )
+      {$('#terraceblock').slideToggle("slow");}
+      else
+      {if($('#rooftopblock').is(":visible") === true )
+      { $('#rooftopblock').slideToggle("slow");}
+      if($('#absoluteblock').is(":visible") === true )
+      { $('#absoluteblock').slideToggle("slow");}
+      if($('#cuisineblock').is(":visible") === true )
+      { $('#cuisineblock').slideToggle("slow");}
+      $('#terraceblock').slideToggle("slow");
+      }
+      });
+      $('#cuisine').click(function(){
+      if ($('#rooftopblock').is(":visible") === false && $('#terraceblock').is(":visible") === false && $('#absoluteblock').is(":visible") === false )
+      {$('#cuisineblock').slideToggle("slow");}
+      else
+      {if($('#rooftopblock').is(":visible") === true )
+      { $('#rooftopblock').slideToggle("slow");}
+      if($('#terraceblock').is(":visible") === true )
+      { $('#terraceblock').slideToggle("slow");}
+      if($('#absoluteblock').is(":visible") === true )
+      { $('#absoluteblock').slideToggle("slow");}
+      $('#cuisineblock').slideToggle("slow");
       }
       });
       $('#showmap').click(function(){
