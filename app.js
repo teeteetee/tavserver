@@ -754,6 +754,17 @@ app.get('/m/geo', function(req,res){
   res.render('mgeo');
 });
 
+app.get('/m/:lang', function(req,res,next){
+   var lang = req.params.lang;
+   if (lang === 'ru'){res.render('blank');} 
+   if (lang === 'en'){res.render('mindex');} 
+   if (lang === 'gr'){res.render('blank');} 
+   if (lang === 'fr'){res.render('blank');} 
+   if (lang === 'sp'){res.render('blank');} 
+   if (lang === 'it'){res.render('blank');} 
+   next();
+});
+
 app.get('/m/geo/:city', function(req,res){
     var vreqcity = req.params.city;
     if (vreqcity === 'stpetersburg') {vreqcity = 'St.Petersburg'}
