@@ -43,21 +43,21 @@ app.get('*',function(req,res,next) {
 //subdomain magic 
 app.get('*', function(req,res,next) { 
   if(req.headers.host === 'm.topandviews.com')  //if it's a sub-domain
-   {console.log('got a mobile version request on .com ');
+   {console.log('got a mobile version request on .com from '+req.ip);
     req.url = '/m' + req.url; 
     console.log(req.url); //append some text yourself
   next();} 
   else {
 
   if(req.headers.host === 'm.topandviews.co.uk')  //if it's a sub-domain
-    {console.log('got a mobile version request on co.uk ');
+    {console.log('got a mobile version request on co.uk from '+req.ip);
     req.url = '/m' + req.url;  //append some text yourself
     console.log(req.url);
     next();} 
      else {
   
     if(req.headers.host === 'm.topandviews.ru')  //if it's a sub-domain
-    {console.log('got a mobile version request on .ru ');
+    {console.log('got a mobile version request on .ru from  '+req.ip);
     req.url = '/m' + req.url;  //append some text yourself
     console.log(req.url);}
     else {next();}
