@@ -32,7 +32,7 @@ head
       font-family:this;
       margin-top:0px;
       margin-bottom:0px;
-      font-size:20vw;
+      font-size:15vw;
       color:#333;
       font-weight:100;
       }
@@ -45,6 +45,9 @@ head
       }
       #showmap {
       cursor:pointer;
+      }
+      .gray {
+      color:gray;
       }
   body
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
@@ -60,11 +63,17 @@ head
       .row.bb
         a(href='/property')
           .col-xs-12
-            h2 Недвижимость&Отели
+            h2 
+              | Недвижимость
+                span.gray &
+                | Отели
       .row.bb
         a(href='/yachtsjets')
           .col-xs-12
-            h2 Яхты&Самолеты
+            h2 
+              | Яхты
+                span.gray &
+                | Самолеты
       .row.bb
         a(href='/campuses')
           .col-xs-12
