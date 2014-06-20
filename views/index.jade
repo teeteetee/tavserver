@@ -267,8 +267,6 @@ head
        Include all compiled plugins (below), or include individual files as needed 
     script(src='/js/bootstrap.min.js')
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
-    script.
-      if (screen.width < 768) { function mobile() {$("#mobile").slideToggle("slow");}}
     .container
       #yourcity.row.bb.fivemargin
         .col-xs-10
@@ -354,6 +352,7 @@ head
           a(style='color: gray;', href='/')
             h4(style='font-family: this; font-weight: lighter;') Top and views.
       script.
+        if (screen.width < 768) { $("#mobile").slideToggle("slow");}
         $('#showmap').click(function() {
         $('#map').slideToggle('slow');
         var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([55.753,  37.622], 14);
