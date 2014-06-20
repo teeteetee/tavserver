@@ -258,8 +258,7 @@ head
       display:none;
       }
   body
-    script.
-      if (screen.width <= 768) {$('#mobile').slideToggle("fast");}
+    
   
     //
        jQuery (necessary for Bootstrap's JavaScript plugins) 
@@ -268,6 +267,8 @@ head
        Include all compiled plugins (below), or include individual files as needed 
     script(src='/js/bootstrap.min.js')
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
+    script.
+      if (screen.width < 768) {$('#mobile').slideToggle("fast");}
     .container
       #yourcity.row.bb.fivemargin
         .col-xs-10
