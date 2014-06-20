@@ -30,7 +30,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 //  next();
 //})
 
-
+app.get('*',function(req,res,next) {
+  if(req.headers.host === 'topandviews.ru') 
+    {console.log('request on .ru form '+req.ip);}
+  if(req.headers.host === 'topandviews.com') 
+    {console.log('request on .com form '+req.ip);}
+  if(req.headers.host === 'topandviews.co.uk') 
+    {console.log('request on .co.uk form '+req.ip);}
+  next();
+});
 
 //subdomain magic 
 app.get('*', function(req,res,next) { 
@@ -59,6 +67,8 @@ app.get('*', function(req,res,next) {
 
 
 }); 
+
+
 
 
 
