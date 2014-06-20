@@ -744,6 +744,37 @@ app.get('/m/geo', function(req,res){
   res.render('mgeo');
 });
 
+app.get('/m/geo/:city', function(req,res){
+    var vreqcity = req.params.city;
+    if (vreqcity === 'stpetersburg') {vreqcity = 'St.Petersburg'}
+    if (vreqcity === 'newyork') {vreqcity = 'New York'};
+    if (vreqcity === 'losangeles') {vreqcity = 'Los Angeles'}
+    var absolute = [];
+    var rooftop = [];
+    var terrace = [];
+    var cuisine = [];
+    tops.find({city : vreqcity,toptype : 1}, function(err,firsttypedocs){
+       console.log('got data for absolute');
+         absolute = firsttypedocs;
+         tops.find({city : vreqcity,toptype : 2}, function(err,secondtypedocs){
+            console.log('got data for rooftop');
+              rooftop = secondtypedocs;
+              tops.find({city : vreqcity,toptype : 3}, function(err,thirdtypedocs){
+                   terrace = thirdtypedocs;
+                   tops.find({city : vreqcity,toptype : 4},function(err,fourthtypedocs){
+                        cuisine = fourthtypedocs;
+                     
+                         res.render('mgeoindex', { 'city' : vreqcity , 'first' : absolute , 'second' : rooftop , 'third' : terrace , 'fourth' : cuisine });   
+                   });
+              });
+         });
+
+    });
+
+  
+
+});
+
 app.get('/m/places',function (req,res){
   res.render('blank');
 });
