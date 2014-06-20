@@ -255,10 +255,11 @@ head
       }
       #mobile {
       background-color:#2b4140;
+      display:none;
       }
   body
     script.
-      if (screen.width <= 768) {window.location = "http://m.topandviews.com";}
+      if (screen.width <= 768) {$('#mobile').slideToggle("fast");}
   
     //
        jQuery (necessary for Bootstrap's JavaScript plugins) 
