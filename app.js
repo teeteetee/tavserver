@@ -813,7 +813,7 @@ app.get('/m/campuses',function (req,res){
 });
 
 app.get('/m/languages',function (req,res){
-  res.render('blank');
+  res.render('mlanguages');
 });
 
 
