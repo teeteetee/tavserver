@@ -1,0 +1,286 @@
+doctype html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Top and views
+    //
+       Bootstrap 
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    link(href='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css', rel='stylesheet')
+    style
+     :css
+      @font-face {
+      font-family:this;
+      src:url('/bootstrap/fonts/20 Attentica 4F UltraLight.ttf');
+      }
+      .container {
+      padding:0px;
+      margin:0px;
+      }
+      .row {
+      padding:0px;
+      margin:0px;
+      }
+      .col-xs-12 {
+      padding:0px;
+      margin:0px;
+      margin-left:1vw;
+      }
+      h2 {
+      font-family:this;
+      margin-top:0px;
+      margin-bottom:0px;
+      font-size:20vw;
+      color:#333;
+      font-weight:100;
+      }
+      .bb {
+      border-bottom:0.3vh solid #333;
+      }
+      #topblock {
+      display:none;
+      background-color:red;
+      color:white;
+      }
+      #newblock {
+      display:none;
+      background-color:green;
+      color:white;
+      }
+      #top:hover {
+      background-color:#c35204;
+      }
+      #new:hover {
+      background-color:#c35204;
+      }
+      #map {
+      display:none;
+      }
+      #largescreen {
+      background-color:#2b4140;
+      }
+      #showmap {
+      cursor:pointer;
+      }
+      a:focus, a:hover{
+      outline:none;
+      text-decoration: none;
+      }
+      #newblock {
+      background-color:#ffcc66;
+      }
+      #topblock {
+      background-color:#99cccc;
+      }
+      .col-xs-12 {
+      margin:0px;
+      padding:0px;
+      }
+      #absoluteblock {
+      display:hidden;
+      background-color:#81bdbd;
+      }
+      #rooftopblock {
+      display:hidden;
+      background-color:#81bdbd;
+      }
+      #terraceblock {
+      display:hidden;
+      background-color:#81bdbd;
+      }
+      #cuisineblock {
+      display:hidden;
+      background-color:#81bdbd;
+      }
+      a {
+      padding:0px;
+      margin:0px;
+      }
+      li {
+      font-family:this;
+      color:#ddd;
+      font-size:8vw;
+      height:8vw;
+      }
+      li a {
+      color:#333;
+      }
+      ul {
+      list-style-type:none;
+      padding:0px;
+      }
+  body
+    //
+       jQuery (necessary for Bootstrap's JavaScript plugins) 
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    //
+       Include all compiled plugins (below), or include individual files as needed 
+    script(src='/js/bootstrap.min.js')
+    script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
+    .container
+      .row.bb(style='background-color: #669999; text-align: center;')
+        a(href='/geo')
+          .col-xs-12
+            h2(style='color: white;') #{city}
+      .row.bb(style='text-align: center;')
+        #top.col-xs-6(style='border-right: 0.3vh solid #ddd;')
+          h2 Top
+        #new.col-xs-6
+          h2 New
+      #topblock.row
+        .col-xs-12
+          #absolute.row.bb
+            .col-xs-10
+              h2(style='font-size: 10vw; border-bottom: 0.6vh solid #333;') Абсолют
+            .col-xs-2
+              span.glyphicon.glyphicon-chevron-down(style='color: #333; font-size: 7vw; margin: 1vw;')
+          #absoluteblock.row
+            .col-xs-12
+              ul
+                each place, i in first
+                  li
+                    a(href='#{place.ppredir}') #{place.nameen}
+          #rooftop.row.bb
+            .col-xs-10
+              h2(style='font-size: 10vw; border-bottom: 0.6vh solid #333;') На крыше
+            .col-xs-2
+              span.glyphicon.glyphicon-chevron-down(style='color: #333; font-size: 7vw; margin: 1vw;')
+          #rooftopblock.row
+            .col-xs-12
+              ul
+                each secondplace, i in second
+                  li
+                    a(href='#{secondplace.ppredir}') #{secondplace.nameen}
+          #terrace.row.bb
+            .col-xs-10
+              h2(style='font-size: 10vw; border-bottom: 0.6vh solid #333;') Террасы
+            .col-xs-2
+              span.glyphicon.glyphicon-chevron-down(style='color: #333; font-size: 7vw; margin: 1vw;')
+          #terraceblock.row
+            .col-xs-12
+              ul
+                each thirdplace, i in third
+                  li
+                    a(href='#{thirdplace.ppredir}') #{thirdplace.nameen}
+          #cuisine.row.bb
+            .col-xs-10
+              h2(style='font-size: 10vw; border-bottom: 0.6vh solid #333;') Кухня
+            .col-xs-2
+              span.glyphicon.glyphicon-chevron-down(style='color: #333; font-size: 7vw; margin: 1vw;')
+          #cuisineblock.row
+            .col-xs-12
+              ul
+                each fourthplace, i in fourth
+                  li
+                    a(href='#{fourthplace.ppredir}') #{fourthplace.nameen}
+      #newblock.row
+        .col-xs-12
+          h2 newblock
+      .row.bb
+        a(href='/places')
+          .col-xs-12
+            h2 Места
+      .row.bb
+        a(href='/property')
+          .col-xs-12
+            h2 Недвижимость&Отели
+      #showmap.row.bb
+        .col-xs-12
+          h2 On map
+      #map.row(style='display: none;')
+        #mapitself.col-xs-12(style='margin: 0px; width: 100%; padding: 0px; height: 100vh; border-top: 0.3vw solid #333; border-bottom: 0.3vw solid #333;')
+      #largescreen.row.bb
+        a(href='http://m.topandviews.com')
+          .col-xs-4
+            h2(style='font-size: 10vw; color: #ddd;') Назад
+        a(href='http://www.topandviews.com')
+          .col-xs-8(style='border-left: 0.3vh solid #ddd; text-align: center;')
+            h2(style='font-size: 10vw; color: #ddd;') Большой экран
+    script.
+      $('#showmap').click(function() {
+      $('#map').slideToggle('slow');
+      var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([55.753,  37.622], 14);
+      map.scrollWheelZoom.disable();
+      if ($("#map").is(':visible')) {
+      $("html, body").animate({scrollTop: $("#map").offset().top});
+      }
+      });
+      $('#top').click(function() {
+      if ($('#newblock').is(":visible") === true) {
+      $('#newblock').slideToggle("slow");
+      $('#topblock').slideToggle("slow");
+      }
+      else {
+      $('#topblock').slideToggle("slow");
+      $('#absoluteblock').slideToggle("slow");
+      $('#rooftopblock').slideToggle("slow");
+      $('#terraceblock').slideToggle("slow");
+      $('#cuisineblock').slideToggle("slow");
+      }
+      });
+      $('#new').click(function() {
+      if ($('#topblock').is(":visible") === true) {
+      $('#topblock').slideToggle("slow");
+      $('#newblock').slideToggle("slow");
+      }
+      else {
+      $('#newblock').slideToggle("slow");
+      }
+      });
+      $('#absolute').click(function(){
+      if ($('#rooftopblock').is(":visible") === false && $('#terraceblock').is(":visible") === false && $('#cuisineblock').is(":visible") === false )
+      {$('#absoluteblock').slideToggle("slow");}
+      else
+      {if($('#rooftopblock').is(":visible") === true )
+      { $('#rooftopblock').slideToggle("slow");}
+      if($('#terraceblock').is(":visible") === true )
+      { $('#terraceblock').slideToggle("slow");}
+      if($('#cuisineblock').is(":visible") === true )
+      { $('#cuisineblock').slideToggle("slow");}
+      $('#absoluteblock').slideToggle("slow");
+      }
+      });
+      $('#rooftop').click(function(){
+      if ($('#absoluteblock').is(":visible") === false && $('#terraceblock').is(":visible") === false && $('#cuisineblock').is(":visible") === false )
+      {$('#rooftopblock').slideToggle("slow");}
+      else
+      {if($('#absoluteblock').is(":visible") === true )
+      { $('#absoluteblock').slideToggle("slow");}
+      if($('#terraceblock').is(":visible") === true )
+      { $('#terraceblock').slideToggle("slow");}
+      if($('#cuisineblock').is(":visible") === true )
+      { $('#cuisineblock').slideToggle("slow");}
+      $('#rooftopblock').slideToggle("slow");
+      }
+      });
+      $('#terrace').click(function(){
+      if ($('#rooftopblock').is(":visible") === false && $('#absoluteblock').is(":visible") === false && $('#cuisineblock').is(":visible") === false )
+      {$('#terraceblock').slideToggle("slow");}
+      else
+      {if($('#rooftopblock').is(":visible") === true )
+      { $('#rooftopblock').slideToggle("slow");}
+      if($('#absoluteblock').is(":visible") === true )
+      { $('#absoluteblock').slideToggle("slow");}
+      if($('#cuisineblock').is(":visible") === true )
+      { $('#cuisineblock').slideToggle("slow");}
+      $('#terraceblock').slideToggle("slow");
+      }
+      });
+      $('#cuisine').click(function(){
+      if ($('#rooftopblock').is(":visible") === false && $('#terraceblock').is(":visible") === false && $('#absoluteblock').is(":visible") === false )
+      {$('#cuisineblock').slideToggle("slow");}
+      else
+      {if($('#rooftopblock').is(":visible") === true )
+      { $('#rooftopblock').slideToggle("slow");}
+      if($('#terraceblock').is(":visible") === true )
+      { $('#terraceblock').slideToggle("slow");}
+      if($('#absoluteblock').is(":visible") === true )
+      { $('#absoluteblock').slideToggle("slow");}
+      $('#cuisineblock').slideToggle("slow");
+      }
+      });
+      $('#showmap').click(function(){
+      $('#map').slideToggle("slow");
+      });

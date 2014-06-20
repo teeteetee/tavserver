@@ -756,7 +756,7 @@ app.get('/m/geo', function(req,res){
 
 app.get('/m/:lang', function(req,res,next){
    var lang = req.params.lang;
-   if (lang === 'ru'){res.render('blank');} 
+   if (lang === 'ru'){res.render('mindexru');} 
    if (lang === 'en'){res.render('mindex');} 
    if (lang === 'gr'){res.render('blank');} 
    if (lang === 'fr'){res.render('blank');} 
