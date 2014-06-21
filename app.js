@@ -79,7 +79,16 @@ app.get('*', function(req,res,next) {
 //full version starts here, mobile will be below
 
 app.get('/', function(req,res) {
-        res.render('index');
+        var incomming = req.headers.host;
+  if (incomming = 'topandviews.ru') {
+    res.render('indexru');
+  } 
+  if (incomming = 'topandviews.co.uk') {
+    res.render('index');
+  }
+  if (incomming = 'topandviews.com') {
+    res.render('index');
+  }
         
 });
 
