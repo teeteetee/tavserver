@@ -112,7 +112,7 @@ app.get('/:lang/choiceru',function(req,res){
   if (lang === 'gr') {res.render('landinggr')}
   if (lang === 'sp') {res.render('landingsp')}
   if (lang === 'it') {res.render('landingit')} 
-});
+
 });
 
 app.get('/:lang',function(req,res){
