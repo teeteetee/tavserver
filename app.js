@@ -83,6 +83,29 @@ app.get('/', function(req,res) {
         
 });
 
+app.get('/choice',function(req,res){
+  var incomming = req.headers.host;
+  if (incomming = 'topandviews.ru') {
+    res.render('landingru');
+  } 
+  if (incomming = 'topandviews.co.uk') {
+    res.render('landinguk');
+  }
+  if (incomming = 'topandviews.com') {
+    res.render('landing');
+  }
+});
+
+app.get('/:lang/choiceru',function(req,res){
+  var lang = req.params.lang;
+  if (lang === 'ru') {res.render('landingru')}
+  if (lang === 'fr') {res.render('landingfr')}
+  if (lang === 'gr') {res.render('landinggr')}
+  if (lang === 'sp') {res.render('landingsp')}
+  if (lang === 'it') {res.render('landingit')} 
+});
+});
+
 app.get('/:lang',function(req,res){
   var lang = req.params.lang;
   if (lang === 'ru') {res.render('indexru')}

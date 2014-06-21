@@ -250,10 +250,6 @@ head
       background-color:#2b4140;
       text-align:center;
       }
-      #mobile {
-      background-color:#2b4140;
-      display:none;
-      }
   body
     
   
@@ -329,14 +325,7 @@ head
             h4 Sp
         #it.col-xs-2
           a(href='/it')
-            h4 It
-      #mobile.row.bb.fivemargin
-        .col-xs-10
-            a(href='http://m.topandviews.com')
-              h5(style='color: white;') Mobile
-          .col-xs-2
-            a(href='http://m.topandviews.com')
-              span.glyphicon.glyphicon-chevron-right(style='color: white; font-size: 5vw; margin: 1vw;')     
+            h4 It    
       #footerlinks.row.bb.fivemargin
         #partners.col-xs-4
           a(style='display: block; color: gray; font-family: this; font-size: 3vw;', href='/partners') Partners
@@ -350,7 +339,7 @@ head
             h4(style='font-family: this;color:#ddd; font-weight: lighter;') 
               |Top and views.
       script.
-        if (screen.width < 768) { $("#mobile").slideToggle("slow");}
+        if (screen.width < 768) { window.location='http://www.topandviews.com/choice'}
         $('#showmap').click(function() {
         $('#map').slideToggle('slow');
         var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([55.753,  37.622], 14);
