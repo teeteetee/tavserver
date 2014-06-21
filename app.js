@@ -977,10 +977,6 @@ app.get('/m',function(req,res){
   res.render('mindex');
 });
 
-app.get('/m/:lang',function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'ru') {res.render('mindexru')};
-});
 
 app.get('/m/geo', function(req,res){
   res.render('mgeo');
@@ -994,7 +990,6 @@ app.get('/m/:lang', function(req,res,next){
    if (lang === 'fr'){res.render('blank');} 
    if (lang === 'sp'){res.render('blank');} 
    if (lang === 'it'){res.render('blank');} 
-   next();
 });
 
 app.get('/m/geo/:city', function(req,res){
