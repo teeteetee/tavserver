@@ -237,14 +237,14 @@ head
                   select#city(name='city')
                     option(value='moscow') Moscow
                     option(value='london') London
-                    option(value='spb') SPB
-                    option(value='ny') NY
-                    option(value='la') LA
+                    option(value='stpetersburg') SPB
+                    option(value='newyork') NY
+                    option(value='losangeles') LA
             #byname.row.sidepadding
               .form-group(style='margin-bottom: 0px;')
                 label(for='searchbox')
                   h2 By name:
-                input#searchbox(type='text')
+                input#searchbox(type='text',name='searchbox')
       .row.middle.sidemargin.sidepadding.sixmargin
         .col-xs-5
           .row.bb.space.middle
@@ -262,20 +262,20 @@ head
           .form-group(style='margin-top: 0px; margin-bottom: 0px;')
             label(for='fitness')
               h2(style='color: #333;') Fitness
-            input#fitness(type='checkbox')
+            input#fitness(type='checkbox',name='fitness')
           .form-group(style='margin-top: 0px; margin-bottom: 0px;')
             label(for='mealdrink')
               h2(style='color: #333;') Meal & drink
-            input#mealdrink(type='checkbox')
+            input#mealdrink(type='checkbox',name='mealdrink')
         .col-xs-6.middle
           .form-group(style='margin-top: 0px; margin-bottom: 0px;')
             label(for='coworcing')
               h2(style='color: #333;') Coworking
-            input#coworcing(type='checkbox')
+            input#coworcing(type='checkbox'name='coworking')
           .form-group(style='margin-top: 0px; margin-bottom: 0px;')
             label(for='beauty')
               h2(style='color: #333;') Spa & beauty
-            input#beauty(type='checkbox')
+            input#beauty(type='checkbox',name='beauty')
       #restprop.row.sidemargin.sixmargin
         .col-xs-12
           .row.middle
@@ -286,20 +286,20 @@ head
               .form-group
                 label(for='rooftop')
                   h2(style='color: #333;') Rooftop
-                input#rooftop(type='checkbox')
+                input#rooftop(type='checkbox',name='rooftop')
               .form-group
                 label(for='terrace')
                   h2(style='color: #333;') Terrace
-                input#terrace(type='checkbox')
+                input#terrace(type='checkbox',name='terrace')
             .col-xs-6.darkgray
               .form-group
                 label(for='cigars')
                   h2(style='color: #333;') Cigars
-                input#cigars(type='checkbox')
+                input#cigars(type='checkbox',name='cigars')
               .form-group
                 label(for='shisha')
                   h2(style='color: #333;') Shisha
-                input#shisha(type='checkbox')
+                input#shisha(type='checkbox',name='shisha')
           .row.middle(style='height: 1vw;')
       .row.middle.sidemargin.sixmargin(style='padding: 1vw; padding-top: 0vw;')
         .col-xs-12
