@@ -33,11 +33,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('*',function(req,res,next) {
   var d = new Date();
   if(req.headers.host === 'topandviews.ru') 
-    {console.log(d.toString+' request on .ru form '+req.ip);}
+    {console.log(d+' request on .ru form '+req.ip);}
   if(req.headers.host === 'topandviews.com') 
-    {console.log(d.toString+' request on .com form '+req.ip);}
+    {console.log(d+' request on .com form '+req.ip);}
   if(req.headers.host === 'topandviews.co.uk') 
-    {console.log(d.toString+' request on .co.uk form '+req.ip);}
+    {console.log(d+' request on .co.uk form '+req.ip);}
   next();
 });
 
@@ -45,21 +45,21 @@ app.get('*',function(req,res,next) {
 app.get('*', function(req,res,next) { 
   var d = new Date();
   if(req.headers.host === 'm.topandviews.com')  //if it's a sub-domain
-   {console.log(d.toString+' got a mobile version request on .com from '+req.ip);
+   {console.log(d+' got a mobile version request on .com from '+req.ip);
     req.url = '/m' + req.url; 
     console.log(req.url); //append some text yourself
   next();} 
   else {
 
   if(req.headers.host === 'm.topandviews.co.uk')  //if it's a sub-domain
-    {console.log(d.toString+' got a mobile version request on co.uk from '+req.ip);
+    {console.log(d+' got a mobile version request on co.uk from '+req.ip);
     req.url = '/m' + req.url;  //append some text yourself
     console.log(req.url);
     next();} 
      else {
   
     if(req.headers.host === 'm.topandviews.ru')  //if it's a sub-domain
-    {console.log(d.toString+' got a mobile version request on .ru from  '+req.ip);
+    {console.log(d+' got a mobile version request on .ru from  '+req.ip);
     req.url = '/m' + req.url;  //append some text yourself
     console.log(req.url);}
     else {next();}
