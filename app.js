@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('*',function(req,res,next) {
   var d = new Date();
   if(req.headers.host === 'topandviews.ru') 
-    {console.log(d+' request on .ru form '+req.ip+'headers are: '+req.headers);
+    {console.log(d+' request on .ru form '+req.ip+'headers are: '+JSON.stringify(req.headers));
      res.render('indexru');}
   if(req.headers.host === 'topandviews.com') 
     {console.log(d+' request on .com form '+req.ip);
