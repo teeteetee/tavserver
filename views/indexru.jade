@@ -254,15 +254,41 @@ head
       color:#ddd;
       margin:0px;
       }
+      #curtain {
+      display:none;
+      height:100%;
+      width:100%;
+      }
+      #upper{
+      border-bottom:2vh solid #ddd;
+      }
+      #lower{
+      border-top:2vh solid #ddd;
+      }
+      .blue {
+      background-color:#2b4140;
+      }
+      .orange {
+      background-color:#c35204;
+      }
   body
     //
        jQuery (necessary for Bootstrap's JavaScript plugins) 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
     //
        Include all compiled plugins (below), or include individual files as needed 
-    script(src='/js/bootstrap.min.js')
+    script(src='js/bootstrap.min.js')
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
     .container
+      #curtain.row
+        .col-xs-12
+          a(href='http://m.topandviews.ru')
+            #upper.row.blue
+              .col-xs-12
+                h4(style='margin-top: 3vh; font-family: this; font-size: 15vh; color: #ddd;') Мобильная
+          #lower.row.orange
+            .col-xs-12
+              h4(style='margin-top: 3vh; font-family: this; font-size: 15vh; color: #ddd;') Полная
       #yourcity.row.bb.fivemargin
         .col-xs-11
           a(href='/ru/geo')
@@ -336,16 +362,19 @@ head
             h4 It
       #footerlinks.row.fivemargin
         #partners.col-xs-4
-          a(style='display: block; color: gray; font-family: this; font-size: 3vw;', href='partners.html') Партнеры
+          a(style='display: block; color: gray; font-family: this; font-size: 3vw;', href='/partners') Партнеры
         #hr.col-xs-4
-          a(style='display: block; color: gray; font-family: this; font-size: 3vw;', href='hr.html') Работа
+          a(style='display: block; color: gray; font-family: this; font-size: 3vw;', href='/job') Работа
         #contact.col-xs-4
-          a(style='display: block; color: gray; font-family: this; font-size: 3vw;', href='contacts.html') Контакты
+          a(style='display: block; color: gray; font-family: this; font-size: 3vw;', href='/contact') Контакты
       #footer fivemargin.row
         .col-xs-12(style='text-align: center;')
           h4(style='font-family: this; color: #ddd;') Top and views.
       script.
-        if (screen.width < 768) { window.location='http://www.topandviews.ru/choice'}
+        if (screen.width < 768) { $('#curtain').slideToggle("fast")}
+        $('#lower').click(function() {
+        $('#curtain').slideToggle("slow");
+        });
         $('#showmap').click(function() {
         $('#map').slideToggle('slow');
         var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([55.753,  37.622], 14);
