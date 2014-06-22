@@ -21,7 +21,6 @@ head
       }
       body {
       background-color:white;
-      min-width:480px;
       }
       .container {
       width:100%;
@@ -30,6 +29,7 @@ head
       padding-bottom:1vw;
       margin:0px;
       z-index:1;
+      min-width:480px;
       }
       .row {
       margin:0px;
@@ -270,9 +270,13 @@ head
       }
       .blue {
       background-color:#2b4140;
+      height:50vh;
+      width:100%
       }
       .orange {
       background-color:#c35204;
+      height:50vh;
+      width:100%
       }
   body
     //
@@ -282,16 +286,17 @@ head
        Include all compiled plugins (below), or include individual files as needed 
     script(src='js/bootstrap.min.js')
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
-    .container
-      #curtain.row
-        .col-xs-12
+    #curtain.row
+        
           a(href='http://m.topandviews.ru')
-            #upper.row.blue
-              .col-xs-12
+            #upper.blue
+              
                 h4(style='margin-top: 3vh; font-family: this; font-size: 15vh; color: #ddd;') Мобильная
-          #lower.row.orange
-            .col-xs-12
+          #lower.orange
+            
               h4(style='margin-top: 3vh; font-family: this; font-size: 15vh; color: #ddd;') Полная
+
+    .container
       #yourcity.row.bb.fivemargin
         .col-xs-11
           a(href='/ru/geo')
