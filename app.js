@@ -79,6 +79,7 @@ app.get('*', function(req,res,next) {
 //full version starts here, mobile will be below
 
 app.get('/', function(req,res) {
+  console.log('got into / , choice by req.headers.host');
         var incomming = req.headers.host;
   if (incomming = 'topandviews.ru') {
     res.render('indexru');
