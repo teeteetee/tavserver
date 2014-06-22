@@ -36,14 +36,14 @@ app.get('*',function(req,res,next) {
     {console.log(d+' request on .ru form '+req.ip);
      res.render('landingru');}
   if(req.headers.host === 'topandviews.com') 
-  
-});
-
     {console.log(d+' request on .com form '+req.ip);
      res.render('landing');}
   if(req.headers.host === 'topandviews.co.uk') 
     {console.log(d+' request on .co.uk form '+req.ip);
      res.render('landinguk');}
+});
+
+    
 //subdomain magic 
 app.get('*', function(req,res,next) { 
   var d = new Date();
