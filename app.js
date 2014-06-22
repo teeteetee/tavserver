@@ -33,12 +33,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('*',function(req,res,next) {
   var d = new Date();
   if(req.headers.host === 'topandviews.ru') 
-    {console.log(d+' request on .ru form '+req.ip);}
+    {console.log(d+' request on .ru form '+req.ip);
+     next();}
   if(req.headers.host === 'topandviews.com') 
-    {console.log(d+' request on .com form '+req.ip);}
+    {console.log(d+' request on .com form '+req.ip);
+     next();}
   if(req.headers.host === 'topandviews.co.uk') 
-    {console.log(d+' request on .co.uk form '+req.ip);}
-  next();
+    {console.log(d+' request on .co.uk form '+req.ip);
+     next();}
+  
 });
 
 //subdomain magic 
