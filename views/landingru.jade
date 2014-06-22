@@ -19,18 +19,18 @@ head
       color:#ddd;
       }
       .container {
-      padding:100%;
-      margin:100%;
+      padding:0px;
+      margin:0px;
       width:100%;
       height:100%;
       }
       .row {
-      padding:100%;
-      margin:100%;
+      padding:0px;
+      margin:0px;
       }
       .col-xs-12 {
-      padding:100%;
-      margin:100%;
+      padding:0px;
+      margin:0px;
       }
       .blue {
       background-color:#2b4140;
@@ -43,17 +43,22 @@ head
       width:100%
       }
       #curtain {
-      
+      position:absolute;
       display:none;
       height:100%;
       width:100%;
-      
+      z-index:7;
       }
       #upper{
       border-bottom:2vh solid #ddd;
       }
       #lower{
       border-top:2vh solid #ddd;
+      }
+      a:focus, a:hover{
+      color:#c35403;
+      outline:none;
+      text-decoration: none;
       }
   body
     .container
@@ -72,7 +77,7 @@ head
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
     //
        Include all compiled plugins (below), or include individual files as needed 
-    script(src='/js/bootstrap.min.js')
+    script(src='js/bootstrap.min.js')
     script.
       if (screen.width < 768) { $('#curtain').slideToggle("fast") }
       else {window.location='http://www.topandviews.ru'}
