@@ -33,17 +33,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('*',function(req,res,next) {
   var d = new Date();
   if(req.headers.host === 'topandviews.ru') 
-    {console.log(d+' request on .ru form '+req.ip+'headers are: '+JSON.stringify(req.headers));
-     res.render('indexru');}
+    {console.log(d+' request on .ru form '+req.ip);
+     res.render('landingru');}
   if(req.headers.host === 'topandviews.com') 
-    {console.log(d+' request on .com form '+req.ip);
-     res.render('index');}
-  if(req.headers.host === 'topandviews.co.uk') 
-    {console.log(d+' request on .co.uk form '+req.ip);
-     res.render('index');}
   
 });
 
+    {console.log(d+' request on .com form '+req.ip);
+     res.render('landing');}
+  if(req.headers.host === 'topandviews.co.uk') 
+    {console.log(d+' request on .co.uk form '+req.ip);
+     res.render('landinguk');}
 //subdomain magic 
 app.get('*', function(req,res,next) { 
   var d = new Date();

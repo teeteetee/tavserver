@@ -255,29 +255,6 @@ head
       color:#ddd;
       margin:0px;
       }
-      #curtain {
-      position:absolute;
-      display:none;
-      height:100%;
-      width:100%;
-      z-index:7;
-      }
-      #upper{
-      border-bottom:2vh solid #ddd;
-      }
-      #lower{
-      border-top:2vh solid #ddd;
-      }
-      .blue {
-      background-color:#2b4140;
-      height:50vh;
-      width:100%
-      }
-      .orange {
-      background-color:#c35204;
-      height:50vh;
-      width:100%
-      }
   body
     //
        jQuery (necessary for Bootstrap's JavaScript plugins) 
@@ -286,15 +263,7 @@ head
        Include all compiled plugins (below), or include individual files as needed 
     script(src='js/bootstrap.min.js')
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
-    #curtain.row
-        
-          a(href='http://m.topandviews.ru')
-            #upper.blue
-              
-                h4(style='margin-top: 3vh; font-family: this; font-size: 15vh; color: #ddd;') Мобильная
-          #lower.orange
-            
-              h4(style='margin-top: 3vh; font-family: this; font-size: 15vh; color: #ddd;') Полная
+    
 
     .container
       #yourcity.row.bb.fivemargin
@@ -379,10 +348,6 @@ head
         .col-xs-12(style='text-align: center;')
           h4(style='font-family: this; color: #ddd;') Top and views.
       script.
-        if (screen.width < 768) { $('#curtain').slideToggle("fast")}
-        $('#lower').click(function() {
-        $('#curtain').slideToggle("slow");
-        });
         $('#showmap').click(function() {
         $('#map').slideToggle('slow');
         var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([55.753,  37.622], 14);
