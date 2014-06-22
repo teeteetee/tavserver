@@ -80,4 +80,4 @@ head
     script(src='js/bootstrap.min.js')
     script.
       if (screen.width < 768) { $('#curtain').slideToggle("fast") }
-      else {window.location='http://www.topandviews.ru'}
+      if (screen.width > 768) {window.location="http://www.topandviews.ru"}
