@@ -982,7 +982,7 @@ app.get('/m/geo', function(req,res){
   res.render('mgeo');
 });
 
-app.get('/m/:lang', function(req,res,next){
+app.get('/m/:lang', function(req,res){
    var lang = req.params.lang;
    if (lang === 'ru'){res.render('mindexru');} 
    if (lang === 'en'){res.render('mindex');} 
