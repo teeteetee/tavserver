@@ -75,6 +75,7 @@ app.get('*', function(req,res,next) {
 
 
 
+
 //done with subdomains
 
 //full version starts here, mobile will be below
@@ -93,6 +94,19 @@ app.get('*', function(req,res,next) {
 //  }
 //        
 //});
+
+app.get('/index',function(req,res){
+   var incomming = req.headers.host;
+  if (incomming = 'topandviews.ru') {
+    res.render('indexru');
+  } 
+  if (incomming = 'topandviews.co.uk') {
+    res.render('index');
+  }
+  if (incomming = 'topandviews.com') {
+    res.render('index');
+  }
+});
 
 app.get('/choice',function(req,res){
   var incomming = req.headers.host;
