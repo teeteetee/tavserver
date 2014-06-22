@@ -34,13 +34,13 @@ app.get('*',function(req,res,next) {
   var d = new Date();
   if(req.headers.host === 'topandviews.ru') 
     {console.log(d+' request on .ru form '+req.ip);
-     next();}
+     res.render('indexru');}
   if(req.headers.host === 'topandviews.com') 
     {console.log(d+' request on .com form '+req.ip);
-     next();}
+     res.render('index');}
   if(req.headers.host === 'topandviews.co.uk') 
     {console.log(d+' request on .co.uk form '+req.ip);
-     next();}
+     res.render('index');}
   
 });
 
@@ -78,20 +78,20 @@ app.get('*', function(req,res,next) {
 
 //full version starts here, mobile will be below
 
-app.get('/', function(req,res) {
-  console.log('got into / , choice by req.headers.host');
-        var incomming = req.headers.host;
-  if (incomming = 'topandviews.ru') {
-    res.render('indexru');
-  } 
-  if (incomming = 'topandviews.co.uk') {
-    res.render('index');
-  }
-  if (incomming = 'topandviews.com') {
-    res.render('index');
-  }
-        
-});
+//app.get('/', function(req,res) {
+//  console.log('got into / , choice by req.headers.host');
+//        var incomming = req.headers.host;
+//  if (incomming = 'topandviews.ru') {
+//    res.render('indexru');
+//  } 
+//  if (incomming = 'topandviews.co.uk') {
+//    res.render('index');
+//  }
+//  if (incomming = 'topandviews.com') {
+//    res.render('index');
+//  }
+//        
+//});
 
 app.get('/choice',function(req,res){
   var incomming = req.headers.host;
