@@ -41,6 +41,7 @@ app.get('*',function(req,res,next) {
   if(req.headers.host === 'topandviews.co.uk') 
     {console.log(d+' request on .co.uk form '+req.ip);
      res.render('landinguk');}
+     next();
 });
 
     
