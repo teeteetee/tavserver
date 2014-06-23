@@ -56,22 +56,23 @@ app.get('*', function(req,res,next) {
     console.log(req.url);
     next();}
     
+    else {next();}
 
 }); 
 
 app.get('/',function(req,res) {
   res.render(indexru);
- // console.log('entered "/"" route');
- // var d = new Date();
- // if(req.headers.host === 'topandviews.ru') 
- //   {console.log(d+' request on .ru form '+req.ip);
- //    res.render('landingru');}
- // if(req.headers.host === 'topandviews.com') 
- //   {console.log(d+' request on .com form '+req.ip);
- //    res.render('landing');}
- // if(req.headers.host === 'topandviews.co.uk') 
- //   {console.log(d+' request on .co.uk form '+req.ip);
- //    res.render('landinguk');}
+  console.log('entered "/"" route');
+  var d = new Date();
+  if(req.headers.host === 'topandviews.ru') 
+    {console.log(d+' request on .ru form '+req.ip);
+     res.render('landingru');}
+  if(req.headers.host === 'topandviews.com') 
+    {console.log(d+' request on .com form '+req.ip);
+     res.render('landing');}
+  if(req.headers.host === 'topandviews.co.uk') 
+    {console.log(d+' request on .co.uk form '+req.ip);
+     res.render('landinguk');}
 });
 
 
