@@ -66,7 +66,7 @@ app.get('/',function(req,res) {
   var d = new Date();
   if(req.headers.host === 'topandviews.ru') 
     {console.log(d+' request on .ru from '+req.ip);
-     res.render('indexru');}
+     res.render('landingru');}
   if(req.headers.host === 'topandviews.com') 
     {console.log(d+' request on .com from '+req.ip);
      res.render('index');}
