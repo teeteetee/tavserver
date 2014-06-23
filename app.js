@@ -61,7 +61,7 @@ app.get('*', function(req,res,next) {
 }); 
 
 app.get('/',function(req,res) {
-  res.render(indexru);
+  
   console.log('entered "/"" route');
   var d = new Date();
   if(req.headers.host === 'topandviews.ru') 
