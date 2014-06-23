@@ -69,7 +69,7 @@ app.get('/',function(req,res) {
      res.render('landingru');}
   if(req.headers.host === 'topandviews.com') 
     {console.log(d+' request on .com from '+req.ip);
-     res.render('index');}
+     res.render('landing');}
   if(req.headers.host === 'topandviews.co.uk') 
     {console.log(d+' request on .co.uk from '+req.ip);
      res.render('landinguk');}
