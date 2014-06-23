@@ -1046,7 +1046,7 @@ app.get('/m/:lang/campuses',function (req,res){
    if (lang === 'it'){res.render('mcampusesit');} 
 });
 
-app.get('/m/:lang/languages',function (req,res){
+app.get('/m/languages',function (req,res){
   res.render('mlanguages');
 });
 
