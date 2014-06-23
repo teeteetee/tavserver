@@ -117,6 +117,16 @@ app.get('/index',function(req,res){
      }
 });
 
+app.get('/:lang/geo', function(req,res){
+  var lang = req.params.lang;
+  if (lang === 'en') {res.render('geo')}
+  if (lang === 'ru') {res.render('georu')}
+  if (lang === 'fr') {res.render('geofr')}
+  if (lang === 'gr') {res.render('geogr')}
+  if (lang === 'sp') {res.render('geosp')}
+  if (lang === 'it') {res.render('geoit')} 
+});
+
 
 app.get('/:lang',function(req,res){
   var lang = req.params.lang;
@@ -659,9 +669,9 @@ app.post('/testupload', function(req,res){
     console.log(vteset);
 });
 
-app.get('/geo', function(req,res){
-  res.render('geo');
-});
+//app.get('/geo', function(req,res){
+//  res.render('geo');
+//});
 
 app.get('/geo/:city', function(req,res){
     var vreqcity = req.params.city;

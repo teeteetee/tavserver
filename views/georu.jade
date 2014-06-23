@@ -1,0 +1,101 @@
+doctype html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title top and views
+    //
+       Bootstrap 
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+  
+    style
+     :css
+      @font-face {
+      font-family:code;
+      src: url('/bootstrap/fonts/Intro-Thin-Caps.ttf');
+      }
+      @font-face {
+      font-family:this;
+      src:url('/bootstrap/fonts/20 Attentica 4F UltraLight.ttf');
+      }
+      body {
+      min-width:480px;
+      }
+      h5 {
+      font-family:code;
+      font-size:8vw;
+      color:#333;
+      padding:0px;
+      display:inline;
+      }
+      h2 {
+      font-family:this;
+      font-size:3vw;
+      color:#ddd;
+      display:inline;
+      }
+      a {
+      color:white;
+      }
+      a:focus, a:hover{
+      outline:none;
+      text-decoration: none;
+      }
+      .container {
+      width:100%;
+      height:100%;
+      }
+      #header {
+      background-color:#336666;
+      border-bottom:1px solid white;
+      }
+      img {
+      width:100%;
+      height:100%;
+      }
+      .city {
+      border-top:0.3vw solid #ddd;
+      }
+      #moscow:hover {
+      background-color:#ccccff;
+      }
+      #london:hover {
+      background-color:#ccff99;
+      }
+      #newyork:hover {
+      background-color:#cccc99;
+      }
+      #stpetersburg:hover {
+      background-color:#ccffcc;
+      }
+      #losangeles:hover {
+      background-color:#ffccff;
+      }
+  body
+    .container
+      a(href='/geo/moscow')
+        #moscow.row
+          .col-xs-10.col-xs-offset-2
+            h5 Москва
+      a(href='/geo/london')
+        #london.row.city
+          .col-xs-10.col-xs-offset-2
+            h5 Лондон
+            h2 Скоро
+      a(href='/geo/st.petersburg')
+        #stpetersburg.row.city
+          .col-xs-10.col-xs-offset-2
+            h5 Санкт-Петербург
+            h2 Скоро
+      a(href='/geo/newyork')
+        #newyork.row.city
+          .col-xs-10.col-xs-offset-2
+            h5 Нью-Йорк
+            h2 Скоро
+      a(href='/geo/losangeles')
+        #losangeles.row.city
+          .col-xs-10.col-xs-offset-2
+            h5 Лос-Анжелес
+            h2 Скоро
+    
