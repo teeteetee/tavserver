@@ -60,6 +60,7 @@ app.get('*', function(req,res,next) {
 }); 
 
 app.get('/',function(req,res,next) {
+  console.log('entered "/"" route');
   var d = new Date();
   if(req.headers.host === 'topandviews.ru') 
     {console.log(d+' request on .ru form '+req.ip);
