@@ -99,8 +99,8 @@ app.get('/',function(req,res) {
 //});
 
 app.get('/index',function(req,res){
-  console.log('got into /index route');
    var incomming = req.headers.host;
+   console.log('got into /index route'+incomming);
   if (incomming = 'topandviews.ru') {
     console.log('got into index , serving RU');
     res.render('indexru');
