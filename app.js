@@ -62,16 +62,16 @@ app.get('*', function(req,res,next) {
 
 app.get('/',function(req,res) {
   
-  console.log('entered "/"" route');
+  console.log('entered "/" route');
   var d = new Date();
   if(req.headers.host === 'topandviews.ru') 
-    {console.log(d+' request on .ru form '+req.ip);
-     res.render('landingru');}
+    {console.log(d+' request on .ru from '+req.ip);
+     res.render('indexru');}
   if(req.headers.host === 'topandviews.com') 
-    {console.log(d+' request on .com form '+req.ip);
-     res.render('landing');}
+    {console.log(d+' request on .com from '+req.ip);
+     res.render('index');}
   if(req.headers.host === 'topandviews.co.uk') 
-    {console.log(d+' request on .co.uk form '+req.ip);
+    {console.log(d+' request on .co.uk from '+req.ip);
      res.render('landinguk');}
 });
 
