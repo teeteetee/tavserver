@@ -106,16 +106,16 @@ app.get('/index',function(req,res){
     res.render('indexru');
   } 
   else {
-  if (incomming = 'topandviews.co.uk') {
-    res.render('index');
+      if (incomming = 'topandviews.co.uk') {
+        res.render('index');
+      }
+       else {
+        if (incomming = 'topandviews.com') {
+          console.log('got into index, serving COM')
+          res.render('index');
+           }
+       }  
   }
-   else {
-  if (incomming = 'topandviews.com') {
-    console.log('got into index, serving COM')
-    res.render('index');
-  }
-}
-}
 });
 
 app.get('/choice',function(req,res){
