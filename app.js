@@ -99,6 +99,7 @@ app.get('/',function(req,res) {
 //});
 
 app.get('/index',function(req,res){
+  console.log('got into /index route');
    var incomming = req.headers.host;
   if (incomming = 'topandviews.ru') {
     console.log('got into index , serving RU');
@@ -108,6 +109,7 @@ app.get('/index',function(req,res){
     res.render('index');
   }
   if (incomming = 'topandviews.com') {
+    console.log('got into index, serving COM')
     res.render('index');
   }
 });
