@@ -103,7 +103,7 @@ app.get('/index',function(req,res){
    var incomming = req.headers.host;
   if (incomming = 'topandviews.ru') {
     console.log('got into index , serving RU');
-    res.render('indexru');
+    res.render('index');
   } 
   if (incomming = 'topandviews.co.uk') {
     res.render('index');
