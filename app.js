@@ -100,49 +100,27 @@ app.get('/',function(req,res) {
 
 app.get('/index',function(req,res){
    var incomming = req.headers.host;
-   console.log('got into /index route'+incomming);
-  if (incomming = 'topandviews.ru') {
-    console.log('got into index , serving RU');
+
+  if (incomming === 'topandviews.ru') {
+    console.log(' serving RU');
     res.render('indexru');
   } 
-  else {
-      if (incomming = 'topandviews.co.uk') {
-        res.render('index');
-      }
-       else {
-        if (incomming = 'topandviews.com') {
-          console.log('got into index, serving COM')
-          res.render('index');
-           }
-       }  
+  
+  if (incomming === 'topandviews.co.uk') {
+    console.log(' serving CO.UK');
+    res.render('index');
   }
+
+  if (incomming === 'topandviews.com') {
+    console.log(' serving COM');
+    res.render('index');
+     }
 });
 
-app.get('/choice',function(req,res){
-  var incomming = req.headers.host;
-  if (incomming = 'topandviews.ru') {
-    res.render('landingru');
-  } 
-  if (incomming = 'topandviews.co.uk') {
-    res.render('landinguk');
-  }
-  if (incomming = 'topandviews.com') {
-    res.render('landing');
-  }
-});
-
-app.get('/:lang/choiceru',function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'ru') {res.render('landingru')}
-  if (lang === 'fr') {res.render('landingfr')}
-  if (lang === 'gr') {res.render('landinggr')}
-  if (lang === 'sp') {res.render('landingsp')}
-  if (lang === 'it') {res.render('landingit')} 
-
-});
 
 app.get('/:lang',function(req,res){
   var lang = req.params.lang;
+  if (lang === 'en') {res.render('index')}
   if (lang === 'ru') {res.render('indexru')}
   if (lang === 'fr') {res.render('indexfr')}
   if (lang === 'gr') {res.render('indexgr')}
@@ -150,12 +128,9 @@ app.get('/:lang',function(req,res){
   if (lang === 'it') {res.render('indexit')} 
 });
 
-app.get('/contact',function(req,res){
-   res.render('blank');
-});
-
 app.get('/:lang/contact', function(req,res){
   var lang = req.params.lang;
+  if (lang === 'en') {res.render('contact')}
   if (lang === 'ru') {res.render('contactru')}
   if (lang === 'fr') {res.render('contactfr')}
   if (lang === 'gr') {res.render('contactgr')}
@@ -163,12 +138,10 @@ app.get('/:lang/contact', function(req,res){
   if (lang === 'it') {res.render('contactit')} 
 });
 
-app.get('/job',function(req,res){
-  res.render('job');
-});
 
 app.get('/:lang/job', function(req,res){
   var lang = req.params.lang;
+  if (lang === 'en') {res.render('job')}
   if (lang === 'ru') {res.render('jobru')}
   if (lang === 'fr') {res.render('jobfr')}
   if (lang === 'gr') {res.render('jobgr')}
@@ -176,12 +149,11 @@ app.get('/:lang/job', function(req,res){
   if (lang === 'it') {res.render('jobit')} 
 });
 
-app.get('/partners',function(req,res){
-  res.render('blank')
-});
+
 
 app.get('/:lang/partners', function(req,res){
   var lang = req.params.lang;
+  if (lang === 'en') {res.render('partners')}
   if (lang === 'ru') {res.render('partnersru')}
   if (lang === 'fr') {res.render('partnersfr')}
   if (lang === 'gr') {res.render('partnersgr')}
@@ -189,12 +161,11 @@ app.get('/:lang/partners', function(req,res){
   if (lang === 'it') {res.render('partnersit')} 
 });
 
-app.get('/campuses', function(req,res){
-  res.render('blank');
-});
+
 
 app.get('/:lang/campuses', function(req,res){
   var lang = req.params.lang;
+  if (lang === 'en') {res.render('campuses')}
   if (lang === 'ru') {res.render('campusesru')}
   if (lang === 'fr') {res.render('campusesfr')}
   if (lang === 'gr') {res.render('campusesgr')}
@@ -202,25 +173,20 @@ app.get('/:lang/campuses', function(req,res){
   if (lang === 'it') {res.render('campusesit')} 
 });
 
-app.get('/property', function(req,res){
-  res.render('buystaysell');
-});
 
 app.get('/:lang/property', function(req,res){
   var lang = req.params.lang;
-  if (lang === 'ru') {res.render('propertyru')}
-  if (lang === 'fr') {res.render('propertyfr')}
-  if (lang === 'gr') {res.render('propertygr')}
-  if (lang === 'sp') {res.render('propertysp')}
-  if (lang === 'it') {res.render('propertyit')} 
-});
-
-app.get('/property/buy', function(req,res){
-  res.render('buy');
+  if (lang === 'en') {res.render('buystaysell')}
+  if (lang === 'ru') {res.render('buystaysellru')}
+  if (lang === 'fr') {res.render('buystaysellfr')}
+  if (lang === 'gr') {res.render('buystaysellgr')}
+  if (lang === 'sp') {res.render('buystaysellsp')}
+  if (lang === 'it') {res.render('buystaysellit')} 
 });
 
 app.get('/:lang/property/buy', function(req,res){
   var lang = req.params.lang;
+  if (lang === 'en') {res.render('buy')}
   if (lang === 'ru') {res.render('buyru')}
   if (lang === 'fr') {res.render('buyfr')}
   if (lang === 'gr') {res.render('buygr')}
@@ -228,12 +194,10 @@ app.get('/:lang/property/buy', function(req,res){
   if (lang === 'it') {res.render('buyit')} 
 });
 
-app.get('/property/stay', function(req,res){
-  res.render('stay');
-});
 
 app.get('/:lang/property/stay', function(req,res){
   var lang = req.params.lang;
+  if (lang === 'en') {res.render('stay')}
   if (lang === 'ru') {res.render('stayru')}
   if (lang === 'fr') {res.render('stayfr')}
   if (lang === 'gr') {res.render('staygr')}
@@ -241,12 +205,10 @@ app.get('/:lang/property/stay', function(req,res){
   if (lang === 'it') {res.render('stayit')} 
 });
 
-app.get('/property/sell', function(req,res){
-  res.render('blank');
-});
 
 app.get('/:lang/property/sell', function(req,res){
   var lang = req.params.lang;
+  if (lang === 'en') {res.render('sell')}
   if (lang === 'ru') {res.render('sellru')}
   if (lang === 'fr') {res.render('sellfr')}
   if (lang === 'gr') {res.render('sellgr')}
@@ -254,12 +216,10 @@ app.get('/:lang/property/sell', function(req,res){
   if (lang === 'it') {res.render('sellit')} 
 });
 
-app.get('/places', function(req,res){
-  res.render('places');
-});
 
 app.get('/:lang/places', function(req,res){
   var lang = req.params.lang;
+  if (lang === 'en') {res.render('places')}
   if (lang === 'ru') {res.render('placesru')}
   if (lang === 'fr') {res.render('placesfr')}
   if (lang === 'gr') {res.render('placesgr')}
@@ -267,16 +227,10 @@ app.get('/:lang/places', function(req,res){
   if (lang === 'it') {res.render('placesit')} 
 });
 
-app.get('/advsearch',function(req,res){
-  res.render('advsearch');
-});
-
-app.get('/yachtsjets',function(req,res){
-  res.render('yachtsjets');
-});
 
 app.get('/:lang/yachtsjets', function(req,res){
   var lang = req.params.lang;
+  if (lang === 'en') {res.render('yachtsjets')}
   if (lang === 'ru') {res.render('yachtsjetsru')}
   if (lang === 'fr') {res.render('yachtsjetsfr')}
   if (lang === 'gr') {res.render('yachtsjetsgr')}
@@ -284,12 +238,10 @@ app.get('/:lang/yachtsjets', function(req,res){
   if (lang === 'it') {res.render('yachtsjetsit')} 
 });
 
-app.get('/yachts',function(req,res){
-  res.render('blank');
-});
 
 app.get('/:lang/yachts', function(req,res){
   var lang = req.params.lang;
+  if (lang === 'en') {res.render('yachts')}
   if (lang === 'ru') {res.render('yachtsru')}
   if (lang === 'fr') {res.render('yachtsfr')}
   if (lang === 'gr') {res.render('yachtsgr')}
@@ -297,12 +249,10 @@ app.get('/:lang/yachts', function(req,res){
   if (lang === 'it') {res.render('yachtsit')} 
 });
 
-app.get('/jets',function(req,res){
-  res.render('blank');
-});
 
 app.get('/:lang/jets', function(req,res){
   var lang = req.params.lang;
+  if (lang === 'en') {res.render('jets')}
   if (lang === 'ru') {res.render('jetsru')}
   if (lang === 'fr') {res.render('jetsfr')}
   if (lang === 'gr') {res.render('jetsgr')}
@@ -319,12 +269,10 @@ app.get('/new/:city', function(req,res){
   res.send('news for '+reqcity+' supposed to be here');
 });
 
-app.get('/job/photographer',function(req,res){
-  res.render('photographer');
-});
 
 app.get('/:lang/job/photographer', function(req,res){
   var lang = req.params.lang;
+  if (lang === 'en') {res.render('photographer')}
   if (lang === 'ru') {res.render('photographerru')}
   if (lang === 'fr') {res.render('photographerfr')}
   if (lang === 'gr') {res.render('photographergr')}
@@ -332,12 +280,10 @@ app.get('/:lang/job/photographer', function(req,res){
   if (lang === 'it') {res.render('photographerit')} 
 });
 
-app.get('/job/office',function(req,res){
-  res.render('office');
-});
 
 app.get('/:lang/job/office', function(req,res){
   var lang = req.params.lang;
+  if (lang === 'en') {res.render('office')}
   if (lang === 'ru') {res.render('officeru')}
   if (lang === 'fr') {res.render('officefr')}
   if (lang === 'gr') {res.render('officegr')}
@@ -345,12 +291,10 @@ app.get('/:lang/job/office', function(req,res){
   if (lang === 'it') {res.render('officeit')} 
 });
 
-app.get('/job/it',function(req,res){
-  res.render('it');
-});
 
 app.get('/:lang/job/it', function(req,res){
   var lang = req.params.lang;
+  if (lang === 'en') {res.render('it')}
   if (lang === 'ru') {res.render('itru')}
   if (lang === 'fr') {res.render('itfr')}
   if (lang === 'gr') {res.render('itgr')}
@@ -358,13 +302,14 @@ app.get('/:lang/job/it', function(req,res){
   if (lang === 'it') {res.render('itit')} 
 });
 
-app.get('/geo/:city/places',function(req,res){
-  var geocity = req.params.city;
-  res.render('geoplaces',{'city': geocity});
-});
+//app.get('/geo/:city/places',function(req,res){
+//  var geocity = req.params.city;
+//  res.render('geoplaces',{'city': geocity});
+//});
 
 app.get('/:lang/geo/:city/places', function(req,res){
   var lang = req.params.lang;
+  if (lang === 'en') {res.render('geoplaces')}
   if (lang === 'ru') {res.render('geoplacesru')}
   if (lang === 'fr') {res.render('geoplacesfr')}
   if (lang === 'gr') {res.render('geoplacesgr')}
@@ -372,13 +317,14 @@ app.get('/:lang/geo/:city/places', function(req,res){
   if (lang === 'it') {res.render('geoplacesit')} 
 });
 
-app.get('geo/:city/property',function(req,res){
-  var geocity = req.params.city;
-  res.render('geoproperty',{'city': geocity});
-});
+//app.get('geo/:city/property',function(req,res){
+//  var geocity = req.params.city;
+//  res.render('geoproperty',{'city': geocity});
+//});
 
 app.get('/:lang/geo/:city/property', function(req,res){
   var lang = req.params.lang;
+  if (lang === 'en') {res.render('geoproperty')}
   if (lang === 'ru') {res.render('geopropertyru')}
   if (lang === 'fr') {res.render('geopropertyfr')}
   if (lang === 'gr') {res.render('geopropertygr')}
@@ -386,10 +332,7 @@ app.get('/:lang/geo/:city/property', function(req,res){
   if (lang === 'it') {res.render('geopropertyit')} 
 });
 
-app.post('/places', function(req,res){
-  res.render('blank')
-  
-});
+
 
 app.post('/:lang/places',function(req,res){
   var lang = req.params.lang,
@@ -722,6 +665,7 @@ app.get('/geo', function(req,res){
 
 app.get('/geo/:city', function(req,res){
     var vreqcity = req.params.city;
+    var newscity = req.params.city;
 
     if (vreqcity === 'newyork') {vreqcity = 'New York'};
     if (vreqcity === 'losangeles') {vreqcity = 'Los Angeles'}
@@ -729,6 +673,7 @@ app.get('/geo/:city', function(req,res){
     var rooftop = [];
     var terrace = [];
     var cuisine = [];
+    var newdoc = [];
     tops.find({city : vreqcity,toptype : 1}, function(err,firsttypedocs){
     	 console.log('got data for absolute');
          absolute = firsttypedocs;
@@ -740,7 +685,11 @@ app.get('/geo/:city', function(req,res){
               	   tops.find({city : vreqcity,toptype : 4},function(err,fourthtypedocs){
               	   	    cuisine = fourthtypedocs;
                      
-              	   	     res.render('geoindex', { 'city' : vreqcity , 'first' : absolute , 'second' : rooftop , 'third' : terrace , 'fourth' : cuisine });   
+                         places.find({'city' : vreqcity, 'type' : 'mealdrink'},{limit:5, sort :{_id:-1}},function(err,newdocs) {
+                               newdoc = newdocs ; 
+                             res.render('geoindex', { 'city' : vreqcity , 'first' : absolute , 'second' : rooftop , 'third' : terrace , 'fourth' : cuisine,'new' :newdoc });   
+                         });
+              	   	     
               	   });
               });
          });
@@ -1004,8 +953,14 @@ app.get('/m',function(req,res){
 });
 
 
-app.get('/m/geo', function(req,res){
-  res.render('mgeo');
+app.get('/m/:lang/geo', function(req,res){
+  var lang = req.params.lang;
+  if (lang === 'ru'){res.render('mgeoru');} 
+   if (lang === 'en'){res.render('mgeo');} 
+   if (lang === 'gr'){res.render('mgeogr');} 
+   if (lang === 'fr'){res.render('mgeofr');} 
+   if (lang === 'sp'){res.render('mgeosp');} 
+   if (lang === 'it'){res.render('mgeoit');} 
 });
 
 app.get('/m/:lang', function(req,res){
@@ -1019,7 +974,8 @@ app.get('/m/:lang', function(req,res){
    if (lang === 'it'){res.render('blank');} 
 });
 
-app.get('/m/geo/:city', function(req,res){
+app.get('/m/:lang/geo/:city', function(req,res){
+    var lang = req.params.lang;
     var vreqcity = req.params.city;
     if (vreqcity === 'stpetersburg') {vreqcity = 'St.Petersburg'}
     if (vreqcity === 'newyork') {vreqcity = 'New York'};
@@ -1050,23 +1006,47 @@ app.get('/m/geo/:city', function(req,res){
 
 });
 
-app.get('/m/places',function (req,res){
-  res.render('blank');
+app.get('/m/:lang/places',function (req,res){
+  var lang = req.params.lang;
+   if (lang === 'ru'){res.render('mplacesru');} 
+   if (lang === 'en'){res.render('mplaces');} 
+   if (lang === 'gr'){res.render('mplacesgr');} 
+   if (lang === 'fr'){res.render('mplacesfr');} 
+   if (lang === 'sp'){res.render('mplacessp');} 
+   if (lang === 'it'){res.render('mplacesit');} 
 });
 
-app.get('/m/property',function (req,res){
-  res.render('blank');
+app.get('/m/:lang/property',function (req,res){
+  var lang = req.params.lang;
+   if (lang === 'ru'){res.render('mpropertyru');} 
+   if (lang === 'en'){res.render('mproperty');} 
+   if (lang === 'gr'){res.render('mpropertygr');} 
+   if (lang === 'fr'){res.render('mpropertyfr');} 
+   if (lang === 'sp'){res.render('mpropertysp');} 
+   if (lang === 'it'){res.render('mpropertyit');} 
 });
 
-app.get('/m/yachtsjets',function (req,res){
-  res.render('blank');
+app.get('/m/:lang/yachtsjets',function (req,res){
+  var lang = req.params.lang;
+   if (lang === 'ru'){res.render('myachtsjetsru');} 
+   if (lang === 'en'){res.render('myachtsjets');} 
+   if (lang === 'gr'){res.render('myachtsjetsgr');} 
+   if (lang === 'fr'){res.render('myachtsjetsfr');} 
+   if (lang === 'sp'){res.render('myachtsjetssp');} 
+   if (lang === 'it'){res.render('myachtsjetsit');} 
 });
 
-app.get('/m/campuses',function (req,res){
-  res.render('blank');
+app.get('/m/:lang/campuses',function (req,res){
+  var lang = req.params.lang;
+   if (lang === 'ru'){res.render('mcampusesru');} 
+   if (lang === 'en'){res.render('mcampuses');} 
+   if (lang === 'gr'){res.render('mcampusesgr');} 
+   if (lang === 'fr'){res.render('mcampusesfr');} 
+   if (lang === 'sp'){res.render('mcampusessp');} 
+   if (lang === 'it'){res.render('mcampusesit');} 
 });
 
-app.get('/m/languages',function (req,res){
+app.get('/m/:lang/languages',function (req,res){
   res.render('mlanguages');
 });
 
