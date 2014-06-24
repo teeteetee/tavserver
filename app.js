@@ -78,7 +78,6 @@ app.get('/',function(req,res) {
 
 
 
-
 //done with subdomains
 
 //full version starts here, mobile will be below
@@ -98,6 +97,7 @@ app.get('/',function(req,res) {
 //        
 //});
 
+
 app.get('/index',function(req,res){
    var incomming = req.headers.host;
 
@@ -115,6 +115,12 @@ app.get('/index',function(req,res){
     console.log(' serving COM');
     res.render('index');
      }
+});
+
+app.get('/:lang/*',function (req,res){
+  var checklang = req.params.lang;
+  if (checklang != 'ru' || 'en' || 'sp' || 'fr' || 'gr' || 'it')
+    {res.render('my404')}
 });
 
 app.get('/:lang/geo', function(req,res){
@@ -684,6 +690,7 @@ app.get('/:lang/geo/:city', function(req,res){
     var terrace = [];
     var cuisine = [];
     var newdoc = [];
+    if (vreqcity != 'newyork' || 'losangeles' || 'moscow' || 'london' || 'stpetersburg') { res.render('my404')}
     places.find({city : vreqcity,toptype : 1}, function(err,firsttypedocs){
     	 console.log('got data for absolute');
          absolute = firsttypedocs;
@@ -987,6 +994,12 @@ yearnow : vyearnow
 
 app.get('/m',function(req,res){
   res.render('mindex');
+});
+
+app.get('/m/:lang/*',function (req,res){
+  var checklang = req.params.lang;
+  if (checklang != 'ru' || 'en' || 'sp' || 'fr' || 'gr' || 'it')
+    {res.render('my404')}
 });
 
 
