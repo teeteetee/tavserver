@@ -384,7 +384,7 @@ app.get('/:lang/geo/:city', function(req,res){
     var terrace = [];
     var cuisine = [];
     var newdoc = [];
-    if (vreqcity != 'newyork' || 'losangeles' || 'moscow' || 'london' || 'stpetersburg') { res.render('my404')}
+    
     places.find({city : vreqcity,toptype : 1}, function(err,firsttypedocs){
        console.log('got data for absolute');
          absolute = firsttypedocs;
