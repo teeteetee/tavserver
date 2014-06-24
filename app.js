@@ -678,8 +678,7 @@ app.get('/:lang/geo/:city', function(req,res){
     var newscity = req.params.city;
     var vlang = req.params.lang;
 
-    if (vreqcity === 'newyork') {vreqcity = 'New York'};
-    if (vreqcity === 'losangeles') {vreqcity = 'Los Angeles'}
+    
     var absolute = [];
     var rooftop = [];
     var terrace = [];
@@ -698,7 +697,34 @@ app.get('/:lang/geo/:city', function(req,res){
                      
                          places.find({city : vreqcity, type : 'mealdrink'},{limit:5, sort :{_id:-1}},function(err,newdocs) {
                                newdoc = newdocs ; 
-                             res.render('geoindex', { lang : vlang , city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc });   
+
+                              if (vlang === 'en') {
+                                if (vreqcity === 'newyork') {vreqcity = 'New York'};
+                                if (vreqcity === 'losangeles') {vreqcity = 'Los Angeles'}
+                                if (vreqcity === 'stpetersburg') {vreqcity = 'St.Petersburg'}
+                                res.render('geoindex', { lang : vlang , city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc })
+                              }
+                              if (vlang === 'ru') {
+                                if (vreqcity === 'newyork') {vreqcity = 'Нью-Йорк'};
+                                if (vreqcity === 'losangeles') {vreqcity = 'Лос-Анжелес'}
+                                if (vreqcity === 'stpetersburg') {vreqcity = 'Санкт-Петербург'}
+                                if (vreqcity === 'london') {vreqcity = 'Лондон'};
+                                if (vreqcity === 'moscow') {vreqcity = 'Москва'};
+                                res.render('geoindexru', { lang : vlang , city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc })
+                              }
+                              if (vlang === 'fr') {
+                                res.render('geoindex', { lang : vlang , city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc })
+                              }
+                              if (vlang === 'gr') {
+                                res.render('geoindex', { lang : vlang , city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc })
+                              }
+                              if (vlang === 'sp') {
+                                res.render('geoindex', { lang : vlang , city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc })
+                              }
+                              if (vlang === 'it') {
+                                res.render('geoindex', { lang : vlang , city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc })
+                              } 
+                               
                          });
               	   	     
               	   });
