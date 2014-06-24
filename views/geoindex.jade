@@ -315,13 +315,13 @@ head
           span.glyphicon.glyphicon-chevron-down(style='color: #669999; font-size: 5vw; margin: 1vw;')
       #newblock.row.sixmargin
         .col-xs-12
-          each preview, i in new
-           a(href='#{preview.ppredir}')
+          each imgpreview, i in new
+           a(href='#{imgpreview.ppredir}')
             .row.preview.fivemargin
               .name
-                  h1 #{preview.nameen}
+                  h1 #{imgpreview.nameen}
               .col-xs-12
-                  img(src='#{preview.mainpreview}')
+                  img(src='#{imgpreview.mainpreview}')
       #places.row.bb.fivemargin
         a(href='/geo/#{city}/places')  
           .col-xs-10
