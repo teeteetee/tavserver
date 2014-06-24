@@ -121,7 +121,7 @@ app.get('/:lang/*',function (req,res,next){
 
   var checklang = req.params.lang;
   console.log('LANGUAGE CHECK:got request with '+checklang);
-  if (checklang === 'ru' || checklang === 'en' || checklang === 'sp' || checklang === 'fr' || checklang === 'gr' || checklang === 'it')
+  if (checklang === 'ru' || checklang === 'en' || checklang === 'sp' || checklang === 'fr' || checklang === 'gr' || checklang === 'it' || checklang === 'm' )
     {next();}
   else {res.render('my404')}
 });
