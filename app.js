@@ -673,9 +673,10 @@ app.post('/testupload', function(req,res){
 //  res.render('geo');
 //});
 
-app.get('/geo/:city', function(req,res){
+app.get('/:lang/geo/:city', function(req,res){
     var vreqcity = req.params.city;
     var newscity = req.params.city;
+    var vlang = req.params.lang;
 
     if (vreqcity === 'newyork') {vreqcity = 'New York'};
     if (vreqcity === 'losangeles') {vreqcity = 'Los Angeles'}
@@ -697,7 +698,7 @@ app.get('/geo/:city', function(req,res){
                      
                          places.find({city : vreqcity, type : 'mealdrink'},{limit:5, sort :{_id:-1}},function(err,newdocs) {
                                newdoc = newdocs ; 
-                             res.render('geoindex', { 'city' : vreqcity , 'first' : absolute , 'second' : rooftop , 'third' : terrace , 'fourth' : cuisine,'new' :newdoc });   
+                             res.render('geoindex', { lang : vlang , city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc });   
                          });
               	   	     
               	   });

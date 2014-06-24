@@ -315,7 +315,7 @@ head
           span.glyphicon.glyphicon-chevron-down(style='color: #669999; font-size: 5vw; margin: 1vw;')
       #newblock.row.sixmargin
         .col-xs-12
-          each imgpreview, i in new
+          each imgpreview, i in news
            a(href='#{imgpreview.ppredir}')
             .row.preview.fivemargin
               .name
@@ -323,17 +323,17 @@ head
               .col-xs-12
                   img(src='#{imgpreview.mainpreview}')
       #places.row.bb.fivemargin
-        a(href='/geo/#{city}/places')  
+        a(href='/#{lang}/geo/#{city}/places')  
           .col-xs-10
             h5(style='display: inline;') Places
-        a(href='/geo/#{city}/places')
+        a(href='/#{lang}/geo/#{city}/places')
           .col-xs-2
             span.glyphicon.glyphicon-chevron-right(style='color: #2b4140; font-size: 5vw; margin: 1vw;')
       #property.row.bb.fivemargin
-        a(href='/geo/#{city}/property') 
+        a(href='/#{lang}/geo/#{city}/property') 
           .col-xs-10
             h5(style='display: inline;') Property  & Hotels
-        a(href='/geo/#{city}/property') 
+        a(href='/#{lang}/geo/#{city}/property') 
           .col-xs-2
             span.glyphicon.glyphicon-chevron-right(style='color: #2b4140; font-size: 5vw; margin: 1vw;')
       #showmap.row.fivemargin
