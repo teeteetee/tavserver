@@ -121,9 +121,9 @@ app.get('/:lang/*',function (req,res,next){
 
   var checklang = req.params.lang;
   console.log('LANGUAGE CHECK:got request with '+checklang);
-  if (checklang != 'ru' || 'en' || 'sp' || 'fr' || 'gr' || 'it')
-    {res.render('my404')}
-  next();
+  if (checklang === 'ru' || checklang === 'en' || checklang === 'sp' || checklang === 'fr' || checklang === 'gr' || checklang === 'it')
+    {next();}
+  else {res.render('my404')}
 });
 
 app.get('/:lang/geo', function(req,res){
