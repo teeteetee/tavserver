@@ -118,7 +118,9 @@ app.get('/index',function(req,res){
 });
 
 app.get('/:lang/*',function (req,res){
+
   var checklang = req.params.lang;
+  console.log('LANGUAGE CHECK:got request with '+checklang);
   if (checklang != 'ru' || 'en' || 'sp' || 'fr' || 'gr' || 'it')
     {res.render('my404')}
 });
