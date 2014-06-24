@@ -406,11 +406,13 @@ app.get('/:lang/geo/:city', function(req,res){
                                 res.render('geoindex', { lang : vlang , city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc })
                               }
                               if (vlang === 'ru') {
+                                console.log('got data from db, currently in RU ');
                                 if (vreqcity === 'newyork') {vreqcity = 'Нью-Йорк'};
                                 if (vreqcity === 'losangeles') {vreqcity = 'Лос-Анжелес'}
                                 if (vreqcity === 'stpetersburg') {vreqcity = 'Санкт-Петербург'}
                                 if (vreqcity === 'london') {vreqcity = 'Лондон'};
                                 if (vreqcity === 'moscow') {vreqcity = 'Москва'};
+                                console.log('translated city names, proceeding with render');
                                 res.render('geoindexru', { lang : vlang , city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc })
                               }
                               if (vlang === 'fr') {
