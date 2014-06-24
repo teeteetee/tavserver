@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
-  , places = db.get('places'),property = db.get('property'), news = db.get('news'), tops = db.get('tops');
+  , places = db.get('places'),property = db.get('property');
 var fs = require('fs');
 
 var app = express();
@@ -435,7 +435,7 @@ app.get('/places/:place', function(req,res){
             vcigars = 'No';
           }                  
 
-    if (top.bool === on) 
+    if (top === on) 
                         {
                           res.render('pptop',{'placename': propername , 'xml' : vxml , 'telephone' : vtelephone , 'web' : vweb , 'cigars' : vcigars , 'shisha' : vshisha , 'yearfounded' : vyearfounded , 'city' : vcity });
                         }
@@ -451,39 +451,39 @@ app.get('/places/:place', function(req,res){
   });
 });
 
-app.post('/advancedsearch',function(req,res){
-  var rooftop = ' rooftop : '+req.body.rooftop;
-  var terrace = ' terrace : '+req.body.terrace;
-  var shisha = ' shisha : '+req.body.shisha;
-  var cigars = ' cigars : '+req.body.cigars;
-  var city = 'city : '+req.body.city;
-
-  var query = new Array(); 
- if (req.body.rooftop !== undefined) 
-                                    {
-                                      rooftop ='rooftop : true';
-                                      query.push(rooftop);
-                                    };
- if (req.body.terrace !== undefined) 
-                                    {
-                                      terrace = 'terrace : true';
-                                      query.push(terrace)
-                                    };
- if (req.body.shisha !== undefined) 
-                                    {
-                                      shisha = 'shisha : true';
-                                      query.push(shisha)
-                                    };
- if (req.body.cigars !== undefined) 
-                                    {
-                                      cigars = 'cigars : true';
-                                      query.push(cigars)
-                                    };
-
- var result = query;
- console.log(JSON.stringify(result));
- res.send(result);
-});
+//app.post('/advancedsearch',function(req,res){
+//  var rooftop = ' rooftop : '+req.body.rooftop;
+//  var terrace = ' terrace : '+req.body.terrace;
+//  var shisha = ' shisha : '+req.body.shisha;
+//  var cigars = ' cigars : '+req.body.cigars;
+//  var city = 'city : '+req.body.city;
+//
+//  var query = new Array(); 
+// if (req.body.rooftop !== undefined) 
+//                                    {
+//                                      rooftop ='rooftop : true';
+//                                      query.push(rooftop);
+//                                    };
+// if (req.body.terrace !== undefined) 
+//                                    {
+//                                      terrace = 'terrace : true';
+//                                      query.push(terrace)
+//                                    };
+// if (req.body.shisha !== undefined) 
+//                                    {
+//                                      shisha = 'shisha : true';
+//                                      query.push(shisha)
+//                                    };
+// if (req.body.cigars !== undefined) 
+//                                    {
+//                                      cigars = 'cigars : true';
+//                                      query.push(cigars)
+//                                    };
+//
+// var result = query;
+// console.log(JSON.stringify(result));
+// res.send(result);
+//});
  
 
 app.post('/adminsearch', function(req,res){
@@ -684,18 +684,18 @@ app.get('/geo/:city', function(req,res){
     var terrace = [];
     var cuisine = [];
     var newdoc = [];
-    tops.find({city : vreqcity,toptype : 1}, function(err,firsttypedocs){
+    places.find({city : vreqcity,toptype : 1}, function(err,firsttypedocs){
     	 console.log('got data for absolute');
          absolute = firsttypedocs;
-         tops.find({city : vreqcity,toptype : 2}, function(err,secondtypedocs){
+         places.find({city : vreqcity,toptype : 2}, function(err,secondtypedocs){
          	  console.log('got data for rooftop');
               rooftop = secondtypedocs;
-              tops.find({city : vreqcity,toptype : 3}, function(err,thirdtypedocs){
+              places.find({city : vreqcity,toptype : 3}, function(err,thirdtypedocs){
               	   terrace = thirdtypedocs;
-              	   tops.find({city : vreqcity,toptype : 4},function(err,fourthtypedocs){
+              	   places.find({city : vreqcity,toptype : 4},function(err,fourthtypedocs){
               	   	    cuisine = fourthtypedocs;
                      
-                         places.find({'city' : vreqcity, 'type' : 'mealdrink'},{limit:5, sort :{_id:-1}},function(err,newdocs) {
+                         places.find({city : vreqcity, type : 'mealdrink'},{limit:5, sort :{_id:-1}},function(err,newdocs) {
                                newdoc = newdocs ; 
                              res.render('geoindex', { 'city' : vreqcity , 'first' : absolute , 'second' : rooftop , 'third' : terrace , 'fourth' : cuisine,'new' :newdoc });   
                          });
