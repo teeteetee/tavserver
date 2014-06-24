@@ -237,13 +237,13 @@ app.get('/:lang/property/sell', function(req,res){
 
 
 app.get('/:lang/places', function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'en') {res.render('places')}
-  if (lang === 'ru') {res.render('placesru')}
-  if (lang === 'fr') {res.render('placesfr')}
-  if (lang === 'gr') {res.render('placesgr')}
-  if (lang === 'sp') {res.render('placessp')}
-  if (lang === 'it') {res.render('placesit')} 
+  var plang = req.params.lang;
+  if (lang === 'en') {res.render('places', {lang : plang})}
+  if (lang === 'ru') {res.render('placesru', {lang : plang})}
+  if (lang === 'fr') {res.render('placesfr', {lang : plang})}
+  if (lang === 'gr') {res.render('placesgr', {lang : plang})}
+  if (lang === 'sp') {res.render('placessp', {lang : plang})}
+  if (lang === 'it') {res.render('placesit', {lang : plang})} 
 });
 
 

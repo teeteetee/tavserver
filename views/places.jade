@@ -220,10 +220,10 @@ head
       script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
       #places.row.bb.fivemargin
         .col-xs-2
-          a(href='/')
+          a(href='/#{lang}')
             span.glyphicon.glyphicon-chevron-left(style='color: #ddd; font-size: 5vw; margin: 1vw;')
         .col-xs-8(style='text-align: center;')
-          a(href='/')
+          a(href='/#{lang}')
             h5(style='Display: inline;') Places
         .col-xs-2
       #search.row.sixmargin
@@ -269,9 +269,9 @@ head
             input#mealdrink(type='checkbox',name='mealdrink')
         .col-xs-6.middle
           .form-group(style='margin-top: 0px; margin-bottom: 0px;')
-            label(for='coworcing')
+            label(for='coworking')
               h2(style='color: #333;') Coworking
-            input#coworcing(type='checkbox'name='coworking')
+            input#coworking(type='checkbox'name='coworking')
           .form-group(style='margin-top: 0px; margin-bottom: 0px;')
             label(for='beauty')
               h2(style='color: #333;') Spa & beauty
