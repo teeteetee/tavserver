@@ -4,7 +4,7 @@ head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    title Bootstrap 101 Template
+    title Top and views
     //
        Bootstrap 
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
@@ -183,6 +183,7 @@ head
       }
       #cityselect {
       background-color:#84ace0;
+      display:none;
       }
       #advsearch {
       background-color:#a6c6ef;
@@ -224,31 +225,26 @@ head
       script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
       #places.row.bb.fivemargin
         .col-xs-2
-          a(href='/#{lang}')
+          a(href='/geo/#{city}')
             span.glyphicon.glyphicon-chevron-left(style='color: #ddd; font-size: 5vw; margin: 1vw;')
         .col-xs-8(style='text-align: center;')
-          a(href='/#{lang}')
+          a(href='/geo/#{city}')
             h5(style='Display: inline;') Места
         .col-xs-2
       #search.row.sixmargin
         .col-xs-12
-          form(role='form' method='post' action='/ru/places')
+          form(role='form')
             #cityselect.row.sidepadding
               .col-xs-12
                 .form-group(style='margin-bottom: 1vw;')
                   label(for='city')
-                    h2 Город:
-                  select#city(name='city')
-                    option(value='moscow') Москва
-                    option(value='london') Лондон
-                    option(value='stpetersburg') Санкт-Петербург
-                    option(value='newyork') Нью-Йорк
-                    option(value='losangeles') Лос-Анжелес
+                    h2 City:
+                  input#city(name='city', type='text', value='#{city}')
             #byname.row.sidepadding
               .form-group(style='margin-bottom: 0px;')
                 label(for='searchbox')
                   h2 По названию:
-                input#searchbox(type='text',name='searchbox')
+                input#searchbox(type='text')
       .row.middle.sidemargin.sidepadding.sixmargin
         .col-xs-5
           .row.bb.space.middle
@@ -266,26 +262,26 @@ head
           .form-group(style='margin-top: 0px; margin-bottom: 0px;')
             label(for='fitness')
               h2(style='color: #333;') Фитнес
-            input#fitness(type='checkbox',name='fitness')
+            input#fitness(type='checkbox')
           .form-group(style='margin-top: 0px; margin-bottom: 0px;')
             label(for='mealdrink')
               h2(style='color: #333;') 
                 | Поесть
                 span.graything &
                 | Выпить
-            input#mealdrink(type='checkbox',name='mealdrink')
+            input#mealdrink(type='checkbox')
         .col-xs-6.middle
           .form-group(style='margin-top: 0px; margin-bottom: 0px;')
-            label(for='coworking')
+            label(for='coworcing')
               h2(style='color: #333;') Co-working
-            input#coworking(type='checkbox',name='coworking')
+            input#coworcing(type='checkbox')
           .form-group(style='margin-top: 0px; margin-bottom: 0px;')
             label(for='beauty')
-              h2(style='color: #333;')
+              h2(style='color: #333;') 
                 | Салоны красоты
                 span.graything &
                 | SPA
-            input#beauty(type='checkbox',name='beauty')
+            input#beauty(type='checkbox')
       #restprop.row.sidemargin.sixmargin
         .col-xs-12
           .row.middle
@@ -296,20 +292,20 @@ head
               .form-group
                 label(for='rooftop')
                   h2(style='color: #333;') На крыше
-                input#rooftop(type='checkbox',name='rooftop')
+                input#rooftop(type='checkbox')
               .form-group
                 label(for='terrace')
                   h2(style='color: #333;') С террасой
-                input#terrace(type='checkbox',name='terrace')
+                input#terrace(type='checkbox')
             .col-xs-6.darkgray
               .form-group
                 label(for='cigars')
                   h2(style='color: #333;') Курить сигары
-                input#cigars(type='checkbox',name='cigars')
+                input#cigars(type='checkbox')
               .form-group
                 label(for='shisha')
                   h2(style='color: #333;') Курить кальян
-                input#shisha(type='checkbox',name='shisha')
+                input#shisha(type='checkbox')
           .row.middle(style='height: 1vw;')
       .row.middle.sidemargin.sixmargin(style='padding: 1vw; padding-top: 0vw;')
         .col-xs-12
@@ -322,12 +318,11 @@ head
           span.glyphicon.glyphicon-chevron-down(style='font-size: 5vw; margin: 1vw; color: gray;')
       #map.row(style='display: none; text-align: center;')
         .col-xs-12(style='height: 100vh; padding: 0px;')
-         
           .row
             #mapitself.col-xs-12(style='border-top: 0.3vw solid #333; border-bottom: 0.3vw solid #333; margin: 0px; padding: 0px; height: 100vh;')
       #footer.row.fivemargin.bt
         .col-xs-12(style='text-align: center;')
-          a(style='color: gray;', href='/#{lang}')
+          a(style='color: gray;', href='/')
             h4(style='font-weight: lighter;') Top and views.
     //
        jQuery (necessary for Bootstrap's JavaScript plugins) 
