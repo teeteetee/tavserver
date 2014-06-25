@@ -327,13 +327,13 @@ app.get('/:lang/job/it', function(req,res){
 //});
 
 app.get('/:lang/geo/:city/places', function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'en') {res.render('geoplaces')}
-  if (lang === 'ru') {res.render('geoplacesru')}
-  if (lang === 'fr') {res.render('geoplacesfr')}
-  if (lang === 'gr') {res.render('geoplacesgr')}
-  if (lang === 'sp') {res.render('geoplacessp')}
-  if (lang === 'it') {res.render('geoplacesit')} 
+  var vlang = req.params.lang;
+  if (vlang === 'en') {res.render('geoplaces',{lang : vlang})}
+  if (vlang === 'ru') {res.render('geoplacesru',{lang : vlang})}
+  if (vlang === 'fr') {res.render('geoplacesfr')}
+  if (vlang === 'gr') {res.render('geoplacesgr')}
+  if (vlang === 'sp') {res.render('geoplacessp')}
+  if (vlang === 'it') {res.render('geoplacesit')} 
 });
 
 //app.get('geo/:city/property',function(req,res){
