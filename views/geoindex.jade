@@ -269,13 +269,12 @@ head
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
     .container
       #yourcity.row.bb.fivemargin
-        .col-xs-2
-          a(href='/#{lang}')
-            span.glyphicon.glyphicon-chevron-left(style='color: #ddd; font-size: 5vw; margin: 1vw;')
-        .col-xs-8(style='text-align: center;')
-          a(href='/#{lang}')
-            h5(style='Display: inline;') #{city}
-        .col-xs-2
+        a(href='/#{lang}')
+          .col-xs-2
+              span.glyphicon.glyphicon-chevron-left(style='color: #ddd; font-size: 5vw; margin: 1vw;')
+          .col-xs-8(style='text-align: center;')
+              h5(style='Display: inline;') #{city}
+          .col-xs-2
       
       #top.row.bb.fivemargin
         .col-xs-10
