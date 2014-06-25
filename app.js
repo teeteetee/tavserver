@@ -238,8 +238,8 @@ app.get('/:lang/property/sell', function(req,res){
 
 app.get('/:lang/places', function(req,res){
   var plang = req.params.lang;
-  if (lang === 'en') {res.render('places', {'lang' : plang})}
-  if (lang === 'ru') {res.render('placesru')}
+  if (lang === 'en') {res.render('places', {lang : plang})}
+  if (lang === 'ru') {res.render('placesru',{lang : plang})}
   if (lang === 'fr') {res.render('placesfr')}
   if (lang === 'gr') {res.render('placesgr')}
   if (lang === 'sp') {res.render('placessp')}
