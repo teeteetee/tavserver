@@ -238,6 +238,7 @@ app.get('/:lang/property/sell', function(req,res){
 
 app.get('/:lang/places', function(req,res){
   var plang = req.params.lang;
+  console.log(plang);
   if (lang === 'en') {res.render('places', {lang : plang})}
   if (lang === 'ru') {res.render('placesru',{lang : plang})}
   if (lang === 'fr') {res.render('placesfr')}
