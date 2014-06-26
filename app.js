@@ -248,13 +248,13 @@ app.get('/:lang/places', function(req,res){
 
 
 app.get('/:lang/yachtsjets', function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'en') {res.render('yachtsjets')}
-  if (lang === 'ru') {res.render('yachtsjetsru')}
-  if (lang === 'fr') {res.render('yachtsjetsfr')}
-  if (lang === 'gr') {res.render('yachtsjetsgr')}
-  if (lang === 'sp') {res.render('yachtsjetssp')}
-  if (lang === 'it') {res.render('yachtsjetsit')} 
+  var ylang = req.params.lang;
+  if (ylang === 'en') {res.render('yachtsjets')}
+  if (ylang === 'ru') {res.render('yachtsjetsru',{lang : ylang})}
+  if (ylang === 'fr') {res.render('yachtsjetsfr')}
+  if (ylang === 'gr') {res.render('yachtsjetsgr')}
+  if (ylang === 'sp') {res.render('yachtsjetssp')}
+  if (ylang === 'it') {res.render('yachtsjetsit')} 
 });
 
 
