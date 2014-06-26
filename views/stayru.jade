@@ -1,0 +1,282 @@
+doctype html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Top and views
+    //
+       Bootstrap 
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    link(href='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css', rel='stylesheet')
+    style
+     :css
+      @font-face {
+      font-family:skinny;
+      src: url('/bootstrap/fonts/Intro-Thin-Caps.ttf');
+      }
+      @font-face {
+      font-family:this;
+      src:url('/bootstrap/fonts/20 Attentica 4F UltraLight.ttf');
+      }
+      body {
+      background-color:white;
+      min-width:480px;
+      }
+      .container {
+      width:100%;
+      padding:0px;
+      margin:0px;
+      }
+      .row {
+      margin:0px;
+      padding:0px;
+      }
+      #header {
+      border-bottom:1px solid #333;
+      background-color: #2b4140;
+      }
+      #propertytype {
+      border-bottom:1px solid gray;
+      }
+      h5 {
+      font-family:skinny;
+      font-size:7vw;
+      color:#333;
+      padding:0px;
+      }
+      h2 {
+      font-family:this;
+      margin-top:0px;
+      margin-bottom:0px;
+      font-size:4vw;
+      color:#333;
+      font-weight:100;
+      }
+      h4{
+      font-size:2.8vw;
+      font-family:this;
+      }
+      #buy:hover {
+      background-color:#80aba9;
+      }
+      #stay {
+      background-color:#80aba9;
+      }
+      #sell:hover {
+      background-color:#80aba9;
+      }
+      a:active, a:hover, a:focus {
+      text-decoration:none;
+      outline:none;
+      }
+      select {
+      font-family:this;
+      font-size:7vw;
+      background-color:#84ace0;
+      border:0px;
+      width:100%;
+      }
+      select:focus,select:active {
+      outline:none;
+      text-decoration:none;
+      }
+      .gray {
+      background-color:#ddd;
+      }
+      .form-group {
+      display:inline-block;
+      margin:2vw;
+      }
+      .btn-lg {
+      padding:0px;
+      border-radius:0px;
+      font-size:inherit;
+      height:inherit;
+      margin-top:2vw;
+      background-color:#dde6f2;
+      }
+      #propertytype h2 {
+      color:gray;
+      }
+      #propertyhotels {
+      cursor:pointer;
+      }
+      #propertyhotels:hover h5 {
+      color:white;
+      }
+      #propertyhotels:hover {
+      background-color:#c35204;
+      }
+      .bb {
+      border-bottom:0.3vw solid #ddd;
+      }
+      .bt {
+      border-top:0.3vw solid #ddd;
+      }
+      #propertytype {
+      border-bottom:0.3vw solid #ddd;
+      }
+      #search {
+      padding-bottom:1vw;
+      background-color:#a6c6ef;
+      }
+      #showmap {
+      cursor:pointer;
+      }
+      .sidepadding {
+      padding-left:6vw;
+      padding-right:6vw;
+      }
+      .sidemargin {
+      margin-left:1vw;
+      margin-right:1vw;
+      }
+      .fivemargin {
+      margin-right:5vw;
+      margin-left:5vw;
+      }
+      .sixmargin {
+      margin-left:6vw;
+      margin-right:6vw;
+      }
+      #propertytypelower {
+      background-color:#84ace0;
+      }
+      label {
+      font-family:this;
+      font-size:3vw;
+      color:gray;
+      }
+      .col-xs-3 {
+      margin:0px;
+      padding:0px;
+      }
+      .graything {
+      color:#ddd;
+      margin:0px;
+      }
+  body
+    .container
+      script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
+      #propertyhotels.row.bb.fivemargin
+        .col-xs-1
+          a(href='/#{lang}')
+            span.glyphicon.glyphicon-chevron-left(style='color: #ddd; font-size: 5vw; margin: 1vw;margin-left:0px;')
+        .col-xs-11(style='text-align: center;')
+          a(href='/#{lang}')
+            h5(style='Display: inline;font-size:6vw')
+              | Недвижимость
+              span.graything &
+              | Отели
+      #propertytype.row.fivemargin
+        #buy.col-xs-4(style='border-right: 0.3vw solid #ddd;')
+          a(href='/#{lang}/property/buy')
+            h2 Купить
+        #stay.col-xs-4(style='border-right: 0.3vw solid #ddd;')
+          a(href='/#{lang}/property/stay')
+            h2 
+              | Снять
+              span.graything \
+              | Отели
+        #sell.col-xs-4
+          a(href='/#{lang}/property/sell')
+            h2 Продать
+      #search.row.sixmargin
+        .col-xs-12(style='margin: 0px; padding: 0px;')
+          form(role='form', method='post', action='/property/stay')
+            #propertytypelower.row
+              .col-xs-12(style='margin: 0px; padding-left: 1vw; padding-right: 1vw; text-align: center;')
+                select#types(name='types')
+                  option(value='hotel') Отель
+                  option(value='flat') Квартира
+                  option(value='penthouse') Пентхаус
+                  option(value='apartment') Апартаменты
+                  option(value='house') Дом
+                  option(value='office') Офис
+            .row.bb(style='margin: 1vw; margin-bottom: 0px;')
+              .col-xs-3(style='border-right: 0.3vw solid #ddd;')
+                .form-group
+                  label
+                    h2(style='color: gray;') Площадь
+              .col-xs-9
+                .form-group
+                  label(for='scaleone')
+                    h2 &lt 100 
+                  input#scaleone(type='checkbox', name='scaleone')
+                .form-group
+                  label(for='scaletwo')
+                    h2 100-300 
+                  input#scaletwo(type='checkbox', name='scaletwo')
+                .form-group
+                  label(for='scalethree')
+                    h2 &gt300 
+                  input#scalethree(type='checkbox', name='scalethree')
+            .row.bb(style='margin-right: 1vw; margin-left: 1vw;')
+              .col-xs-3(style='border-right: 0.3vw solid #ddd;')
+                .form-group
+                  label
+                    h2(style='color: gray;') № комнат
+              .col-xs-9
+                .form-group
+                  label(for='scaleone')
+                    h2 &lt 3
+                  input#scaleone(type='checkbox', name='scaleone')
+                .form-group
+                  label(for='scaletwo')
+                    h2 3-5 
+                  input#scaletwo(type='checkbox', name='scaletwo')
+                .form-group
+                  label(for='scalethree')
+                    h2 &gt 5 
+                  input#scalethree(type='checkbox', name='scalethree')
+            .row(style='margin-left: 1vw; margin-right: 1vw;')
+              .col-xs-3(style='border-right: 0.3vw solid #ddd;')
+                .form-group
+                  label
+                    h2(style='color: gray;') Цена за сутки
+              .col-xs-9
+                .form-group
+                  label(for='scaleone')
+                    h2 &lt 1k$ 
+                  input#scaleone(type='checkbox', name='scaleone')
+                .form-group
+                  label(for='scaletwo')
+                    h2 1k$-5k$ 
+                  input#scaletwo(type='checkbox', name='scaletwo')
+                .form-group
+                  label(for='scalethree')
+                    h2 &gt5k$ 
+                  input#scalethree(type='checkbox', name='scalethree')
+            .row
+              .col-xs-12(style='padding-left: 1vw; padding-right: 1vw;')
+                button.btn-lg.form-control(type='submit')
+                  h2(style='color: #c35204; margin-top: 1vw; margin-bottom: 1vw;') Найти
+      #showmap.row.bt.fivemargin
+        .col-xs-10
+          h5(style='display: inline;') на карте
+        .col-xs-2
+          span.glyphicon.glyphicon-chevron-down(style='color: gray; font-size: 5vw; margin: 1vw;')
+      #map.row(style='display: none; text-align: center;')
+        .col-xs-12(style='height: 100vh; padding: 0px;')
+          .row
+            #mapitself.col-xs-12(style='border-top: 0.3vw solid #333; border-bottom: 0.3vw solid #333; margin: 0px; padding: 0px; height: 100vh;')
+      #footer.row.bt.fivemargin
+        .col-xs-12(style='text-align: center;')
+          a(style='color: gray;', href='/')
+            h4(style='font-weight: lighter;') Top and views.
+    //
+       jQuery (necessary for Bootstrap's JavaScript plugins) 
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    //
+       Include all compiled plugins (below), or include individual files as needed 
+    script(src='/js/bootstrap.min.js')
+    script.
+      $('#showmap').click(function() {
+      $('#map').slideToggle('slow');
+      var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([55.753,  37.622], 14);
+      map.scrollWheelZoom.disable();
+      if ($("#map").is(':visible')) {
+      $("html, body").animate({scrollTop: $("#map").offset().top});
+      }
+      });
