@@ -37,38 +37,49 @@ head
       }
       h5 {
       font-family:code;
-      font-size:8vw;
+      font-size:7vw;
       padding:0px;
       color:#333;
+      margin-top:20vh;
       }
-      #halfed {
+      .halfed {
       text-align:center;
       height:100%;
       }
-      .frame {
-      position:absolute;
-      margin-top:1.5vw;
-      margin-left:1.5vw;
-      width:97%;
-      height:97%;
-      border:0px solid white;
-      z-index:7;
-      }
-      #yachts {
+      #buy {
       border-right:4px solid #ddd;
+      cursor:pointer;
       }
-      #yachts:hover {
+      #buy:hover {
       background-color:#ccccff;
       }
-      #jets:hover {
+      #stay {
+      border-right:4px solid #ddd;
+      cursor:pointer;
+      }
+      #stay:hover {
       background-color:#ccccff;
+      }
+      #sell {
+      border-right:4px solid #ddd;
+      cursor:pointer;
+      }
+      #sell:hover {
+      background-color:#ccccff;
+      }
+      .bb {
+      border-bottom:0.3vw solid #ddd;
+      }
+      .gray {
+      color:#ddd;
       }
   body
     .container
-      #halfed.row
-        a(href='/ru/yachts')
-          #yachts.col-xs-6(style='height: 100vh;')
-            h5(style='margin-top: 45vh;')  Яхты
-        a(href='/ru/jets')
-          #jets.col-xs-6(style='height: 100vh;')
-            h5(style='margin-top: 45vh;') Самолеты 
+      .row.bb.halfed
+        a(href='/#{lang}/yachts')
+          #buy.col-xs-12(style='height: 33.3vh;')
+            h5 Яхты
+      .row.bb.halfed
+        a(href='/#{lang}/jets')
+          #sell.col-xs-12(style='height: 33.3vh;')
+            h5 Самолеты 
