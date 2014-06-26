@@ -204,13 +204,13 @@ app.get('/:lang/property', function(req,res){
 });
 
 app.get('/:lang/property/buy', function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'en') {res.render('buy')}
-  if (lang === 'ru') {res.render('buyru')}
-  if (lang === 'fr') {res.render('buyfr')}
-  if (lang === 'gr') {res.render('buygr')}
-  if (lang === 'sp') {res.render('buysp')}
-  if (lang === 'it') {res.render('buyit')} 
+  var blang = req.params.lang;
+  if (blang === 'en') {res.render('buy')}
+  if (blang === 'ru') {res.render('buyru',{lang : blang})}
+  if (blang === 'fr') {res.render('buyfr')}
+  if (blang === 'gr') {res.render('buygr')}
+  if (blang === 'sp') {res.render('buysp')}
+  if (blang === 'it') {res.render('buyit')} 
 });
 
 
