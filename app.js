@@ -215,13 +215,13 @@ app.get('/:lang/property/buy', function(req,res){
 
 
 app.get('/:lang/property/stay', function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'en') {res.render('stay')}
-  if (lang === 'ru') {res.render('stayru')}
-  if (lang === 'fr') {res.render('stayfr')}
-  if (lang === 'gr') {res.render('staygr')}
-  if (lang === 'sp') {res.render('staysp')}
-  if (lang === 'it') {res.render('stayit')} 
+  var slang = req.params.lang;
+  if (slang === 'en') {res.render('stay')}
+  if (slang === 'ru') {res.render('stayru',{lang : slang})}
+  if (slang === 'fr') {res.render('stayfr')}
+  if (slang === 'gr') {res.render('staygr')}
+  if (slang === 'sp') {res.render('staysp')}
+  if (slang === 'it') {res.render('stayit')} 
 });
 
 
