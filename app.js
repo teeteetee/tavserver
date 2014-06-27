@@ -241,7 +241,7 @@ app.get('/:lang/places', function(req,res){
   if (plang === 'en') {res.render('places', {lang : plang})}
   if (plang === 'ru') {res.render('placesru',{lang : plang})}
   if (plang === 'fr') {res.render('placesfr')}
-  if (plang === 'gr') {res.render('placesgr')}
+  if (plang === 'gr') {res.render('placesgr',{lang : plang})}
   if (plang === 'sp') {res.render('placessp')}
   if (plang === 'it') {res.render('placesit')} 
 });
