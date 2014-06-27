@@ -1064,7 +1064,7 @@ app.get('/m/:lang/geo/:city', function(req,res){
 });
 
 app.get('/m/:lang/languages',function (req,res){
-   {res.render('mlanguages');} 
+   res.render('mlanguages');
 });
 
 app.get('/m/:lang/places',function (req,res){
