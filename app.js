@@ -32,7 +32,35 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-    
+ 
+
+ app.get('/index',function(req,res){
+   var incomming = req.headers.host;
+
+  if (incomming === 'topandviews.ru') {
+    console.log(' serving RU');
+    res.render('indexru');
+  } 
+  
+  if (incomming === 'topandviews.co.uk') {
+    console.log(' serving CO.UK');
+    res.render('index');
+  }
+
+  if (incomming === 'topandviews.com') {
+    console.log(' serving COM');
+    res.render('index');
+     }
+});
+
+ app.get('/:lang/*',function (req,res,next){
+
+  var checklang = req.params.lang;
+  console.log('LANGUAGE CHECK:got request with '+checklang);
+  if (checklang === 'ru' || checklang === 'en' || checklang === 'sp' || checklang === 'fr' || checklang === 'gr' || checklang === 'it' )
+    {next();}
+  else {res.render('my404')}
+});   
 //subdomain magic 
 app.get('*', function(req,res,next) { 
   var d = new Date();
@@ -97,34 +125,6 @@ app.get('/',function(req,res) {
 //        
 //});
 
-
-app.get('/index',function(req,res){
-   var incomming = req.headers.host;
-
-  if (incomming === 'topandviews.ru') {
-    console.log(' serving RU');
-    res.render('indexru');
-  } 
-  
-  if (incomming === 'topandviews.co.uk') {
-    console.log(' serving CO.UK');
-    res.render('index');
-  }
-
-  if (incomming === 'topandviews.com') {
-    console.log(' serving COM');
-    res.render('index');
-     }
-});
-
-app.get('/:lang/*',function (req,res,next){
-
-  var checklang = req.params.lang;
-  console.log('LANGUAGE CHECK:got request with '+checklang);
-  if (checklang === 'ru' || checklang === 'en' || checklang === 'sp' || checklang === 'fr' || checklang === 'gr' || checklang === 'it' || checklang === 'm' )
-    {next();}
-  else {res.render('my404')}
-});
 
 app.get('/:lang/geo', function(req,res){
   var lang = req.params.lang;
