@@ -1,0 +1,351 @@
+doctype html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='google-site-verification', content='DaqTN3p0TXd4wmLLX4iLsIf_i5rAEsa3X3mCUID2WXI')
+
+    title Top and views
+    //
+       Bootstrap 
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    link(href='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css', rel='stylesheet')
+    style
+     :css
+      @font-face {
+      font-family:skinny;
+      src: url('/bootstrap/fonts/CODElight.otf');
+      }
+      @font-face {
+      font-family:this;
+      src:url('/bootstrap/fonts/20 Attentica 4F UltraLight.ttf');
+      }
+      body {
+      background-color:white;
+      min-width:480px;
+      }
+      .container {
+      width:100%;
+      padding:0px;
+      padding-top:0px;
+      padding-bottom:1vw;
+      margin:0px;
+      }
+      .row {
+      margin:0px;
+      padding:0px;
+      }
+      h1 {
+      font-family:skinny;
+      font-size:11vw;
+      color:#333;
+      padding:0px;
+      text-shadow: 0px 0px 2px rgba(150, 150, 150, 1);
+      }
+      h5 {
+      font-family:skinny;
+      font-size:7vw;
+      color:#333;
+      padding:0px;
+      margin-top:0px;
+      margin-bottom:0px;
+      }
+      h3 {
+      font-family:this;
+      font-size:7vw;
+      color:#333;
+      padding:0px;
+      }
+      h2 {
+      font-family:this;
+      margin-top:1vw;
+      margin-bottom:1vw;
+      font-size:4vw;
+      color:#333;
+      font-weight:100;
+      }
+      h4{
+      font-size:2.8vw;
+      font-family:this;
+      color:white;
+      }
+      .center {
+      text-align:center;
+      }
+      img {
+      width:100%;
+      height:100%;
+      }
+      span {
+      margin-right:100px;
+      }
+      a {
+      color:white;
+      }
+      a:focus, a:hover{
+      color:#c35403;
+      outline:none;
+      text-decoration: none;
+      }
+      .cityselect {
+      border-radius:0px;
+      height:70px;
+      }
+      li {
+      font-family:this;
+      color:#ddd;
+      font-size:4vw;
+      height:4vw;
+      }
+      li a {
+      color:#333;
+      }
+      ul {
+      list-style-type:none;
+      padding:0px;
+      }
+      .col-xs-3 {
+      padding-right:1vw;
+      padding-left:1vw;
+      }
+      .col-xs-2 {
+      padding:0px;
+      }
+      .col-lg-4 {
+      padding:0px;
+      }
+      .col-lg-8 {
+      padding:0px;
+      }
+      .colorchange {
+      background-color:white;
+      }
+      #places:hover h5 {
+      color:#333;
+      }
+      #separator {
+      padding:15px;
+      }
+      #footer {
+      background-color:white;
+      }
+      #footerlinks{
+      font-size:1vw;
+      background-color:white;
+      }
+      #map {
+      background-color:gray;
+      }
+      #showmap {
+      background-color: white;
+      cursor:pointer;
+      }
+      #showmap:hover {
+      background-color:#b7d0d0;
+      }
+      #places:hover {
+      background-color:#b7d0d0;
+      }
+      #property:hover {
+      background-color:#b7d0d0;
+      }
+      #campuses:hover{
+      background-color:#b7d0d0;
+      }
+      #property:hover h5{
+      color:#333;
+      }
+      #yachtsjets:hover {
+      background-color:#b7d0d0;
+      }
+      #yourcity:hover {
+      background-color:#b7d0d0;
+      }
+      #yachtsjets:hover h5{
+      color:#333;
+      }
+      #partners {
+      border-right:0.3vw solid #ddd;
+      }
+      #hr {
+      border-right:0.3vw solid #ddd;
+      }
+      #partners:hover{
+      background-color:#e1b6bc;
+      }
+      #contact:hover{
+      background-color:#a4cab1;
+      }
+      #hr:hover{
+      background-color:#a5aac5;
+      }
+      #campuses:hover h5{
+      color:#333;
+      }
+      #yourcity {
+      cursor:pointer;
+      }
+      #yourcity:hover h5 {
+      color:#333;
+      }
+      #topdivider {
+      border-bottom:0.3vw solid #ddd;
+      }
+      .bb {
+      border-bottom:0.3vw solid #ddd;
+      }
+      #logotextsmall {
+      text-align:center;
+      }
+      label {
+      font-family:this;
+      font-size:3vw;
+      color:gray;
+      }
+      .rb {
+      border-right:0.3vw solid #ddd;
+      text-align:center;
+      background-color:#2b4140;
+      }
+      .sidepadding {
+      padding-left:6vw;
+      padding-right:6vw;
+      }
+      .sidemargin {
+      margin-left:1vw;
+      margin-right:1vw;
+      }
+      .fivemargin {
+      margin-right:5vw;
+      margin-left:5vw;
+      }
+      .sixmargin {
+      margin-left:6vw;
+      margin-right:6vw;
+      }
+      #lang{
+      border-top:0.3vw solid #ddd;
+      }
+      #gr {
+      text-decoration:underline;
+      }
+      #en:hover {
+      background-color:#669999;
+      }
+      #ru:hover {
+      background-color:#669999;
+      }
+      #fr:hover {
+      background-color:#669999;
+      }
+      #gr:hover {
+      background-color:#669999;
+      }
+      #sp:hover {
+      background-color:#669999;
+      }
+      #it:hover {
+      background-color:#669999;
+      }
+      #it {
+      background-color:#2b4140;
+      text-align:center;
+      }
+  body
+    
+  
+    //
+       jQuery (necessary for Bootstrap's JavaScript plugins) 
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    //
+       Include all compiled plugins (below), or include individual files as needed 
+    script(src='/js/bootstrap.min.js')
+    script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
+    .container
+      #yourcity.row.bb.fivemargin
+        a(href='/en/geo')  
+          .col-xs-10
+            h5 Seine Stadt
+        a(href='/en/geo')  
+          .col-xs-2
+            span.glyphicon.glyphicon-chevron-right(style='color: #ff3300; font-size: 5vw; margin: 1vw;')
+      #places.row.bb.fivemargin
+        a(href='/en/places')  
+          .col-xs-10
+            h5 Die Plätze
+        a(href='/en/places')  
+          .col-xs-2
+            span.glyphicon.glyphicon-chevron-right(style='color: #2b4140; font-size: 5vw; margin: 1vw;')
+      #property.row.bb.fivemargin
+        a(href='/en/property')  
+          .col-xs-10
+            h5 Immobilien  & Hotels
+        a(href='/en/property')  
+          .col-xs-2
+            span.glyphicon.glyphicon-chevron-right(style='color: #2b4140; font-size: 5vw; margin: 1vw;')
+      #yachtsjets.row.bb.fivemargin
+        a(href='/en/yachtsjets')  
+          .col-xs-10
+            h5(style='display: inline;') Yachten & Jets
+            h2(style='display: inline; color: #ddd;') Kommen bald
+        a(href='/en/yachtsjets')  
+          .col-xs-2
+            span.glyphicon.glyphicon-chevron-right(style='color: #2b4140; font-size: 5vw; margin: 1vw;')
+      #campuses.row.bb.fivemargin
+        a(href='/en/campuses')  
+          .col-xs-10
+            h5(style='display: inline;') Campus
+            h2(style='display: inline; color: #ddd;') Kommen bald
+        a(href='/en/campuses') 
+          .col-xs-2
+            span.glyphicon.glyphicon-chevron-right(style='color: #2b4140; font-size: 5vw; margin: 1vw;')
+      #showmap.row.fivemargin
+        .col-xs-10
+          h5(style='display: inline;') Auf der Karte
+        .col-xs-2
+          span.glyphicon.glyphicon-chevron-down(style='color: #669999; font-size: 5vw; margin: 1vw;')
+      #map.row(style='display: none; text-align: center;')
+        .col-xs-12(style='height: 100vh; padding: 0px;')
+          .row
+            #mapitself.col-xs-12(style='margin: 0px; padding: 0px; height: 100vh; border-top: 0.3vw solid #333; border-bottom: 0.3vw solid #333;')
+      #lang.row.bb.fivemargin
+        #en.col-xs-2.rb
+          a(href='/en')
+            h4 En
+        #ru.col-xs-2.rb
+          a(href='/ru')
+            h4 Ru
+        #fr.col-xs-2.rb
+          a(href='/fr')
+            h4 Fr
+        #gr.col-xs-2.rb
+          a(href='/gr')
+            h4 De
+        #sp.col-xs-2.rb
+          a(href='/sp')
+            h4 Sp
+        #it.col-xs-2
+          a(href='/it')
+            h4 It    
+      #footerlinks.row.bb.fivemargin
+        #partners.col-xs-4
+          a(style='display: block; color: gray; font-family: this; font-size: 3vw;', href='/en/partners') Partner
+        #hr.col-xs-4
+          a(style='display: block; color: gray; font-family: this; font-size: 3vw;', href='/en/job') Arbeit
+        #contact.col-xs-4
+          a(style='display: block; color: gray; font-family: this; font-size: 3vw;', href='/en/contacts') Kontakte
+      #footer.fivemargin.row
+        .col-xs-12(style='font-family: skinny; padding: 5px; text-align: center;')
+          a(style='color: gray;', href='/')
+            h4(style='font-family: this;color:#ddd; font-weight: lighter;') 
+              |Top and views.
+      script.
+        $('#showmap').click(function() {
+        $('#map').slideToggle('slow');
+        var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([55.753,  37.622], 14);
+        map.scrollWheelZoom.disable();
+        if ($("#map").is(':visible')) {
+        $("html, body").animate({scrollTop: $("#map").offset().top});
+        }
+        });
