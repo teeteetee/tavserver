@@ -208,7 +208,7 @@ app.get('/:lang/property/buy', function(req,res){
   if (blang === 'en') {res.render('buy')}
   if (blang === 'ru') {res.render('buyru',{lang : blang})}
   if (blang === 'fr') {res.render('buyfr')}
-  if (blang === 'gr') {res.render('buygr')}
+  if (blang === 'gr') {res.render('buygr',{lang : blang})}
   if (blang === 'sp') {res.render('buysp')}
   if (blang === 'it') {res.render('buyit')} 
 });
