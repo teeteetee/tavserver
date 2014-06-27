@@ -999,8 +999,10 @@ yearnow : vyearnow
 
 //mobile version starts here
 
-app.get('/m',function(req,res){
-  res.render('mindex');
+app.get('/m/',function(req,res){
+  if (req.headers.host === 'm.topandviews.ru') {res.render('mindexru')}
+  if (req.headers.host === 'm.topandviews.com') {res.render('mindex')}
+  if (req.headers.host === 'm.topandviews.co.uk') {res.render('mindex')}  
 });
 
 app.get('/m/:lang/*',function (req,res,next){
