@@ -125,6 +125,127 @@ app.get('/',function(req,res) {
 //        
 //});
 
+//mobile version starts here
+
+app.get('/m/',function(req,res){
+  console.log('got to /m/ section, render depending on req.headers.host');
+  if (req.headers.host === 'm.topandviews.ru') {res.render('mindexru')}
+  if (req.headers.host === 'm.topandviews.com') {res.render('mindex')}
+  if (req.headers.host === 'm.topandviews.co.uk') {res.render('mindex')}  
+});
+
+app.get('/m/:lang/*',function (req,res,next){
+  var checklang = req.params.lang;
+  if (checklang === 'ru' ||checklang ===  'en' ||checklang ===  'sp' ||checklang ===  'fr' ||checklang ===  'gr' ||checklang ===  'it')
+    {next()}
+  else {res.render('my404')}
+});
+
+
+app.get('/m/:lang/geo', function(req,res){
+  var lang = req.params.lang;
+  if (lang === 'ru'){res.render('mgeoru');} 
+   if (lang === 'en'){res.render('mgeo');} 
+   if (lang === 'gr'){res.render('mgeogr');} 
+   if (lang === 'fr'){res.render('mgeofr');} 
+   if (lang === 'sp'){res.render('mgeosp');} 
+   if (lang === 'it'){res.render('mgeoit');} 
+});
+
+app.get('/m/:lang', function(req,res){
+  console.log('got into /m/:lang route')
+   var lang = req.params.lang;
+   if (lang === 'ru'){res.render('mindexru');} 
+   if (lang === 'en'){res.render('mindex');} 
+   if (lang === 'gr'){res.render('blank');} 
+   if (lang === 'fr'){res.render('blank');} 
+   if (lang === 'sp'){res.render('blank');} 
+   if (lang === 'it'){res.render('blank');} 
+});
+
+app.get('/m/:lang/geo/:city', function(req,res){
+    var lang = req.params.lang;
+    var vreqcity = req.params.city;
+    if (vreqcity === 'stpetersburg') {vreqcity = 'St.Petersburg'}
+    if (vreqcity === 'newyork') {vreqcity = 'New York'};
+    if (vreqcity === 'losangeles') {vreqcity = 'Los Angeles'}
+    var absolute = [];
+    var rooftop = [];
+    var terrace = [];
+    var cuisine = [];
+    tops.find({city : vreqcity,toptype : 1}, function(err,firsttypedocs){
+       console.log('got data for absolute');
+         absolute = firsttypedocs;
+         tops.find({city : vreqcity,toptype : 2}, function(err,secondtypedocs){
+            console.log('got data for rooftop');
+              rooftop = secondtypedocs;
+              tops.find({city : vreqcity,toptype : 3}, function(err,thirdtypedocs){
+                   terrace = thirdtypedocs;
+                   tops.find({city : vreqcity,toptype : 4},function(err,fourthtypedocs){
+                        cuisine = fourthtypedocs;
+                     
+                         res.render('mgeoindex', { 'city' : vreqcity , 'first' : absolute , 'second' : rooftop , 'third' : terrace , 'fourth' : cuisine });   
+                   });
+              });
+         });
+
+    });
+
+  
+
+});
+
+app.get('/m/:lang/languages',function (req,res){
+   res.render('mlanguages');
+});
+
+app.get('/m/:lang/places',function (req,res){
+  var lang = req.params.lang;
+   if (lang === 'ru'){res.render('mplacesru');} 
+   if (lang === 'en'){res.render('mplaces');} 
+   if (lang === 'gr'){res.render('mplacesgr');} 
+   if (lang === 'fr'){res.render('mplacesfr');} 
+   if (lang === 'sp'){res.render('mplacessp');} 
+   if (lang === 'it'){res.render('mplacesit');} 
+});
+
+app.get('/m/:lang/property',function (req,res){
+  var lang = req.params.lang;
+   if (lang === 'ru'){res.render('mpropertyru');} 
+   if (lang === 'en'){res.render('mproperty');} 
+   if (lang === 'gr'){res.render('mpropertygr');} 
+   if (lang === 'fr'){res.render('mpropertyfr');} 
+   if (lang === 'sp'){res.render('mpropertysp');} 
+   if (lang === 'it'){res.render('mpropertyit');} 
+});
+
+app.get('/m/:lang/yachtsjets',function (req,res){
+  var lang = req.params.lang;
+   if (lang === 'ru'){res.render('myachtsjetsru');} 
+   if (lang === 'en'){res.render('myachtsjets');} 
+   if (lang === 'gr'){res.render('myachtsjetsgr');} 
+   if (lang === 'fr'){res.render('myachtsjetsfr');} 
+   if (lang === 'sp'){res.render('myachtsjetssp');} 
+   if (lang === 'it'){res.render('myachtsjetsit');} 
+});
+
+app.get('/m/:lang/campuses',function (req,res){
+  var lang = req.params.lang;
+   if (lang === 'ru'){res.render('mcampusesru');} 
+   if (lang === 'en'){res.render('mcampuses');} 
+   if (lang === 'gr'){res.render('mcampusesgr');} 
+   if (lang === 'fr'){res.render('mcampusesfr');} 
+   if (lang === 'sp'){res.render('mcampusessp');} 
+   if (lang === 'it'){res.render('mcampusesit');} 
+});
+
+
+
+
+
+
+//mobile version's end
+
 
 app.get('/:lang/geo', function(req,res){
   var lang = req.params.lang;
@@ -997,126 +1118,7 @@ yearnow : vyearnow
 
 });
 
-//mobile version starts here
 
-app.get('/m/',function(req,res){
-  console.log('got to /m/ section, render depending on req.headers.host');
-  if (req.headers.host === 'm.topandviews.ru') {res.render('mindexru')}
-  if (req.headers.host === 'm.topandviews.com') {res.render('mindex')}
-  if (req.headers.host === 'm.topandviews.co.uk') {res.render('mindex')}  
-});
-
-app.get('/m/:lang/*',function (req,res,next){
-  var checklang = req.params.lang;
-  if (checklang === 'ru' ||checklang ===  'en' ||checklang ===  'sp' ||checklang ===  'fr' ||checklang ===  'gr' ||checklang ===  'it')
-    {next()}
-  else {res.render('my404')}
-});
-
-
-app.get('/m/:lang/geo', function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'ru'){res.render('mgeoru');} 
-   if (lang === 'en'){res.render('mgeo');} 
-   if (lang === 'gr'){res.render('mgeogr');} 
-   if (lang === 'fr'){res.render('mgeofr');} 
-   if (lang === 'sp'){res.render('mgeosp');} 
-   if (lang === 'it'){res.render('mgeoit');} 
-});
-
-app.get('/m/:lang', function(req,res){
-  console.log('got into /m/:lang route')
-   var lang = req.params.lang;
-   if (lang === 'ru'){res.render('mindexru');} 
-   if (lang === 'en'){res.render('mindex');} 
-   if (lang === 'gr'){res.render('blank');} 
-   if (lang === 'fr'){res.render('blank');} 
-   if (lang === 'sp'){res.render('blank');} 
-   if (lang === 'it'){res.render('blank');} 
-});
-
-app.get('/m/:lang/geo/:city', function(req,res){
-    var lang = req.params.lang;
-    var vreqcity = req.params.city;
-    if (vreqcity === 'stpetersburg') {vreqcity = 'St.Petersburg'}
-    if (vreqcity === 'newyork') {vreqcity = 'New York'};
-    if (vreqcity === 'losangeles') {vreqcity = 'Los Angeles'}
-    var absolute = [];
-    var rooftop = [];
-    var terrace = [];
-    var cuisine = [];
-    tops.find({city : vreqcity,toptype : 1}, function(err,firsttypedocs){
-       console.log('got data for absolute');
-         absolute = firsttypedocs;
-         tops.find({city : vreqcity,toptype : 2}, function(err,secondtypedocs){
-            console.log('got data for rooftop');
-              rooftop = secondtypedocs;
-              tops.find({city : vreqcity,toptype : 3}, function(err,thirdtypedocs){
-                   terrace = thirdtypedocs;
-                   tops.find({city : vreqcity,toptype : 4},function(err,fourthtypedocs){
-                        cuisine = fourthtypedocs;
-                     
-                         res.render('mgeoindex', { 'city' : vreqcity , 'first' : absolute , 'second' : rooftop , 'third' : terrace , 'fourth' : cuisine });   
-                   });
-              });
-         });
-
-    });
-
-  
-
-});
-
-app.get('/m/:lang/languages',function (req,res){
-   res.render('mlanguages');
-});
-
-app.get('/m/:lang/places',function (req,res){
-  var lang = req.params.lang;
-   if (lang === 'ru'){res.render('mplacesru');} 
-   if (lang === 'en'){res.render('mplaces');} 
-   if (lang === 'gr'){res.render('mplacesgr');} 
-   if (lang === 'fr'){res.render('mplacesfr');} 
-   if (lang === 'sp'){res.render('mplacessp');} 
-   if (lang === 'it'){res.render('mplacesit');} 
-});
-
-app.get('/m/:lang/property',function (req,res){
-  var lang = req.params.lang;
-   if (lang === 'ru'){res.render('mpropertyru');} 
-   if (lang === 'en'){res.render('mproperty');} 
-   if (lang === 'gr'){res.render('mpropertygr');} 
-   if (lang === 'fr'){res.render('mpropertyfr');} 
-   if (lang === 'sp'){res.render('mpropertysp');} 
-   if (lang === 'it'){res.render('mpropertyit');} 
-});
-
-app.get('/m/:lang/yachtsjets',function (req,res){
-  var lang = req.params.lang;
-   if (lang === 'ru'){res.render('myachtsjetsru');} 
-   if (lang === 'en'){res.render('myachtsjets');} 
-   if (lang === 'gr'){res.render('myachtsjetsgr');} 
-   if (lang === 'fr'){res.render('myachtsjetsfr');} 
-   if (lang === 'sp'){res.render('myachtsjetssp');} 
-   if (lang === 'it'){res.render('myachtsjetsit');} 
-});
-
-app.get('/m/:lang/campuses',function (req,res){
-  var lang = req.params.lang;
-   if (lang === 'ru'){res.render('mcampusesru');} 
-   if (lang === 'en'){res.render('mcampuses');} 
-   if (lang === 'gr'){res.render('mcampusesgr');} 
-   if (lang === 'fr'){res.render('mcampusesfr');} 
-   if (lang === 'sp'){res.render('mcampusessp');} 
-   if (lang === 'it'){res.render('mcampusesit');} 
-});
-
-
-
-
-
-
-//mobile version's end
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
