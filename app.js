@@ -198,7 +198,7 @@ app.get('/:lang/property', function(req,res){
   if (prlang === 'en') {res.render('buystaysell',{lang : prlang})}
   if (prlang === 'ru') {res.render('buystaysellru',{lang : prlang})}
   if (prlang === 'fr') {res.render('buystaysellfr')}
-  if (prlang === 'gr') {res.render('buystaysellgr')}
+  if (prlang === 'gr') {res.render('buystaysellgr',{lang : prlang})}
   if (prlang === 'sp') {res.render('buystaysellsp')}
   if (prlang === 'it') {res.render('buystaysellit')} 
 });
