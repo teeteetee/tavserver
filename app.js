@@ -1000,6 +1000,7 @@ yearnow : vyearnow
 //mobile version starts here
 
 app.get('/m/',function(req,res){
+  console.log('got to /m/ section, render depending on req.headers.host');
   if (req.headers.host === 'm.topandviews.ru') {res.render('mindexru')}
   if (req.headers.host === 'm.topandviews.com') {res.render('mindex')}
   if (req.headers.host === 'm.topandviews.co.uk') {res.render('mindex')}  
