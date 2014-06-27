@@ -184,12 +184,12 @@ app.get('/:lang/partners', function(req,res){
 
 app.get('/:lang/campuses', function(req,res){
   var lang = req.params.lang;
-  if (lang === 'en') {res.render('campuses')}
-  if (lang === 'ru') {res.render('campusesru')}
-  if (lang === 'fr') {res.render('campusesfr')}
-  if (lang === 'gr') {res.render('campusesgr')}
-  if (lang === 'sp') {res.render('campusessp')}
-  if (lang === 'it') {res.render('campusesit')} 
+  if (lang === 'en') {res.render('soon')}
+  if (lang === 'ru') {res.render('soon')}
+  if (lang === 'fr') {res.render('soon')}
+  if (lang === 'gr') {res.render('soon')}
+  if (lang === 'sp') {res.render('soon')}
+  if (lang === 'it') {res.render('soon')} 
 });
 
 
@@ -260,23 +260,23 @@ app.get('/:lang/yachtsjets', function(req,res){
 
 app.get('/:lang/yachts', function(req,res){
   var lang = req.params.lang;
-  if (lang === 'en') {res.render('yachts')}
-  if (lang === 'ru') {res.render('yachtsru')}
-  if (lang === 'fr') {res.render('yachtsfr')}
-  if (lang === 'gr') {res.render('yachtsgr')}
-  if (lang === 'sp') {res.render('yachtssp')}
-  if (lang === 'it') {res.render('yachtsit')} 
+  if (lang === 'en') {res.render('soon')}
+  if (lang === 'ru') {res.render('soon')}
+  if (lang === 'fr') {res.render('soon')}
+  if (lang === 'gr') {res.render('soon')}
+  if (lang === 'sp') {res.render('soon')}
+  if (lang === 'it') {res.render('soon')} 
 });
 
 
 app.get('/:lang/jets', function(req,res){
   var lang = req.params.lang;
-  if (lang === 'en') {res.render('jets')}
-  if (lang === 'ru') {res.render('jetsru')}
-  if (lang === 'fr') {res.render('jetsfr')}
-  if (lang === 'gr') {res.render('jetsgr')}
-  if (lang === 'sp') {res.render('jetssp')}
-  if (lang === 'it') {res.render('jetsit')} 
+  if (lang === 'en') {res.render('soon')}
+  if (lang === 'ru') {res.render('soon')}
+  if (lang === 'fr') {res.render('soon')}
+  if (lang === 'gr') {res.render('soon')}
+  if (lang === 'sp') {res.render('soon')}
+  if (lang === 'it') {res.render('soon')} 
 });
 
 app.get('/admin', function(req,res) {
@@ -1061,6 +1061,10 @@ app.get('/m/:lang/geo/:city', function(req,res){
 
   
 
+});
+
+app.get('/m/:lang/languages',function (req,res){
+   {res.render('mlanguages');} 
 });
 
 app.get('/m/:lang/places',function (req,res){
