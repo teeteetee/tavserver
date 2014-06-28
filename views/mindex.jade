@@ -46,35 +46,43 @@ head
       #showmap {
       cursor:pointer;
       }
+      .border {
+      background-color:#gray
+      height:0.3vh
+      }
   body
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
     .container
-      .row.bb
+      .row
         a(href='/geo')
           .col-xs-12
             h2(style='color: #c35402;') Your city
-      .row.bb
+      .row.border
+      .row
         a(href='/places')
           .col-xs-12
             h2 Places
-      .row.bb
+      .row.border
+      .row
         a(href='/property')
           .col-xs-12
             h2 Property & Hotels
-      .row.bb
+      .row.border      
+      .row
         a(href='/yachtsjets')
           .col-xs-12
             h2 Yachts & Jets
-      .row.bb
+      .row.border      
+      .row
         a(href='/campuses')
           .col-xs-12
-            h2 Campuses
-      #showmap.row.bb
+            h2 Campuses      
+      #showmap.row
         .col-xs-12
           h2 On map
       #map.row(style='display: none;')
         #mapitself.col-xs-12(style='margin: 0px; width: 100%; padding: 0px; height: 100vh; border-top: 0.3vw solid #333; border-bottom: 0.3vw solid #333;')
-      #language.row.bb
+      #language.row
         a(href='/languages')
           .col-xs-3(style='border-right: 0.3vh solid #ddd;')
             h2(style='font-size: 10vh; color: white;') Eng
