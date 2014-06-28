@@ -173,24 +173,23 @@ head
     .container
       script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
       #propertyhotels.row.bb.fivemargin
-        .col-xs-2
-          a(href='/')
-            span.glyphicon.glyphicon-chevron-left(style='color: #ddd; font-size: 5vw; margin: 1vw;')
-        .col-xs-10(style='text-align: center;')
-          a(href='/')
-            h5(style='Display: inline;') Property & Hotels
+        a(href='/#{lang}')
+          .col-xs-1
+              span.glyphicon.glyphicon-chevron-left(style='color: #ddd; font-size: 5vw; margin: 1vw;')
+          .col-xs-11(style='text-align: center;')
+              h5(style='Display: inline;') Immobilien & Hotels
       #propertytype.row.fivemargin
         #buy.col-xs-4(style='border-right: 0.3vw solid #ddd;')
-          a(href='/property/buy')
+          a(href='/de/property/buy')
             h2(style='color: gray;') Kaufen
         #stay.col-xs-4(style='border-right: 0.3vw solid #ddd;')
-          a(href='/property/stay')
+          a(href='/de/property/stay')
             h2(style='color: gray;')
               | Pachten
               span.gray \
               | Hotels
         #sell.col-xs-4
-          a(href='/property/sell')
+          a(href='/de/property/sell')
             h2(style='color: gray;') Verkaufen
       #search.row.sixmargin
         .col-xs-12(style='padding: 0px;')
@@ -272,7 +271,7 @@ head
             #mapitself.col-xs-12(style='border-top: 0.3vw solid #333; border-bottom: 0.3vw solid #333; margin: 0px; padding: 0px; height: 100vh;')
       #footer.row.bt.fivemargin
         .col-xs-12(style='text-align: center;')
-          a(style='color: gray;', href='/')
+          a(style='color: gray;', href='/de')
             h4(style='font-weight: lighter;') Top and views.
     //
        jQuery (necessary for Bootstrap's JavaScript plugins) 

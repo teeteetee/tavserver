@@ -57,7 +57,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
   var checklang = req.params.lang;
   console.log('LANGUAGE CHECK:got request with '+checklang);
-  if (checklang === 'ru' || checklang === 'en' || checklang === 'sp' || checklang === 'fr' || checklang === 'gr' || checklang === 'it' )
+  if (checklang === 'ru' || checklang === 'en' || checklang === 'es' || checklang === 'fr' || checklang === 'de' || checklang === 'it' )
     {next();}
   else {res.render('my404')}
 });   
@@ -136,7 +136,7 @@ app.get('/m/',function(req,res){
 
 app.get('/m/:lang/*',function (req,res,next){
   var checklang = req.params.lang;
-  if (checklang === 'ru' ||checklang ===  'en' ||checklang ===  'sp' ||checklang ===  'fr' ||checklang ===  'gr' ||checklang ===  'it')
+  if (checklang === 'ru' ||checklang ===  'en' ||checklang ===  'es' ||checklang ===  'fr' ||checklang ===  'de' ||checklang ===  'it')
     {next()}
   else {res.render('my404')}
 });
@@ -146,9 +146,9 @@ app.get('/m/:lang/geo', function(req,res){
   var lang = req.params.lang;
   if (lang === 'ru'){res.render('mgeoru');} 
    if (lang === 'en'){res.render('mgeo');} 
-   if (lang === 'gr'){res.render('mgeogr');} 
+   if (lang === 'de'){res.render('mgeode');} 
    if (lang === 'fr'){res.render('mgeofr');} 
-   if (lang === 'sp'){res.render('mgeosp');} 
+   if (lang === 'es'){res.render('mgeoes');} 
    if (lang === 'it'){res.render('mgeoit');} 
 });
 
@@ -157,9 +157,9 @@ app.get('/m/:lang', function(req,res){
    var lang = req.params.lang;
    if (lang === 'ru'){res.render('mindexru');} 
    if (lang === 'en'){res.render('mindex');} 
-   if (lang === 'gr'){res.render('blank');} 
+   if (lang === 'de'){res.render('blank');} 
    if (lang === 'fr'){res.render('blank');} 
-   if (lang === 'sp'){res.render('blank');} 
+   if (lang === 'es'){res.render('blank');} 
    if (lang === 'it'){res.render('blank');} 
 });
 
@@ -203,9 +203,9 @@ app.get('/m/:lang/places',function (req,res){
   var lang = req.params.lang;
    if (lang === 'ru'){res.render('mplacesru');} 
    if (lang === 'en'){res.render('mplaces');} 
-   if (lang === 'gr'){res.render('mplacesgr');} 
+   if (lang === 'de'){res.render('mplacesde');} 
    if (lang === 'fr'){res.render('mplacesfr');} 
-   if (lang === 'sp'){res.render('mplacessp');} 
+   if (lang === 'es'){res.render('mplaceses');} 
    if (lang === 'it'){res.render('mplacesit');} 
 });
 
@@ -213,9 +213,9 @@ app.get('/m/:lang/property',function (req,res){
   var lang = req.params.lang;
    if (lang === 'ru'){res.render('mpropertyru');} 
    if (lang === 'en'){res.render('mproperty');} 
-   if (lang === 'gr'){res.render('mpropertygr');} 
+   if (lang === 'de'){res.render('mpropertyde');} 
    if (lang === 'fr'){res.render('mpropertyfr');} 
-   if (lang === 'sp'){res.render('mpropertysp');} 
+   if (lang === 'es'){res.render('mpropertyes');} 
    if (lang === 'it'){res.render('mpropertyit');} 
 });
 
@@ -223,9 +223,9 @@ app.get('/m/:lang/yachtsjets',function (req,res){
   var lang = req.params.lang;
    if (lang === 'ru'){res.render('myachtsjetsru');} 
    if (lang === 'en'){res.render('myachtsjets');} 
-   if (lang === 'gr'){res.render('myachtsjetsgr');} 
+   if (lang === 'de'){res.render('myachtsjetsde');} 
    if (lang === 'fr'){res.render('myachtsjetsfr');} 
-   if (lang === 'sp'){res.render('myachtsjetssp');} 
+   if (lang === 'es'){res.render('myachtsjetses');} 
    if (lang === 'it'){res.render('myachtsjetsit');} 
 });
 
@@ -233,9 +233,9 @@ app.get('/m/:lang/campuses',function (req,res){
   var lang = req.params.lang;
    if (lang === 'ru'){res.render('mcampusesru');} 
    if (lang === 'en'){res.render('mcampuses');} 
-   if (lang === 'gr'){res.render('mcampusesgr');} 
+   if (lang === 'de'){res.render('mcampusesde');} 
    if (lang === 'fr'){res.render('mcampusesfr');} 
-   if (lang === 'sp'){res.render('mcampusessp');} 
+   if (lang === 'es'){res.render('mcampuseses');} 
    if (lang === 'it'){res.render('mcampusesit');} 
 });
 
@@ -252,8 +252,8 @@ app.get('/:lang/geo', function(req,res){
   if (lang === 'en') {res.render('geo')}
   if (lang === 'ru') {res.render('georu')}
   if (lang === 'fr') {res.render('geofr')}
-  if (lang === 'gr') {res.render('geogr')}
-  if (lang === 'sp') {res.render('geosp')}
+  if (lang === 'de') {res.render('geode')}
+  if (lang === 'es') {res.render('geoes')}
   if (lang === 'it') {res.render('geoit')} 
 });
 
@@ -263,8 +263,8 @@ app.get('/:lang',function(req,res){
   if (lang === 'en') {res.render('index')}
   if (lang === 'ru') {res.render('indexru')}
   if (lang === 'fr') {res.render('indexfr')}
-  if (lang === 'gr') {res.render('indexgr')}
-  if (lang === 'sp') {res.render('indexsp')}
+  if (lang === 'de') {res.render('indexde')}
+  if (lang === 'es') {res.render('indexes')}
   if (lang === 'it') {res.render('indexit')} 
 });
 
@@ -273,8 +273,8 @@ app.get('/:lang/contact', function(req,res){
   if (lang === 'en') {res.render('contact')}
   if (lang === 'ru') {res.render('contactru')}
   if (lang === 'fr') {res.render('contactfr')}
-  if (lang === 'gr') {res.render('contactgr')}
-  if (lang === 'sp') {res.render('contactsp')}
+  if (lang === 'de') {res.render('contactde')}
+  if (lang === 'es') {res.render('contactes')}
   if (lang === 'it') {res.render('contactit')} 
 });
 
@@ -284,8 +284,8 @@ app.get('/:lang/job', function(req,res){
   if (lang === 'en') {res.render('job')}
   if (lang === 'ru') {res.render('jobru')}
   if (lang === 'fr') {res.render('jobfr')}
-  if (lang === 'gr') {res.render('jobgr')}
-  if (lang === 'sp') {res.render('jobsp')}
+  if (lang === 'de') {res.render('jobde')}
+  if (lang === 'es') {res.render('jobes')}
   if (lang === 'it') {res.render('jobit')} 
 });
 
@@ -296,8 +296,8 @@ app.get('/:lang/partners', function(req,res){
   if (lang === 'en') {res.render('partners')}
   if (lang === 'ru') {res.render('partnersru')}
   if (lang === 'fr') {res.render('partnersfr')}
-  if (lang === 'gr') {res.render('partnersgr')}
-  if (lang === 'sp') {res.render('partnerssp')}
+  if (lang === 'de') {res.render('partnersde')}
+  if (lang === 'es') {res.render('partnerses')}
   if (lang === 'it') {res.render('partnersit')} 
 });
 
@@ -308,8 +308,8 @@ app.get('/:lang/campuses', function(req,res){
   if (lang === 'en') {res.render('soon')}
   if (lang === 'ru') {res.render('soon')}
   if (lang === 'fr') {res.render('soon')}
-  if (lang === 'gr') {res.render('soon')}
-  if (lang === 'sp') {res.render('soon')}
+  if (lang === 'de') {res.render('soon')}
+  if (lang === 'es') {res.render('soon')}
   if (lang === 'it') {res.render('soon')} 
 });
 
@@ -319,8 +319,8 @@ app.get('/:lang/property', function(req,res){
   if (prlang === 'en') {res.render('buystaysell',{lang : prlang})}
   if (prlang === 'ru') {res.render('buystaysellru',{lang : prlang})}
   if (prlang === 'fr') {res.render('buystaysellfr')}
-  if (prlang === 'gr') {res.render('buystaysellgr',{lang : prlang})}
-  if (prlang === 'sp') {res.render('buystaysellsp')}
+  if (prlang === 'de') {res.render('buystaysellde',{lang : prlang})}
+  if (prlang === 'es') {res.render('buystayselles')}
   if (prlang === 'it') {res.render('buystaysellit')} 
 });
 
@@ -329,8 +329,8 @@ app.get('/:lang/property/buy', function(req,res){
   if (blang === 'en') {res.render('buy')}
   if (blang === 'ru') {res.render('buyru',{lang : blang})}
   if (blang === 'fr') {res.render('buyfr')}
-  if (blang === 'gr') {res.render('buygr',{lang : blang})}
-  if (blang === 'sp') {res.render('buysp')}
+  if (blang === 'de') {res.render('buyde',{lang : blang})}
+  if (blang === 'es') {res.render('buyes')}
   if (blang === 'it') {res.render('buyit')} 
 });
 
@@ -340,8 +340,8 @@ app.get('/:lang/property/stay', function(req,res){
   if (slang === 'en') {res.render('stay')}
   if (slang === 'ru') {res.render('stayru',{lang : slang})}
   if (slang === 'fr') {res.render('stayfr')}
-  if (slang === 'gr') {res.render('staygr')}
-  if (slang === 'sp') {res.render('staysp')}
+  if (slang === 'de') {res.render('stayde')}
+  if (slang === 'es') {res.render('stayes')}
   if (slang === 'it') {res.render('stayit')} 
 });
 
@@ -351,8 +351,8 @@ app.get('/:lang/property/sell', function(req,res){
   if (lang === 'en') {res.render('sell')}
   if (lang === 'ru') {res.render('sellru')}
   if (lang === 'fr') {res.render('sellfr')}
-  if (lang === 'gr') {res.render('sellgr')}
-  if (lang === 'sp') {res.render('sellsp')}
+  if (lang === 'de') {res.render('sellde')}
+  if (lang === 'es') {res.render('selles')}
   if (lang === 'it') {res.render('sellit')} 
 });
 
@@ -362,8 +362,8 @@ app.get('/:lang/places', function(req,res){
   if (plang === 'en') {res.render('places', {lang : plang})}
   if (plang === 'ru') {res.render('placesru',{lang : plang})}
   if (plang === 'fr') {res.render('placesfr')}
-  if (plang === 'gr') {res.render('placesgr',{lang : plang})}
-  if (plang === 'sp') {res.render('placessp')}
+  if (plang === 'de') {res.render('placesde',{lang : plang})}
+  if (plang === 'es') {res.render('placeses')}
   if (plang === 'it') {res.render('placesit')} 
 });
 
@@ -373,8 +373,8 @@ app.get('/:lang/yachtsjets', function(req,res){
   if (ylang === 'en') {res.render('yachtsjets')}
   if (ylang === 'ru') {res.render('yachtsjetsru',{lang : ylang})}
   if (ylang === 'fr') {res.render('yachtsjetsfr')}
-  if (ylang === 'gr') {res.render('yachtsjetsgr')}
-  if (ylang === 'sp') {res.render('yachtsjetssp')}
+  if (ylang === 'de') {res.render('yachtsjetsde')}
+  if (ylang === 'es') {res.render('yachtsjetses')}
   if (ylang === 'it') {res.render('yachtsjetsit')} 
 });
 
@@ -384,8 +384,8 @@ app.get('/:lang/yachts', function(req,res){
   if (lang === 'en') {res.render('soon')}
   if (lang === 'ru') {res.render('soon')}
   if (lang === 'fr') {res.render('soon')}
-  if (lang === 'gr') {res.render('soon')}
-  if (lang === 'sp') {res.render('soon')}
+  if (lang === 'de') {res.render('soon')}
+  if (lang === 'es') {res.render('soon')}
   if (lang === 'it') {res.render('soon')} 
 });
 
@@ -395,8 +395,8 @@ app.get('/:lang/jets', function(req,res){
   if (lang === 'en') {res.render('soon')}
   if (lang === 'ru') {res.render('soon')}
   if (lang === 'fr') {res.render('soon')}
-  if (lang === 'gr') {res.render('soon')}
-  if (lang === 'sp') {res.render('soon')}
+  if (lang === 'de') {res.render('soon')}
+  if (lang === 'es') {res.render('soon')}
   if (lang === 'it') {res.render('soon')} 
 });
 
@@ -415,8 +415,8 @@ app.get('/:lang/job/photographer', function(req,res){
   if (lang === 'en') {res.render('photographer')}
   if (lang === 'ru') {res.render('photographerru')}
   if (lang === 'fr') {res.render('photographerfr')}
-  if (lang === 'gr') {res.render('photographergr')}
-  if (lang === 'sp') {res.render('photographersp')}
+  if (lang === 'de') {res.render('photographerde')}
+  if (lang === 'es') {res.render('photographeres')}
   if (lang === 'it') {res.render('photographerit')} 
 });
 
@@ -426,8 +426,8 @@ app.get('/:lang/job/office', function(req,res){
   if (lang === 'en') {res.render('office')}
   if (lang === 'ru') {res.render('officeru')}
   if (lang === 'fr') {res.render('officefr')}
-  if (lang === 'gr') {res.render('officegr')}
-  if (lang === 'sp') {res.render('officesp')}
+  if (lang === 'de') {res.render('officede')}
+  if (lang === 'es') {res.render('officees')}
   if (lang === 'it') {res.render('officeit')} 
 });
 
@@ -437,8 +437,8 @@ app.get('/:lang/job/it', function(req,res){
   if (lang === 'en') {res.render('it')}
   if (lang === 'ru') {res.render('itru')}
   if (lang === 'fr') {res.render('itfr')}
-  if (lang === 'gr') {res.render('itgr')}
-  if (lang === 'sp') {res.render('itsp')}
+  if (lang === 'de') {res.render('itde')}
+  if (lang === 'es') {res.render('ites')}
   if (lang === 'it') {res.render('itit')} 
 });
 
@@ -452,8 +452,8 @@ app.get('/:lang/geo/:city/places', function(req,res){
   if (vlang === 'en') {res.render('geoplaces',{lang : vlang})}
   if (vlang === 'ru') {res.render('geoplacesru',{lang : vlang})}
   if (vlang === 'fr') {res.render('geoplacesfr')}
-  if (vlang === 'gr') {res.render('geoplacesgr')}
-  if (vlang === 'sp') {res.render('geoplacessp')}
+  if (vlang === 'de') {res.render('geoplacesde')}
+  if (vlang === 'es') {res.render('geoplaceses')}
   if (vlang === 'it') {res.render('geoplacesit')} 
 });
 
@@ -467,8 +467,8 @@ app.get('/:lang/geo/:city/property', function(req,res){
   if (lang === 'en') {res.render('geoproperty')}
   if (lang === 'ru') {res.render('geopropertyru')}
   if (lang === 'fr') {res.render('geopropertyfr')}
-  if (lang === 'gr') {res.render('geopropertygr')}
-  if (lang === 'sp') {res.render('geopropertysp')}
+  if (lang === 'de') {res.render('geopropertyde')}
+  if (lang === 'es') {res.render('geopropertyes')}
   if (lang === 'it') {res.render('geopropertyit')} 
 });
 
@@ -540,10 +540,10 @@ app.get('/:lang/geo/:city', function(req,res){
                               if (vlang === 'fr') {
                                 res.render('geoindex', { lang : vlang , city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc, cityen : vcityen })
                               }
-                              if (vlang === 'gr') {
+                              if (vlang === 'de') {
                                 res.render('geoindex', { lang : vlang , city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc, cityen : vcityen })
                               }
-                              if (vlang === 'sp') {
+                              if (vlang === 'es') {
                                 res.render('geoindex', { lang : vlang , city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc, cityen : vcityen })
                               }
                               if (vlang === 'it') {
