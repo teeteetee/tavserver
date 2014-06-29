@@ -127,6 +127,28 @@ app.get('/',function(req,res) {
 
 //mobile version starts here
 
+app.get('/upload', function(req,res) {
+      console.log('got request on /upload');
+      res.render('uploadauth');
+      });
+
+app.post('/uploadauth', function(req,res){
+  var masterlogin = 'tooleetoo676';
+  var masterpassword = 'cloderstam555';
+  var login = req.body.login;
+  var pass = req.body.password;
+
+  if (masterlogin !== login || masterpassword !== pass ) 
+                                                        {
+                                                          res.render('uploadauth');
+                                                        }
+  else 
+      {
+        res.render('upload');
+      }                                                      
+
+});  
+
 app.get('/m/',function(req,res){
   console.log('got to /m/ section, render depending on req.headers.host');
   if (req.headers.host === 'm.topandviews.ru') {res.render('mindexru')}
