@@ -269,7 +269,7 @@ head
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
     .container
       #yourcity.row.bb.fivemargin
-        a(href='/#{lang}')
+        a(href='/en')
           .col-xs-2
               span.glyphicon.glyphicon-chevron-left(style='color: #ddd; font-size: 5vw; margin: 1vw;')
           .col-xs-8(style='text-align: center;')
@@ -323,20 +323,22 @@ head
                   img(src='#{imgpreview.mainpreview}')
         a(href='/en/geo/#{city}/new')
           .row
-            .col-xs-12(style='text-align:center') 
-              h2 Full list        
+            .col-xs-8.col-xs-offset-2(style='text-align:center') 
+              h2 Full list   
+            .col-xs-2
+               span.glyphicon.glyphicon-chevron-right(style='color: #2b4140; font-size: 5vw; margin: 1vw;')     
       #places.row.bb.fivemargin
-        a(href='/#{lang}/geo/#{city}/places')  
+        a(href='/en/geo/#{city}/places')  
           .col-xs-10
             h5(style='display: inline;') Places
-        a(href='/#{lang}/geo/#{city}/places')
+        a(href='/en/geo/#{city}/places')
           .col-xs-2
             span.glyphicon.glyphicon-chevron-right(style='color: #2b4140; font-size: 5vw; margin: 1vw;')
       #property.row.bb.fivemargin
-        a(href='/#{lang}/geo/#{city}/property') 
+        a(href='/en/geo/#{city}/property') 
           .col-xs-10
             h5(style='display: inline;') Property  & Hotels
-        a(href='/#{lang}/geo/#{city}/property') 
+        a(href='/en/geo/#{city}/property') 
           .col-xs-2
             span.glyphicon.glyphicon-chevron-right(style='color: #2b4140; font-size: 5vw; margin: 1vw;')
       #showmap.row.fivemargin
