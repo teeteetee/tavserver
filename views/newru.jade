@@ -13,7 +13,7 @@ head
      :css
       @font-face {
       font-family:skinny;
-      src: url('/bootstrap/fonts/CODElight.otf');
+      src: url('/bootstrap/fonts/Intro-Thin-Caps.ttf');
       }
       @font-face {
       font-family:this;
@@ -78,11 +78,11 @@ head
     .container
       script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
       #places.row.bb.fivemargin
-        a(href='/en/geo/#{city}')
+        a(href='/ru/geo/#{city}')
           .col-xs-2
             span.glyphicon.glyphicon-chevron-left(style='color: #ddd; font-size: 5vw; margin: 1vw;')
           .col-xs-8(style='text-align: center;')
-            h5(style='Display: inline;') New
+            h5(style='Display: inline;') Новые
       #newblock.row.sixmargin
         .col-xs-12
           each imgpreview, i in news
