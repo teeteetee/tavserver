@@ -157,7 +157,7 @@ app.get('/m/:lang', function(req,res){
    var lang = req.params.lang;
    if (lang === 'ru'){res.render('mindexru');} 
    if (lang === 'en'){res.render('mindex');} 
-   if (lang === 'de'){res.render('blank');} 
+   if (lang === 'de'){res.render('mindexde');} 
    if (lang === 'fr'){res.render('blank');} 
    if (lang === 'es'){res.render('blank');} 
    if (lang === 'it'){res.render('blank');} 
