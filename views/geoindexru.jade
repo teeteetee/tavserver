@@ -226,6 +226,9 @@ head
       background-color:#99cc99;
       display:none;
       }
+      #fulllist {
+      background-color:#6AAE6A;
+      }
       img {
       width:100%;
       }
@@ -325,6 +328,12 @@ head
                   h1 #{imgpreview.nameen}
               .col-xs-12
                   img(src='#{imgpreview.mainpreview}')
+        a(href='/en/geo/#{city}/new')
+          .row#fulllist
+            .col-xs-8.col-xs-offset-2(style='text-align:center') 
+              h2 Еще   
+            .col-xs-2
+               span.glyphicon.glyphicon-chevron-right(style='color: #2b4140; font-size: 5vw; margin: 1vw;')          
       #places.row.bb.fivemargin
         a(href='/#{lang}/geo/#{cityen}/places')  
           .col-xs-11
