@@ -568,8 +568,8 @@ app.get('/:lang/geo/:city/new', function(req,res){
 
    places.find({city : ncity}, {sort: {yearnow: -1}},function(err,newdoc) {
        
-  if (nlang === 'en') {res.render('new',{city : ncity,news : newdoc,lang : nlang})}
-  if (nlang === 'ru') {res.render('newru')}
+  if (nlang === 'en') {res.render('new',{city : ncity,news : newdoc})}
+  if (nlang === 'ru') {res.render('newru',{city : ncity,news : newdoc})}
   if (nlang === 'fr') {res.render('newfr')}
   if (nlang === 'de') {res.render('newde')}
   if (nlang === 'es') {res.render('newes')}
