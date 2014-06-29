@@ -562,6 +562,22 @@ app.get('/:lang/geo/:city', function(req,res){
 
 });
 
+app.get('/:lang/geo/:city/new', function(req,res){
+   var nlang = req.params.lang;
+   var ncity = req.params.city;
+
+   places.find({city : ncity}, {sort: {yearnow: -1},function(err,newdoc) {
+       
+  if (lang === 'en') {res.render('new',{city : ncity,news : newdoc})}
+  if (lang === 'ru') {res.render('newru')}
+  if (lang === 'fr') {res.render('newfr')}
+  if (lang === 'de') {res.render('newde')}
+  if (lang === 'es') {res.render('newes')}
+  if (lang === 'it') {res.render('newit')} 
+
+   });
+});
+
 app.post('/property/buy', function(req,res){
   var vflat = req.body.flat;
   var vpenthouse = req.body.penthouse;
