@@ -520,6 +520,7 @@ app.get('/:lang/geo/:city', function(req,res){
                      
                          places.find({city : vreqcity, type : 'mealdrink'},{limit:5, sort :{_id:-1}},function(err,newdocs) {
                                newdoc = newdocs ; 
+                               
 
                               if (vlang === 'en') {
                                 if (vreqcity === 'newyork') {vreqcity = 'New York'};
@@ -566,12 +567,17 @@ app.get('/:lang/geo/:city/new', function(req,res){
    var nlang = req.params.lang;
    var ncity = req.params.city;
 
-   places.find({city : ncity}, {sort: {yearnow: -1}},function(err,newdoc) {
+   places.find({city : ncity}, {sort: {yearnow: -1}},function(err,newdoc).limit(0) {
        
-  if (nlang === 'en') {res.render('new',{city : ncity,news : newdoc})}
-  if (nlang === 'ru') {res.render('newru',{city : ncity,news : newdoc})}
+       var nnmbr ;
+       newdoc.count(function(error, nbDocs) {
+        nnmbr = nbDocs;
+       });
+
+  if (nlang === 'en') {res.render('new',{city : ncity,news : newdoc,pnumber : nnmbr})}
+  if (nlang === 'ru') {res.render('newru',{city : ncity,news : newdoc,pnumber : nnmbr})}
   if (nlang === 'fr') {res.render('newfr')}
-  if (nlang === 'de') {res.render('newde')}
+  if (nlang === 'de') {res.render('newde',{city : ncity,news : newdoc,pnumber : nnmbr})}
   if (nlang === 'es') {res.render('newes')}
   if (nlang === 'it') {res.render('newit')} 
 

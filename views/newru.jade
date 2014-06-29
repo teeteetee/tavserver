@@ -34,13 +34,6 @@ head
       margin:0px;
       padding:0px;
       }
-      h1 {
-      font-family:skinny;
-      font-size:11vw;
-      color:#333;
-      padding:0px;
-      text-shadow: 0px 0px 2px rgba(150, 150, 150, 1);
-      }
       h5 {
       font-family:skinny;
       font-size:7vw;
@@ -56,6 +49,14 @@ head
       color:white;
       font-weight:100;
       display:inline;
+      }
+      h2 {
+      font-family:this;
+      margin-top:1vw;
+      margin-bottom:1vw;
+      font-size:4vw;
+      color:#333;
+      font-weight:100;
       }
       .fivemargin {
       margin-right:5vw;
@@ -77,12 +78,15 @@ head
       body
     .container
       script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
-      #places.row.bb.fivemargin
+      #header.row.bb.fivemargin
         a(href='/ru/geo/#{city}')
           .col-xs-2
             span.glyphicon.glyphicon-chevron-left(style='color: #ddd; font-size: 5vw; margin: 1vw;')
           .col-xs-8(style='text-align: center;')
             h5(style='Display: inline;') Новые
+      #items.row.sixmargin
+        .col-xs-12(style='text-align:center')
+          h2 #{pnumber} за последние 3 месяца
       #newblock.row.sixmargin
         .col-xs-12
           each imgpreview, i in news
