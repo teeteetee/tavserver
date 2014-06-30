@@ -4,7 +4,7 @@ head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    title Upload page
+    title Admin
     //
        Bootstrap 
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
@@ -17,16 +17,10 @@ head
       script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
     style
      :css
-      @font-face {
-      font-family:code;
-      src: url('/bootstrap/fonts/CODElight.otf');
-      }
       body {
-      background-color:#102f3a;
-      min-width:480px;
+      background-color:#333;
       }
       h5 {
-      font-family:code;
       font-size:8vw;
       padding:0px;
       }
@@ -54,26 +48,17 @@ head
       padding-bottom:5px;
       }
       label {
-      color: #ddd;
+      color: #333;
       }
       .col-xs-8 {
       padding-top:20px;
       }
+      .col-xs-12 {
+      padding:0px;
+      }
       #header {
-      background-color:#336666;
-      border-bottom:1px solid white;
       text-align:center;
-      }
-      #fields {
-      padding-top:20px;
-      padding-bottom:30px;
-      padding-left:10px;
-      padding-right:10px;
-      }
-      button {
-      margin-left:28.2vw;
-      margin-top:50px;
-      margin-bottom:50px;
+      background-color:white;
       }
       #jsonfield {
       background-color:#ddd;
@@ -81,133 +66,232 @@ head
       border-radius:6px;
       min-height:500px;
       }
-      #inform {
-      padding-top:20px;
-      border-bottom:1px solid gray;
-      }
       .form-group {
-      border-top:1px solid gray;
       padding-top:5px;
+      }
+      input[type=checkbox ] {
+      margin:5px;
+      }
+      .form-control {
+      border-radius:0px;
+      border:1px solid #333;
+      margin-bottom:5px;
+      }
+      #one {
+      background-color:#F76164
+      }
+      #two {
+      background-color:#F29452
+      }
+      #three {
+      background-color:#F2C670
+      }
+      #four {
+      background-color:#87C5E5
+      }
+      .zerop {
+      padding:1vw;
+      }
+      p {
+      border-top:1px solid white;
+      margin-bottom:13px;
+      }
+      .btn-lg {
+      border-radius:0px;
+      border:5px solid white;
+      font-size:8vw;
+      color:#c35;
+      background-color:gray;
+      margin-top:2vw;
+      margin-bottom:2vw;
+      }
+      #choice {
+      text-align:center;
+      }
+      h4 {
+      color:white;
       }
   body
     .container
       #header.row
         .col-xs-12
-          h5(style='color: #ddd;')  Upload page
+          h5  UPLOAD 
+      #choice.row
+        .col-xs-6.zerop
+          h4(style='color: #c35;') PLACE
+        a(href='upload/property')
+          .col-xs-6.zerop
+            h4 PROPERTY
       #fields.row
         .col-xs-12
           form(style='text-align: left;', role='form', action='/upload', method='post', enctype='multipart/form-data')
-            #inform.row
-              .col-xs-6
-                .form-group
-                  label(for='placename')  Placename (for db ,start lower case) 
-                  input#placename.form-control(type='text', name='placename')
-                .form-group
-                  label(for='nameru') Name rus (for web,start upper case)  
-                  input#nameru.form-control(type='text', name='nameru')
-                .form-group
-                  label(for='nameen')  Name eng (for web,start upper case) 
-                  input#nameen.form-control(type='text', name='nameen')
-                .form-group
-                  label(for='telephone')  Telephone 
-                  input#telephone.form-control(type='text', name='telephone')
-                .form-group
-                  label(for='www')  Web page  
-                  input#www.form-control(type='text', name='www')
-                .form-group
-                  label(for='ppredir')  Ppredir  
-                  input#ppredir.form-control(type='text', name='ppredir')
-                .form-group
-                  label(for='cigars')  Cigars ?  
-                  input#cigars.form-control(type='checkbox', name='cigars')
-                .form-group
-                  label(for='shisha')  Shisha ?  
-                  input#shisha.form-control(type='checkbox', name='shisha')
-                .form-group
-                  label(for='workinghours')  Workinghours  
-                  input#workinghours.form-control(type='text', name='workinghours')
-                .form-group
-                  label(for='textru')  Text rus  
-                  input#textru.form-control(type='text', name='textru')
-                .form-group
-                  label(for='texten')  Text eng  
-                  input#texten.form-control(type='text', name='texten')
-                .form-group
-                  label(for='blankbool')  Blank ? 
-                  input#blankbool.form-control(type='checkbox', name='blankbool')
-                .form-group
-                  label(for='blanktextru')  Blanktext rus  
-                  input#blanktextru.form-control(type='text', name='blanktextru')
-                .form-group
-                  label(for='blanktexten')  Blanktext eng 
-                  input#blanktexten.form-control(type='text', name='blanktexten')
-              .col-xs-6
-                .form-group
-                  label(for='fid')  Fotographer id  
-                  input#fid.form-control(type='text', name='fid')
-                .form-group
-                  label(for='oid')  Object id  
-                  input#oid.form-control(type='text', name='oid')  
-                .form-group
-                  label(for='topbool')  Top   
-                  input#topbool.form-control(type='checkbox', name='topbool')
-                .form-group
-                  label(for='toptype')  Top type  
-                  select#toptype.form-control(name='toptype')
-                    option(value='')
-                    option(value='1') Absolute
-                    option(value='2') Rooftop
-                    option(value='3') Terrace
-                    option(value='4') Cuisine
-                .form-group
-                  label(for='city')  City  
-                  input#city.form-control(type='text', name='city')
-                .form-group
-                  label(for='country')  Country  
-                  input#country.form-control(type='text', name='country')
-                .form-group
-                  label(for='yearnow')  Year now  
-                  input#yearnow.form-control(type='text', name='yearnow')
-                .form-group
-                  label(for='yearfounded')  Year founded  
-                  input#yearfounded.form-control(type='text', name='yearfounded')
-                .form-group
-                  label(for='kind')  Kind  
-                  select#kind.form-control(name='kind')
-                    option(value='')
-                    option(value='property') Property
-                    option(value='place') Place
-                .form-group
-                  label(for='sort')  Sort  
-                  input#sort.form-control(type='text', name='sort')
-                .form-group
-                  label(for='1side')  1 side 
-                  input#1side.from-control(type='file', name='1side')
-                .form-group
-                  label(for='2side')  2 side
-                  input#2side.from-control(type='file', name='2side')
-                .form-group
-                  label(for='3side')  3 side
-                  input#3side.from-control(type='file', name='3side')
-                .form-group
-                  label(for='4side')  4 side
-                  input#4side.from-control(type='file', name='4side')
-                .form-group
-                  label(for='5side')  5 side
-                  input#5side.from-control(type='file', name='5side')
-                .form-group
-                  label(for='6side')  6 side
-                  input#6side.from-control(type='file', name='6side')
-                .form-group
-                  label(for='mainpreview')  Mainpreview
-                  input#mainpreview.from-control(type='file', name='mainpreview')
-                .form-group
-                  label(for='xml')  Xml
-                  input#xml.from-control(type='file', name='xml')
-            button.btn-lg.btn-warning(style='margin-left: 45vw;', type='submit')  Submit
+            #one.row
+              .col-xs-3.zerop
+                p
+                  label  FOTOGRAPHER ID  
+                p
+                  label  OBJECT ID  
+              .col-xs-3.zerop
+                input#fid.form-control(type='text', name='fid')
+                input#oid.form-control(type='text', name='oid')
+              .col-xs-3.zerop
+                p
+                  label  MANAGER ID  
+                p
+                  label  YEAR NOW  
+              .col-xs-3.zerop
+                input#mid.form-control(type='text', name='mid')
+                input#yearnow.form-control(type='text', name='yearnow')
+            #two.row
+              .col-xs-3.zerop
+                p
+                  label  PLACENAME (for db ,start lower case) 
+                p
+                  label NAME RUS (for web,start upper case)  
+                p
+                  label  NAME ENG (for web,start upper case) 
+                p
+                  label  TELEPHONE 
+              .col-xs-3.zerop
+                input#placename.form-control(type='text', name='placename')
+                input#nameru.form-control(type='text', name='nameru')
+                input#nameen.form-control(type='text', name='nameen')
+                input#telephone.form-control(type='text', name='telephone')
+              .col-xs-3.zerop
+                p
+                  label  WEB PAGE  
+                p
+                  label  WORKING HOURS  
+                p
+                  label  YEAR FOUNDED  
+                p
+                  label  ADRESSRU  
+                p
+                  label  ADRESSEN  
+              .col-xs-3.zerop
+                input#www.form-control(type='text', name='www')
+                input#workinghours.form-control(type='text', name='workinghours')
+                input#yearfounded.form-control(type='text', name='yearfounded')
+                input#adressru.form-control(type='text', name='adressru')
+                input#adressen.form-control(type='text', name='adressen')
+            #three.row
+              .col-xs-3.zerop
+                p
+                  label  PPREDIR 
+                p
+                  label  CIGARS   
+                p
+                  label  SHISHA  
+                p
+                  label  ROOFTOP  
+                p
+                  label  TERRACE 
+                //
+                   <p><label > TEXT RUS  </label></p>
+                               
+                            
+                               <p><label> TEXT ENG  </label></p>
+                               
+                           
+                               <p><label> BLANK ? </label></p>
+                          
+                               <p><label > BLANKTEXT RUS  </label></p>
+              .col-xs-3.zerop
+                input#ppredir.form-control(type='text', name='ppredir')
+                input#cigars.form-control(type='checkbox', name='cigars')
+                input#shisha.form-control(type='checkbox', name='shisha')
+                input#rooftop.form-control(type='checkbox', name='rooftop')
+                input#terrace.form-control(type='checkbox', name='terrace')
+                //
+                   <input type='text' class='form-control'  id='textru' name='textru'>
+                                  <input type='text' class='form-control'  id='texten' name='texten'>
+                                  <input type='checkbox' class='form-control'  id='blankbool' name='blankbool'>
+                                  <input type='text' class='form-control'  id='blanktextru' name='blanktextru'>
+              .col-xs-3.zerop
+                //
+                   <p><label > BLANKTEXT ENG </label></p>
+                p
+                  label TOP TYPE
+                p
+                  label  CITY  
+                p
+                  label  COUNTRY  
+                p
+                  label  TYPE 
+              .col-xs-3.zerop
+                //
+                  <input type='text' class='form-control'  id='blanktexten' name='blanktexten'>
+                select#toptype.form-control(name='toptype')
+                  option(value='0') -------
+                  option(value='1') ABSOLUTE
+                  option(value='2') ROOFTOP
+                  option(value='3') TERRACE
+                  option(value='4') CUISINE
+                select#country.form-control(name='country')
+                  option(value='moscow') MOSCOW
+                  option(value='stpetersburg') ST.PETERSBURG
+                  option(value='london') LONDON
+                  option(value='losangeles') LOS ANGELES
+                  option(value='newyork') NEW YORK
+                select#city.form-control(name='city')
+                  option(value='russia') RUSSIA
+                  option(value='america') AMERICA
+                  option(value='uk') UK
+                select#type.form-control(name='type')
+                  option(value='restaurant') RESTAURANT
+                  option(value='bar') BAR
+                  option(value='cafe') CAFE
+                  option(value='coworking') CO-WORKING
+                  option(value='spa') SPA
+                  option(value='fitness') FITNESS
+                  option(value='anticafe') ANTICAFE
+                  option(value='beauty') BEAUTY
+            #four.row
+              .col-xs-3.zerop
+                button#addfield(type='button') ADD FIELD
+                button#reset(type='button') REMOVE ALL FIELDS
+                button#rmlast(type='button', style='margin-top: 5px;') REMOVE LAST
+              #labels.col-xs-3.zerop
+                p
+                  label  MAINPREVIEW 
+                p
+                  label  XML 
+                p
+                  label  NUMBER OF IMAGES (DONT TOUCH) 
+              #inputs.col-xs-3.zerop
+                input#mainpreview.form-control(type='file', name='mainpreview')
+                input#xml.form-control(type='file', name='xml')
+                input#imgqntt.form-control(type='text', name='imgqnnt')
+            .row
+              .col-xs-12(style='text-align: center;')
+                button.btn-lg(type='submit')  UPLOAD
     //
        jQuery (necessary for Bootstrap's JavaScript plugins) 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
     //
        Include all compiled plugins (below), or include individual files as needed 
     script(src='js/bootstrap.min.js')
+    script.
+      var imgcount = 0;
+      $('#addfield').click(function(){
+      imgcount++;
+      $('#imgqntt').val(imgcount);
+      $('#labels').append("<p id='"+imgcount+"sidelabel'><label  > "+imgcount+" side</label></p>")
+      $('#inputs').append("<input type='file' class='form-control'  id='"+imgcount+"side' name="+imgcount+"side'>")
+      });
+      $('#reset').click(function(){
+      $('#labels').empty();
+      $('#inputs').empty();
+      imgcount=0;
+      $('#imgqntt').val(imgcount);
+      $('#labels').append("<p><label > MAINPREVIEW </label></p> <p><label > XML </label></p> <p><label > NUMBER OF IMAGES (DONT TOUCH) </label></p>");
+      $('#inputs').append("<input type='file' class='form-control'  id='mainpreview' name='mainpreview'> <input type='file' class='form-control'  id='xml' name='xml'> <input type='text' class='form-control' id='imgqntt' name='imgqnnt'>");
+      });
+      $('#rmlast').click(function(){
+      if (imgcount > 0) {
+      var x = imgcount - 1;
+      eval("$('#"+x+"side').remove(); $('#"+x+"sidelabel').remove() ");
+      imgcount--;
+      $('#imgqntt').val(imgcount);}
+      else {}
+      });
