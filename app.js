@@ -841,58 +841,54 @@ app.post('/adminsr/updatepage', function(req,res) {
 app.post('/admin/update', function(req,res) {
 
   var vplacename = req.body.placename ,
-	vnameru = req.body.nameru,
-	vnameen = req.body.nameen,
-	vtelephone = req.body.telephone,
-	vwww = req.body.www,
-	vppredir = req.body.ppredir,
-	vcigarsbool = req.body.cigarsbool,
-	vshishabool = req.body.shishabool,
-	vworkinghours = req.body.workinghours,
-	vkind = req.body.kind,
-	vsort = req.body.sort,
-	vtexten = req.body.texten,
-	vtextru = req.body.textru,
-	vrooftopbool = req.body.rooftopbool,
-	vterracebool = req.body.terracebool,
-	vblankbool = req.body.blankbool,
-	vblanktextru = req.body.blanktextru,
-	vblanktexten = req.body.blanktexten,
-	vfid = req.body.fid ,
-	vtopbool = req.body.topbool,
-	vtoptype = req.body.toptype,
-	vcity = req.body.city,
-	vcountry = req.body.country,
-	vyearnow = req.body.yearnow,
-	vyearfounded = req.body.yearfounded;
+  vnameru = req.body.nameru,
+  vnameen = req.body.nameen,
+  vtelephone = req.body.telephone,
+  vwww = req.body.www,
+  vppredir = req.body.ppredir,
+  vcigarsbool = req.body.cigarsbool,
+  vshishabool = req.body.shishabool,
+  vworkinghours = req.body.workinghours,
+  vrooftopbool = req.body.rooftopbool,
+  vterracebool = req.body.terracebool,
+  vfid = req.body.fid ,
+  foid = req.body.oid ,
+  vmid = req.body.mid ,
+  vtype = req.body.type,
+  vcity = req.body.city,
+  vcountry = req.body.country,
+  vyearnow = req.body.yearnow,
+  vyearfounded = req.body.yearfounded,
+  vtoptype= req.body.toptype,
+  vadressru = req.body.adressru,
+  vadressen = req.body.adressen;
+    
     
 
 	places.update({placename: vplacename},
-	{
+	{places.insert({placename : vplacename,
 nameru : vnameru,
 nameen : vnameen,
 telephone : vtelephone,
 www : vwww,
 ppredir : vppredir,
+mainpreview : vmainpreview,
 cigarsbool : vcigarsbool,
 shishabool : vshishabool,
 workinghours : vworkinghours,
-kind : vkind,
-sort : vsort,
-texten : vtexten,
-textru : vtextru,
 rooftopbool : vrooftopbool,
 terracebool : vterracebool,
-blankbool : vblankbool,
-blanktextru : vblanktextru,
-blanktexten : vblanktexten,
 fid : vfid,
-topbool : vtopbool,
+mid : vmid,
+oid : foid,
 toptype : vtoptype,
 city : vcity,
 country : vcountry,
 yearnow : vyearnow,
-yearfounded : vyearfounded});
+type : vtype,
+yearfounded : vyearfounded,
+images : photonum,
+});
 
     console.log(vplacename+' has been updated')
 	res.redirect(vppredir);
@@ -1144,7 +1140,7 @@ yearfounded : vyearfounded,
 //sixthsideimg: vsixthsideimg,
 images : photonum,
 mainpreviewimg: vmainpreview,
-xmlfile: vxmlfile});
+});
 
 	
 	
