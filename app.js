@@ -865,7 +865,7 @@ app.post('/admin/update', function(req,res) {
     
     
 
-	places.update({placename: vplacename},
+	places.update({placename: vplacename},{
 nameru : vnameru,
 nameen : vnameen,
 telephone : vtelephone,
