@@ -1142,7 +1142,7 @@ yearfounded : vyearfounded,
 //fourthsideimg: vfourthsideimg,
 //fifthsideimg: vfifthsideimg,
 //sixthsideimg: vsixthsideimg,
-images : photonum;
+images : photonum,
 mainpreviewimg: vmainpreview,
 xmlfile: vxmlfile});
 
