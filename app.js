@@ -981,19 +981,26 @@ app.post('/uploadauth', function(req,res){
 
 
 app.post('/upload',function(req,res) {
-	console.log('starting doin something');
+	console.log('UPLOAD SEQUENCE');
 
 
-function imgvariables (n) {
-  for (i=1;i<=n;i++) {
-    eval("var img_"+i+" = "+i);
-    eval("console.log(img_"+i+")");
-  }
+//function imgvariables (n) {
+//  console.log('CREATING '+n+' VARIABLES')
+//  for (i=1;i<=n;i++) {
+//    eval("var img_"+i+" = "+i);
+//    eval("console.log(img_"+i+")");
+//  }
+//  console.log('DONE')
+//}
+
+var photonum = req.body.imgqntt;
+
+for (i=1;i<=photonum;i++) {
+  eval('var vimg_'+i+';');
+  console.log(i+' VARIABLE CREATED');
 }
 
-var photonum = req.body.photonum
-
-imgvariables(photonum);
+//imgvariables(photonum);
 
 
 //var vfirstsideimg;
@@ -1005,33 +1012,49 @@ imgvariables(photonum);
 var vmainpreviewimg;
 var vxmlfile;
 
+
+
+
    
-    function upload(filepath,imageid,fieldid){
-	var oldPath = filepath;
-	console.log('1 step, oldPath:'+ oldPath);
-var newPath = __dirname +"/public/images/places/" + imageid;
-    console.log('2 step, newPath:' + newPath );
-fs.readFile(oldPath , function(err, data) {
-    fs.writeFile(newPath, data, function(err) {
-        fs.unlink(oldPath, function(){
-            if(err) throw err;
-            res.send(imageid+"image uploaded to: " + newPath);
-            fieldid = newPath;
-        });
-    }); 
-}); 
-};
+       function upload(filepath,imageid,fieldid){
+   	var oldPath = filepath;
+   	console.log('UPLOAD 1 step, oldPath:'+ oldPath);
+   var newPath = __dirname +"/public/images/places/" + imageid;
+       console.log('UPLOAD 2 step, newPath:' + newPath );
+   fs.readFile(oldPath , function(err, data) {
+       fs.writeFile(newPath, data, function(err) {
+           fs.unlink(oldPath, function(){
+               if(err) throw err;
+               res.send('UPLOAD '+imageid+"file uploaded to: " + newPath);
+               fieldid = newPath;
+           });
+       }); 
+   }); 
+   };
 
-if (req.files.firstside.name != 0 && req.files.secondside.name != 0 && req.files.thirdside.name != 0 && req.files.fourthside.name != 0 && req.files.fifthside.name != 0 && req.files.sixthside.name != 0 && req.files.xml.name != 0 )
-
-{
-console.log('files:ok');
-
-function uploadloop(imgname,n) {
-   for(i=1;i<=n;i++) {
-    eval("upload(req.files.img_"+i+".path,req.files.img_"+i+".name,img_"+i);
+   function imgcheck (n) {
+     var mistakes = 0;
+     for (i=1;i<=n;i++) {
+       eval('if (req.files.img_'+i+'.name == null) {mistakes++}');
+     }
+     if (mistakes>0) {return false;}
+      else {return true;}
    }
-}
+
+if ( imgcheck(photonum) === true )
+
+    {
+    console.log('files:ok');
+    
+    function uploadloop(n) {
+      console.log('UPLOADLOOP START,'+n+' images will be processed');
+       for(i=1;i<=n;i++) {
+        eval("upload(req.files.img_"+i+".path,req.files.img_"+i+".name,vimg_"+i);
+       }
+       console.log('UPLOADLOOP EXIT');
+    }
+
+uploadloop(photonum);
 
 //upload(req.files.firstside.path,req.files.firstside.name,vfirstsideimg);
 //upload(req.files.secondside.path,req.files.secondside.name,vseconsideimg);
@@ -1053,41 +1076,41 @@ var vplacename = req.body.placename ,
 	vcigarsbool = req.body.cigarsbool,
 	vshishabool = req.body.shishabool,
 	vworkinghours = req.body.workinghours,
-	vkind = req.body.kind,
-	vsort = req.body.sort,
-	vtexten = req.body.texten,
-	vtextru = req.body.textru,
 	vrooftopbool = req.body.rooftopbool,
 	vterracebool = req.body.terracebool,
-	vblankbool = req.body.blankbool,
-	vblanktextru = req.body.blanktextru,
-	vblanktexten = req.body.blanktexten,
+	//vblankbool = req.body.blankbool,
+	//vblanktextru = req.body.blanktextru,
+	//vblanktexten = req.body.blanktexten,
 	vfid = req.body.fid ,
-	vtopbool = req.body.topbool,
+  foid = req.body.oid ,
+  vmid = req.body.mid ,
+	vtype = req.body.type,
 	vcity = req.body.city,
 	vcountry = req.body.country,
 	vyearnow = req.body.yearnow,
 	vyearfounded = req.body.yearfounded,
 	vtoptype= req.body.toptype,
+  vadressru = req.body.adressru,
+  vadressen = req.body.adressen,
     vxml = "/public/images/places/" + req.files.xml.name;
 
-    if (vtopbool !== false) 
-    	                   {
-    	                   	tops.insert({placename : vplacename,
-                                         nameru : vnameru,
-                                         nameen : vnameen,
-                                         city : vcity,
-                                         country : vcountry,
-                                         toptype : vtoptype,
-                                         ppredir : vppredir,
-                                         yearfounded : vyearfounded
-                                         });
-    	                   }
-
-   else 
-   	   {
-   	   	console.log('writing to places and news');
-   	   }
+   // if (vtopbool !== false) 
+   // 	                   {
+   // 	                   	tops.insert({placename : vplacename,
+   //                                      nameru : vnameru,
+   //                                      nameen : vnameen,
+   //                                      city : vcity,
+   //                                      country : vcountry,
+   //                                      toptype : vtoptype,
+   //                                      ppredir : vppredir,
+   //                                      yearfounded : vyearfounded
+   //                                      });
+   // 	                   }
+//
+ //else 
+ //	   {
+ //	   	console.log('WRITING TO THE DB');
+   //	   }
 
 	console.log(vplacename,vxml);
 
@@ -1101,42 +1124,29 @@ mainpreview : vmainpreview,
 cigarsbool : vcigarsbool,
 shishabool : vshishabool,
 workinghours : vworkinghours,
-kind : vkind,
-sort : vsort,
-texten : vtexten,
-textru : vtextru,
 rooftopbool : vrooftopbool,
 terracebool : vterracebool,
-blankbool : vblankbool,
-blanktextru : vblanktextru,
-blanktexten : vblanktexten,
 fid : vfid,
-topbool : vtopbool,
+mid : vmid,
+oid : foid,
 toptype : vtoptype,
 city : vcity,
 country : vcountry,
 yearnow : vyearnow,
+type : vtype,
 xml : vxml,
 yearfounded : vyearfounded,
-firstsideimg: vfirstsideimg,
-secondsideimg: vsecondsideimg,
-thirdsideimg: vthirdsideimg,
-fourthsideimg: vfourthsideimg,
-fifthsideimg: vfifthsideimg,
-sixthsideimg: vsixthsideimg,
+//firstsideimg: vfirstsideimg,
+//secondsideimg: vsecondsideimg,
+//thirdsideimg: vthirdsideimg,
+//fourthsideimg: vfourthsideimg,
+//fifthsideimg: vfifthsideimg,
+//sixthsideimg: vsixthsideimg,
+images : photonum;
 mainpreviewimg: vmainpreview,
 xmlfile: vxmlfile});
 
-	news.insert({placename : vplacename,
-nameru : vnameru,
-nameen : vnameen,
-ppredir : vppredir,
-mainpreview : vmainpreview,
-city : vcity,
-country : vcountry,
-yearnow : vyearnow
-	});
-
+	
 	
 
       var docs;
@@ -1145,18 +1155,18 @@ yearnow : vyearnow
         });
   
 
-    news.find({placename:vplacename},function(err,docs){
-        console.log('wrote to the news collection:' + docs);
-        });
+   // news.find({placename:vplacename},function(err,docs){
+   //     console.log('wrote to the news collection:' + docs);
+   //     });
    
 
 	
-	console.log('upload done! redirecting to pp')
+	console.log('UPLOAD DONE! REDIRECTING TO PP')
 	res.redirect(vppredir);}
 
 	else { 
 
-		console.log('shitty files, upload has been aborted');
+		console.log('SHITTY FILES, UPLOAD ABORTED');
 		res.redirect('/upload');
 };
 
