@@ -1065,7 +1065,7 @@ var vxmlfile;
          function upload(filepath,imageid,fieldid){
      	var oldPath = filepath;
      	console.log('UPLOAD 1 step, oldPath:'+ oldPath);
-     var newPath = __dirname +"/public/images/places/"+vplacename+"/" + imageid;
+     var newPath = __dirname +"/public/images/places/" + imageid;
          console.log('UPLOAD 2 step, newPath:' + newPath );
      fs.readFile(oldPath , function(err, data) {
          fs.writeFile(newPath, data, function(err) {
