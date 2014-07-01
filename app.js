@@ -1037,35 +1037,36 @@ var vxmlfile;
 
 
    
-       function upload(filepath,imageid,fieldid){
-   	var oldPath = filepath;
-   	console.log('UPLOAD 1 step, oldPath:'+ oldPath);
-   var newPath = __dirname +"/public/images/places/"+vplacename+"/" + imageid;
-       console.log('UPLOAD 2 step, newPath:' + newPath );
-   fs.readFile(oldPath , function(err, data) {
-       fs.writeFile(newPath, data, function(err) {
-           fs.unlink(oldPath, function(){
-               if(err) throw err;
-               res.send('UPLOAD '+imageid+"file uploaded to: " + newPath);
-               fieldid = newPath;
-           });
-       }); 
-   }); 
-   };
-
-   function imgcheck (n) {
-     var mistakes = 0;
-     for (i=1;i<=n;i++) {
-       eval('if (req.files.img_'+i+'.name == null) {mistakes++}');
+         function upload(filepath,imageid,fieldid){
+     	var oldPath = filepath;
+     	console.log('UPLOAD 1 step, oldPath:'+ oldPath);
+     var newPath = __dirname +"/public/images/places/"+vplacename+"/" + imageid;
+         console.log('UPLOAD 2 step, newPath:' + newPath );
+     fs.readFile(oldPath , function(err, data) {
+         fs.writeFile(newPath, data, function(err) {
+             fs.unlink(oldPath, function(){
+                 if(err) throw err;
+                 res.send('UPLOAD '+imageid+"file uploaded to: " + newPath);
+                 fieldid = newPath;  });
+         }); 
+     }); 
+     };
+  
+       function imgcheck (n) {
+         var mistakes = 0;
+         console.log('into IMAGECHECK');
+         for (i=1;i<=n;i++) {
+           eval('if (req.files.img_'+i+'.name == null) {mistakes++}');
+           console.log('checked req.files.img_'+i+' , mistakes :'+mistakes);
+         }
+         if (mistakes>0) {return false;}
+          else {return true;}
      }
-     if (mistakes>0) {return false;}
-      else {return true;}
-   }
-
+ console.log('GOING TO CHECK IMAGES')
 if ( imgcheck(photonum) === true )
 
     {
-    console.log('files:ok');
+    console.log('FILES:OK');
     
     function uploadloop(n) {
       console.log('UPLOADLOOP START,'+n+' images will be processed');
@@ -1188,7 +1189,7 @@ mainpreviewimg: vmainpreview,
 	else { 
 
 		console.log('SHITTY FILES, UPLOAD ABORTED');
-		res.redirect('/upload');
+		res.redirect('/');
 };
 
 });
