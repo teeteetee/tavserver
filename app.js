@@ -829,9 +829,10 @@ app.post('/adminsr/remove', function(req,res) {
                         console.log('done with db data.');
        
             	      //places.remove({placename: placenametest});
-            	          var vmessage = '<script>alert('+placenametest+' has been deleted);</script>';
+            	         // var vmessage = '<script>alert('+placenametest+' has been deleted);</script>';
             	      //res.send(placenametest+' is removed from db (this is not a test)');
-            	          res.render('adminsearch',{'message':vmessage});
+            	         // res.render('adminsearch',{'message':vmessage});
+                       res.send(placenametest+' has been deleted');
                       }
 
              	else 
