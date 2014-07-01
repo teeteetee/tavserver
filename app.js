@@ -842,9 +842,7 @@ app.post('/adminsr/remove', function(req,res) {
                       }
             }
     
-        else 
-    	    { res.send('some shit hapened while quering the database, remove aborted');
-            }
+        
 
     });
 
