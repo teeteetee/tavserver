@@ -1096,7 +1096,7 @@ if ( imgcheck(photonum) === true )
     function uploadloop(n) {
       console.log('UPLOADLOOP START,'+n+' images will be processed');
        for(i=1;i<=n;i++) {
-        eval("upload(req.files.img_"+i+".path,req.files.img_"+i+".name,vimg_"+i);
+        eval("upload(req.files.img_"+i+".path,req.files.img_"+i+".name,vimg_"+i+");");
        }
        console.log('UPLOADLOOP EXIT');
     }
