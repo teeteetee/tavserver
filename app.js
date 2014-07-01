@@ -1062,182 +1062,183 @@ app.post('/upload',function(req,res) {
 //}
 var vplacename = req.body.placename ;
 var photonum = req.body.imgqntt;
+console.log(photonum);
 
-for (i=1;i<=photonum;i++) {
-  eval('var vimg_'+i+';');
-  console.log(i+' VARIABLE CREATED');
-}
-
-//imgvariables(photonum);
-
-
-//var vfirstsideimg;
-//var vseconsideimg;
-//var vthirdsideimg;
-//var vfourthsideimg;
-//var vfifthsideimg;
-//var vsixthsideimg;
-var vmainpreviewimg;
-var vxmlfile;
-
-
-
-
-   
-       function upload(filepath,imageid,fieldid){
-   	var oldPath = filepath;
-   	console.log('UPLOAD 1 step, oldPath:'+ oldPath);
-   var newPath = __dirname +"/public/images/places/"+vplacename+"/" + imageid;
-       console.log('UPLOAD 2 step, newPath:' + newPath );
-   fs.readFile(oldPath , function(err, data) {
-       fs.writeFile(newPath, data, function(err) {
-           fs.unlink(oldPath, function(){
-               if(err) throw err;
-               res.send('UPLOAD '+imageid+"file uploaded to: " + newPath);
-               fieldid = newPath;
-           });
-       }); 
-   }); 
-   };
-
-   function imgcheck (n) {
-     var mistakes = 0;
-     for (i=1;i<=n;i++) {
-       eval('if (req.files.img_'+i+'.name == null) {mistakes++}');
-     }
-     if (mistakes>0) {return false;}
-      else {return true;}
-   }
-
-if ( imgcheck(photonum) === true )
-
-    {
-    console.log('files:ok');
-    
-    function uploadloop(n) {
-      console.log('UPLOADLOOP START,'+n+' images will be processed');
-       for(i=1;i<=n;i++) {
-        eval("upload(req.files.img_"+i+".path,req.files.img_"+i+".name,vimg_"+i);
-       }
-       console.log('UPLOADLOOP EXIT');
-    }
-
-uploadloop(photonum);
-
-//upload(req.files.firstside.path,req.files.firstside.name,vfirstsideimg);
-//upload(req.files.secondside.path,req.files.secondside.name,vseconsideimg);
-//upload(req.files.thirdside.path,req.files.thirdside.name,vthirdsideimg);
-//upload(req.files.fourthside.path,req.files.fourthside.name,vfourthsideimg);
-//upload(req.files.fifthside.path,req.files.fifthside.name,vfifthsideimg);
-//upload(req.files.sixthside.path,req.files.sixthside.name,vsixthsideimg);
-upload(req.files.mainpreview.path,req.files.mainpreview.name,vmainpreviewimg);
-upload(req.files.xml.path,req.files.xml.name,vxmlfile);
-
-
-
-	var vnameru = req.body.nameru,
-	vnameen = req.body.nameen,
-	vtelephone = req.body.telephone,
-	vwww = req.body.www,
-	vppredir = req.body.ppredir,
-	vmainpreview = "/public/images/places/previews/"+ req.files.mainpreview.name,
-	vcigarsbool = req.body.cigarsbool,
-	vshishabool = req.body.shishabool,
-	vworkinghours = req.body.workinghours,
-	vrooftopbool = req.body.rooftopbool,
-	vterracebool = req.body.terracebool,
-	//vblankbool = req.body.blankbool,
-	//vblanktextru = req.body.blanktextru,
-	//vblanktexten = req.body.blanktexten,
-	vfid = req.body.fid ,
-  foid = req.body.oid ,
-  vmid = req.body.mid ,
-	vtype = req.body.type,
-	vcity = req.body.city,
-	vcountry = req.body.country,
-	vyearnow = req.body.yearnow,
-	vyearfounded = req.body.yearfounded,
-	vtoptype= req.body.toptype,
-  vadressru = req.body.adressru,
-  vadressen = req.body.adressen,
-    vxml = "/public/images/places/" + req.files.xml.name;
-
-   // if (vtopbool !== false) 
-   // 	                   {
-   // 	                   	tops.insert({placename : vplacename,
-   //                                      nameru : vnameru,
-   //                                      nameen : vnameen,
-   //                                      city : vcity,
-   //                                      country : vcountry,
-   //                                      toptype : vtoptype,
-   //                                      ppredir : vppredir,
-   //                                      yearfounded : vyearfounded
-   //                                      });
-   // 	                   }
+//for (i=1;i<=photonum;i++) {
+//  eval('var vimg_'+i+';');
+//  console.log(i+' VARIABLE CREATED');
+//}
 //
- //else 
- //	   {
- //	   	console.log('WRITING TO THE DB');
-   //	   }
-
-	console.log(vplacename,vxml);
-
-	places.insert({placename : vplacename,
-nameru : vnameru,
-nameen : vnameen,
-telephone : vtelephone,
-www : vwww,
-ppredir : vppredir,
-mainpreview : vmainpreview,
-cigarsbool : vcigarsbool,
-shishabool : vshishabool,
-workinghours : vworkinghours,
-rooftopbool : vrooftopbool,
-terracebool : vterracebool,
-fid : vfid,
-mid : vmid,
-oid : foid,
-toptype : vtoptype,
-city : vcity,
-country : vcountry,
-yearnow : vyearnow,
-type : vtype,
-xml : vxml,
-yearfounded : vyearfounded,
-//firstsideimg: vfirstsideimg,
-//secondsideimg: vsecondsideimg,
-//thirdsideimg: vthirdsideimg,
-//fourthsideimg: vfourthsideimg,
-//fifthsideimg: vfifthsideimg,
-//sixthsideimg: vsixthsideimg,
-images : photonum,
-mainpreviewimg: vmainpreview,
-});
-
-	
-	
-
-      var docs;
-    places.find({placename:vplacename},function(err,docs){
-        console.log('wrote to the places collection:' + docs);
-        });
-  
-
-   // news.find({placename:vplacename},function(err,docs){
-   //     console.log('wrote to the news collection:' + docs);
-   //     });
-   
-
-	
-	console.log('UPLOAD DONE! REDIRECTING TO PP')
-	res.redirect(vppredir);}
-
-	else { 
-
-		console.log('SHITTY FILES, UPLOAD ABORTED');
-		res.redirect('/upload');
-};
-
+////imgvariables(photonum);
+//
+//
+////var vfirstsideimg;
+////var vseconsideimg;
+////var vthirdsideimg;
+////var vfourthsideimg;
+////var vfifthsideimg;
+////var vsixthsideimg;
+//var vmainpreviewimg;
+//var vxmlfile;
+//
+//
+//
+//
+//   
+//       function upload(filepath,imageid,fieldid){
+//   	var oldPath = filepath;
+//   	console.log('UPLOAD 1 step, oldPath:'+ oldPath);
+//   var newPath = __dirname +"/public/images/places/"+vplacename+"/" + imageid;
+//       console.log('UPLOAD 2 step, newPath:' + newPath );
+//   fs.readFile(oldPath , function(err, data) {
+//       fs.writeFile(newPath, data, function(err) {
+//           fs.unlink(oldPath, function(){
+//               if(err) throw err;
+//               res.send('UPLOAD '+imageid+"file uploaded to: " + newPath);
+//               fieldid = newPath;
+//           });
+//       }); 
+//   }); 
+//   };
+//
+//   function imgcheck (n) {
+//     var mistakes = 0;
+//     for (i=1;i<=n;i++) {
+//       eval('if (req.files.img_'+i+'.name == null) {mistakes++}');
+//     }
+//     if (mistakes>0) {return false;}
+//      else {return true;}
+//   }
+//
+//if ( imgcheck(photonum) === true )
+//
+//    {
+//    console.log('files:ok');
+//    
+//    function uploadloop(n) {
+//      console.log('UPLOADLOOP START,'+n+' images will be processed');
+//       for(i=1;i<=n;i++) {
+//        eval("upload(req.files.img_"+i+".path,req.files.img_"+i+".name,vimg_"+i);
+//       }
+//       console.log('UPLOADLOOP EXIT');
+//    }
+//
+//uploadloop(photonum);
+//
+////upload(req.files.firstside.path,req.files.firstside.name,vfirstsideimg);
+////upload(req.files.secondside.path,req.files.secondside.name,vseconsideimg);
+////upload(req.files.thirdside.path,req.files.thirdside.name,vthirdsideimg);
+////upload(req.files.fourthside.path,req.files.fourthside.name,vfourthsideimg);
+////upload(req.files.fifthside.path,req.files.fifthside.name,vfifthsideimg);
+////upload(req.files.sixthside.path,req.files.sixthside.name,vsixthsideimg);
+//upload(req.files.mainpreview.path,req.files.mainpreview.name,vmainpreviewimg);
+//upload(req.files.xml.path,req.files.xml.name,vxmlfile);
+//
+//
+//
+//	var vnameru = req.body.nameru,
+//	vnameen = req.body.nameen,
+//	vtelephone = req.body.telephone,
+//	vwww = req.body.www,
+//	vppredir = req.body.ppredir,
+//	vmainpreview = "/public/images/places/previews/"+ req.files.mainpreview.name,
+//	vcigarsbool = req.body.cigarsbool,
+//	vshishabool = req.body.shishabool,
+//	vworkinghours = req.body.workinghours,
+//	vrooftopbool = req.body.rooftopbool,
+//	vterracebool = req.body.terracebool,
+//	//vblankbool = req.body.blankbool,
+//	//vblanktextru = req.body.blanktextru,
+//	//vblanktexten = req.body.blanktexten,
+//	vfid = req.body.fid ,
+//  foid = req.body.oid ,
+//  vmid = req.body.mid ,
+//	vtype = req.body.type,
+//	vcity = req.body.city,
+//	vcountry = req.body.country,
+//	vyearnow = req.body.yearnow,
+//	vyearfounded = req.body.yearfounded,
+//	vtoptype= req.body.toptype,
+//  vadressru = req.body.adressru,
+//  vadressen = req.body.adressen,
+//    vxml = "/public/images/places/" + req.files.xml.name;
+//
+//   // if (vtopbool !== false) 
+//   // 	                   {
+//   // 	                   	tops.insert({placename : vplacename,
+//   //                                      nameru : vnameru,
+//   //                                      nameen : vnameen,
+//   //                                      city : vcity,
+//   //                                      country : vcountry,
+//   //                                      toptype : vtoptype,
+//   //                                      ppredir : vppredir,
+//   //                                      yearfounded : vyearfounded
+//   //                                      });
+//   // 	                   }
+////
+// //else 
+// //	   {
+// //	   	console.log('WRITING TO THE DB');
+//   //	   }
+//
+//	console.log(vplacename,vxml);
+//
+//	places.insert({placename : vplacename,
+//nameru : vnameru,
+//nameen : vnameen,
+//telephone : vtelephone,
+//www : vwww,
+//ppredir : vppredir,
+//mainpreview : vmainpreview,
+//cigarsbool : vcigarsbool,
+//shishabool : vshishabool,
+//workinghours : vworkinghours,
+//rooftopbool : vrooftopbool,
+//terracebool : vterracebool,
+//fid : vfid,
+//mid : vmid,
+//oid : foid,
+//toptype : vtoptype,
+//city : vcity,
+//country : vcountry,
+//yearnow : vyearnow,
+//type : vtype,
+//xml : vxml,
+//yearfounded : vyearfounded,
+////firstsideimg: vfirstsideimg,
+////secondsideimg: vsecondsideimg,
+////thirdsideimg: vthirdsideimg,
+////fourthsideimg: vfourthsideimg,
+////fifthsideimg: vfifthsideimg,
+////sixthsideimg: vsixthsideimg,
+//images : photonum,
+//mainpreviewimg: vmainpreview,
+//});
+//
+//	
+//	
+//
+//      var docs;
+//    places.find({placename:vplacename},function(err,docs){
+//        console.log('wrote to the places collection:' + docs);
+//        });
+//  
+//
+//   // news.find({placename:vplacename},function(err,docs){
+//   //     console.log('wrote to the news collection:' + docs);
+//   //     });
+//   
+//
+//	
+//	console.log('UPLOAD DONE! REDIRECTING TO PP')
+//	res.redirect(vppredir);}
+//
+//	else { 
+//
+//		console.log('SHITTY FILES, UPLOAD ABORTED');
+//		res.redirect('/upload');
+//};
+//
 });
 
 
