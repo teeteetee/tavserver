@@ -847,7 +847,7 @@ app.post('/adminsr/remove', function(req,res) {
                       places.remove({placename: placenametest});
              		   res.send('some shit happened while checking presense of the files, probably some of them missing.deleted db data anyway :) have fun sorting this shit out');
                       }
-            }
+            });
         });
 
 
