@@ -1119,7 +1119,7 @@ upload(req.files.xml.path,req.files.xml.name,vxmlfile);
 	vtelephone = req.body.telephone,
 	vwww = req.body.www,
 	vppredir = req.body.ppredir,
-	vmainpreview = "/images/places/previews/"+ req.files.mainpreview.name,
+	vmainpreview = "/images/places/"+ req.files.mainpreview.name,
 	vworkinghours = req.body.workinghours,
 	//vblankbool = req.body.blankbool,
 	//vblanktextru = req.body.blanktextru,
