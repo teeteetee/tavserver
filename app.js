@@ -57,7 +57,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
   var checklang = req.params.lang;
   console.log('LANGUAGE CHECK:got request with '+checklang);
-  if (checklang === 'ru' || checklang === 'en' || checklang === 'es' || checklang === 'fr' || checklang === 'de' || checklang === 'it' )
+  if (checklang === 'ru' || checklang === 'en' || checklang === 'es' || checklang === 'fr' || checklang === 'de' || checklang === 'it' || checklang === 'places' )
     {next();}
   else {res.render('my404')}
 });   
