@@ -1013,8 +1013,35 @@ app.post('/upload',function(req,res) {
 //  }
 //  console.log('DONE')
 //}
-var vplacename = req.body.placename ;
-var photonum = req.body.imgqntt;
+if (req.body.nameru === undefined||
+  req.body.nameen === undefined||
+   req.body.telephone === undefined||
+  req.body.www === undefined||
+  req.body.ppredir === undefined||
+  req.files.mainpreview.name === undefined||
+  req.body.cigarsbool === undefined||
+  req.body.shishabool === undefined||
+  req.body.workinghours === undefined||
+  req.body.rooftopbool === undefined||
+  req.body.terracebool === undefined||
+  //vblankbool = req.body.blankbool,
+  //vblanktextru = req.body.blanktextru,
+  //vblanktexten = req.body.blanktexten,
+  req.body.fid === undefined ||
+  req.body.oid === undefined ||
+  req.body.mid  === undefined ||
+  req.body.type  === undefined||
+  req.body.city  === undefined||
+  req.body.country === undefined||
+  req.body.yearnow  === undefined||
+  req.body.yearfounded === undefined||
+  req.body.toptype === undefined||
+  req.body.adressru === undefined||
+  req.body.adressen === undefined||
+    req.files.xml.name === undefined||
+  req.body.placename  === undefined||
+  req.body.imgqntt === undefined)
+  {res.send('Something wrong with your data, try again');}
 
 for (i=1;i<=photonum;i++) {
   eval('var vimg_'+i+';');
