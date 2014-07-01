@@ -1040,7 +1040,7 @@ if (req.body.nameru === undefined||
   {res.send('Something wrong with your data, try again');}
 
 var photonum = req.body.imgqntt;
-
+var vplacename = req.body.placename;
 for (i=1;i<=photonum;i++) {
   eval('var vimg_'+i+';');
   console.log(i+' VARIABLE CREATED');
