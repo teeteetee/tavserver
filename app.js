@@ -145,7 +145,7 @@ app.get('/places/:place', function(req,res){
     var vyearfounded = placedoc.yearfounded;
     var vcity = placedoc.city;
 
-    if (vshisha === on)
+    if (vshisha === 'on')
                        {
                         vshisha = 'Yes';
                        }
@@ -153,7 +153,7 @@ app.get('/places/:place', function(req,res){
           {
            vshisha = 'No'
           }
-    if (vcigars === on) 
+    if (vcigars === 'on') 
                        {
                         vcigars = 'Yes';
                        }
@@ -162,7 +162,7 @@ app.get('/places/:place', function(req,res){
             vcigars = 'No';
           }                  
 
-    if (top === on) 
+    if (top === 'on') 
                         {
                           res.render('pptop',{'placename': propername , 'xml' : vxml , 'telephone' : vtelephone , 'web' : vweb , 'cigars' : vcigars , 'shisha' : vshisha , 'yearfounded' : vyearfounded , 'city' : vcity });
                         }
