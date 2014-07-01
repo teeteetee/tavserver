@@ -813,14 +813,14 @@ app.post('/adminsr/remove', function(req,res) {
                       //deleteimg(fourth);
                       //deleteimg(fifth);
                       //deleteimg(sixth);
-                      deleteimg(mainpreview);
+                      {deleteimg(mainpreview);
                       deleteimg(xml);
-                      {  console.log('GOING INTO DELETE LOOP');
+                        console.log('GOING INTO DELETE LOOP');
                          for (i=1;i<=count;i++) {
                            eval('deleteimg(del_'+i+');');
                            console.log('DELETED '+i+'IMAGES ');
 
-                         }
+                           }
        
                       console.log('files have been dealt with, proceeding with db data');
        
@@ -829,9 +829,9 @@ app.post('/adminsr/remove', function(req,res) {
                       console.log('done with db data.');
        
             	      //places.remove({placename: placenametest});
-            	      var vmessage = '<script>alert('+placenametest+' has been deleted);</script>'
+            	         var vmessage = '<script>alert('+placenametest+' has been deleted);</script>'
             	      //res.send(placenametest+' is removed from db (this is not a test)');
-            	      res.render('adminsearch',{'message':vmessage});
+            	         res.render('adminsearch',{'message':vmessage});
                       }
 
              	else 
@@ -848,7 +848,7 @@ app.post('/adminsr/remove', function(req,res) {
 
     });
 
-});
+
 
 app.post('/adminsr/updatepage', function(req,res) {
 	var placenametest = req.body.placename;
