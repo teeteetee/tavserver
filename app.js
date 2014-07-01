@@ -768,7 +768,7 @@ app.post('/adminsr/remove', function(req,res) {
 	  function deleteimg (addr) {
 	  	fs.unlink(addr, function (err) {
            if (err) throw err;
-            console.log('successfully deleted addr');
+            console.log('successfully deleted '+ addr);
            });
 	  }
        
@@ -777,26 +777,50 @@ app.post('/adminsr/remove', function(req,res) {
        	if (deldoc !== null) 
        	   {
 
-
-                 var first = deldoc.firstsideimg;
-                 var second = deldoc.secondsideimg;
-                 var third = deldoc.thirdsideimg;
-                 var fourth = deldoc.fourthsideimg;
-                 var fifth = deldoc.fifthsideimg;
-                 var sixth = deldoc.sixthsideimg;
+                 var count = deldoc.image;
+                 var vplacename = deldoc.placename;
+                 //var first = deldoc.firstsideimg;
+                 //var second = deldoc.secondsideimg;
+                 //var third = deldoc.thirdsideimg;
+                 //var fourth = deldoc.fourthsideimg;
+                 //var fifth = deldoc.fifthsideimg;
+                 //var sixth = deldoc.sixthsideimg;
                  var mainpreview = deldoc.mainpreview;
                  var xml = deldoc.xmlfile;
-       
-                 if (first !== null && second !== null && third !== null && fourth !== null && fifth !== null && sixth !== null && mainpreview !== null && xml !== null)
+
                  
-                      {deleteimg(first);
-                      deleteimg(second);
-                      deleteimg(third);
-                      deleteimg(fourth);
-                      deleteimg(fifth);
-                      deleteimg(sixth);
+                  for (i=1;i<=count;i++) {
+                    eval('var del_'+i+' = __dirname +"/public/images/places/"'+vplacename+'"/"' + 'img_'+i+';');
+                    console.log(i+'imgvar CREATED FOR DELETION');
+                  }
+                 }
+
+                
+                    function filecheck (n) {
+                       var mistakes = 0;
+                       for (i=1;i<=n;i++) {
+                         eval('if (del_'+i+' == null) {mistakes++}');
+                       }
+                       if (mistakes>0) {return false;}
+                        else {return true;}
+                       }
+
+                 if ( filecheck (count) !== false && mainpreview !== null && xml !== null)
+                 
+                      //{deleteimg(first);
+                      //deleteimg(second);
+                      //deleteimg(third);
+                      //deleteimg(fourth);
+                      //deleteimg(fifth);
+                      //deleteimg(sixth);
                       deleteimg(mainpreview);
                       deleteimg(xml);
+                      {  console.log('GOING INTO DELETE LOOP');
+                         for (i=1;i<=count;i++) {
+                           eval('deleteimg(del_'+i+');');
+                           console.log('DELETED '+i+'IMAGES ');
+
+                         }
        
                       console.log('files have been dealt with, proceeding with db data');
        
@@ -813,7 +837,7 @@ app.post('/adminsr/remove', function(req,res) {
              	else 
              	     { 
                       places.remove({placename: placenametest});
-             		res.send('some shit happened while checking presense of the 8 files, probably some of them missing.deleted db data anyway :) have fun sorting this shit out');
+             		res.send('some shit happened while checking presense of the files, probably some of them missing.deleted db data anyway :) have fun sorting this shit out');
              
                       }
             }
@@ -987,7 +1011,7 @@ app.post('/upload',function(req,res) {
 //  }
 //  console.log('DONE')
 //}
-
+var vplacename = req.body.placename ;
 var photonum = req.body.imgqntt;
 
 for (i=1;i<=photonum;i++) {
@@ -1014,7 +1038,7 @@ var vxmlfile;
        function upload(filepath,imageid,fieldid){
    	var oldPath = filepath;
    	console.log('UPLOAD 1 step, oldPath:'+ oldPath);
-   var newPath = __dirname +"/public/images/places/" + imageid;
+   var newPath = __dirname +"/public/images/places/"+vplacename+"/" + imageid;
        console.log('UPLOAD 2 step, newPath:' + newPath );
    fs.readFile(oldPath , function(err, data) {
        fs.writeFile(newPath, data, function(err) {
@@ -1061,8 +1085,8 @@ upload(req.files.mainpreview.path,req.files.mainpreview.name,vmainpreviewimg);
 upload(req.files.xml.path,req.files.xml.name,vxmlfile);
 
 
-var vplacename = req.body.placename ,
-	vnameru = req.body.nameru,
+
+	var vnameru = req.body.nameru,
 	vnameen = req.body.nameen,
 	vtelephone = req.body.telephone,
 	vwww = req.body.www,
