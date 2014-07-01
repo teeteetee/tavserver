@@ -277,7 +277,7 @@ head
       imgcount++;
       $('#imgqntt').val(imgcount);
       $('#labels').append("<p id='"+imgcount+"sidelabel'><label  > "+imgcount+" side</label></p>")
-      $('#inputs').append("<input type='file' class='form-control'  id='"+imgcount+"side' name="+imgcount+"side'>")
+      $('#inputs').append("<input type='file' class='form-control'  id='_img"+imgcount+"' name='_img"+imgcount+"'>")
       });
       $('#reset').click(function(){
       $('#labels').empty();
