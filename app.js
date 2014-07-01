@@ -1019,11 +1019,7 @@ if (req.body.nameru === undefined||
   req.body.www === undefined||
   req.body.ppredir === undefined||
   req.files.mainpreview.name === undefined||
-  req.body.cigars === undefined||
-  req.body.shisha === undefined||
   req.body.workinghours === undefined||
-  req.body.rooftop === undefined||
-  req.body.terrace === undefined||
   //vblankbool = req.body.blankbool,
   //vblanktextru = req.body.blanktextru,
   //vblanktexten = req.body.blanktexten,
@@ -1114,7 +1110,7 @@ uploadloop(photonum);
 upload(req.files.mainpreview.path,req.files.mainpreview.name,vmainpreviewimg);
 upload(req.files.xml.path,req.files.xml.name,vxmlfile);
 
-
+  
 
 	var vnameru = req.body.nameru,
 	vnameen = req.body.nameen,
@@ -1122,11 +1118,7 @@ upload(req.files.xml.path,req.files.xml.name,vxmlfile);
 	vwww = req.body.www,
 	vppredir = req.body.ppredir,
 	vmainpreview = "/images/places/previews/"+ req.files.mainpreview.name,
-	vcigarsbool = req.body.cigarsbool,
-	vshishabool = req.body.shishabool,
 	vworkinghours = req.body.workinghours,
-	vrooftopbool = req.body.rooftopbool,
-	vterracebool = req.body.terracebool,
 	//vblankbool = req.body.blankbool,
 	//vblanktextru = req.body.blanktextru,
 	//vblanktexten = req.body.blanktexten,
@@ -1141,7 +1133,17 @@ upload(req.files.xml.path,req.files.xml.name,vxmlfile);
 	vtoptype= req.body.toptype,
   vadressru = req.body.adressru,
   vadressen = req.body.adressen,
-    vxml = "/images/places/" + req.files.xml.name;
+  vcigars = true,
+  vshisha = true,
+  vterrace = true,
+  vrooftop = true,
+  vxml = "/images/places/" + req.files.xml.name;
+
+
+    if(req.body.cigars === undefined) {vcigars = false}
+    if(req.body.shisha === undefined) {vshisha = false}
+    if(req.body.rooftop === undefined) {vrooftop = false}
+    if(req.body.terrace === undefined) {vterrace = false}
 
    // if (vtopbool !== false) 
    // 	                   {
@@ -1170,11 +1172,11 @@ telephone : vtelephone,
 www : vwww,
 ppredir : vppredir,
 mainpreview : vmainpreview,
-cigarsbool : vcigarsbool,
-shishabool : vshishabool,
+cigarsbool : vcigars,
+shishabool : vshisha,
 workinghours : vworkinghours,
-rooftopbool : vrooftopbool,
-terracebool : vterracebool,
+rooftopbool : vrooftop,
+terracebool : vterrace,
 fid : vfid,
 mid : vmid,
 oid : foid,
