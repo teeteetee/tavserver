@@ -1093,7 +1093,7 @@ upload(req.files.xml.path,req.files.xml.name,vxmlfile);
 	vtelephone = req.body.telephone,
 	vwww = req.body.www,
 	vppredir = req.body.ppredir,
-	vmainpreview = "/public/images/places/previews/"+ req.files.mainpreview.name,
+	vmainpreview = "/images/places/previews/"+ req.files.mainpreview.name,
 	vcigarsbool = req.body.cigarsbool,
 	vshishabool = req.body.shishabool,
 	vworkinghours = req.body.workinghours,
@@ -1113,7 +1113,7 @@ upload(req.files.xml.path,req.files.xml.name,vxmlfile);
 	vtoptype= req.body.toptype,
   vadressru = req.body.adressru,
   vadressen = req.body.adressen,
-    vxml = "/public/images/places/" + req.files.xml.name;
+    vxml = "/images/places/" + req.files.xml.name;
 
    // if (vtopbool !== false) 
    // 	                   {
