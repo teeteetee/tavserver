@@ -1019,11 +1019,11 @@ if (req.body.nameru === undefined||
   req.body.www === undefined||
   req.body.ppredir === undefined||
   req.files.mainpreview.name === undefined||
-  req.body.cigarsbool === undefined||
-  req.body.shishabool === undefined||
+  req.body.cigars === undefined||
+  req.body.shisha === undefined||
   req.body.workinghours === undefined||
-  req.body.rooftopbool === undefined||
-  req.body.terracebool === undefined||
+  req.body.rooftop === undefined||
+  req.body.terrace === undefined||
   //vblankbool = req.body.blankbool,
   //vblanktextru = req.body.blanktextru,
   //vblanktexten = req.body.blanktexten,
