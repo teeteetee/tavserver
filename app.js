@@ -125,7 +125,63 @@ app.get('/',function(req,res) {
 //        
 //});
 
+app.get('/places/:place', function(req,res){
+  var reqplace = req.params.place;
+  places.findOne({placename : reqplace},function(err,placedoc){
+
+    if (placedoc !== null)
+                            {
+
+    var top = placedoc.topbool;
+    var vplacename  = placedoc.placename;
+    var propername = placedoc.nameen;
+    var vxml = placedoc.xml;
+    var vtelephone = placedoc.telephone;
+    var vweb = placedoc.www;
+    var vshisha = placedoc.shisha;
+    var vcigars = placedoc.cigars;
+    var vworkinghours = placedoc.workinghours;
+    var vyearfounded = placedoc.yearfounded;
+    var vcity = placedoc.city;
+
+    if (vshisha === on)
+                       {
+                        vshisha = 'Yes';
+                       }
+      else 
+          {
+           vshisha = 'No'
+          }
+    if (vcigars === on) 
+                       {
+                        vcigars = 'Yes';
+                       }
+      else 
+          {
+            vcigars = 'No';
+          }                  
+
+    if (top === on) 
+                        {
+                          res.render('pptop',{'placename': propername , 'xml' : vxml , 'telephone' : vtelephone , 'web' : vweb , 'cigars' : vcigars , 'shisha' : vshisha , 'yearfounded' : vyearfounded , 'city' : vcity });
+                        }
+       else 
+           {
+            res.render('pp', {'placename': propername , 'xml' : vxml , 'telephone' : vtelephone , 'web' : vweb , 'cigars' : vcigars , 'shisha' : vshisha , 'yearfounded' : vyearfounded , 'city' : vcity });
+           }   
+           }
+       else 
+           {
+            res.render('my404');
+           }                  
+  });
+});
+
 //mobile version starts here
+
+app.get('/admin', function(req,res) {
+  res.render('adminauth',{'message' : null});
+});
 
 app.get('/upload', function(req,res) {
       console.log('got request on /upload');
@@ -422,9 +478,7 @@ app.get('/:lang/jets', function(req,res){
   if (lang === 'it') {res.render('soon')} 
 });
 
-app.get('/admin', function(req,res) {
-	res.render('adminauth',{'message' : null});
-});
+
 
 app.get('/new/:city', function(req,res){
   var reqcity = req.params.city;
