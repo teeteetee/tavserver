@@ -805,7 +805,7 @@ app.post('/adminsr/remove', function(req,res) {
                         else {return true;}
                        }
 
-                 if ( filecheck (count)  && mainpreview !== null && xml !== null)
+                 if ( filecheck(count)  && mainpreview !== null && xml !== null)
                  
                       //{deleteimg(first);
                       //deleteimg(second);
@@ -829,7 +829,7 @@ app.post('/adminsr/remove', function(req,res) {
                         console.log('done with db data.');
        
             	      //places.remove({placename: placenametest});
-            	          var vmessage = '<script>alert('+placenametest+' has been deleted);</script>'
+            	          var vmessage = '<script>alert('+placenametest+' has been deleted);</script>';
             	      //res.send(placenametest+' is removed from db (this is not a test)');
             	          res.render('adminsearch',{'message':vmessage});
                       }
