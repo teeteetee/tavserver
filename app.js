@@ -775,8 +775,7 @@ app.post('/adminsr/remove', function(req,res) {
      places.findOne({placename: placenametest}, function(err,deldoc) {
          console.log(deldoc);
        	if (deldoc !== null) 
-       	   {
-
+       	       {
                  var count = deldoc.image;
                  var vplacename = deldoc.placename;
                  //var first = deldoc.firstsideimg;
@@ -792,8 +791,9 @@ app.post('/adminsr/remove', function(req,res) {
                   for (i=1;i<=count;i++) {
                     eval('var del_'+i+' = __dirname +"/public/images/places/"'+vplacename+'"/"' + 'img_'+i+';');
                     console.log(i+'imgvar CREATED FOR DELETION');
-                  }
-                 }
+                    }
+                }
+        else {res.render('db returned shit...')}
 
                 
                     function filecheck (n) {
@@ -805,7 +805,7 @@ app.post('/adminsr/remove', function(req,res) {
                         else {return true;}
                        }
 
-                 if ( filecheck (count) !== false && mainpreview !== null && xml !== null)
+                 if ( filecheck (count)  && mainpreview !== null && xml !== null)
                  
                       //{deleteimg(first);
                       //deleteimg(second);
@@ -813,38 +813,34 @@ app.post('/adminsr/remove', function(req,res) {
                       //deleteimg(fourth);
                       //deleteimg(fifth);
                       //deleteimg(sixth);
-                      {deleteimg(mainpreview);
-                      deleteimg(xml);
+                      {
+                        deleteimg(mainpreview);
+                        deleteimg(xml);
                         console.log('GOING INTO DELETE LOOP');
                          for (i=1;i<=count;i++) {
                            eval('deleteimg(del_'+i+');');
                            console.log('DELETED '+i+'IMAGES ');
-
                            }
        
-                      console.log('files have been dealt with, proceeding with db data');
+                        console.log('files have been dealt with, proceeding with db data');
        
        
-                      places.remove({placename: placenametest});
-                      console.log('done with db data.');
+                        places.remove({placename: placenametest});
+                        console.log('done with db data.');
        
             	      //places.remove({placename: placenametest});
-            	         var vmessage = '<script>alert('+placenametest+' has been deleted);</script>'
+            	          var vmessage = '<script>alert('+placenametest+' has been deleted);</script>'
             	      //res.send(placenametest+' is removed from db (this is not a test)');
-            	         res.render('adminsearch',{'message':vmessage});
+            	          res.render('adminsearch',{'message':vmessage});
                       }
 
              	else 
              	     { 
                       places.remove({placename: placenametest});
              		res.send('some shit happened while checking presense of the files, probably some of them missing.deleted db data anyway :) have fun sorting this shit out');
-             
                       }
             }
-    
-        
-
-    });
+        });
 
 
 
