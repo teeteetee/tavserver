@@ -104,8 +104,13 @@ app.get('/',function(req,res) {
 });
 
 
-
-
+app.get('/testing',function(req,res){
+         var checkdir = __dirname +"/public/images/places/"
+         fs.ensureDir(checkdir, function(err) {
+         if (err === null){
+         console.log(checkdir+'exists');}
+         });
+});
 //done with subdomains
 
 //full version starts here, mobile will be below
@@ -1023,7 +1028,7 @@ if (req.body.nameru === undefined||
          var checkdir = __dirname +"/public/images/places/"
          fs.ensureDir(checkdir, function(err) {
          if (err === null){
-         console.log('/PLACES EXISTS');}
+         console.log(checkdir+'exists');}
          });
          var photonum = req.body.imgqntt;
          var vplacename = req.body.placename;
