@@ -648,7 +648,10 @@ app.get('/:lang/geo/:city/new', function(req,res){
    var nnmbr ;
    places.find({city : ncity}, {limit : 0 ,sort: {yearnow: -1}},function(err,newdoc) {
        
-       newdoc.forEach(nnmbr++);
+       function cnt (value,index,array) {
+        nnmbr++
+       } 
+       newdoc.forEach(cnt);
        console.log(nnmbr);
        res.send(nnmbr);
 
