@@ -128,12 +128,12 @@ app.get('/:lang/places/:place', function(req,res){
   var plang = req.params.lang;
   var pp;
   var pptop;
-   if (plang === 'ru'){var pp = 'ppru',var pptop = 'pptopru';} 
-   if (plang === 'en'){var pp = 'ppen',var pptop = 'pptopen';} 
-   if (plang === 'de'){var pp = 'ppde',var pptop = 'pptopde';} 
-   if (plang === 'fr'){var pp = 'ppfr',var pptop = 'pptopfr';} 
-   if (plang === 'es'){var pp = 'ppes',var pptop = 'pptopes';} 
-   if (plang === 'it'){var pp = 'ppit',var pptop = 'pptopit';} 
+   if (plang === 'ru'){var pp = 'ppru';var pptop = 'pptopru';} 
+   if (plang === 'en'){var pp = 'ppen';var pptop = 'pptopen';} 
+   if (plang === 'de'){var pp = 'ppde';var pptop = 'pptopde';} 
+   if (plang === 'fr'){var pp = 'ppfr';var pptop = 'pptopfr';} 
+   if (plang === 'es'){var pp = 'ppes';var pptop = 'pptopes';} 
+   if (plang === 'it'){var pp = 'ppit';var pptop = 'pptopit';} 
 
   var reqplace = req.params.place;
   console.log('into PLACES, going to search for '+reqplace);
