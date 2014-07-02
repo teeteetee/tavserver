@@ -652,7 +652,7 @@ app.get('/:lang/geo/:city/new', function(req,res){
         nnmbr++
        } 
        newdoc.forEach(cnt);
-       console.log(nnmbr);
+       console.log(nnmbr,newdoc);
        res.send(nnmbr);
 
  // if (nlang === 'en') {res.render('new',{city : ncity,news : newdoc,pnumber : nnmbr})}
