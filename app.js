@@ -1093,7 +1093,7 @@ if (req.body.nameru === undefined||
          	vtelephone = req.body.telephone,
          	vwww = req.body.www,
          	vppredir = req.body.ppredir,
-         	vmainpreview = "/images/places/"+vplacename+"/"+ req.files.mainpreview.name,
+         	vmainpreview = "/images/places/"+req.body.placename+"/"+ req.files.mainpreview.name,
          	vworkinghours = req.body.workinghours,
          	//vblankbool = req.body.blankbool,
          	//vblanktextru = req.body.blanktextru,
@@ -1113,33 +1113,18 @@ if (req.body.nameru === undefined||
            vshisha = true,
            vterrace = true,
            vrooftop = true,
-           vxml = "/images/places/"+vplacename+"/" + req.files.xml.name;
+           vxml = "/images/places/"+req.body.placename+"/" + req.files.xml.name;
          
-         
+            console.log(vplacename);
+            console.log(vxml);
+
              if(req.body.cigars === undefined) {vcigars = false}
              if(req.body.shisha === undefined) {vshisha = false}
              if(req.body.rooftop === undefined) {vrooftop = false}
              if(req.body.terrace === undefined) {vterrace = false}
          
-            // if (vtopbool !== false) 
-            // 	                   {
-            // 	                   	tops.insert({placename : vplacename,
-            //                                      nameru : vnameru,
-            //                                      nameen : vnameen,
-            //                                      city : vcity,
-            //                                      country : vcountry,
-            //                                      toptype : vtoptype,
-            //                                      ppredir : vppredir,
-            //                                      yearfounded : vyearfounded
-            //                                      });
-            // 	                   }
-         //
-          //else 
-          //	   {
-          //	   	console.log('WRITING TO THE DB');
-            //	   }
-         
-         	console.log(vplacename,vxml);
+           
+         	
          
          	places.insert({placename : vplacename,
          nameru : vnameru,
@@ -1163,14 +1148,7 @@ if (req.body.nameru === undefined||
          type : vtype,
          xml : vxml,
          yearfounded : vyearfounded,
-         //firstsideimg: vfirstsideimg,
-         //secondsideimg: vsecondsideimg,
-         //thirdsideimg: vthirdsideimg,
-         //fourthsideimg: vfourthsideimg,
-         //fifthsideimg: vfifthsideimg,
-         //sixthsideimg: vsixthsideimg,
          images : photonum,
-         mainpreviewimg: vmainpreview,
          });
          
          	
