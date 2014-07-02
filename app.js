@@ -125,7 +125,7 @@ app.get('/',function(req,res) {
 //});
 
 app.get('/:lang/places/:place', function(req,res){
-  var plang = req,params.lang;
+  var plang = req.params.lang;
   var pp;
   var pptop;
    if (plang === 'ru'){var pp = 'ppru',var pptop = 'pptopru';} 
