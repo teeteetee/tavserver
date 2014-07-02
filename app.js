@@ -645,13 +645,9 @@ app.get('/:lang/geo/:city', function(req,res){
 app.get('/:lang/geo/:city/new', function(req,res){
    var nlang = req.params.lang;
    var ncity = req.params.city;
-
+   var nnmbr ;
    places.find({city : ncity}, {limit : 0 ,sort: {yearnow: -1}},function(err,newdoc) {
        
-       var nnmbr ;
-       newdoc.count(function(error, nbDocs) {
-        nnmbr = nbDocs;
-       });
 
   if (nlang === 'en') {res.render('new',{city : ncity,news : newdoc,pnumber : nnmbr})}
   if (nlang === 'ru') {res.render('newru',{city : ncity,news : newdoc,pnumber : nnmbr})}
@@ -660,7 +656,9 @@ app.get('/:lang/geo/:city/new', function(req,res){
   if (nlang === 'es') {res.render('newes')}
   if (nlang === 'it') {res.render('newit')} 
 
-   });
+   }).count(function(error, nbDocs) {
+        nnmbr = nbDocs;
+       });
 });
 
 app.post('/property/buy', function(req,res){
