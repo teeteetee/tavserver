@@ -645,7 +645,7 @@ app.get('/:lang/geo/:city', function(req,res){
 app.get('/:lang/geo/:city/new', function(req,res){
    var nlang = req.params.lang;
    var ncity = req.params.city;
-   var nnmbr ;
+   var nnmbr = 0 ;
    places.find({city : ncity}, {limit : 0 ,sort: {yearnow: -1}},function(err,newdoc) {
        
        function cnt (value,index,array) {
