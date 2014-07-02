@@ -58,9 +58,10 @@ head
       padding:0px;
       }
       .btn-lg {
-      color:white
-      background-color:#c35
-      border-radius:0px
+      margin-top:5px;
+      color:white;
+      background-color:#c35;
+      border-radius:0px;
       }
   body
     .container
@@ -75,7 +76,7 @@ head
       #clear.row
         .col-xs-4.col-xs-offset-4(style='text-align:center')
           form(method='post',action='/admin/clear',role='form')
-           input.form-control(type='text',id='token',name='token')
+           input.form-control(type='text',id='token',name='token',style='background-color:gray;color:white')
            button.btn-lg(type='submit') CLEAR        
       #message.row
         .col-xs-12
