@@ -184,7 +184,7 @@ app.get('/admin', function(req,res) {
   res.render('adminauth',{'message' : null});
 });
 
-app.post('admin/clear',function(req,res){
+app.post('/admin/clear',function(req,res){
   console.log(req.ip+" ENTERED /CLEAR");
   var clearpass = 'proventobewrong';
   if(req.body.token = clearpass) {
