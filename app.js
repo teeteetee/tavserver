@@ -124,7 +124,17 @@ app.get('/',function(req,res) {
 //        
 //});
 
-app.get('/places/:place', function(req,res){
+app.get('/:lang/places/:place', function(req,res){
+  var plang = req,params.lang;
+  var pp;
+  var pptop;
+   if (plang === 'ru'){var pp = 'ppru',var pptop = 'pptopru';} 
+   if (plang === 'en'){var pp = 'ppen',var pptop = 'pptopen';} 
+   if (plang === 'de'){var pp = 'ppde',var pptop = 'pptopde';} 
+   if (plang === 'fr'){var pp = 'ppfr',var pptop = 'pptopfr';} 
+   if (plang === 'es'){var pp = 'ppes',var pptop = 'pptopes';} 
+   if (plang === 'it'){var pp = 'ppit',var pptop = 'pptopit';} 
+
   var reqplace = req.params.place;
   console.log('into PLACES, going to search for '+reqplace);
   places.findOne({placename : reqplace},function(err,placedoc){
@@ -163,11 +173,11 @@ app.get('/places/:place', function(req,res){
 
     if (top === 'on') 
                         {
-                          res.render('pptop',{'placename': propername , 'xml' : vxml , 'telephone' : vtelephone , 'web' : vweb , 'cigars' : vcigars , 'shisha' : vshisha , 'yearfounded' : vyearfounded , 'city' : vcity ,'workinghours' : vworkinghours});
+                          res.render(pptop,{'placename': propername , 'xml' : vxml , 'telephone' : vtelephone , 'web' : vweb , 'cigars' : vcigars , 'shisha' : vshisha , 'yearfounded' : vyearfounded , 'city' : vcity ,'workinghours' : vworkinghours});
                         }
        else 
            {
-            res.render('pp', {'placename': propername ,'workinghours' : vworkinghours, 'xml' : vxml , 'telephone' : vtelephone , 'web' : vweb , 'cigars' : vcigars , 'shisha' : vshisha , 'yearfounded' : vyearfounded , 'city' : vcity });
+            res.render(pp, {'placename': propername ,'workinghours' : vworkinghours, 'xml' : vxml , 'telephone' : vtelephone , 'web' : vweb , 'cigars' : vcigars , 'shisha' : vshisha , 'yearfounded' : vyearfounded , 'city' : vcity });
            }   
            }
        else 
@@ -598,7 +608,7 @@ app.get('/:lang/geo/:city', function(req,res){
     var vcityen = req.params.city;
     var newscity = req.params.city;
     var vlang = req.params.lang;
-
+    
     
     var absolute = [];
     var rooftop = [];
@@ -673,14 +683,13 @@ app.get('/:lang/geo/:city/new', function(req,res){
        } 
        newdoc.forEach(cnt);
        console.log(nnmbr,newdoc);
-       res.send(nnmbr);
 
- // if (nlang === 'en') {res.render('new',{city : ncity,news : newdoc,pnumber : nnmbr})}
- // if (nlang === 'ru') {res.render('newru',{city : ncity,news : newdoc,pnumber : nnmbr})}
- // if (nlang === 'fr') {res.render('newfr')}
- // if (nlang === 'de') {res.render('newde',{city : ncity,news : newdoc,pnumber : nnmbr})}
- // if (nlang === 'es') {res.render('newes')}
- // if (nlang === 'it') {res.render('newit')} 
+  if (nlang === 'en') {res.render('new',{city : ncity,news : newdoc,pnumber : nnmbr})}
+  if (nlang === 'ru') {res.render('newru',{city : ncity,news : newdoc,pnumber : nnmbr})}
+  if (nlang === 'fr') {res.render('newfr')}
+  if (nlang === 'de') {res.render('newde',{city : ncity,news : newdoc,pnumber : nnmbr})}
+  if (nlang === 'es') {res.render('newes')}
+  if (nlang === 'it') {res.render('newit')} 
 
    });
 });

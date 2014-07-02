@@ -276,7 +276,7 @@ head
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
     .container
       #yourcity.row.bb.fivemargin
-        a(href='/#{lang}')
+        a(href='/ru')
           .col-xs-2
               span.glyphicon.glyphicon-chevron-left(style='color: #ddd; font-size: 5vw; margin: 1vw;')
           .col-xs-8(style='text-align: center;')
@@ -328,7 +328,7 @@ head
                   h1 #{imgpreview.nameen}
               .col-xs-12
                   img(src='#{imgpreview.mainpreview}')
-        a(href='/ru/geo/#{city}/new')
+        a(href='/ru/geo/#{cityen}/new')
           .row#fulllist
             .col-xs-8.col-xs-offset-2(style='text-align:center') 
               h2 Еще   
@@ -348,7 +348,7 @@ head
               | Недвижимость
               span.gray &
               | Отели
-        a(href='/ru/geo/#{city}/property') 
+        a(href='/ru/geo/#{cityen}/property') 
           .col-xs-1
             span.glyphicon.glyphicon-chevron-right(style='color: #2b4140; font-size: 5vw; margin: 1vw;margin-left:0px;')
       #showmap.row.fivemargin
@@ -371,7 +371,7 @@ head
           a(style='display: block; color: gray; font-family: this; font-size: 3vw;', href='/ru/contact') Контакты
       #footer.fivemargin.row
         .col-xs-12(style='font-family: skinny; padding: 5px; text-align: center;')
-          a(style='color: gray;', href='/')
+          a(style='color: gray;', href='/ru')
             h4(style='font-family: this;color: #ddd') Top and views.
       script.
         $('#showmap').click(function() {
@@ -384,13 +384,7 @@ head
         });
         $('#top').click(function() {
         $('#topblock').slideToggle('slow');
-        if ($("#topblock").is(':visible')) {
-        $("html, body").animate({scrollTop: $("#topblock").offset().top});
-        }
         });
         $('#new').click(function() {
         $('#newblock').slideToggle('slow');
-        if ($("#newblock").is(':visible')) {
-        $("html, body").animate({scrollTop: $("#newblock").offset().top});
-        }
         });
