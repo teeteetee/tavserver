@@ -104,13 +104,7 @@ app.get('/',function(req,res) {
 });
 
 
-app.get('/testing',function(req,res){
-         var checkdir = __dirname +"/public/images/places/"
-         fs.ensureDir(checkdir, function(err) {
-         if (err === null){
-         console.log(checkdir+'exists');}
-         });
-});
+
 //done with subdomains
 
 //full version starts here, mobile will be below
@@ -1099,7 +1093,7 @@ if (req.body.nameru === undefined||
          	vtelephone = req.body.telephone,
          	vwww = req.body.www,
          	vppredir = req.body.ppredir,
-         	vmainpreview = "/images/places/"+ req.files.mainpreview.name,
+         	vmainpreview = "/images/places/"+vplacename+"/"+ req.files.mainpreview.name,
          	vworkinghours = req.body.workinghours,
          	//vblankbool = req.body.blankbool,
          	//vblanktextru = req.body.blanktextru,
@@ -1119,7 +1113,7 @@ if (req.body.nameru === undefined||
            vshisha = true,
            vterrace = true,
            vrooftop = true,
-           vxml = "/images/places/" + req.files.xml.name;
+           vxml = "/images/places/"+vplacename+"/" + req.files.xml.name;
          
          
              if(req.body.cigars === undefined) {vcigars = false}
