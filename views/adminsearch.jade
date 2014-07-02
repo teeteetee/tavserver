@@ -31,9 +31,8 @@ head
       padding:0px;
       }
       h2 {
-      font-family:code;
-      font-size:3vw;
-      color:gray;
+      font-size:5vw;
+      color:white;
       }
       a {
       color:#333;
@@ -58,6 +57,11 @@ head
       margin:0px;
       padding:0px;
       }
+      .btn-lg {
+      color:white
+      background-color:#c35
+      border-radius:0px
+      }
   body
     .container
       #header.row
@@ -67,7 +71,12 @@ head
         .col-xs-12(style='padding-top: 17vw;')
           form(role='form', action='/adminsearch', method='post', name='search')
             .form-group
-              input.form-control(type='text',name='adminsearch', style='max-width: 70vw; margin-left: auto; margin-right: auto;')
+              input.form-control(type='text',name='adminsearch', style='max-width: 70vw;border-radius:0px; margin-left: auto; margin-right: auto;')
+      #clear.row
+        .col-xs-4.col-xs-offset-4(style='text-align:center')
+          form(method='post',action='/admin/clear',role='form)
+           input.form-control(type='text',id='token,name='token')
+           button.btn-lg(type='submit') CLEAR        
       #message.row
         .col-xs-12
            #{message}

@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
   , places = db.get('places'),property = db.get('property');
-var fs = require('fs');
+var fs = require('fs-extra');
 
 var app = express();
 
@@ -182,6 +182,27 @@ app.get('/places/:place', function(req,res){
 
 app.get('/admin', function(req,res) {
   res.render('adminauth',{'message' : null});
+});
+
+app.post('admin/clear',function(req,res){
+  console.log(req.ip+" ENTERED /CLEAR");
+  var clearpass = 'proventobewrong';
+  if(req.body.token = clearpass) {
+    places.remove({},function (err,done){
+      console.log('all records deleted');
+      res.send('all records deleted');
+    });
+
+     var removepath =  __dirname +"/public/images/places"; 
+    fs.remove(removepath, function(err){
+      if (err) {return console.error(err);}
+
+         console.log("/PLACES DELETED ")
+    });
+  }
+
+  else {
+    res.send('ERROR');}
 });
 
 app.get('/upload', function(req,res) {
@@ -646,7 +667,7 @@ app.get('/:lang/geo/:city/new', function(req,res){
    var nlang = req.params.lang;
    var ncity = req.params.city;
    var nnmbr = 0 ;
-   places.find({},function(err,newdoc) {
+   places.find({city : ncity}, {limit : 0 ,sort: {yearnow: -1}},function(err,newdoc) {
        //, {limit : 0 ,sort: {yearnow: -1}}
        function cnt (value,index,array) {
         nnmbr++
@@ -770,85 +791,41 @@ app.post('/adminsearch', function(req,res){
 	
 
 app.post('/adminsr/remove', function(req,res) {
-	var placenametest = req.body.placename;
+	var vplacename = req.body.placename;
 	console.log('going to deal with the files first');
 
+  var dirdel = __dirname +"/public/images/places/" +vplacename;
+         fs.ensureDir(dirdel, function(err) {
+               console.log(err); //null
+  //dir has now been created, including the directory it is to be placed in
+             });
 
-	  function deleteimg (addr) {
-	  	fs.unlink(addr, function (err) {
-           if (err) throw err;
-            console.log('successfully deleted '+ addr);
-           });
-	  }
        
-     places.findOne({placename: placenametest}, function(err,deldoc) {
+     places.findOne({placename: vplacename}, function(err,deldoc) {
          console.log(deldoc);
-       	if (deldoc !== null) 
+       	if (deldoc.placename !== undefined) 
        	       {
                  var count = deldoc.image;
                  var vplacename = deldoc.placename;
-                 //var first = deldoc.firstsideimg;
-                 //var second = deldoc.secondsideimg;
-                 //var third = deldoc.thirdsideimg;
-                 //var fourth = deldoc.fourthsideimg;
-                 //var fifth = deldoc.fifthsideimg;
-                 //var sixth = deldoc.sixthsideimg;
                  var mainpreview = deldoc.mainpreview;
                  var xml = deldoc.xmlfile;
+                  
+                 var dirtoremove =  __dirname +"/public/images/places/" +vplacename;
+                 fs.remove(dirtoremove,function(err){
+                         if (err) {return console.log(err);}
+                         console.log(vplacename+"FILES DELETED");
+                         });
 
-                 
-                  for (i=1;i<=count;i++) {
-                    eval('var del_'+i+' = __dirname +"/public/images/places/"'+vplacename+'"/"' + 'img_'+i+';');
-                    console.log(i+'imgvar CREATED FOR DELETION');
-                    }
+                  places.remove({placename: vplacename});
+                  console.log(vplacename+' record removed from db');
+       
+              
+                 res.send(vplacename+' has been deleted');
+                  
                 }
-        else {res.send('db returned shit...');}
+        else {res.send('db returned shit, try again');}
 
-                
-                    function filecheck (n) {
-                       var mistakes = 0;
-                       for (i=1;i<=n;i++) {
-                         eval('if (del_'+i+' == null) {mistakes++}');
-                       }
-                       if (mistakes>0) {return false;}
-                        else {return true;}
-                       }
-
-                 if ( filecheck(count)  && mainpreview !== null && xml !== null)
-                 
-                      //{deleteimg(first);
-                      //deleteimg(second);
-                      //deleteimg(third);
-                      //deleteimg(fourth);
-                      //deleteimg(fifth);
-                      //deleteimg(sixth);
-                      {
-                        deleteimg(mainpreview);
-                        deleteimg(xml);
-                        console.log('GOING INTO DELETE LOOP');
-                         for (i=1;i<=count;i++) {
-                           eval('deleteimg(del_'+i+');');
-                           console.log('DELETED '+i+'IMAGES ');
-                           }
-       
-                        console.log('files have been dealt with, proceeding with db data');
-       
-       
-                        places.remove({placename: placenametest});
-                        console.log('done with db data.');
-       
-            	      //places.remove({placename: placenametest});
-            	         // var vmessage = '<script>alert('+placenametest+' has been deleted);</script>';
-            	      //res.send(placenametest+' is removed from db (this is not a test)');
-            	         // res.render('adminsearch',{'message':vmessage});
-                       res.send(placenametest+' has been deleted');
-                      }
-
-             	   else 
-             	     { 
-                      places.remove({placename: placenametest});
-             		   res.send('some shit happened while checking presense of the files, probably some of them missing.deleted db data anyway :) have fun sorting this shit out');
-                      }
+              
             });
         });
 
@@ -874,11 +851,11 @@ app.post('/admin/update', function(req,res) {
   vtelephone = req.body.telephone,
   vwww = req.body.www,
   vppredir = req.body.ppredir,
-  vcigarsbool = req.body.cigarsbool,
-  vshishabool = req.body.shishabool,
+  vcigarsbool = req.body.cigars,
+  vshishabool = req.body.shisha,
   vworkinghours = req.body.workinghours,
-  vrooftopbool = req.body.rooftopbool,
-  vterracebool = req.body.terracebool,
+  vrooftopbool = req.body.rooftop,
+  vterracebool = req.body.terrace,
   vfid = req.body.fid ,
   foid = req.body.oid ,
   vmid = req.body.mid ,
@@ -1005,7 +982,7 @@ app.post('/uploadauth', function(req,res){
 
 app.post('/upload',function(req,res) {
 	console.log('UPLOAD SEQUENCE');
-
+ 
 
 //function imgvariables (n) {
 //  console.log('CREATING '+n+' VARIABLES')
@@ -1041,190 +1018,186 @@ if (req.body.nameru === undefined||
   req.body.imgqntt === undefined)
   {res.send('Something wrong with your data, try again');}
 
-var photonum = req.body.imgqntt;
-var vplacename = req.body.placename;
-for (i=1;i<=photonum;i++) {
-  eval('var vimg_'+i+';');
-  console.log(i+' VARIABLE CREATED');
-}
+     else{
 
-//imgvariables(photonum);
-
-
-//var vfirstsideimg;
-//var vseconsideimg;
-//var vthirdsideimg;
-//var vfourthsideimg;
-//var vfifthsideimg;
-//var vsixthsideimg;
-var vmainpreviewimg;
-var vxmlfile;
-
-
-
-
-   
-         function upload(filepath,imageid,fieldid){
-     	var oldPath = filepath;
-     	console.log('UPLOAD 1 step, oldPath:'+ oldPath);
-     var newPath = __dirname +"/public/images/places/" + imageid;
-         console.log('UPLOAD 2 step, newPath:' + newPath );
-     fs.readFile(oldPath , function(err, data) {
-         fs.writeFile(newPath, data, function(err) {
-             fs.unlink(oldPath, function(){
-                 if(err) throw err;
-                 res.send('UPLOAD '+imageid+"file uploaded to: " + newPath);
-                 fieldid = newPath;  });
-         }); 
-     }); 
-     };
-  
-       function imgcheck (n) {
-         var mistakes = 0;
-         console.log('into IMAGECHECK');
-         for (i=1;i<=n;i++) {
-           eval('if (req.files.img_'+i+'.name == null) {mistakes++}');
-           console.log('checked req.files.img_'+i+' , mistakes :'+mistakes);
+         var checkdir = __dirname +"/public/images/places/"
+         fs.ensureDir(checkdir, function(err) {
+         if (err === null){
+         console.log('/PLACES EXISTS');}
+         });
+         var photonum = req.body.imgqntt;
+         var vplacename = req.body.placename;
+         for (i=1;i<=photonum;i++) {
+           eval('var vimg_'+i+';');
+           console.log(i+' VARIABLE CREATED');
          }
-         if (mistakes>0) {return false;}
-          else {return true;}
+         
+         var vmainpreviewimg;
+         var vxmlfile;
+         
+                   
+                  function upload(filepath,imageid,fieldid){
+              	var oldPath = filepath;
+              	console.log('UPLOAD 1 step, oldPath:'+ oldPath);
+              var newPath = __dirname +"/public/images/places/" +vplacename+"/"+ imageid;
+                  console.log('UPLOAD 2 step, newPath:' + newPath );
+              fs.readFile(oldPath , function(err, data) {
+                  fs.writeFile(newPath, data, function(err) {
+                      fs.unlink(oldPath, function(){
+                          if(err) throw err;
+                          res.send('UPLOAD '+imageid+"file uploaded to: " + newPath);
+                          fieldid = newPath;  });
+                  }); 
+              }); 
+              };
+           
+                function imgcheck (n) {
+                  var mistakes = 0;
+                  console.log('into IMAGECHECK');
+                  for (i=1;i<=n;i++) {
+                    eval('if (req.files.img_'+i+'.name == null) {mistakes++}');
+                    console.log('checked req.files.img_'+i+' , mistakes :'+mistakes);
+                  }
+                  if (mistakes>0) {return false;}
+                   else {return true;}
+              }
+          console.log('GOING TO CHECK IMAGES')
+         if ( imgcheck(photonum) === true )
+         
+             {
+             console.log('FILES:OK');
+
+
+             
+             function uploadloop(n) {
+               console.log('UPLOADLOOP START,'+n+' images will be processed');
+                for(i=1;i<=n;i++) {
+                 eval("upload(req.files.img_"+i+".path,req.files.img_"+i+".name,vimg_"+i+");");
+                }
+                console.log('UPLOADLOOP EXIT');
+             }
+              
+              var newplace = __dirname +"/public/images/places/" +vplacename;
+             fs.mkdirs(newplace , function(err){
+                      if (err) {return console.error(err);}
+                       console.log('NEW FOLDER CREATED , MOVING FILES');
+                       uploadloop(photonum);
+                       upload(req.files.mainpreview.path,req.files.mainpreview.name,vmainpreviewimg);
+                       upload(req.files.xml.path,req.files.xml.name,vxmlfile);
+                       });
+         
+         
+           
+         
+         	var vnameru = req.body.nameru,
+         	vnameen = req.body.nameen,
+         	vtelephone = req.body.telephone,
+         	vwww = req.body.www,
+         	vppredir = req.body.ppredir,
+         	vmainpreview = "/images/places/"+ req.files.mainpreview.name,
+         	vworkinghours = req.body.workinghours,
+         	//vblankbool = req.body.blankbool,
+         	//vblanktextru = req.body.blanktextru,
+         	//vblanktexten = req.body.blanktexten,
+         	vfid = req.body.fid ,
+           foid = req.body.oid ,
+           vmid = req.body.mid ,
+         	vtype = req.body.type,
+         	vcity = req.body.city,
+         	vcountry = req.body.country,
+         	vyearnow = req.body.yearnow,
+         	vyearfounded = req.body.yearfounded,
+         	vtoptype= req.body.toptype,
+           vadressru = req.body.adressru,
+           vadressen = req.body.adressen,
+           vcigars = true,
+           vshisha = true,
+           vterrace = true,
+           vrooftop = true,
+           vxml = "/images/places/" + req.files.xml.name;
+         
+         
+             if(req.body.cigars === undefined) {vcigars = false}
+             if(req.body.shisha === undefined) {vshisha = false}
+             if(req.body.rooftop === undefined) {vrooftop = false}
+             if(req.body.terrace === undefined) {vterrace = false}
+         
+            // if (vtopbool !== false) 
+            // 	                   {
+            // 	                   	tops.insert({placename : vplacename,
+            //                                      nameru : vnameru,
+            //                                      nameen : vnameen,
+            //                                      city : vcity,
+            //                                      country : vcountry,
+            //                                      toptype : vtoptype,
+            //                                      ppredir : vppredir,
+            //                                      yearfounded : vyearfounded
+            //                                      });
+            // 	                   }
+         //
+          //else 
+          //	   {
+          //	   	console.log('WRITING TO THE DB');
+            //	   }
+         
+         	console.log(vplacename,vxml);
+         
+         	places.insert({placename : vplacename,
+         nameru : vnameru,
+         nameen : vnameen,
+         telephone : vtelephone,
+         www : vwww,
+         ppredir : vppredir,
+         mainpreview : vmainpreview,
+         cigarsbool : vcigars,
+         shishabool : vshisha,
+         workinghours : vworkinghours,
+         rooftopbool : vrooftop,
+         terracebool : vterrace,
+         fid : vfid,
+         mid : vmid,
+         oid : foid,
+         toptype : vtoptype,
+         city : vcity,
+         country : vcountry,
+         yearnow : vyearnow,
+         type : vtype,
+         xml : vxml,
+         yearfounded : vyearfounded,
+         //firstsideimg: vfirstsideimg,
+         //secondsideimg: vsecondsideimg,
+         //thirdsideimg: vthirdsideimg,
+         //fourthsideimg: vfourthsideimg,
+         //fifthsideimg: vfifthsideimg,
+         //sixthsideimg: vsixthsideimg,
+         images : photonum,
+         mainpreviewimg: vmainpreview,
+         });
+         
+         	
+         	
+         
+               var docs;
+             places.find({placename:vplacename},function(err,docs){
+                 console.log('wrote to the places collection:' + docs);
+                 });
+           
+         
+            // news.find({placename:vplacename},function(err,docs){
+            //     console.log('wrote to the news collection:' + docs);
+            //     });
+            
+         
+         	
+         	console.log('UPLOAD DONE! REDIRECTING TO PP')
+         	res.redirect(vppredir);}
+         
+         	else { 
+         
+         		console.log('SHITTY FILES, UPLOAD ABORTED');
+         		res.redirect('/');
+         };
      }
- console.log('GOING TO CHECK IMAGES')
-if ( imgcheck(photonum) === true )
-
-    {
-    console.log('FILES:OK');
-    
-    function uploadloop(n) {
-      console.log('UPLOADLOOP START,'+n+' images will be processed');
-       for(i=1;i<=n;i++) {
-        eval("upload(req.files.img_"+i+".path,req.files.img_"+i+".name,vimg_"+i+");");
-       }
-       console.log('UPLOADLOOP EXIT');
-    }
-
-uploadloop(photonum);
-
-//upload(req.files.firstside.path,req.files.firstside.name,vfirstsideimg);
-//upload(req.files.secondside.path,req.files.secondside.name,vseconsideimg);
-//upload(req.files.thirdside.path,req.files.thirdside.name,vthirdsideimg);
-//upload(req.files.fourthside.path,req.files.fourthside.name,vfourthsideimg);
-//upload(req.files.fifthside.path,req.files.fifthside.name,vfifthsideimg);
-//upload(req.files.sixthside.path,req.files.sixthside.name,vsixthsideimg);
-upload(req.files.mainpreview.path,req.files.mainpreview.name,vmainpreviewimg);
-upload(req.files.xml.path,req.files.xml.name,vxmlfile);
-
-  
-
-	var vnameru = req.body.nameru,
-	vnameen = req.body.nameen,
-	vtelephone = req.body.telephone,
-	vwww = req.body.www,
-	vppredir = req.body.ppredir,
-	vmainpreview = "/images/places/"+ req.files.mainpreview.name,
-	vworkinghours = req.body.workinghours,
-	//vblankbool = req.body.blankbool,
-	//vblanktextru = req.body.blanktextru,
-	//vblanktexten = req.body.blanktexten,
-	vfid = req.body.fid ,
-  foid = req.body.oid ,
-  vmid = req.body.mid ,
-	vtype = req.body.type,
-	vcity = req.body.city,
-	vcountry = req.body.country,
-	vyearnow = req.body.yearnow,
-	vyearfounded = req.body.yearfounded,
-	vtoptype= req.body.toptype,
-  vadressru = req.body.adressru,
-  vadressen = req.body.adressen,
-  vcigars = true,
-  vshisha = true,
-  vterrace = true,
-  vrooftop = true,
-  vxml = "/images/places/" + req.files.xml.name;
-
-
-    if(req.body.cigars === undefined) {vcigars = false}
-    if(req.body.shisha === undefined) {vshisha = false}
-    if(req.body.rooftop === undefined) {vrooftop = false}
-    if(req.body.terrace === undefined) {vterrace = false}
-
-   // if (vtopbool !== false) 
-   // 	                   {
-   // 	                   	tops.insert({placename : vplacename,
-   //                                      nameru : vnameru,
-   //                                      nameen : vnameen,
-   //                                      city : vcity,
-   //                                      country : vcountry,
-   //                                      toptype : vtoptype,
-   //                                      ppredir : vppredir,
-   //                                      yearfounded : vyearfounded
-   //                                      });
-   // 	                   }
-//
- //else 
- //	   {
- //	   	console.log('WRITING TO THE DB');
-   //	   }
-
-	console.log(vplacename,vxml);
-
-	places.insert({placename : vplacename,
-nameru : vnameru,
-nameen : vnameen,
-telephone : vtelephone,
-www : vwww,
-ppredir : vppredir,
-mainpreview : vmainpreview,
-cigarsbool : vcigars,
-shishabool : vshisha,
-workinghours : vworkinghours,
-rooftopbool : vrooftop,
-terracebool : vterrace,
-fid : vfid,
-mid : vmid,
-oid : foid,
-toptype : vtoptype,
-city : vcity,
-country : vcountry,
-yearnow : vyearnow,
-type : vtype,
-xml : vxml,
-yearfounded : vyearfounded,
-//firstsideimg: vfirstsideimg,
-//secondsideimg: vsecondsideimg,
-//thirdsideimg: vthirdsideimg,
-//fourthsideimg: vfourthsideimg,
-//fifthsideimg: vfifthsideimg,
-//sixthsideimg: vsixthsideimg,
-images : photonum,
-mainpreviewimg: vmainpreview,
-});
-
-	
-	
-
-      var docs;
-    places.find({placename:vplacename},function(err,docs){
-        console.log('wrote to the places collection:' + docs);
-        });
-  
-
-   // news.find({placename:vplacename},function(err,docs){
-   //     console.log('wrote to the news collection:' + docs);
-   //     });
-   
-
-	
-	console.log('UPLOAD DONE! REDIRECTING TO PP')
-	res.redirect(vppredir);}
-
-	else { 
-
-		console.log('SHITTY FILES, UPLOAD ABORTED');
-		res.redirect('/');
-};
-
 });
 
 
