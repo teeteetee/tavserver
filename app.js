@@ -558,8 +558,9 @@ app.get('/:lang/job/it', function(req,res){
 
 app.get('/:lang/geo/:city/places', function(req,res){
   var vlang = req.params.lang;
-  if (vlang === 'en') {res.render('geoplaces',{lang : vlang})}
-  if (vlang === 'ru') {res.render('geoplacesru',{lang : vlang})}
+  var vcity = req.params.city;
+  if (vlang === 'en') {res.render('geoplaces',{'lang' : vlang,'city' : vcity})}
+  if (vlang === 'ru') {res.render('geoplacesru',{'lang' : vlang,'city' : vcity})}
   if (vlang === 'fr') {res.render('geoplacesfr')}
   if (vlang === 'de') {res.render('geoplacesde')}
   if (vlang === 'es') {res.render('geoplaceses')}
