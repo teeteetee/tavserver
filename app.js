@@ -627,7 +627,7 @@ app.get('/:lang/geo/:city', function(req,res){
                    places.find({city : vreqcity,toptype : 4},function(err,fourthtypedocs){
                         cuisine = fourthtypedocs;
                      
-                         places.find({city : vreqcity, type : 'mealdrink'},{limit:5, sort :{_id:-1}},function(err,newdocs) {
+                         places.find({city : vreqcity, type : 'restaurant'},{limit:5, sort :{_id:-1}},function(err,newdocs) {
                                newdoc = newdocs ; 
                                
 
