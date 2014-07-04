@@ -652,6 +652,13 @@ app.get('/:lang/geo/:city', function(req,res){
                                 res.render('geoindex', { lang : vlang , city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc, cityen : vcityen })
                               }
                               if (vlang === 'de') {
+                                 console.log('got data from db, currently in DE ');
+                                if (vreqcity === 'newyork') {vreqcity = 'New York'};
+                                if (vreqcity === 'losangeles') {vreqcity = 'Los Angeles'}
+                                if (vreqcity === 'stpetersburg') {vreqcity = 'St.Petersburg'}
+                                if (vreqcity === 'london') {vreqcity = 'London'};
+                                if (vreqcity === 'moscow') {vreqcity = 'Moskau'};
+                                console.log('translated city names,  render');
                                 res.render('geoindexde', { lang : vlang , city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc, cityen : vcityen })
                               }
                               if (vlang === 'es') {
