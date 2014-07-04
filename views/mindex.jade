@@ -46,10 +46,6 @@ head
       #showmap {
       cursor:pointer;
       }
-      .border {
-      background-color:#gray
-      height:3px
-      }
   body
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
     .container
@@ -57,23 +53,19 @@ head
         a(href='/geo')
           .col-xs-12
             h2(style='color: #c35402;') Your city
-      .row.border
-      .row
+      .row.bb
         a(href='/places')
           .col-xs-12
             h2 Places
-      .row.border
-      .row
+      .row.bb
         a(href='/property')
           .col-xs-12
-            h2 Property & Hotels
-      .row.border      
-      .row
+            h2 Property & Hotels      
+      .row.bb
         a(href='/yachtsjets')
           .col-xs-12
-            h2 Yachts & Jets
-      .row.border      
-      .row
+            h2 Yachts & Jets      
+      .row.bb
         a(href='/campuses')
           .col-xs-12
             h2 Campuses      
