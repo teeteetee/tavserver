@@ -46,34 +46,26 @@ head
       #showmap {
       cursor:pointer;
       }
-      .border {
-      background-color:#gray
-      height:3px
-      }
   body
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
     .container
-      .row
+      .row.bb
         a(href='/de/geo')
           .col-xs-12
             h2(style='color: #c35402;') Seine Stadt
-      .row.border
-      .row
+      .row.bb
         a(href='/de/places')
           .col-xs-12
             h2 Plätze
-      .row.border
-      .row
+      .row.bb
         a(href='/de/property')
           .col-xs-12
-            h2 Immobilien  & Hotelss
-      .row.border      
-      .row
+            h2 Immobilien  & Hotelss      
+      .row.bb
         a(href='/de/yachtsjets')
           .col-xs-12
-            h2 Yachten & Jets
-      .row.border      
-      .row
+            h2 Yachten & Jets      
+      .row.bb
         a(href='/de/campuses')
           .col-xs-12
             h2 Campus      
