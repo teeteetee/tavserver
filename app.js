@@ -129,7 +129,7 @@ app.get('/:lang/places/:place', function(req,res){
   var pp;
   var pptop;
    if (plang === 'ru'){var pp = 'ppru';var pptop = 'pptopru';} 
-   if (plang === 'en'){var pp = 'ppen';var pptop = 'pptopen';} 
+   if (plang === 'en'){var pp = 'pp';var pptop = 'pptop';} 
    if (plang === 'de'){var pp = 'ppde';var pptop = 'pptopde';} 
    if (plang === 'fr'){var pp = 'ppfr';var pptop = 'pptopfr';} 
    if (plang === 'es'){var pp = 'ppes';var pptop = 'pptopes';} 
@@ -509,13 +509,6 @@ app.get('/:lang/jets', function(req,res){
   if (lang === 'de') {res.render('soon')}
   if (lang === 'es') {res.render('soon')}
   if (lang === 'it') {res.render('soon')} 
-});
-
-
-
-app.get('/new/:city', function(req,res){
-  var reqcity = req.params.city;
-  res.send('news for '+reqcity+' supposed to be here');
 });
 
 
