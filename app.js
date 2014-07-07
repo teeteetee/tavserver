@@ -880,7 +880,7 @@ app.post('/admin/update', function(req,res) {
 
   if(req.files.images.length > 0) {
     var data = JSON.stringify(req.files);
-    res.send(data);
+    res.send(req.files.images);
   }
   else 
     {res.send('empty files');
