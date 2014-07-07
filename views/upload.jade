@@ -261,10 +261,13 @@ head
                   label  XML 
                 p
                   label  NUMBER OF IMAGES (DONT TOUCH) 
+                p
+                  label  IMAGES  
               #inputs.col-xs-3.zerop
                 input#mainpreview.form-control(type='file', name='mainpreview')
                 input#xml.form-control(type='file', name='xml')
                 input#imgqntt.form-control(type='text', name='imgqntt')
+                input#images.form-control(type='file',name='images',multiple)
             .row
               .col-xs-12(style='text-align: center;')
                 button.btn-lg(type='submit')  UPLOAD
@@ -280,25 +283,8 @@ head
         $('#ppredir').val(plnm);
       });
       var imgcount = 0;
-      $('#addfield').click(function(){
-      imgcount++;
-      $('#imgqntt').val(imgcount);
-      $('#labels').append("<p id='"+imgcount+"sidelabel'><label  > "+imgcount+" side</label></p>")
-      $('#inputs').append("<input type='file' class='form-control'  id='img_"+imgcount+"' name='img_"+imgcount+"'>")
+      var imgnum = $('#images').files.length;
+      $('#imgqntt').click(function(){
+       imgcount = imgnum ; 
       });
-      $('#reset').click(function(){
-      $('#labels').empty();
-      $('#inputs').empty();
-      imgcount=0;
-      $('#imgqntt').val(imgcount);
-      $('#labels').append("<p><label > MAINPREVIEW </label></p> <p><label > XML </label></p> <p><label > NUMBER OF IMAGES (DONT TOUCH) </label></p>");
-      $('#inputs').append("<input type='file' class='form-control'  id='mainpreview' name='mainpreview'> <input type='file' class='form-control'  id='xml' name='xml'> <input type='text' class='form-control' id='imgqntt' name='imgqnnt'>");
-      });
-      $('#rmlast').click(function(){
-      if (imgcount > 0) {
-      var x = imgcount - 1;
-      eval("$('#"+x+"side').remove(); $('#"+x+"sidelabel').remove() ");
-      imgcount--;
-      $('#imgqntt').val(imgcount);}
-      else {}
-      });
+      
