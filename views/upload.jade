@@ -132,16 +132,16 @@ head
                 p
                   label  OBJECT ID  
               .col-xs-3.zerop
-                input#fid.form-control(type='text', name='fid')
-                input#oid.form-control(type='text', name='oid')
+                input#fid.form-control(type='text', name='fid',required)
+                input#oid.form-control(type='text', name='oid',required)
               .col-xs-3.zerop
                 p
                   label  MANAGER ID  
                 p
                   label  YEAR NOW  
               .col-xs-3.zerop
-                input#mid.form-control(type='text', name='mid')
-                input#yearnow.form-control(type='text', name='yearnow')
+                input#mid.form-control(type='text', name='mid',required)
+                input#yearnow.form-control(type='text', name='yearnow',required)
             #two.row
               .col-xs-3.zerop
                 p
@@ -153,10 +153,10 @@ head
                 p
                   label  TELEPHONE 
               .col-xs-3.zerop
-                input#placename.form-control(type='text', name='placename')
-                input#nameru.form-control(type='text', name='nameru')
-                input#nameen.form-control(type='text', name='nameen')
-                input#telephone.form-control(type='text', name='telephone')
+                input#placename.form-control(type='text', name='placename',required)
+                input#nameru.form-control(type='text', name='nameru',required)
+                input#nameen.form-control(type='text', name='nameen',required)
+                input#telephone.form-control(type='text', name='telephone',required)
               .col-xs-3.zerop
                 p
                   label  WEB PAGE  
@@ -169,11 +169,11 @@ head
                 p
                   label  ADRESSEN  
               .col-xs-3.zerop
-                input#www.form-control(type='text', name='www')
-                input#workinghours.form-control(type='text', name='workinghours')
-                input#yearfounded.form-control(type='text', name='yearfounded')
-                input#adressru.form-control(type='text', name='adressru')
-                input#adressen.form-control(type='text', name='adressen')
+                input#www.form-control(type='text', name='www',required)
+                input#workinghours.form-control(type='text', name='workinghours',required)
+                input#yearfounded.form-control(type='text', name='yearfounded',required)
+                input#adressru.form-control(type='text', name='adressru',required)
+                input#adressen.form-control(type='text', name='adressen',required)
             #three.row
               .col-xs-3.zerop
                 p
@@ -197,11 +197,11 @@ head
                           
                                <p><label > BLANKTEXT RUS  </label></p>
               .col-xs-3.zerop
-                input#ppredir.form-control(type='text', name='ppredir')
-                input#cigars.form-control(type='checkbox', name='cigars')
-                input#shisha.form-control(type='checkbox', name='shisha')
-                input#rooftop.form-control(type='checkbox', name='rooftop')
-                input#terrace.form-control(type='checkbox', name='terrace')
+                input#ppredir.form-control(type='text', name='ppredir',required)
+                input#cigars.form-control(type='checkbox', name='cigars',required)
+                input#shisha.form-control(type='checkbox', name='shisha',required)
+                input#rooftop.form-control(type='checkbox', name='rooftop',required)
+                input#terrace.form-control(type='checkbox', name='terrace',required)
                 //
                    <input type='text' class='form-control'  id='textru' name='textru'>
                                   <input type='text' class='form-control'  id='texten' name='texten'>
@@ -248,7 +248,7 @@ head
                   option(value='fitness') FITNESS
                   option(value='anticafe') ANTICAFE
                   option(value='beauty') BEAUTY
-                input#glbtype.form-control(type='text', name='glbtype')  
+                input#glbtype.form-control(type='text', name='glbtype',required)  
             #four.row
               .col-xs-3.zerop
           
@@ -262,10 +262,10 @@ head
                 p
                   label  IMAGES  
               #inputs.col-xs-3.zerop
-                input#mainpreview.form-control(type='file',accept='image/*', name='mainpreview')
-                input#xml.form-control(type='file',accept='text/xml' name='xml')
-                input#imgqntt.form-control(type='text', name='imgqntt')
-                input#images.form-control(type='file',name='images',accept='image/*',multiple)
+                input#mainpreview.form-control(type='file',accept='image/*', name='mainpreview',required)
+                input#xml.form-control(type='file',accept='text/xml' name='xml,required')
+                input#imgqntt.form-control(type='text', name='imgqntt',required)
+                input#images.form-control(type='file',name='images',accept='image/*',multiple,required)
             .row
               .col-xs-12(style='text-align: center;')
                 button.btn-lg(type='submit')  UPLOAD

@@ -878,7 +878,7 @@ app.post('/admin/update', function(req,res) {
  // vadressru = req.body.adressru,
  // vadressen = req.body.adressen;
 
-  if(req.files.length > 0) {
+  if(req.files.images.length > 0) {
     var data = JSON.stringify(req.files);
     res.send(data);
   }
