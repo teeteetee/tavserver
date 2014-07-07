@@ -290,25 +290,25 @@ head
           ul
             each place, i in first
               li
-                a(href='#{place.ppredir}') #{place.nameen}
+                a(href='/en#{place.ppredir}') #{place.nameen}
         .col-xs-3
           h2 Rooftop
           ul
             each secondplace, i in second
              li
-               a(href='#{secondplace.ppredir}') #{secondplace.nameen}
+               a(href='/en#{secondplace.ppredir}') #{secondplace.nameen}
         .col-xs-3
           h2 Terrace
           ul
             each thirdplace, i in third
              li
-               a(href='#{thirdplace.ppredir}') #{thirdplace.nameen}
+               a(href='/en#{thirdplace.ppredir}') #{thirdplace.nameen}
         .col-xs-3
           h2 Cuisine
           ul
             each fourthplace, i in fourth
              li
-               a(href='#{fourthplace.ppredir}') #{fourthplace.nameen}
+               a(href='/en#{fourthplace.ppredir}') #{fourthplace.nameen}
       #new.row.bb.fivemargin
         .col-xs-10
           h5(style='display: inline;') New
@@ -317,7 +317,7 @@ head
       #newblock.row
         .col-xs-12
           each imgpreview, i in news
-           a(href=/en'#{imgpreview.ppredir}')
+           a(href='/en#{imgpreview.ppredir}')
             .row.preview
               .name
                   h1 #{imgpreview.nameen}

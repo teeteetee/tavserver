@@ -294,25 +294,25 @@ head
           ul
             each place, i in first
               li
-                a(href='#{place.ppredir}') #{place.nameen}
+                a(href='/de#{place.ppredir}') #{place.nameen}
         .col-xs-3
           h2 Dachterrasse
           ul
             each secondplace, i in second
              li
-               a(href='#{secondplace.ppredir}') #{secondplace.nameen}
+               a(href='/de#{secondplace.ppredir}') #{secondplace.nameen}
         .col-xs-3
           h2 Terrasse
           ul
             each thirdplace, i in third
              li
-               a(href='#{thirdplace.ppredir}') #{thirdplace.nameen}
+               a(href='/de#{thirdplace.ppredir}') #{thirdplace.nameen}
         .col-xs-3
           h2 Küche
           ul
             each fourthplace, i in fourth
              li
-               a(href='#{fourthplace.ppredir}') #{fourthplace.nameen}
+               a(href='/de#{fourthplace.ppredir}') #{fourthplace.nameen}
       #new.row.bb.fivemargin
         .col-xs-11
           h5(style='display: inline;') Neu
@@ -321,7 +321,7 @@ head
       #newblock.row.sixmargin
         .col-xs-12
           each imgpreview, i in news
-           a(href='#{imgpreview.ppredir}')
+           a(href='/de/de#{imgpreview.ppredir}')
             .row.preview.fivemargin
               .name
                   h1 #{imgpreview.nameen}
