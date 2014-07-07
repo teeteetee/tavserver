@@ -75,14 +75,18 @@ head
       outline:none;
       text-decoration: none;
       }
+      #header {
+      text-align:center;
+      }
   body 
     .container
       #header.row 
-        .col-xs-2
-          span.glyphicon.glyphicon-chevron-left(style='color: #ddd; font-size: 5vw; margin: 1vw;')
-        .col-xs-10
-          a( href='/en/geo/#{city}')
-           h5 #{placename}
+        a( href='/en/geo/#{city}')
+          .col-xs-2
+            span.glyphicon.glyphicon-chevron-left(style='color: #ddd; font-size: 5vw; margin: 1vw;')
+          .col-xs-8
+             h5 #{placename}
+          .col-xs-2   
       #pano.row(style='height: 500px; width: 100%; background-color: gray;')
            script(type='text/javascript', src='/js/pano2vr_player.js')           
            #container2(style='width: 100%; height: 500px;')
@@ -94,13 +98,13 @@ head
               pano=new pano2vrPlayer("container2");
               pano.readConfigUrl("#{xml}");                
       #infoblock.row(style='background-color: #766353;')
-        .col-md-6
+        .col-xs-6
           h2 #{telephone}
           h2 #{workinghours}
           h2 Shisha: #{shisha}
           h2 Cigars: #{cigars}
           h2 Year founded: #{yearfounded}
-        .col-md-6
+        .col-xs-6
           a(href='#{web}')
             h2 #{web}
       #footer.row
