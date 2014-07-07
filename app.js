@@ -854,59 +854,67 @@ app.post('/adminsr/updatepage', function(req,res) {
 
 app.post('/admin/update', function(req,res) {
 
-  var vplacename = req.body.placename ,
-  vnameru = req.body.nameru,
-  vnameen = req.body.nameen,
-  vtelephone = req.body.telephone,
-  vwww = req.body.www,
-  vppredir = req.body.ppredir,
-  vcigarsbool = req.body.cigars,
-  vshishabool = req.body.shisha,
-  vworkinghours = req.body.workinghours,
-  vrooftopbool = req.body.rooftop,
-  vterracebool = req.body.terrace,
-  vfid = req.body.fid ,
-  foid = req.body.oid ,
-  vmid = req.body.mid ,
-  vtype = req.body.type,
-  vglbtype = req.body.glbtype,
-  vcity = req.body.city,
-  vcountry = req.body.country,
-  vyearnow = req.body.yearnow,
-  vyearfounded = req.body.yearfounded,
-  vtoptype= req.body.toptype,
-  vadressru = req.body.adressru,
-  vadressen = req.body.adressen;
+ // var vplacename = req.body.placename ,
+ // vnameru = req.body.nameru,
+ // vnameen = req.body.nameen,
+ // vtelephone = req.body.telephone,
+ // vwww = req.body.www,
+ // vppredir = req.body.ppredir,
+ // vcigarsbool = req.body.cigars,
+ // vshishabool = req.body.shisha,
+ // vworkinghours = req.body.workinghours,
+ // vrooftopbool = req.body.rooftop,
+ // vterracebool = req.body.terrace,
+ // vfid = req.body.fid ,
+ // foid = req.body.oid ,
+ // vmid = req.body.mid ,
+ // vtype = req.body.type,
+ // vglbtype = req.body.glbtype,
+ // vcity = req.body.city,
+ // vcountry = req.body.country,
+ // vyearnow = req.body.yearnow,
+ // vyearfounded = req.body.yearfounded,
+ // vtoptype= req.body.toptype,
+ // vadressru = req.body.adressru,
+ // vadressen = req.body.adressen;
+
+  if(req.files.length > 0) {
+    var data = JSON.stringify(req.files);
+    res.send(data);
+  }
+  else 
+    {res.send('empty files');
+  }
     
     
 
-	places.update({placename: vplacename},{
-nameru : vnameru,
-nameen : vnameen,
-telephone : vtelephone,
-www : vwww,
-ppredir : vppredir,
-mainpreview : vmainpreview,
-cigarsbool : vcigarsbool,
-shishabool : vshishabool,
-workinghours : vworkinghours,
-rooftopbool : vrooftopbool,
-terracebool : vterracebool,
-fid : vfid,
-mid : vmid,
-oid : foid,
-toptype : vtoptype,
-glbtype : vglbtype,
-city : vcity,
-country : vcountry,
-yearnow : vyearnow,
-type : vtype,
-yearfounded : vyearfounded,
-images : photonum,
-});
-
-    console.log(vplacename+' has been updated')
-	res.redirect(vppredir);
+//	places.update({placename: vplacename},{
+//nameru : vnameru,
+//nameen : vnameen,
+//telephone : vtelephone,
+//www : vwww,
+//ppredir : vppredir,
+//mainpreview : vmainpreview,
+//cigarsbool : vcigarsbool,
+//shishabool : vshishabool,
+//workinghours : vworkinghours,
+//rooftopbool : vrooftopbool,
+//terracebool : vterracebool,
+//fid : vfid,
+//mid : vmid,
+//oid : foid,
+//toptype : vtoptype,
+//glbtype : vglbtype,
+//city : vcity,
+//country : vcountry,
+//yearnow : vyearnow,
+//type : vtype,
+//yearfounded : vyearfounded,
+//images : photonum,
+//});
+//
+//    console.log(vplacename+' has been updated')
+//	res.redirect(vppredir);
 
   
 });
