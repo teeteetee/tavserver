@@ -126,7 +126,7 @@ head
             #{jsondata}
       #fields.row
         .col-xs-12
-          form(style='text-align: left;', role='form', action='/upload', method='post', enctype='multipart/form-data')
+          form(style='text-align: left;', role='form', action='/admin/update', method='post', enctype='multipart/form-data')
             #one.row
               .col-xs-3.zerop
                 p
@@ -220,6 +220,8 @@ head
                   label  COUNTRY  
                 p
                   label  TYPE 
+                p
+                  label  GLOBAL TYPE
               .col-xs-3.zerop
                 //
                   <input type='text' class='form-control'  id='blanktexten' name='blanktexten'>
@@ -248,6 +250,7 @@ head
                   option(value='fitness') FITNESS
                   option(value='anticafe') ANTICAFE
                   option(value='beauty') BEAUTY
+                input.#glbtype.form-control(type='text',name='glbtype')
             #four.row
               .col-xs-3.zerop
                 button#addfield(type='button') ADD FIELD
@@ -259,41 +262,22 @@ head
                 p
                   label  XML 
                 p
-                  label  NUMBER OF IMAGES (DONT TOUCH) 
+                  label  NUMBER OF IMAGES (DONT TOUCH)
+                p
+                  label  IMAGES 
               #inputs.col-xs-3.zerop
-                input#mainpreview.form-control(type='file', name='mainpreview')
-                input#xml.form-control(type='file', name='xml')
+                input#mainpreview.form-control(type='file', name='mainpreview',accept='image/*')
+                input#xml.form-control(type='file', name='xml',accept='text/xml')
                 input#imgqntt.form-control(type='text', name='imgqnnt')
+                input#images.form-control(type='file',name='images',multiple,accept='image/*')
             .row
               .col-xs-12(style='text-align: center;')
-                button.btn-lg(type='submit')  UPLOAD
+                button.btn-lg(type='submit')  UPDATE
     //
        jQuery (necessary for Bootstrap's JavaScript plugins) 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
     //
        Include all compiled plugins (below), or include individual files as needed 
-    script(src='js/bootstrap.min.js')
+    script(src='/js/bootstrap.min.js')
     script.
-      var imgcount = 0;
-      $('#addfield').click(function(){
-      imgcount++;
-      $('#imgqntt').val(imgcount);
-      $('#labels').append("<p id='"+imgcount+"sidelabel'><label  > "+imgcount+" side</label></p>")
-      $('#inputs').append("<input type='file' class='form-control'  id='"+imgcount+"side' name="+imgcount+"side'>")
-      });
-      $('#reset').click(function(){
-      $('#labels').empty();
-      $('#inputs').empty();
-      imgcount=0;
-      $('#imgqntt').val(imgcount);
-      $('#labels').append("<p><label > MAINPREVIEW </label></p> <p><label > XML </label></p> <p><label > NUMBER OF IMAGES (DONT TOUCH) </label></p>");
-      $('#inputs').append("<input type='file' class='form-control'  id='mainpreview' name='mainpreview'> <input type='file' class='form-control'  id='xml' name='xml'> <input type='text' class='form-control' id='imgqntt' name='imgqnnt'>");
-      });
-      $('#rmlast').click(function(){
-      if (imgcount > 0) {
-      var x = imgcount - 1;
-      eval("$('#"+x+"side').remove(); $('#"+x+"sidelabel').remove() ");
-      imgcount--;
-      $('#imgqntt').val(imgcount);}
-      else {}
-      });
+     
