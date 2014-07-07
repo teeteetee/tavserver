@@ -218,6 +218,8 @@ head
                   label  COUNTRY  
                 p
                   label  TYPE 
+                p
+                  label GLOBAL TYPE
               .col-xs-3.zerop
                 //
                   <input type='text' class='form-control'  id='blanktexten' name='blanktexten'>
@@ -246,6 +248,7 @@ head
                   option(value='fitness') FITNESS
                   option(value='anticafe') ANTICAFE
                   option(value='beauty') BEAUTY
+                input#glbtype.form-control(type='text', name='glbtype')  
             #four.row
               .col-xs-3.zerop
                 button#addfield(type='button') ADD FIELD
@@ -272,6 +275,10 @@ head
        Include all compiled plugins (below), or include individual files as needed 
     script(src='js/bootstrap.min.js')
     script.
+      $('#ppredir').click(function(){
+       var plnm ='/places/'+$('#placename').val();
+        $('#ppredir').val(plnm);
+      });
       var imgcount = 0;
       $('#addfield').click(function(){
       imgcount++;

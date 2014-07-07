@@ -869,6 +869,7 @@ app.post('/admin/update', function(req,res) {
   foid = req.body.oid ,
   vmid = req.body.mid ,
   vtype = req.body.type,
+  vglbtype = req.body.glbtype,
   vcity = req.body.city,
   vcountry = req.body.country,
   vyearnow = req.body.yearnow,
@@ -895,6 +896,7 @@ fid : vfid,
 mid : vmid,
 oid : foid,
 toptype : vtoptype,
+glbtype : vglbtype,
 city : vcity,
 country : vcountry,
 yearnow : vyearnow,
@@ -970,37 +972,12 @@ app.post('/uploadauth', function(req,res){
       }                                                      
 
 });  
-//app.get('/places/:place', function(req,res) {
-//	var reqplace = req.params.place;
-//	console.log(reqplace);
-//	var doc = new Object();
-//	places.findOne({placename:reqplace}, function(err,doc){
-//		console.log(doc);
-//		 if (doc.topbool !== true) 
-//		                          {
-//                                  res.render('pp',{'placenameen': doc.nameen,'telephone':doc.telephone,'xml':doc.xml});  
-//                                  }
-//         else
-//             	res.render('pptop',{'placenameen': doc.nameen,'telephone':doc.telephone,'xml':doc.xml});
-//             }                         
-//	});
-//
-//	
-//});
-
 
 app.post('/upload',function(req,res) {
 	console.log('UPLOAD SEQUENCE');
  
 
-//function imgvariables (n) {
-//  console.log('CREATING '+n+' VARIABLES')
-//  for (i=1;i<=n;i++) {
-//    eval("var img_"+i+" = "+i);
-//    eval("console.log(img_"+i+")");
-//  }
-//  console.log('DONE')
-//}
+
 if (req.body.nameru === undefined||
   req.body.nameen === undefined||
    req.body.telephone === undefined||
@@ -1015,6 +992,7 @@ if (req.body.nameru === undefined||
   req.body.oid === undefined ||
   req.body.mid  === undefined ||
   req.body.type  === undefined||
+  req.body.glbtype  === undefined||
   req.body.city  === undefined||
   req.body.country === undefined||
   req.body.yearnow  === undefined||
@@ -1112,6 +1090,7 @@ if (req.body.nameru === undefined||
            foid = req.body.oid ,
            vmid = req.body.mid ,
          	vtype = req.body.type,
+          vglbtype = req.body.glbtype,
          	vcity = req.body.city,
          	vcountry = req.body.country,
          	vyearnow = req.body.yearnow,
@@ -1156,6 +1135,7 @@ if (req.body.nameru === undefined||
          country : vcountry,
          yearnow : vyearnow,
          type : vtype,
+         glbtype : vglbtype,
          xml : vxml,
          yearfounded : vyearfounded,
          images : photonum,
