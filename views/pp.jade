@@ -82,8 +82,8 @@ head
     .container
       #header.row 
         a( href='/en/geo/#{city}')
-          .col-xs-2
-            span.glyphicon.glyphicon-chevron-left(style='color: #ddd; font-size: 5vw; margin: 1vw;')
+          .col-xs-2(style='padding-left:0px')
+            span.glyphicon.glyphicon-chevron-left(style='color: #ddd; font-size: 5vw; margin: 1vw;margin-left:0px;')
           .col-xs-8
              h5 #{placename}
           .col-xs-2   
@@ -109,5 +109,5 @@ head
             h2 #{web}
       #footer.row
         .col-xs-12(style='font-family: skinny; text-align: center;')
-          a(style='color: #333;', href='/en')
+          a(style='color: #ddd;', href='/en')
             h3 Top and views.
