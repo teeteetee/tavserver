@@ -264,10 +264,10 @@ head
                 p
                   label  IMAGES  
               #inputs.col-xs-3.zerop
-                input#mainpreview.form-control(type='file', name='mainpreview')
-                input#xml.form-control(type='file', name='xml')
+                input#mainpreview.form-control(type='file',accept='image/*', name='mainpreview')
+                input#xml.form-control(type='file',accept='text/xml' name='xml')
                 input#imgqntt.form-control(type='text', name='imgqntt')
-                input#images.form-control(type='file',name='images',multiple)
+                input#images.form-control(type='file',name='images',accept='image/*',multiple)
             .row
               .col-xs-12(style='text-align: center;')
                 button.btn-lg(type='submit')  UPLOAD
@@ -282,8 +282,9 @@ head
        var plnm ='/places/'+$('#placename').val();
         $('#ppredir').val(plnm);
       });
-      var imgnum = document.getElementById('images').files.length;
+      var imgnum ;
       $('#imgqntt').click(function(){
+       imgnum = document.getElementById('images').files.length;
        $('#imgqntt').val(imgnum); 
       });
       
