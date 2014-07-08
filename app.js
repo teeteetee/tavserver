@@ -89,7 +89,7 @@ app.post('/chat',function(req,res){
   });
 });
 
-app.get('/chat/terminate',function(req,res){
+app.get('/chat/drop',function(req,res){
   console.log('request for DROP');
   chat.drop();
   res.send('chat db dropped')
