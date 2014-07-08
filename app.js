@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //AS TEMPORARY
 app.get('/chat',function(){
-  var userid = math.random().slice(2,8);
+  var userid = Math.random().slice(2,8);
   
   function checkid(vuserid) {
     
@@ -48,7 +48,7 @@ app.get('/chat',function(){
   }
   
   for (x=false;x!=true;x=false)
-    { var userid = math.random().slice(2,8);
+    { var userid = Math.random().slice(2,8);
       x = checkid(userid);
     }
   
