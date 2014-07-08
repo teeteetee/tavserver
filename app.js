@@ -32,23 +32,25 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //AS TEMPORARY
 app.get('/chat',function(){
-  var userid ;
-  function idloop(){
-  if (checkid()) {}
-    else{idloop()}
-  }
-  function checkid() {
-    var userid = math.random().slice(2,8);
-    chat.findOne({id: userid},function(err,doc){
+  var userid = math.random().slice(2,8);
+  
+  function checkid(vuserid) {
+    
+    chat.findOne({id: vuserid},function(err,doc){
       if(doc!=undefined)
       {
         res.render('chat',{'adress':userid});
-        chat.insert({id : userid});
+        chat.insert({id : vuserid});
         return true
       }
       else {return  false}
     });
   }
+  
+  for (x=false,x!=true,x=false)
+    { var userid = math.random().slice(2,8);
+      x = checkid(userid);
+    }
   
 });
 app.get('/chat/check/:oppid',function(){
