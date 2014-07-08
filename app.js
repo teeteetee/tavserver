@@ -80,7 +80,7 @@ app.post('/chat',function(req,res){
   var oppadd = req.body.oppid;
   console.log(userid+' says: '+usermessage+'to '+oppadd);
   chat.update({id : userid},{message : usermessage},function(err,doc){
-    console('written to senders doc: '+doc)
+    console.log('written to senders doc: '+doc)
   });
   chat.findOne({id: oppadd},function(err,doc){
     
