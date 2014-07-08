@@ -94,6 +94,12 @@ app.get('/chat/drop',function(req,res){
   chat.drop();
   res.send('chat db dropped')
 });
+
+app.get('/chat/all',function(req,res){
+  chat.find({},function(err,doc){
+    res.send(doc);
+  });
+});
 //END OF AS TEMPORARY
 
 
