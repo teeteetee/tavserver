@@ -70,6 +70,7 @@ app.get('/chat/check/:oppid',function(req,res){
 });
 
 app.post('/chat',function(req,res){
+  console.log(req.body);
   var userid = req.body.id;
   var usermessage = req.body.message;
   var oppadd = req.body.oppid;
