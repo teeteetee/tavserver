@@ -65,9 +65,13 @@ app.get('/chat',function(req,res){
 
 app.get('/chat/check/:oppid',function(req,res){
   var oppid = req.params.oppid;
+  var vmcount2 = req.params.mcount2;
   console.log('chat check '+oppid);
   chat.findOne({id:oppid},function(err,doc){
-    res.send(doc);
+    if(vmcount2<=doc.mcount1)
+      {res.send();}
+    else
+      {res.send(doc);}
   });
 });
 
@@ -76,15 +80,16 @@ app.post('/chat',function(req,res){
   var userid = req.body.id;
   var usermessage = req.body.message;
   var oppadd = req.body.oppid;
-  var vmcount = req.body.mcount;
+  var vmcount1 = req.body.mcount1;
+  var vmcount2 = req.body.mcount2;
   console.log(userid+' says: '+usermessage+'to '+oppadd);
-  chat.update({id : userid},{id : userid,message : usermessage,mcount : vmcount},function(err,doc){
+  chat.update({id : userid},{id : userid,message : usermessage,mcount1 : vmcount,mcount2 : vmcount2},function(err,doc){
     console.log('written to senders doc: '+doc)
   });
   chat.findOne({id : oppadd},function(err,doc){
-    
-    console.log('check for messages'+doc.message);
-    res.send(doc.message,doc.mcount);
+    if (vmcount2<=doc.mcount1)
+      {res.send();}
+    else {res.send(doc);}
   });
 });
 
