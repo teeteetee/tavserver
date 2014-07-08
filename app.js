@@ -44,14 +44,14 @@ app.get('/chat',function(req,res){
       {
         console.log('Creating user');
         res.render('chat',{'adress': vuserid});
-        chat.insert({id : vuserid});
+        chat.insert({id : vuserid},function(err,doc){});
         
       }
       else {
         var newnum = vuserid*2.5;
         console.log('Creating user');
         res.render('chat',{'adress': newnum});
-        chat.insert({id : newnum});
+        chat.insert({id : newnum},function(err,doc){});
         
       }
     });
@@ -75,7 +75,7 @@ app.post('/chat',function(req,res){
   var usermessage = req.body.message;
   var oppadd = req.body.oppid;
   console.log(userid+' says: '+usermessage);
-  chat.update({id : userid},{message : usermessage});
+  chat.update({id : userid},{message : usermessage},function(err,doc){});
   chat.findOne({id: oppadd},function(err,doc){
     var reply = JSON.stringify(doc);
     res.send(reply);
