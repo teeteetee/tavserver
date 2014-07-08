@@ -74,7 +74,7 @@ app.post('/chat',function(req,res){
   var userid = req.body.id;
   var usermessage = req.body.message;
   var oppadd = req.body.oppid;
-  console.log(userid+' says: '+usermessage);
+  console.log(userid+' says: '+usermessage+'to '+oppadd);
   chat.update({id : userid},{message : usermessage},function(err,doc){});
   chat.findOne({id: oppadd},function(err,doc){
     var reply = doc;
