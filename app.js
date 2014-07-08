@@ -33,14 +33,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 //AS TEMPORARY
 app.get('/chat',function(){
 
-  var userid = Math.random().toString().slice(2,9);
-  console.log('request form chat,created id: '+userid);
-  function checkid(vuserid) {
-    
+  
+  
+  function checkid() {
+    var vuserid = Math.random().toString().slice(2,9);
+    console.log('request form chat,created id: '+userid+' checking if already exists...');
     chat.findOne({id: vuserid},function(err,doc){
-      if(doc!=undefined)
+      if(doc===undefined)
       {
-        console.log(doc);
+        console.log('Creating user');
         res.render('chat',{'adress': vuserid});
         chat.insert({id : vuserid});
         return true
@@ -48,13 +49,11 @@ app.get('/chat',function(){
       else {return  false}
     });
   }
-  
-  for (x=false;x!=true;x=false)
-    { 
-      var userid = Math.random().toString().slice(2,9);
-      x = checkid(userid);
-      console.log('loop cycle: '+x);
-    }
+  function loopy() {
+  x = checkid(userid) ;
+  console.log('loopy check');
+  if (x != true) {loopy}
+  }
   
 });
 app.get('/chat/check/:oppid',function(){
