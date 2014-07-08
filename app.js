@@ -44,9 +44,9 @@ app.get('/chat',function(){
         console.log('Creating user');
         res.render('chat',{'adress': vuserid});
         chat.insert({id : vuserid});
-        return true
+        return true;
       }
-      else {return  false}
+      else {return  false;}
     });
   }
   function loopy() {
