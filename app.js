@@ -47,7 +47,7 @@ app.get('/chat',function(){
     });
   }
   
-  for (x=false,x!=true,x=false)
+  for (x=false;x!=true;x=false)
     { var userid = math.random().slice(2,8);
       x = checkid(userid);
     }
