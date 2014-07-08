@@ -98,6 +98,8 @@ head
       padding:0px;
       }
   body
+    script(src='/js/bootstrap.min.js') 
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')   
     .container
       #header.row
         .col-xs-12
@@ -123,13 +125,14 @@ head
         #inputfield.col-xs-8(style='padding-left: 0px; padding-right: 0px;')
           input#userinput.form-control(name='userinput')
         .col-xs-2
-          button.form-control(type='button', action='send()', style='background-color: #ddd;') Send
+          button.form-control(type='button', id='send', style='background-color: #ddd;') Send
         .col-xs-2
-          button.form-control(type='button', action='drop()', style='background-color: #c35;') Drop
-      script(src='/js/bootstrap.min.js') 
-      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')   
+          button.form-control(type='button', id='drop', style='background-color: #c35;') Drop
+      
       script.
         setInterval(function(){if ($('#oppnum').val != null) {check()}},5000)
+        $('#send').click(function(){send();});
+        $('#drop').click(function(){drop();});
         function drop() {
           var xhr = new XMLHttpRequest();
           var url = 'topandviews.com/chat/drop';
