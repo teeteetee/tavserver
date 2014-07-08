@@ -33,7 +33,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 //AS TEMPORARY
 app.get('/chat',function(){
  console.log('into chat');
-  loopy();
+  do {
+  if( checkid()!= true) {checkid()}
+}
+while (checkid()===true)
+
   
   function checkid() {
     var vuserid = Math.random().toString().slice(2,9);
@@ -49,13 +53,9 @@ app.get('/chat',function(){
       else {return  false;}
     });
   }
-  function loopy() {
-  x = checkid() ;
-  console.log('loopy check'+x);
-  if (x != true) {loopy}
-  }
   
 });
+
 app.get('/chat/check/:oppid',function(){
   var oppid = req.params.oppid;
   chat.findOne({id:oppid},function(err,doc){
