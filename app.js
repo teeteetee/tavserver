@@ -39,7 +39,7 @@ app.get('/chat',function(){
   }
   function checkid() {
     var userid = math.random().slice(2,8);
-    chat.findOne({id: userid},funtion(err,doc){
+    chat.findOne({id: userid},function(err,doc){
       if(doc!=undefined)
       {
         res.render('chat',{'adress':userid});
