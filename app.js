@@ -82,7 +82,7 @@ app.post('/chat',function(req,res){
   chat.update({id : userid},{message : usermessage},function(err,doc){
     console.log('written to senders doc: '+doc)
   });
-  chat.findOne({id: oppadd},function(err,doc){
+  chat.findOne({id : oppadd},function(err,doc){
     
     console.log('check for messages'+doc);
     res.send(doc);
