@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //})
 
 //AS TEMPORARY
-app.get('/chat',function(){
+app.get('/chat',function(req,res){
  console.log('into chat');
  checkid()
 
@@ -59,7 +59,7 @@ app.get('/chat',function(){
   
 });
 
-app.get('/chat/check/:oppid',function(){
+app.get('/chat/check/:oppid',function(req,res){
   var oppid = req.params.oppid;
   chat.findOne({id:oppid},function(err,doc){
     if (err) {res.send('error');}
@@ -68,7 +68,7 @@ app.get('/chat/check/:oppid',function(){
   });
 });
 
-app.post('/chat',function(){
+app.post('/chat',function(req,res){
   var userid = req.body.id;
   var usermessage = req.body.message;
   var oppadd = req.body.oppid;
@@ -80,7 +80,7 @@ app.post('/chat',function(){
   });
 });
 
-app.get('/chat/terminate',function(){
+app.get('/chat/terminate',function(req,res){
   chat.drop();
   res.send('chat db dropped')
 });
