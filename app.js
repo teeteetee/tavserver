@@ -71,7 +71,7 @@ app.get('/chat/check/:oppid',function(req,res){
     if(vmcount2<=doc.mcount1)
       {res.send();}
     else
-      {res.send(doc);}
+      {res.send(JSON.stringify(doc));}
   });
 });
 
@@ -89,7 +89,7 @@ app.post('/chat',function(req,res){
   chat.findOne({id : oppadd},function(err,doc){
     if (vmcount2<=doc.mcount1)
       {res.send();}
-    else {res.send(doc);}
+    else {res.send(JSON.stringify(doc));}
   });
 });
 
