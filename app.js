@@ -33,10 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //AS TEMPORARY
 app.get('/chat',function(){
  console.log('into chat');
-  do {
-  if( checkid()!= true) {checkid()}
-}
-while (checkid()===true)
+
 
   
   function checkid() {
@@ -48,9 +45,15 @@ while (checkid()===true)
         console.log('Creating user');
         res.render('chat',{'adress': vuserid});
         chat.insert({id : vuserid});
-        return true;
+        
       }
-      else {return  false;}
+      else {
+        var newnum = vuserid+Math.random().toString().slice(2,9);
+        console.log('Creating user');
+        res.render('chat',{'adress': newnum});
+        chat.insert({id : newnum});
+        
+      }
     });
   }
   
