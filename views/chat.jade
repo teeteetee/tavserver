@@ -157,8 +157,8 @@ head
         if (xhr.readyState === 4) {
         if (200<xhr.status<304) {
         if (xhr.responseText != null) {
-        var response = JSON.parse(xhr.responseText);
-        $('#chatwindow').append("<div class='row ymessage'><div class='col-xs-12'>"+response.message+"</div></div>");
+        //var response = JSON.parse(xhr.responseText);
+        $('#chatwindow').append("<div class='row ymessage'><div class='col-xs-12'>"+xhr.responseText.message+"</div></div>");
         mcount2 = response.mcount1;
         }
         else {
@@ -186,9 +186,9 @@ head
         // обработать результат
          if (xhr.responseText != null) {
         mcount1++;
-        var response = JSON.parse(xhr.responseText);
+        //var response = JSON.parse(xhr.responseText);
         mcount2 = response.mcount1;
-        $('#chatwindow').append("<div class='row ymessage'><div class='col-xs-12'>"+response.message+"</div></div>");
+        $('#chatwindow').append("<div class='row ymessage'><div class='col-xs-12'>"+xhr.responseText.message+"</div></div>");
         }
         else {
          mcount1++;
