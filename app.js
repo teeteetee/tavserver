@@ -40,7 +40,7 @@ app.get('/chat',function(req,res){
     var vuserid = Math.random().toString().slice(2,9);
     console.log('request form chat,created id: '+vuserid+' checking if already exists...');
     chat.findOne({id: vuserid},function(err,doc){
-      if(doc===undefined)
+      if(doc===null)
       {
         console.log('Creating user');
         res.render('chat',{'adress': vuserid});
@@ -48,7 +48,7 @@ app.get('/chat',function(req,res){
         
       }
       else {
-        var newnum = vuserid+Math.random().toString().slice(2,9);
+        var newnum = vuserid*2.5;
         console.log('Creating user');
         res.render('chat',{'adress': newnum});
         chat.insert({id : newnum});

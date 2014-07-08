@@ -135,7 +135,7 @@ head
         $('#drop').click(function(){drop();});
         function drop() {
           var xhr = new XMLHttpRequest();
-          var url = 'topandviews.com/chat/drop';
+          var url = '/chat/drop';
           xhr.open("get",url,true);
           xhr.send(null)
           xhr.onreadystatechange = function() {
@@ -148,7 +148,7 @@ head
         }
         //function check() {
         //var xhr = new XMLHttpRequest();
-        //var url = 'topandviews.com/chat/check/'+$('#oppnum').val;
+        //var url = '/chat/check/'+$('#oppnum').val;
         //xhr.open("get",url,true);
         //xhr.send(null)
         //xhr.onreadystatechange = function() {
@@ -161,7 +161,7 @@ head
         //}
         function send() {
         var xhr = new XMLHttpRequest();
-        var url = 'topandviews.com/chat';
+        var url = '/chat';
         var data = $('#userinput').val();
         var opp = $('#oppnum').val();
         var message = 'oppid='+opp+'&id=#{adress}&message='+encodeURIComponent(data);
