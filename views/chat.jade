@@ -169,7 +169,7 @@ head
         xhr.send(message);
         $('#chatwindiw').append("<div class='row mmessage'><div class='col-xs-12'>"+data+"</div></div>");
         xhr.onreadystatechange = function() {
-        if (xhr.readyState ==== 4) {
+        if (xhr.readyState === 4) {
         if (xhr.status != 200) {
         // обработать ошибку
         $('#chatwindiw').append("<div class='row emessage'><div class='col-xs-12'>Error"+xhr.status+xhr.statusText+"</div></div>");
