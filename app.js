@@ -42,7 +42,7 @@ app.get('/chat',function(req,res){
     chat.findOne({id: vuserid},function(err,doc){
       if(doc===null)
       {
-        console.log('Creating user');
+        console.log('(1)Creating user');
         res.render('chat',{'adress': vuserid});
         chat.insert({id : vuserid},function(err,doc){
           console.log(doc);
@@ -51,7 +51,7 @@ app.get('/chat',function(req,res){
       }
       else {
         var newnum = vuserid*2.5;
-        console.log('Creating user');
+        console.log('(2)Creating user');
         res.render('chat',{'adress': newnum});
         chat.insert({id : newnum},function(err,doc){
           console.log(doc);
@@ -79,10 +79,12 @@ app.post('/chat',function(req,res){
   var usermessage = req.body.message;
   var oppadd = req.body.oppid;
   console.log(userid+' says: '+usermessage+'to '+oppadd);
-  chat.update({id : userid},{message : usermessage},function(err,doc){});
-  chat.findOne({id: userid},function(err,doc){
+  chat.update({id : userid},{message : usermessage},function(err,doc){
+    console('written to senders doc: '+doc)
+  });
+  chat.findOne({id: oppadd},function(err,doc){
     
-    console.log(doc);
+    console.log('check for messages'+doc);
     res.send(doc);
   });
 });
