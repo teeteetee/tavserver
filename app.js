@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
-  , places = db.get('places'),property = db.get('property');
+  , places = db.get('places'),property = db.get('property'),chat = db.get('chat');
 var fs = require('fs-extra');
 
 var app = express();
@@ -29,6 +29,54 @@ app.use(express.static(path.join(__dirname, 'public')));
 //  console.log(req.url , req.headers.host );
 //  next();
 //})
+
+//AS TEMPORARY
+app.get('/chat',function(){
+  var userid ;
+  function idloop(){
+  if (checkid()) {}
+    else{idloop()}
+  }
+  function checkid() {
+    var userid = math.random().slice(2,8);
+    chat.findOne({id: userid},funtion(err,doc){
+      if(doc!=undefined)
+      {
+        res.render('chat',{'adress':userid});
+        chat.insert({id : userid});
+        return true
+      }
+      else {return  false}
+    });
+  }
+  
+});
+app.get('/chat/check/:oppid',function(){
+  var oppid = req.params.oppid;
+  chat.findOne({id:oppid},function(err,doc){
+    if (err) {res.send('error');}
+    if (doc === undefined) {res.send('error');}
+    res.send(doc);
+  });
+});
+
+app.post('/chat',function(){
+  var userid = req.body.id;
+  var usermessage = req.body.message;
+  var oppadd = req.body.oppid;
+  console.log(userid+' says: 'usermessage);
+  chat.update({id : userid},{message : usermessage});
+  chat.findOne({id: oppadd},function(err,doc){
+    var reply = JSON.stringify(doc);
+    res.send(reply);
+  });
+});
+
+app.get('/chat/terminate',function(){
+  chat.drop();
+  res.send('chat db dropped')
+});
+//END OF AS TEMPORARY
 
 
 
@@ -1022,7 +1070,7 @@ if (req.body.nameru === undefined||
          });
          var photonum = req.body.imgqntt;
          var vplacename = req.body.placename;
-         for (i=1;i<=photonum;i++) {
+         for (i=0;i<photonum;i++) {
            eval('var vimg_'+i+';');
            console.log(i+' VARIABLE CREATED');
          }
@@ -1049,9 +1097,9 @@ if (req.body.nameru === undefined||
                 function imgcheck (n) {
                   var mistakes = 0;
                   console.log('into IMAGECHECK');
-                  for (i=1;i<=n;i++) {
-                    eval('if (req.files.img_'+i+'.name == null) {mistakes++}');
-                    console.log('checked req.files.img_'+i+' , mistakes :'+mistakes);
+                  for (i=0;i<n;i++) {
+                    eval('if (req.files.images['+i+'].name == null) {mistakes++}');
+                    console.log('checked req.files.images['+i+'] , mistakes :'+mistakes);
                   }
                   if (mistakes>0) {return false;}
                    else {return true;}
@@ -1066,8 +1114,8 @@ if (req.body.nameru === undefined||
              
              function uploadloop(n) {
                console.log('UPLOADLOOP START,'+n+' images will be processed');
-                for(i=1;i<=n;i++) {
-                 eval("upload(req.files.img_"+i+".path,req.files.img_"+i+".name,vimg_"+i+");");
+                for(i=0;i<n;i++) {
+                 eval("upload(req.files.images["+i+"].path,req.files.images["+i+"].name,vimg_"+i+");");
                 }
                 console.log('UPLOADLOOP EXIT');
              }
