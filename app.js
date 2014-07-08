@@ -78,6 +78,7 @@ app.post('/chat',function(req,res){
   chat.update({id : userid},{message : usermessage},function(err,doc){});
   chat.findOne({id: oppadd},function(err,doc){
     var reply = JSON.stringify(doc);
+    console.log(reply);
     res.send(reply);
   });
 });
