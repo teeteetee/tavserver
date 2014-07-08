@@ -166,7 +166,6 @@ head
         var opp = $('#oppnum').val();
         var message = 'oppid='+opp+'&id=#{adress}&message='+encodeURIComponent(data);
         xhr.open("post",url,true);
-        xhr.send(message);
         $('#chatwindiw').append("<div class='row mmessage'><div class='col-xs-12'>"+data+"</div></div>");
         xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
@@ -179,6 +178,6 @@ head
         $('#chatwindow').append("<div class='row ymessage'><div class='col-xs-12'>"+xhr.responseText+"</div></div>");
         }
         }
-        xhr.send(null);
+        xhr.send(message);
         }
     
