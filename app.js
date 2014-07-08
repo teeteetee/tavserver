@@ -37,7 +37,7 @@ app.get('/chat',function(){
   
   function checkid() {
     var vuserid = Math.random().toString().slice(2,9);
-    console.log('request form chat,created id: '+userid+' checking if already exists...');
+    console.log('request form chat,created id: '+vuserid+' checking if already exists...');
     chat.findOne({id: vuserid},function(err,doc){
       if(doc===undefined)
       {
