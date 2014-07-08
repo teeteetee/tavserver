@@ -84,8 +84,8 @@ app.post('/chat',function(req,res){
   });
   chat.findOne({id : oppadd},function(err,doc){
     
-    console.log('check for messages'+doc);
-    res.send(doc);
+    console.log('check for messages'+doc.message);
+    res.send(doc.message);
   });
 });
 
