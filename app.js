@@ -44,14 +44,18 @@ app.get('/chat',function(req,res){
       {
         console.log('Creating user');
         res.render('chat',{'adress': vuserid});
-        chat.insert({id : vuserid},function(err,doc){});
+        chat.insert({id : vuserid},function(err,doc){
+          console.log(doc);
+        });
         
       }
       else {
         var newnum = vuserid*2.5;
         console.log('Creating user');
         res.render('chat',{'adress': newnum});
-        chat.insert({id : newnum},function(err,doc){});
+        chat.insert({id : newnum},function(err,doc){
+          console.log(doc);
+        });
         
       }
     });
