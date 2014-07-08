@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //AS TEMPORARY
 app.get('/chat',function(){
  console.log('into chat');
-
+ checkid()
 
   
   function checkid() {
