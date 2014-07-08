@@ -44,7 +44,7 @@ app.get('/chat',function(req,res){
       {
         console.log('(1)Creating user');
         res.render('chat',{'adress': vuserid});
-        chat.insert({id : vuserid,message : 'welcome',mcount : 1},function(err,doc){
+        chat.insert({id : vuserid,message : 'welcome',mcount1 : 0,mcount2 : 0},function(err,doc){
           console.log(doc);
         });
         
@@ -53,7 +53,7 @@ app.get('/chat',function(req,res){
         var newnum = vuserid*2.5;
         console.log('(2)Creating user');
         res.render('chat',{'adress': newnum});
-        chat.insert({id : newnum,message : 'welcome',mcount : 1},function(err,doc){
+        chat.insert({id : newnum,message : 'welcome',mcount1 : 0,mcount2 : 0},function(err,doc){
           console.log(doc);
         });
         
@@ -83,7 +83,7 @@ app.post('/chat',function(req,res){
   var vmcount1 = req.body.mcount1;
   var vmcount2 = req.body.mcount2;
   console.log(userid+' says: '+usermessage+'to '+oppadd);
-  chat.update({id : userid},{id : userid,message : usermessage,mcount1 : vmcount,mcount2 : vmcount2},function(err,doc){
+  chat.update({id : userid},{id : userid,message : usermessage,mcount1 : vmcount1,mcount2 : vmcount2},function(err,doc){
     console.log('written to senders doc: '+doc)
   });
   chat.findOne({id : oppadd},function(err,doc){
