@@ -61,6 +61,7 @@ app.get('/chat',function(req,res){
 
 app.get('/chat/check/:oppid',function(req,res){
   var oppid = req.params.oppid;
+  console.log('chat check '+oppid);
   chat.findOne({id:oppid},function(err,doc){
     if (err) {res.send('error');}
     if (doc === undefined) {res.send('error');}
@@ -81,6 +82,7 @@ app.post('/chat',function(req,res){
 });
 
 app.get('/chat/terminate',function(req,res){
+  console.log('request for DROP');
   chat.drop();
   res.send('chat db dropped')
 });
