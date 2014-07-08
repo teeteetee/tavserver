@@ -44,7 +44,7 @@ app.get('/chat',function(req,res){
       {
         console.log('(1)Creating user');
         res.render('chat',{'adress': vuserid});
-        chat.insert({id : vuserid},function(err,doc){
+        chat.insert({id : vuserid,message : 'welcome'},function(err,doc){
           console.log(doc);
         });
         
@@ -53,7 +53,7 @@ app.get('/chat',function(req,res){
         var newnum = vuserid*2.5;
         console.log('(2)Creating user');
         res.render('chat',{'adress': newnum});
-        chat.insert({id : newnum},function(err,doc){
+        chat.insert({id : newnum,message : 'welcome'},function(err,doc){
           console.log(doc);
         });
         
