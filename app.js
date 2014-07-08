@@ -32,8 +32,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //AS TEMPORARY
 app.get('/chat',function(){
-
-  
+ console.log('into chat');
+  loopy();
   
   function checkid() {
     var vuserid = Math.random().toString().slice(2,9);
