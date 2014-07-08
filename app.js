@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //AS TEMPORARY
 app.get('/chat',function(){
   var userid = Math.random().toString().slice(2,8);
-  console.log('request form chat,created id: 'userid);
+  console.log('request form chat,created id: '+userid);
   function checkid(vuserid) {
     
     chat.findOne({id: vuserid},function(err,doc){
