@@ -50,7 +50,7 @@ app.get('/chat',function(){
     });
   }
   function loopy() {
-  x = checkid(userid) ;
+  x = checkid() ;
   console.log('loopy check');
   if (x != true) {loopy}
   }
