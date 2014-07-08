@@ -166,15 +166,12 @@ head
         var opp = $('#oppnum').val();
         var message = 'oppid='+opp+'&id=#{adress}&message='+encodeURIComponent(data);
         xhr.open("post",url,true);
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.setRequestHeader("Content-length", message.length);
-        xhr.setRequestHeader("Connection", "close");
-        $('#chatwindiw').append("<div class='row mmessage'><div class='col-xs-12'>"+data+"</div></div>");
+        $('#chatwindow').append("<div class='row mmessage'><div class='col-xs-12'>"+data+"</div></div>");
         xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
         if (xhr.status != 200) {
         // обработать ошибку
-        $('#chatwindiw').append("<div class='row emessage'><div class='col-xs-12'>Error"+xhr.status+xhr.statusText+"</div></div>");
+        $('#chatwindow').append("<div class='row emessage'><div class='col-xs-12'>Error"+xhr.status+xhr.statusText+"</div></div>");
         return;
         }
         // обработать результат
