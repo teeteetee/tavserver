@@ -130,7 +130,7 @@ head
           button.form-control(type='button', id='drop', style='background-color: #c35;') Drop
       
       script.
-        setInterval(function(){ var y = $('#oppnum').val; if (y != null) {check()}},5000)
+        //setInterval(function(){ var y = $('#oppnum').val; if (y != null) {check()}},5000)
         $('#send').click(function(){send();});
         $('#drop').click(function(){drop();});
         function drop() {
@@ -146,19 +146,19 @@ head
         }
         }
         }
-        function check() {
-        var xhr = new XMLHttpRequest();
-        var url = 'topandviews.com/chat/check/'+$('#oppnum').val;
-        xhr.open("get",url,true);
-        xhr.send(null)
-        xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-        if (200<xhr.status<304) {
-        $('#chatwindow').append("<div class='row ymessage'><div class='col-xs-12'>"+xhr.responseText+"</div></div>");
-        }
-        }
-        }
-        }
+        //function check() {
+        //var xhr = new XMLHttpRequest();
+        //var url = 'topandviews.com/chat/check/'+$('#oppnum').val;
+        //xhr.open("get",url,true);
+        //xhr.send(null)
+        //xhr.onreadystatechange = function() {
+        //if (xhr.readyState === 4) {
+        //if (200<xhr.status<304) {
+        //$('#chatwindow').append("<div class='row ymessage'><div class='col-xs-12'>"+xhr.responseText+"</div></div>");
+        //}
+        //}
+        //}
+        //}
         function send() {
         var xhr = new XMLHttpRequest();
         var url = 'topandviews.com/chat';
