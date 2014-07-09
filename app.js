@@ -88,9 +88,10 @@ app.post('/chat',function(req,res){
   });
   chat.findOne({id : oppadd},function(err,doc){
     if (vmcount2<=doc.mcount1)
-      {res.send();}
+      {console.log('sending blank, the doc: '+doc);
+        res.send();}
     else {
-      console.log(doc)
+      console.log('sending doc: '+doc);
       res.send(doc);}
   });
 });
