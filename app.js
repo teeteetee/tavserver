@@ -66,16 +66,23 @@ app.get('/chat',function(req,res){
 app.get('/chat/check/:oppid',function(req,res){
   var oppid = req.params.oppid;
   var vrecieved = req.params.recieved;
+  var reply = new Object();
+  reply.message = "opponent had left the chat, his and yours db records are erased";
+  reply.sent = 0;
   console.log('chat check '+oppid);
   chat.findOne({id:oppid},function(err,doc){
-    if (doc === undefined)
-      {res.send('{"message":"opponent had left the chat, his and yours db records are erased"}');}
-    else{
-        if(vrecieved>=doc.sent)
-          {res.send();}
-        else
-          {res.send(doc);}
-       }
+     if (err)
+         {res.send(reply)}
+      else {      
+             if (doc === undefined)
+               {res.send(reply);}
+             else{
+                 if(vrecieved>=doc.sent)
+                   {res.send();}
+                 else
+                   {res.send(doc);}
+                }
+            }
   });
 });
 
@@ -86,21 +93,30 @@ app.post('/chat',function(req,res){
   var oppadd = req.body.oppid;
   var vsent = req.body.sent;
   var vrecieved = req.body.recieved;
+  var reply = new Object();
+  reply.message = "opponent had left the chat, his and yours db records are erased";
+  reply.sent = 0;
   console.log(userid+' says: '+usermessage+'to '+oppadd+'(has sent '+vsent+' and recieved '+vrecieved+'messages)');
   chat.update({id : userid},{id : userid,message : usermessage,sent : vsent,recieved : vrecieved},function(err,doc){
-    console.log('written to senders doc: '+doc)
+    if (err) {res.send(reply);}
+    else{
+    console.log('written to senders doc: '+doc);
+      }
   });
   chat.findOne({id : oppadd},function(err,doc){
-    if (doc === undefined)
-        {res.send('{"message":"opponent had left the chat, his db records are erased,yours will be after you close this window"}');}
-    else {
-          if (vrecieved>=doc.sent)
-            {console.log('sending blank, the doc: '+JSON.stringify(doc));
-              res.send();}
-          else {
-            console.log('sending doc: '+JSON.stringify(doc));
-            res.send(doc);}
-         }
+    if (err) {res.send(reply)}
+    else{
+         if (doc === undefined)
+             {res.send('{"message":"opponent had left the chat, his db records are erased,yours will be after you close this window"}');}
+         else {
+               if (vrecieved>=doc.sent)
+                 {console.log('sending blank, the doc: '+JSON.stringify(doc));
+                   res.send();}
+               else {
+                 console.log('sending doc: '+JSON.stringify(doc));
+                 res.send(doc);}
+              }
+        }      
   });
 });
 
