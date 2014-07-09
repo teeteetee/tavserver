@@ -156,7 +156,7 @@ head
         xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
         if (200<xhr.status<304) {
-        if (xhr.responseText != null && xhr.status == 200) {
+        if (xhr.responseText != undefined && xhr.status == 200) {
         var response = JSON.parse(xhr.responseText);
         $('#chatwindow').append("<div class='row ymessage'><div class='col-xs-12'>"+response.message+"</div></div>");
         recieved = response.sent;
@@ -185,12 +185,14 @@ head
         return;
         }
         // обработать результат
-         if (xhr.responseText != null && xhr.status == 200 ) {
+         if (xhr.responseText != undefined && xhr.status == 200 ) {
         var response = JSON.parse(xhr.responseText);
         recieved = response.sent;
         $('#chatwindow').append("<div class='row ymessage'><div class='col-xs-12'>"+response.message+"</div></div>");
+
         }
         else {
+
         }
         }
         }
