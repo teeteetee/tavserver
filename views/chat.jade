@@ -141,8 +141,10 @@ head
         {$( "#send" ).prop( "disabled", false );
         $( "#drop" ).prop( "disabled", false );
         $( "#userinput" ).prop( "disabled", false );
-         setInterval(function(){ var y = $('#oppnum').val().length; if (y = 7) {check()}},5000);
+        $( "#oppnum" ).prop( "disabled", true );
+         setInterval(function(){ if(sent>0) {check()}},5000);
          }
+         else {alert('Incorrect opponent's adress');}
         });
         $('#send').click(function(){send();});
         $('#drop').click(function(){drop();});
