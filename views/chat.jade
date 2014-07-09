@@ -186,12 +186,11 @@ head
         }
         // обработать результат
          if (xhr.responseText != null && xhr.status == 200 ) {
-        var response = xhr.responseText;
-        //recieved = response.sent;
-        $('#chatwindow').append("<div class='row ymessage'><div class='col-xs-12'>"+xhr.responseText+"</div></div>");
+        var response = JSON.parse(xhr.responseText);
+        recieved = response.sent;
+        $('#chatwindow').append("<div class='row ymessage'><div class='col-xs-12'>"+response.message+"</div></div>");
         }
         else {
-         $('#chatwindow').append("<div class='row ymessage'><div class='col-xs-12'>"+xhr.responseText+"seems like nothing came back from the server"+"</div></div>");
         }
         }
         }
