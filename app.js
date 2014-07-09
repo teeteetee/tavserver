@@ -44,7 +44,7 @@ app.get('/chat',function(req,res){
       {
         console.log('(1)Creating user');
         res.render('chat',{'adress': vuserid});
-        chat.insert({id : vuserid,message : 'welcome',mcount1 : 0,mcount2 : 0},function(err,doc){
+        chat.insert({id : vuserid,message : 'welcome',sent : 0,recieved : 0},function(err,doc){
           console.log(doc);
         });
         
@@ -53,7 +53,7 @@ app.get('/chat',function(req,res){
         var newnum = vuserid*2.5;
         console.log('(2)Creating user');
         res.render('chat',{'adress': newnum});
-        chat.insert({id : newnum,message : 'welcome',mcount1 : 0,mcount2 : 0},function(err,doc){
+        chat.insert({id : newnum,message : 'welcome', sent : 0 , recieved : 0 },function(err,doc){
           console.log(doc);
         });
         
@@ -65,10 +65,10 @@ app.get('/chat',function(req,res){
 
 app.get('/chat/check/:oppid',function(req,res){
   var oppid = req.params.oppid;
-  var vmcount2 = req.params.mcount2;
+  var vrecieved = req.params.recieved;
   console.log('chat check '+oppid);
   chat.findOne({id:oppid},function(err,doc){
-    if(vmcount2<=doc.mcount1)
+    if(vrecieved<=doc.sent)
       {res.send();}
     else
       {res.send(doc);}
@@ -80,14 +80,14 @@ app.post('/chat',function(req,res){
   var userid = req.body.id;
   var usermessage = req.body.message;
   var oppadd = req.body.oppid;
-  var vmcount1 = req.body.mcount1;
-  var vmcount2 = req.body.mcount2;
-  console.log(userid+' says: '+usermessage+'to '+oppadd);
-  chat.update({id : userid},{id : userid,message : usermessage,mcount1 : vmcount1,mcount2 : vmcount2},function(err,doc){
+  var vsent = req.body.sent;
+  var vrecieved = req.body.recieved;
+  console.log(userid+' says: '+usermessage+'to '+oppadd+'(has sent '+vsent+' and recieved '+vrecieved+'messages)');
+  chat.update({id : userid},{id : userid,message : usermessage,sent : vsent,recieved : vrecieved},function(err,doc){
     console.log('written to senders doc: '+doc)
   });
   chat.findOne({id : oppadd},function(err,doc){
-    if (vmcount2<=doc.mcount1)
+    if (vrecieved<=doc.sent)
       {console.log('sending blank, the doc: '+JSON.stringify(doc));
         res.send();}
     else {
