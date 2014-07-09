@@ -87,7 +87,7 @@ app.post('/chat',function(req,res){
     console.log('written to senders doc: '+doc)
   });
   chat.findOne({id : oppadd},function(err,doc){
-    if (vrecieved<=doc.sent)
+    if (vrecieved>=doc.sent)
       {console.log('sending blank, the doc: '+JSON.stringify(doc));
         res.send();}
     else {
