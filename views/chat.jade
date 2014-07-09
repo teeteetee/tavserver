@@ -113,7 +113,9 @@ head
         .col-xs-6
           label ENTER OPPONENT'S ADRESS NUMBER:
           input#oppnum(type='text', name='oppnum')
-        .col-xs-6
+        .col-xs-2
+          button.btn.btn-lg.form-control(type='button',id='oppconf',style='background-color:#D4FFD4;color:#44A84E;')OK  
+        .col-xs-4
           label YOUR ADRESS NUMBER: #{adress}
       #annc.row
         .col-xs-12
@@ -123,16 +125,25 @@ head
         .col-xs-12( style='height: 250px;')
       #buttons.row
         #inputfield.col-xs-8(style='padding-left: 0px; padding-right: 0px;')
-          input#userinput.form-control(name='userinput')
+          input#userinput.form-control(name='userinput',disabled)
         .col-xs-2
-          button.form-control(type='button', id='send', style='background-color: #ddd;') Send
+          button.form-control(type='button', id='send', style='background-color: #ddd;',disabled) Send
         .col-xs-2
-          button.form-control(type='button', id='drop', style='background-color: #c35;') Drop
+          button.form-control(type='button', id='drop', style='background-color: #c35;',disabled) Drop
       
       script.
         var sent = 0;
         var recieved = 0;
-        setInterval(function(){ var y = $('#oppnum').val; if (y != null) {check()}},5000)
+        $('#oppconf').click(function(){
+        var v = $('#oppnum').val();
+        var y = $('#oppnum').val().length; 
+        if (y = 7 && /^(\d|,)+$/.test(v) === true)
+        {$( "#send" ).prop( "disabled", false );
+        $( "#drop" ).prop( "disabled", false );
+        $( "#userinput" ).prop( "disabled", false );
+         setInterval(function(){ var y = $('#oppnum').val().length; if (y = 7) {check()}},5000);
+         }
+        });
         $('#send').click(function(){send();});
         $('#drop').click(function(){drop();});
         function drop() {
