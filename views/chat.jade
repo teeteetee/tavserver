@@ -163,9 +163,9 @@ head
         }
         function check() {
         var xhr = new XMLHttpRequest();
-        var url = '/chat/check/'+$('#oppnum').val;
+        var url = '/chat/check/'+$('#oppnum').val();
         xhr.open("get",url,true);
-        xhr.send(null)
+        xhr.send(null);
         xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
         if (200<xhr.status<304) {

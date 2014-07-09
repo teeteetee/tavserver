@@ -68,7 +68,7 @@ app.get('/chat/check/:oppid',function(req,res){
   var vrecieved = req.params.recieved;
   console.log('chat check '+oppid);
   chat.findOne({id:oppid},function(err,doc){
-    if(vrecieved<=doc.sent)
+    if(vrecieved>=doc.sent)
       {res.send();}
     else
       {res.send(doc);}
