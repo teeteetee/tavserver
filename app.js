@@ -68,10 +68,14 @@ app.get('/chat/check/:oppid',function(req,res){
   var vrecieved = req.params.recieved;
   console.log('chat check '+oppid);
   chat.findOne({id:oppid},function(err,doc){
-    if(vrecieved>=doc.sent)
-      {res.send();}
-    else
-      {res.send(doc);}
+    if (doc === undefined)
+      {res.send('{"message":"opponent had left the chat, his and yours db records are erased"}');}
+    else{
+        if(vrecieved>=doc.sent)
+          {res.send();}
+        else
+          {res.send(doc);}
+       }
   });
 });
 
@@ -87,12 +91,16 @@ app.post('/chat',function(req,res){
     console.log('written to senders doc: '+doc)
   });
   chat.findOne({id : oppadd},function(err,doc){
-    if (vrecieved>=doc.sent)
-      {console.log('sending blank, the doc: '+JSON.stringify(doc));
-        res.send();}
+    if (doc === undefined)
+        {res.send('{"message":"opponent had left the chat, his db records are erased,yours will be after you close this window"}');}
     else {
-      console.log('sending doc: '+JSON.stringify(doc));
-      res.send(doc);}
+          if (vrecieved>=doc.sent)
+            {console.log('sending blank, the doc: '+JSON.stringify(doc));
+              res.send();}
+          else {
+            console.log('sending doc: '+JSON.stringify(doc));
+            res.send(doc);}
+         }
   });
 });
 
@@ -105,6 +113,13 @@ app.get('/chat/drop',function(req,res){
 app.get('/chat/all',function(req,res){
   chat.find({},function(err,doc){
     res.send(doc);
+  });
+});
+
+app.get('/chat/terminate/:id',function(req,res){
+  var vid = req.params.id;
+  chat.remove({id : vid},function(err,done){
+    console.log(vid+'had left');
   });
 });
 //END OF AS TEMPORARY
