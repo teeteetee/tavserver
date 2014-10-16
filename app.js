@@ -18,29 +18,19 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(favicon('/images/tavlogobw.png'));
+//app.use(favicon('/images/tavlogobw.png'));
 app.use(logger('dev'));
 app.use(require('connect').bodyParser());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-//app.get('*',function(req,res,next) {
-//  console.log(req.url , req.headers.host );
-//  next();
-//})
-
-
-
-
- 
-
  app.get('/index',function(req,res){
    var incomming = req.headers.host;
 
   if (incomming === 'topandviews.ru') {
     console.log(' serving RU');
-    res.render('indexru');
+    res.render('index');
   } 
   
   if (incomming === 'topandviews.co.uk') {
@@ -54,14 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')));
      }
 });
 
- app.get('/:lang/*',function (req,res,next){
-
-  var checklang = req.params.lang;
-  console.log('LANGUAGE CHECK:got request with '+checklang);
-  if (checklang === 'ru' || checklang === 'en' || checklang === 'es' || checklang === 'fr' || checklang === 'de' || checklang === 'it' || checklang === 'places' )
-    {next();}
-  else {res.render('my404')}
-});   
+  
 //subdomain magic 
 app.get('*', function(req,res,next) { 
   var d = new Date();
@@ -95,13 +78,13 @@ app.get('/',function(req,res) {
   var d = new Date();
   if(req.headers.host === 'topandviews.ru') 
     {console.log(d+' request on .ru from '+req.ip);
-     res.render('landingru');}
+     res.render('index');}
   if(req.headers.host === 'topandviews.com') 
     {console.log(d+' request on .com from '+req.ip);
-     res.render('landing');}
+     res.render('index');}
   if(req.headers.host === 'topandviews.co.uk') 
     {console.log(d+' request on .co.uk from '+req.ip);
-     res.render('landinguk');}
+     res.render('index');}
 });
 
 
@@ -110,85 +93,6 @@ app.get('/',function(req,res) {
 
 //full version starts here, mobile will be below
 
-//app.get('/', function(req,res) {
-//  console.log('got into / , choice by req.headers.host');
-//        var incomming = req.headers.host;
-//  if (incomming = 'topandviews.ru') {
-//    res.render('indexru');
-//  } 
-//  if (incomming = 'topandviews.co.uk') {
-//    res.render('index');
-//  }
-//  if (incomming = 'topandviews.com') {
-//    res.render('index');
-//  }
-//        
-//});
-
-app.get('/:lang/places/:place', function(req,res){
-  var plang = req.params.lang;
-  var pp;
-  var pptop;
-   if (plang === 'ru'){var pp = 'ppru';var pptop = 'pptopru';} 
-   if (plang === 'en'){var pp = 'pp';var pptop = 'pptop';} 
-   if (plang === 'de'){var pp = 'ppde';var pptop = 'pptopde';} 
-   if (plang === 'fr'){var pp = 'ppfr';var pptop = 'pptopfr';} 
-   if (plang === 'es'){var pp = 'ppes';var pptop = 'pptopes';} 
-   if (plang === 'it'){var pp = 'ppit';var pptop = 'pptopit';} 
-
-  var reqplace = req.params.place;
-  console.log('into PLACES, going to search for '+reqplace);
-  places.findOne({placename : reqplace},function(err,placedoc){
-
-    if (placedoc !== null)
-                            {
-
-    var top = placedoc.topbool;
-    var vplacename  = placedoc.placename;
-    var propername = placedoc.nameen;
-    var vxml = placedoc.xml;
-    var vtelephone = placedoc.telephone;
-    var vweb = placedoc.www;
-    var vshisha = placedoc.shisha;
-    var vcigars = placedoc.cigars;
-    var vworkinghours = placedoc.workinghours;
-    var vyearfounded = placedoc.yearfounded;
-    var vcity = placedoc.city;
-
-    if (vshisha === 'on')
-                       {
-                        vshisha = 'Yes';
-                       }
-      else 
-          {
-           vshisha = 'No'
-          }
-    if (vcigars === 'on') 
-                       {
-                        vcigars = 'Yes';
-                       }
-      else 
-          {
-            vcigars = 'No';
-          }                  
-
-    if (top === 'on') 
-                        {
-                          res.render(pptop,{'placename': propername , 'xml' : vxml , 'telephone' : vtelephone , 'web' : vweb , 'cigars' : vcigars , 'shisha' : vshisha , 'yearfounded' : vyearfounded , 'city' : vcity ,'workinghours' : vworkinghours});
-                        }
-       else 
-           {
-            res.render(pp, {'placename': propername ,'workinghours' : vworkinghours, 'xml' : vxml , 'telephone' : vtelephone , 'web' : vweb , 'cigars' : vcigars , 'shisha' : vshisha , 'yearfounded' : vyearfounded , 'city' : vcity });
-           }   
-           }
-       else 
-           {
-            res.render('my404');
-           }                  
-  });
-});
-
-//mobile version starts here
 
 app.get('/admin', function(req,res) {
   res.render('adminauth',{'message' : null});
@@ -237,7 +141,7 @@ app.post('/uploadauth', function(req,res){
 
 });  
 
-
+// mobile version start here
 
 app.get('/m/',function(req,res){
   console.log('got to /m/ section, render depending on req.headers.host');
@@ -254,15 +158,15 @@ app.get('/m/:lang/*',function (req,res,next){
 });
 
 
-app.get('/m/:lang/geo', function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'ru'){res.render('mgeoru');} 
-   if (lang === 'en'){res.render('mgeo');} 
-   if (lang === 'de'){res.render('mgeode');} 
-   if (lang === 'fr'){res.render('mgeofr');} 
-   if (lang === 'es'){res.render('mgeoes');} 
-   if (lang === 'it'){res.render('mgeoit');} 
-});
+//app.get('/m/:lang/geo', function(req,res){
+//  var lang = req.params.lang;
+//  if (lang === 'ru'){res.render('mgeoru');} 
+//   if (lang === 'en'){res.render('mgeo');} 
+//   if (lang === 'de'){res.render('mgeode');} 
+//   if (lang === 'fr'){res.render('mgeofr');} 
+//   if (lang === 'es'){res.render('mgeoes');} 
+//   if (lang === 'it'){res.render('mgeoit');} 
+//});
 
 app.get('/m/:lang', function(req,res){
   console.log('got into /m/:lang route')
@@ -275,99 +179,41 @@ app.get('/m/:lang', function(req,res){
    if (lang === 'it'){res.render('blank');} 
 });
 
-app.get('/m/:lang/geo/:city', function(req,res){
-    var lang = req.params.lang;
-    var vreqcity = req.params.city;
-    if (vreqcity === 'stpetersburg') {vreqcity = 'St.Petersburg'}
-    if (vreqcity === 'newyork') {vreqcity = 'New York'};
-    if (vreqcity === 'losangeles') {vreqcity = 'Los Angeles'}
-    var absolute = [];
-    var rooftop = [];
-    var terrace = [];
-    var cuisine = [];
-    tops.find({city : vreqcity,toptype : 1}, function(err,firsttypedocs){
-       console.log('got data for absolute');
-         absolute = firsttypedocs;
-         tops.find({city : vreqcity,toptype : 2}, function(err,secondtypedocs){
-            console.log('got data for rooftop');
-              rooftop = secondtypedocs;
-              tops.find({city : vreqcity,toptype : 3}, function(err,thirdtypedocs){
-                   terrace = thirdtypedocs;
-                   tops.find({city : vreqcity,toptype : 4},function(err,fourthtypedocs){
-                        cuisine = fourthtypedocs;
-                     
-                         res.render('mgeoindex', { 'city' : vreqcity , 'first' : absolute , 'second' : rooftop , 'third' : terrace , 'fourth' : cuisine });   
-                   });
-              });
-         });
-
-    });
-
-  
-
-});
-
-app.get('/m/:lang/languages',function (req,res){
-   res.render('mlanguages');
-});
-
-app.get('/m/:lang/places',function (req,res){
-  var lang = req.params.lang;
-   if (lang === 'ru'){res.render('mplacesru');} 
-   if (lang === 'en'){res.render('mplaces');} 
-   if (lang === 'de'){res.render('mplacesde');} 
-   if (lang === 'fr'){res.render('mplacesfr');} 
-   if (lang === 'es'){res.render('mplaceses');} 
-   if (lang === 'it'){res.render('mplacesit');} 
-});
-
-app.get('/m/:lang/property',function (req,res){
-  var lang = req.params.lang;
-   if (lang === 'ru'){res.render('mpropertyru');} 
-   if (lang === 'en'){res.render('mproperty');} 
-   if (lang === 'de'){res.render('mpropertyde');} 
-   if (lang === 'fr'){res.render('mpropertyfr');} 
-   if (lang === 'es'){res.render('mpropertyes');} 
-   if (lang === 'it'){res.render('mpropertyit');} 
-});
-
-app.get('/m/:lang/yachtsjets',function (req,res){
-  var lang = req.params.lang;
-   if (lang === 'ru'){res.render('myachtsjetsru');} 
-   if (lang === 'en'){res.render('myachtsjets');} 
-   if (lang === 'de'){res.render('myachtsjetsde');} 
-   if (lang === 'fr'){res.render('myachtsjetsfr');} 
-   if (lang === 'es'){res.render('myachtsjetses');} 
-   if (lang === 'it'){res.render('myachtsjetsit');} 
-});
-
-app.get('/m/:lang/campuses',function (req,res){
-  var lang = req.params.lang;
-   if (lang === 'ru'){res.render('mcampusesru');} 
-   if (lang === 'en'){res.render('mcampuses');} 
-   if (lang === 'de'){res.render('mcampusesde');} 
-   if (lang === 'fr'){res.render('mcampusesfr');} 
-   if (lang === 'es'){res.render('mcampuseses');} 
-   if (lang === 'it'){res.render('mcampusesit');} 
-});
-
-
-
-
+//app.get('/m/:lang/geo/:city', function(req,res){
+//    var lang = req.params.lang;
+//    var vreqcity = req.params.city;
+//    if (vreqcity === 'stpetersburg') {vreqcity = 'St.Petersburg'}
+//    if (vreqcity === 'newyork') {vreqcity = 'New York'};
+//    if (vreqcity === 'losangeles') {vreqcity = 'Los Angeles'}
+//    var absolute = [];
+//    var rooftop = [];
+//    var terrace = [];
+//    var cuisine = [];
+//    tops.find({city : vreqcity,toptype : 1}, function(err,firsttypedocs){
+//       console.log('got data for absolute');
+//         absolute = firsttypedocs;
+//         tops.find({city : vreqcity,toptype : 2}, function(err,secondtypedocs){
+//            console.log('got data for rooftop');
+//              rooftop = secondtypedocs;
+//              tops.find({city : vreqcity,toptype : 3}, function(err,thirdtypedocs){
+//                   terrace = thirdtypedocs;
+//                   tops.find({city : vreqcity,toptype : 4},function(err,fourthtypedocs){
+//                        cuisine = fourthtypedocs;
+//                     
+//                         res.render('mgeoindex', { 'city' : vreqcity , 'first' : absolute , 'second' : rooftop , 'third' : terrace , 'fourth' : cuisine });   
+//                   });
+//              });
+//         });
+//
+//    });
+//
+//  
+//
+//});
 
 
 //mobile version's end
 
-
-app.get('/:lang/geo', function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'en') {res.render('geo')}
-  if (lang === 'ru') {res.render('georu')}
-  if (lang === 'fr') {res.render('geofr')}
-  if (lang === 'de') {res.render('geode')}
-  if (lang === 'es') {res.render('geoes')}
-  if (lang === 'it') {res.render('geoit')} 
-});
 
 
 app.get('/:lang',function(req,res){
@@ -391,453 +237,42 @@ app.get('/:lang/contact', function(req,res){
 });
 
 
-app.get('/:lang/job', function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'en') {res.render('job')}
-  if (lang === 'ru') {res.render('jobru')}
-  if (lang === 'fr') {res.render('jobfr')}
-  if (lang === 'de') {res.render('jobde')}
-  if (lang === 'es') {res.render('jobes')}
-  if (lang === 'it') {res.render('jobit')} 
-});
 
 
 
-app.get('/:lang/partners', function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'en') {res.render('partners')}
-  if (lang === 'ru') {res.render('partnersru')}
-  if (lang === 'fr') {res.render('partnersfr')}
-  if (lang === 'de') {res.render('partnersde')}
-  if (lang === 'es') {res.render('partnerses')}
-  if (lang === 'it') {res.render('partnersit')} 
-});
-
-
-
-app.get('/:lang/campuses', function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'en') {res.render('soon')}
-  if (lang === 'ru') {res.render('soon')}
-  if (lang === 'fr') {res.render('soon')}
-  if (lang === 'de') {res.render('soon')}
-  if (lang === 'es') {res.render('soon')}
-  if (lang === 'it') {res.render('soon')} 
-});
-
-
-app.get('/:lang/property', function(req,res){
-  var prlang = req.params.lang;
-  if (prlang === 'en') {res.render('buystaysell',{lang : prlang})}
-  if (prlang === 'ru') {res.render('buystaysellru',{lang : prlang})}
-  if (prlang === 'fr') {res.render('buystaysellfr')}
-  if (prlang === 'de') {res.render('buystaysellde',{lang : prlang})}
-  if (prlang === 'es') {res.render('buystayselles')}
-  if (prlang === 'it') {res.render('buystaysellit')} 
-});
-
-app.get('/:lang/property/buy', function(req,res){
-  var blang = req.params.lang;
-  if (blang === 'en') {res.render('buy')}
-  if (blang === 'ru') {res.render('buyru',{lang : blang})}
-  if (blang === 'fr') {res.render('buyfr')}
-  if (blang === 'de') {res.render('buyde',{lang : blang})}
-  if (blang === 'es') {res.render('buyes')}
-  if (blang === 'it') {res.render('buyit')} 
-});
-
-
-app.get('/:lang/property/stay', function(req,res){
-  var slang = req.params.lang;
-  if (slang === 'en') {res.render('stay')}
-  if (slang === 'ru') {res.render('stayru',{lang : slang})}
-  if (slang === 'fr') {res.render('stayfr')}
-  if (slang === 'de') {res.render('stayde')}
-  if (slang === 'es') {res.render('stayes')}
-  if (slang === 'it') {res.render('stayit')} 
-});
-
-
-app.get('/:lang/property/sell', function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'en') {res.render('sell')}
-  if (lang === 'ru') {res.render('sellru')}
-  if (lang === 'fr') {res.render('sellfr')}
-  if (lang === 'de') {res.render('sellde')}
-  if (lang === 'es') {res.render('selles')}
-  if (lang === 'it') {res.render('sellit')} 
-});
-
-
-app.get('/:lang/places', function(req,res){
-  var plang = req.params.lang;
-  if (plang === 'en') {res.render('places', {lang : plang})}
-  if (plang === 'ru') {res.render('placesru',{lang : plang})}
-  if (plang === 'fr') {res.render('placesfr')}
-  if (plang === 'de') {res.render('placesde',{lang : plang})}
-  if (plang === 'es') {res.render('placeses')}
-  if (plang === 'it') {res.render('placesit')} 
-});
-
-
-app.get('/:lang/yachtsjets', function(req,res){
-  var ylang = req.params.lang;
-  if (ylang === 'en') {res.render('yachtsjets')}
-  if (ylang === 'ru') {res.render('yachtsjetsru',{lang : ylang})}
-  if (ylang === 'fr') {res.render('yachtsjetsfr')}
-  if (ylang === 'de') {res.render('yachtsjetsde')}
-  if (ylang === 'es') {res.render('yachtsjetses')}
-  if (ylang === 'it') {res.render('yachtsjetsit')} 
-});
-
-
-app.get('/:lang/yachts', function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'en') {res.render('soon')}
-  if (lang === 'ru') {res.render('soon')}
-  if (lang === 'fr') {res.render('soon')}
-  if (lang === 'de') {res.render('soon')}
-  if (lang === 'es') {res.render('soon')}
-  if (lang === 'it') {res.render('soon')} 
-});
-
-
-app.get('/:lang/jets', function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'en') {res.render('soon')}
-  if (lang === 'ru') {res.render('soon')}
-  if (lang === 'fr') {res.render('soon')}
-  if (lang === 'de') {res.render('soon')}
-  if (lang === 'es') {res.render('soon')}
-  if (lang === 'it') {res.render('soon')} 
-});
-
-
-app.get('/:lang/job/photographer', function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'en') {res.render('photographer')}
-  if (lang === 'ru') {res.render('photographerru')}
-  if (lang === 'fr') {res.render('photographerfr')}
-  if (lang === 'de') {res.render('photographerde')}
-  if (lang === 'es') {res.render('photographeres')}
-  if (lang === 'it') {res.render('photographerit')} 
-});
-
-
-app.get('/:lang/job/office', function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'en') {res.render('office')}
-  if (lang === 'ru') {res.render('officeru')}
-  if (lang === 'fr') {res.render('officefr')}
-  if (lang === 'de') {res.render('officede')}
-  if (lang === 'es') {res.render('officees')}
-  if (lang === 'it') {res.render('officeit')} 
-});
-
-
-app.get('/:lang/job/it', function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'en') {res.render('it')}
-  if (lang === 'ru') {res.render('itru')}
-  if (lang === 'fr') {res.render('itfr')}
-  if (lang === 'de') {res.render('itde')}
-  if (lang === 'es') {res.render('ites')}
-  if (lang === 'it') {res.render('itit')} 
-});
-
-//app.get('/geo/:city/places',function(req,res){
-//  var geocity = req.params.city;
-//  res.render('geoplaces',{'city': geocity});
-//});
-
-app.get('/:lang/geo/:city/places', function(req,res){
-  var vlang = req.params.lang;
-  var vcity = req.params.city;
-  if (vlang === 'en') {res.render('geoplaces',{'lang' : vlang,'city' : vcity})}
-  if (vlang === 'ru') {res.render('geoplacesru',{'lang' : vlang,'city' : vcity})}
-  if (vlang === 'fr') {res.render('geoplacesfr')}
-  if (vlang === 'de') {res.render('geoplacesde')}
-  if (vlang === 'es') {res.render('geoplaceses')}
-  if (vlang === 'it') {res.render('geoplacesit')} 
-});
-
-//app.get('geo/:city/property',function(req,res){
-//  var geocity = req.params.city;
-//  res.render('geoproperty',{'city': geocity});
-//});
-
-app.get('/:lang/geo/:city/property', function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'en') {res.render('geoproperty')}
-  if (lang === 'ru') {res.render('geopropertyru')}
-  if (lang === 'fr') {res.render('geopropertyfr')}
-  if (lang === 'de') {res.render('geopropertyde')}
-  if (lang === 'es') {res.render('geopropertyes')}
-  if (lang === 'it') {res.render('geopropertyit')} 
-});
-
-
-
-app.post('/:lang/places',function(req,res){
-  var lang = req.params.lang,
-   plcity = req.body.city,
-   plname = req.body.searchbox,
-   plfitness = req.body.fitness,
-   plmealdrink = req.body.mealdrink,
-   plcoworking = req.body.coworking,
-   plbeauty = req.body.beauty,
-   plrooftop = req.body.rooftop,
-   plterrace = req.body.terrace,
-   plcigars = req.body.cigars,
-   plshisha = req.body.shaisha;
-   
-   console.log(plcity);
-
-   if (plcity == undefined) {
-     places.find({})
-   }
-});
-
-app.get('/:lang/geo/:city', function(req,res){
-    var vreqcity = req.params.city;
-    var vcityen = req.params.city;
-    var newscity = req.params.city;
-    var vlang = req.params.lang;
-    
-    
-    var absolute = [];
-    var rooftop = [];
-    var terrace = [];
-    var cuisine = [];
-    var newdoc = [];
-    
-    places.find({city : vreqcity,toptype : 1}, function(err,firsttypedocs){
-       console.log('got data for absolute');
-         absolute = firsttypedocs;
-         places.find({city : vreqcity,toptype : 2}, function(err,secondtypedocs){
-            console.log('got data for rooftop');
-              rooftop = secondtypedocs;
-              places.find({city : vreqcity,toptype : 3}, function(err,thirdtypedocs){
-                   terrace = thirdtypedocs;
-                   places.find({city : vreqcity,toptype : 4},function(err,fourthtypedocs){
-                        cuisine = fourthtypedocs;
-                     
-                         places.find({city : vreqcity, glbtype : 'mealdrink'},{limit:5, sort :{_id:-1}},function(err,newdocs) {
-                               newdoc = newdocs ; 
-                               
-
-                              if (vlang === 'en') {
-                                if (vreqcity === 'newyork') {vreqcity = 'New York'};
-                                if (vreqcity === 'losangeles') {vreqcity = 'Los Angeles'}
-                                if (vreqcity === 'stpetersburg') {vreqcity = 'St.Petersburg'}
-                                res.render('geoindex', { city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc, cityen : vcityen })
-                              }
-                              if (vlang === 'ru') {
-                                console.log('got data from db, currently in RU ');
-                                if (vreqcity === 'newyork') {vreqcity = 'Нью-Йорк'};
-                                if (vreqcity === 'losangeles') {vreqcity = 'Лос-Анжелес'}
-                                if (vreqcity === 'stpetersburg') {vreqcity = 'Санкт-Петербург'}
-                                if (vreqcity === 'london') {vreqcity = 'Лондон'};
-                                if (vreqcity === 'moscow') {vreqcity = 'Москва'};
-                                console.log('translated city names,  render');
-                                res.render('geoindexru', { lang : vlang , city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc, cityen : vcityen })
-                              }
-                              if (vlang === 'fr') {
-                                res.render('geoindex', { lang : vlang , city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc, cityen : vcityen })
-                              }
-                              if (vlang === 'de') {
-                                 console.log('got data from db, currently in DE ');
-                                if (vreqcity === 'newyork') {vreqcity = 'New York'};
-                                if (vreqcity === 'losangeles') {vreqcity = 'Los Angeles'}
-                                if (vreqcity === 'stpetersburg') {vreqcity = 'St.Petersburg'}
-                                if (vreqcity === 'london') {vreqcity = 'London'};
-                                if (vreqcity === 'moscow') {vreqcity = 'Moskau'};
-                                console.log('translated city names,  render');
-                                res.render('geoindexde', { lang : vlang , city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc, cityen : vcityen })
-                              }
-                              if (vlang === 'es') {
-                                res.render('geoindex', { lang : vlang , city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc, cityen : vcityen })
-                              }
-                              if (vlang === 'it') {
-                                res.render('geoindex', { lang : vlang , city : vreqcity , first : absolute , second : rooftop , third : terrace , fourth : cuisine, news :newdoc, cityen : vcityen })
-                              } 
-                               
-                         });
-                         
-                   });
-              });
-         });
-
-    });
-
-  
-
-});
-
-app.get('/:lang/geo/:city/new', function(req,res){
-   var nlang = req.params.lang;
-   var ncity = req.params.city;
-   var nnmbr = 0 ;
-   places.find({city : ncity}, {limit : 0 ,sort: {yearnow: -1}},function(err,newdoc) {
-       //, {limit : 0 ,sort: {yearnow: -1}}
-       function cnt (value,index,array) {
-        nnmbr++
-       } 
-       newdoc.forEach(cnt);
-       console.log(nnmbr,newdoc);
-
-  if (nlang === 'en') {res.render('new',{city : ncity,news : newdoc,pnumber : nnmbr})}
-  if (nlang === 'ru') {res.render('newru',{city : ncity,news : newdoc,pnumber : nnmbr})}
-  if (nlang === 'fr') {res.render('newfr')}
-  if (nlang === 'de') {res.render('newde',{city : ncity,news : newdoc,pnumber : nnmbr})}
-  if (nlang === 'es') {res.render('newes')}
-  if (nlang === 'it') {res.render('newit')} 
-
-   });
-});
-
-app.post('/property/buy', function(req,res){
-  var vflat = req.body.flat;
-  var vpenthouse = req.body.penthouse;
-  var vapartment = req.body.apartment;
-  var vhouse = req.body.house;
-  var voffice = req.body.office;
-  var vscaleone = req.body.scaleone;
-  var vscaletwo = req.body.scaletwo;
-  var vscalethree = req.body.scalethree;
-  var vmscaleone = req.body.mscaleone;
-  var vmscaletwo = req.body.mscaletwo;
-  var vmscalethree = req.body.mscalethree;
-
-  //property.find({ptype: })
-});
-
-app.post('/admin',function(req,res) {
-  var log = req.body.login;
-  var pass = req.body.password;
-  var adminlogin = 'kookoojoo999';
-  var adminpass = 'lomotom787';
-  var message = 'Wrong log/pass.';
-  console.log(log,pass);
-  if (log !== adminlogin || pass !== adminpass) 
-                                               {
-                                                console.log('somebody trying to access admin directory');
-                                                res.render('adminauth',{'message' : message });
-                                               }
-  else
-       {
-        console.log('admin directory entered')
-        res.render('adminsearch');
-       }
-});
-
-
-
-//app.post('/advancedsearch',function(req,res){
-//  var rooftop = ' rooftop : '+req.body.rooftop;
-//  var terrace = ' terrace : '+req.body.terrace;
-//  var shisha = ' shisha : '+req.body.shisha;
-//  var cigars = ' cigars : '+req.body.cigars;
-//  var city = 'city : '+req.body.city;
 //
-//  var query = new Array(); 
-// if (req.body.rooftop !== undefined) 
-//                                    {
-//                                      rooftop ='rooftop : true';
-//                                      query.push(rooftop);
-//                                    };
-// if (req.body.terrace !== undefined) 
-//                                    {
-//                                      terrace = 'terrace : true';
-//                                      query.push(terrace)
-//                                    };
-// if (req.body.shisha !== undefined) 
-//                                    {
-//                                      shisha = 'shisha : true';
-//                                      query.push(shisha)
-//                                    };
-// if (req.body.cigars !== undefined) 
-//                                    {
-//                                      cigars = 'cigars : true';
-//                                      query.push(cigars)
-//                                    };
+//app.get('/:lang/geo/:city/new', function(req,res){
+//   var nlang = req.params.lang;
+//   var ncity = req.params.city;
+//   var nnmbr = 0 ;
+//   places.find({city : ncity}, {limit : 0 ,sort: {yearnow: -1}},function(err,newdoc) {
+//       //, {limit : 0 ,sort: {yearnow: -1}}
+//       function cnt (value,index,array) {
+//        nnmbr++
+//       } 
+//       newdoc.forEach(cnt);
+//       console.log(nnmbr,newdoc);
 //
-// var result = query;
-// console.log(JSON.stringify(result));
-// res.send(result);
+//  if (nlang === 'en') {res.render('new',{city : ncity,news : newdoc,pnumber : nnmbr})}
+//  if (nlang === 'ru') {res.render('newru',{city : ncity,news : newdoc,pnumber : nnmbr})}
+//  if (nlang === 'fr') {res.render('newfr')}
+//  if (nlang === 'de') {res.render('newde',{city : ncity,news : newdoc,pnumber : nnmbr})}
+//  if (nlang === 'es') {res.render('newes')}
+//  if (nlang === 'it') {res.render('newit')} 
+//
+//   });
 //});
- 
 
-app.post('/adminsearch', function(req,res){
-	var adminquery = req.body.adminsearch;
 
-	if (adminquery !== 'all') 
-	   {
-	   console.log(adminquery);
-	   places.find({placename:adminquery}, function(err,admindocs) {
- 		  res.render('adminsr',{"sr": admindocs});
-	    });
-	   }
 
-	else 
-	     {
-		   places.find({}, function(err,admindocs) {
 
-			  console.log('admin wnats to see all docs');
-			  if (admindocs.length !== 0) 
-			     {
-			     	
- 		           res.render('adminsr',{"sr": admindocs});
- 	             }
 
- 		     else 
- 		          {
- 		     	   console.log('db empty');
- 		     	   res.send('empty db , man !');
- 		          }
- 		    });
-         }
-});
+
+
+
+
 	
 
-app.post('/adminsr/remove', function(req,res) {
-	var vplacename = req.body.placename;
-	console.log('going to deal with the files first');
-
-  var dirdel = __dirname +"/public/images/places/" +vplacename;
-         fs.ensureDir(dirdel, function(err) {
-               console.log(err); //null
-  //dir has now been created, including the directory it is to be placed in
-             });
-
-       
-     places.findOne({placename: vplacename}, function(err,deldoc) {
-         console.log(deldoc);
-       	if (deldoc.placename !== undefined) 
-       	       {
-                 var count = deldoc.image;
-                 var vplacename = deldoc.placename;
-                 var mainpreview = deldoc.mainpreview;
-                 var xml = deldoc.xmlfile;
-                  
-                 var dirtoremove =  __dirname +"/public/images/places/" +vplacename;
-                 fs.remove(dirtoremove,function(err){
-                         if (err) {return console.log(err);}
-                         console.log(vplacename+"FILES DELETED");
-                         });
-
-                  places.remove({placename: vplacename});
-                  console.log(vplacename+' record removed from db');
-       
-              
-                 res.send(vplacename+' has been deleted');
-                  
-                }
-        else {res.send('db returned shit, try again');}
-
-              
-            });
-        });
 
 
 
@@ -936,17 +371,6 @@ app.post('/testupload', function(req,res){
 //});
 
 
-app.get('/geo/:city/places', function (req,res){
-  if (req.params.city != 'moscow' || 'london' || 'newyork' || 'losangeles' || 'stpetersburg') { res.render('my404');}
-  var geocity = req.params.city ;
-  res.render('geoplaces',{'city': geocity});
-});
-
-app.get('/geo/:city/property', function (req,res){
-  if (req.params.city != 'moscow' || 'london' || 'newyork' || 'losangeles' || 'stpetersburg') { res.render('my404');}
-  var geocity = req.params.city ;
-  res.render('geoproperty',{'city': geocity});
-});
 
 app.post('/search', function(req,res){
 
