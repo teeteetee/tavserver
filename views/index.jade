@@ -1,4 +1,4 @@
-html 
+html
 html(lang='en')
 head
     meta(charset='utf-8')
@@ -12,6 +12,9 @@ head
     
     style
      :css
+      body {
+      min-width:768px;
+      }
       @font-face {
       font-family:roboto-thin;
       src:url('/bootstrap/fonts/Roboto-Thin.ttf');
@@ -26,7 +29,7 @@ head
       }
       h1 {
       font-family:attentica;
-      font-size:10vw;
+      font-size:8vw;
       border-bottom:1px solid #333;
       display:inline;
       }
@@ -42,64 +45,64 @@ head
       }
       h3{
       font-family:br;
+      font-size:2vw;
       }
       #header{
+      margin-top:2vh;
       text-align:center;
       }
       #choice{
       text-align:center;
-      margin-bottom:5vh;
+      margin-bottom:4vh;
       }
       #choice1{
       text-align:center;
       }
       .map{
-      height:400px;
+      height:65vh;
       width:100%;
       background-color:#ddd;
       margin-right:auto;
       margin-left:auto;
       }
       .search {
-      background-color:#ddd;
       width:600px;
       margin-right:auto;
       margin-left:auto;
-      border:1px solid #333;
+      border:1px solid #ddd;
       margin-bottom:5vh;
       }
       #footer{
       text-align:center;
-      margin-top:5vh;
-      margin-bottom:3vh;
+      margin-top:1vh;
+      margin-bottom:1vh;
       }
   body
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
     .container
       #header.row
-        .col-xs-12
+        .col-xs-4.col-xs-offset-4
           h1
             | TOP
             span(style='color: #ff9900;') &
             | VIEWS
+        .col-xs-2.col-xs-offset-2(style='padding-top: 0.67em;')
+          form(role='search', method='post', action='/search')
+            input.form-control
+            span.glyphicon.glyphicon-search(style='color: gray; right: -80px; top: -23px; display: inline;')
       #choice.row
-        .col-xs-12
-          h3(style='display: inline;') 3D ТУРЫ ХОСТЕЛОВ В МОСКВЕ
-      .row
         .col-xs-4.col-xs-offset-4
-          form(role='search')
-            input.form-control(style='background-color: #ddd;')
-            span.glyphicon.glyphicon-search(style='color: black; right: -29vw; top: -1.8vw; display: inline;')
-        #choice1.row
-          .col-xs-12(style='padding: 0px; margin: 0px;')
-            #mapitself.map
-        #footer.row
-          .col-xs-2.col-xs-offset-3
-            a(style='color: gray;', href='#') О нас
-          .col-xs-2
-            a(style='color: gray;', href='#') Вакансии
-          .col-xs-2
-            a(style='color: gray;', href='#') Питание
+          h3(style='display: inline;') 3D ТУРЫ ХОСТЕЛОВ В МОСКВЕ
+      #choice1.row
+        .col-xs-12(style='padding: 0px; margin: 0px;')
+          #mapitself.map
+      #footer.row
+        .col-xs-2.col-xs-offset-3
+          a(style='color: gray;', href='#') О нас
+        .col-xs-2
+          a(style='color: gray;', href='#') Вакансии
+        .col-xs-2
+          a(style='color: gray;', href='#') Питание
     
     script.
       var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([55.753,  37.622], 14);
