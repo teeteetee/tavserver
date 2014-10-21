@@ -78,6 +78,9 @@ app.get('/',function(req,res) {
   
   console.log('entered "/" route');
   console.log('User-Agent: ' + req.headers['user-agent']);
+  var userAgent=req.headers['user-agent']
+  var uacheck = userAgent.indexOf("iPhone") != -1 ;
+  console.log(uacheck);
   var d = new Date();
   if(req.headers.host === 'topandviews.ru') 
     {console.log(d+' request on .ru from '+req.ip);
