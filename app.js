@@ -82,6 +82,21 @@ app.get('/',function(req,res) {
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
   var d = new Date();
+  if(uacheck === true) {
+    res.render('mindex');
+  }
+  if(req.headers.host === 'topandviews.ru') 
+    {console.log(d+' request on .ru from '+req.ip);
+     res.render('index');}
+  if(req.headers.host === 'topandviews.com') 
+    {console.log(d+' request on .com from '+req.ip);
+     res.render('index');}
+  if(req.headers.host === 'topandviews.co.uk') 
+    {console.log(d+' request on .co.uk from '+req.ip);
+     res.render('index');}
+});
+
+app.get('/full',function(req,res) {
   if(req.headers.host === 'topandviews.ru') 
     {console.log(d+' request on .ru from '+req.ip);
      res.render('index');}
@@ -153,17 +168,17 @@ app.post('/uploadauth', function(req,res){
 
 app.get('/m/',function(req,res){
   console.log('got to /m/ section, render depending on req.headers.host');
-  if (req.headers.host === 'm.topandviews.ru') {res.render('mindexru')}
+  if (req.headers.host === 'm.topandviews.ru') {res.render('mindex')}
   if (req.headers.host === 'm.topandviews.com') {res.render('mindex')}
   if (req.headers.host === 'm.topandviews.co.uk') {res.render('mindex')}  
 });
 
-app.get('/m/:lang/*',function (req,res,next){
-  var checklang = req.params.lang;
-  if (checklang === 'ru' ||checklang ===  'en' ||checklang ===  'es' ||checklang ===  'fr' ||checklang ===  'de' ||checklang ===  'it')
-    {next()}
-  else {res.render('my404')}
-});
+//app.get('/m/:lang/*',function (req,res,next){
+//  var checklang = req.params.lang;
+//  if (checklang === 'ru' ||checklang ===  'en' ||checklang ===  'es' ||checklang ===  'fr' ||checklang ===  'de' ||checklang ===  'it')
+//    {next()}
+//  else {res.render('my404')}
+//});
 
 
 //app.get('/m/:lang/geo', function(req,res){

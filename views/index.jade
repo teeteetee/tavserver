@@ -78,6 +78,8 @@ head
       margin-bottom:1vh;
       }
   body
+    script.
+      if (screen.width < 768) { location.replace('http://m.topandviews.com/')}
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
     .container
       #header.row
