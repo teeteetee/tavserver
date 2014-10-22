@@ -63,6 +63,10 @@ head
       background-color:#333;
       opacity:0.7;
       }
+      a {
+      text-decoration:none;
+      outline:none;
+      }
       .menusection{
       border-bottom:1px solid gray;
       padding-left:10vw;
@@ -75,17 +79,21 @@ head
       #menu.row(style='display: none; position: fixed; z-index: 2; bottom: 10vh;')
         .col-xs-12
           .row.menusection
-            .col-xs-12
-              h2 ПОИСК
+            .a(href='m.topandviews.ru/search')
+              .col-xs-12
+                h2 ПОИСК
           .row.menusection
-            .col-xs-12
-              h2 ПОЛНАЯ ВЕРСИЯ
+            .a(href='topandviews.ru/full')
+              .col-xs-12
+                h2 ПОЛНАЯ ВЕРСИЯ
           .row.menusection
-            .col-xs-12
-              h2 ВОЙТИ
+            .a(href='m.topandviews.ru/login')
+              .col-xs-12
+                h2 ВОЙТИ
           .row.menusection
-            .col-xs-12
-              h2 ВАКАНСИИ
+            .a(href='m.topandviews.ru/job')
+              .col-xs-12
+                h2 ВАКАНСИИ
       #footer.row
         .col-xs-8.col-xs-offset-2
           h1(style='font-size: 10vh;')
