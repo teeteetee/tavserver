@@ -357,3 +357,16 @@ head
     script.
       var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([55.753,  37.622], 14);
       map.scrollWheelZoom.disable();
+      var markers = {
+    
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates":  [55.761808, 37.610118]
+        },
+        "properties": {
+          "title": "It is a test",
+          "marker-symbol": "monument"
+        }
+      }; 
+      featureLayer.setGeoJSON(markers);

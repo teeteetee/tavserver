@@ -1,0 +1,285 @@
+html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title UPLOAD
+    //
+       Bootstrap 
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    
+    style
+     :css
+      body {
+      background-color:#333;
+      }
+      h5 {
+      font-size:8vw;
+      padding:0px;
+      }
+      h2 {
+      font-family:code;
+      font-size:3vw;
+      color:gray;
+      }
+      a {
+      color:#333;
+      }
+      .row {
+      padding:0px;
+      margin:0px;
+      }
+      a:focus, a:hover{
+      outline:none;
+      text-decoration: none;
+      }
+      .container {
+      width:100%;
+      height:100%;
+      padding:0px;
+      padding-top:0px;
+      padding-bottom:5px;
+      }
+      label {
+      color: #333;
+      }
+      .col-xs-8 {
+      padding-top:20px;
+      }
+      .col-xs-12 {
+      padding:0px;
+      }
+      #header {
+      text-align:center;
+      background-color:white;
+      }
+      #jsonfield {
+      background-color:#ddd;
+      color:#333;
+      border-radius:6px;
+      min-height:500px;
+      }
+      .form-group {
+      padding-top:5px;
+      }
+      input[type=checkbox ] {
+      margin:5px;
+      }
+      .form-control {
+      border-radius:0px;
+      border:1px solid #333;
+      margin-bottom:5px;
+      }
+      #one {
+      background-color:#F76164
+      }
+      #two {
+      background-color:#F29452
+      }
+      #three {
+      background-color:#F2C670
+      }
+      #four {
+      background-color:#87C5E5
+      }
+      .zerop {
+      padding:1vw;
+      }
+      p {
+      border-top:1px solid white;
+      margin-bottom:13px;
+      }
+      .btn-lg {
+      border-radius:0px;
+      border:5px solid white;
+      font-size:8vw;
+      color:#c35;
+      background-color:gray;
+      margin-top:2vw;
+      margin-bottom:2vw;
+      }
+      #choice {
+      text-align:center;
+      }
+      h4 {
+      color:white;
+      }
+  body
+    .container
+      #header.row
+        .col-xs-12
+          h5  UPLOAD 
+      #choice.row
+        .col-xs-12.zerop
+          h4(style='color: #c35;') HOSTELS
+      form(style='text-align: left;', role='form', action='/upload', method='post', enctype='multipart/form-data')
+        #one.row
+          .col-xs-3.zerop
+            p
+              label  FOTOGRAPHER ID  
+            p
+              label  OBJECT ID  
+          .col-xs-3.zerop
+            input#fid.form-control(type='text', name='fid')
+            input#oid.form-control(type='text', name='oid')
+          .col-xs-3.zerop
+            p
+              label  MANAGER ID  
+            p
+              label  YEAR NOW  
+          .col-xs-3.zerop
+            input#mid.form-control(type='text', name='mid')
+            input#yearnow.form-control(type='text', name='yearnow')
+        #two.row
+          .col-xs-3.zerop
+            p
+              label  PLACENAME (for db ,start lower case) 
+            p
+              label NAME RUS (for web,start upper case)  
+            p
+              label  NAME ENG (for web,start upper case) 
+            p
+              label  TELEPHONE 
+          .col-xs-3.zerop
+            input#placename.form-control(type='text', name='placename')
+            input#nameru.form-control(type='text', name='nameru')
+            input#nameen.form-control(type='text', name='nameen')
+            input#telephone.form-control(type='text', name='telephone')
+          .col-xs-3.zerop
+            p
+              label  WEB PAGE  
+            p
+              label  ADRESSRU  
+            p
+              label  ADRESSEN  
+          .col-xs-3.zerop
+            input#www.form-control(type='text', name='www')
+            input#adressru.form-control(type='text', name='adressru')
+            input#adressen.form-control(type='text', name='adressen')
+        #four.row
+          .col-xs-3.zerop
+            button#addfield(type='button') ADD FIELD
+            button#addxmlfield(type='button') ADD XML FIELD
+            button#reset(type='button') REMOVE ALL FIELDS
+            button#rmlast(type='button', style='margin-top: 5px;') REMOVE LAST
+            button#rmlastxml(type='button', style='margin-top: 5px;') REMOVE LAST XML
+          #labels.col-xs-3.zerop
+            p
+              label  MAINPREVIEW 
+            p
+              label  XML 
+            p
+              label  NUMBER OF IMAGES (DONT TOUCH) 
+            p
+              label  NUMBER OF XML FILES (DONT TOUCH)
+          #inputs.col-xs-3.zerop
+            input#mainpreview.form-control(type='file', name='mainpreview')
+            input#xml.form-control(type='file', name='xml')
+            input#imgqntt.form-control(type='text', name='imgqnnt')
+            input#xmlqntt.form-control(type='text', name='xmlqntt')
+        #three.row
+          .col-xs-3.zerop
+            p
+              label  PPREDIR 
+            p
+              label  WIFI   
+            p
+              label  PARKING  
+            //
+               <p><label > TEXT RUS  </label></p>
+                           
+                        
+                           <p><label> TEXT ENG  </label></p>
+                           
+                       
+                           <p><label> BLANK ? </label></p>
+                      
+                           <p><label > BLANKTEXT RUS  </label></p>
+          .col-xs-3.zerop
+            input#ppredir.form-control(type='text', name='ppredir')
+            input#wifi.form-control(type='checkbox', name='wifi')
+            input#parking.form-control(type='checkbox', name='parking')
+            //
+               <input type='text' class='form-control'  id='textru' name='textru'>
+                              <input type='text' class='form-control'  id='texten' name='texten'>
+                              <input type='checkbox' class='form-control'  id='blankbool' name='blankbool'>
+                              <input type='text' class='form-control'  id='blanktextru' name='blanktextru'>
+          .col-xs-3.zerop
+            //
+               <p><label > BLANKTEXT ENG </label></p>
+            p
+              label  CITY  
+            p
+              label  COUNTRY  
+          .col-xs-3.zerop
+            //
+              <input type='text' class='form-control'  id='blanktexten' name='blanktexten'>
+            select#country.form-control(name='country')
+              option(value='moscow') MOSCOW
+              option(value='stpetersburg') ST.PETERSBURG
+            select#city.form-control(name='city')
+              option(value='russia') RUSSIA
+              option(value='america') AMERICA
+              option(value='uk') UK
+              //
+                </select>
+                                  <select  id='type' class='form-control' name='type'>
+                                  <option value='restaurant'>RESTAURANT</option>
+                                  <option value='bar'>BAR</option>
+                                  <option value='cafe'>CAFE</option>
+                                  <option value='coworking'>CO-WORKING</option>
+                                  <option value='spa'>SPA</option>
+                                  <option value='fitness'>FITNESS</option>
+                                  <option value='anticafe'>ANTICAFE</option>
+                                  <option value='beauty'>BEAUTY</option>
+                                </select>
+        .row
+          .col-xs-12(style='text-align: center;')
+            button.btn-lg(type='submit')  UPLOAD
+    //
+       jQuery (necessary for Bootstrap's JavaScript plugins) 
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    //
+       Include all compiled plugins (below), or include individual files as needed 
+    script(src='/bootstrap/js/bootstrap.min.js')
+    script.
+      var xmlcount = 0;
+      var imgcount = 0;
+      $('#addfield').click(function(){
+      imgcount++;
+      $('#imgqntt').val(imgcount);
+      $('#labels').append("<p id='"+imgcount+"sidelabel'><label  > "+imgcount+" IMAGE</label></p>")
+      $('#inputs').append("<input type='file' class='form-control'  id='"+imgcount+"side' name='images[]'>")
+      });
+      $('#addxmlfield').click(function(){
+      xmlcount++;
+      $('#xmlqntt').val(xmlcount);
+      $('#labels').append("<p style='background-color:#2c7095;' id='"+xmlcount+"xmllabel'><label style='color:white;' > "+xmlcount+" XML</label></p>")
+      $('#inputs').append("<input type='file' class='form-control'  id='"+xmlcount+"xml' name='xmls[]'>")
+      //#xmlqntt and #addxmlfield must be created
+      });
+      $('#reset').click(function(){
+      $('#labels').empty();
+      $('#inputs').empty();
+      imgcount=0;
+      $('#imgqntt').val(imgcount);
+      $('#labels').append("<p><label > MAINPREVIEW </label></p> <p><label > XML </label></p> <p><label > NUMBER OF IMAGES (DONT TOUCH) </label></p>");
+      $('#inputs').append("<input type='file' class='form-control'  id='mainpreview' name='mainpreview'> <input type='file' class='form-control'  id='xml' name='xml'> <input type='text' class='form-control' id='imgqntt' name='imgqnnt'>");
+      });
+      $('#rmlast').click(function(){
+      if (imgcount > 0) {
+      var x = imgcount
+      eval("$('#"+x+"side').remove(); $('#"+x+"sidelabel').remove() ");
+      imgcount--;
+      $('#imgqntt').val(imgcount);}
+      else {}
+      });
+      $('#rmlastxml').click(function(){
+      if (xmlcount > 0) {
+      var x = xmlcount
+      eval("$('#"+x+"xml').remove(); $('#"+x+"xmllabel').remove() ");
+      xmlcount--;
+      $('#xmlqntt').val(xmlcount);}
+      else {}
+      });
