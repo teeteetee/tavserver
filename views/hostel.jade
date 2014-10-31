@@ -49,7 +49,7 @@ head
         request.onreadystatechange = function () {
         var DONE = this.DONE || 4;
         if (this.readyState === DONE){
-        $('#p1500e').append(responseText);
+        $('#p1500e').append(request.responseText);
         }
         };
         request.open('POST', '/enquery/1/p1500', true);
