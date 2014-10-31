@@ -22,6 +22,7 @@ head
       border-left:1px solid gray;
       }
       .enquiry {
+      display:none
       }
   body
     .container
@@ -35,8 +36,8 @@ head
               h2  Price : 1500
             .col-xs-2.enqnuber
               h2 0 enquires
-          .row.enquiry
-            .class
+          #e1500.row.enquiry
+            #p1500e.col-xs-12
       //
          jQuery (necessary for Bootstrap's JavaScript plugins) 
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
@@ -56,5 +57,5 @@ head
         request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
         // Most libraries like jQuery/Prototype/Dojo do this
         request.send("bundle");
-        $('#p1500e').slideToggle();
+        $('#e1500').slideToggle();
         })
