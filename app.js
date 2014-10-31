@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
-  , places = db.get('places'),property = db.get('property'),chat = db.get('chat');
+  , places = db.get('hostels');
 var fs = require('fs-extra');
 
 var app = express();
@@ -259,9 +259,35 @@ app.get('/:lang/contact', function(req,res){
   if (lang === 'it') {res.render('contactit')} 
 });
 
+app.get('/search', function(req,res){
+  var vhname = req.params.hname;
+  var vmixgenders = req.params.mixgenders;
+  var vtrndist = req.params.trndist;
+  var vwifi = req.params.wifi;
+  var vppr = req.params.ppr;
+  var vprice = req.params.price
+  
+  hostels.find({price:vprice,hname:vhname,mixgenders:vmixgenders,trndist:vtrndist,wifi:vwifi,ppr:vppr},function(err,hostels){
+    if (hostels.length != 0)
+      {res.render("sr",{"hostels":hostels});}
+  });
+});
 
-
-
+app.get('/hostels/:hostel',function(req,res){
+  var word=req.params.hostel 
+  if (word === null) {res.render('index')}
+  else {
+    hostels.find({ppredir:word},function(err,hostel){
+      if (hostel.length != 0) {
+       res.render('pp',{"hostel":hostel});
+      }
+      else {
+        // logging maybe ?
+        res.render('index');
+      }
+    });
+  }
+});
 
 //
 //app.get('/:lang/geo/:city/new', function(req,res){
@@ -287,22 +313,10 @@ app.get('/:lang/contact', function(req,res){
 //});
 
 
-
-
-
-
-
-
-
-	
-
-
-
-
 app.post('/adminsr/updatepage', function(req,res) {
 	var placenametest = req.body.placename;
 
-	places.findOne({placename: placenametest}, function(err,singleplace){
+	places.findOne({hname: placenametest}, function(err,singleplace){
        var placedata = JSON.stringify(singleplace,null,2);
         var nameeng = singleplace.nameen;
         var updateplacename = singleplace.placename;
@@ -312,6 +326,8 @@ app.post('/adminsr/updatepage', function(req,res) {
 });
 
 app.post('/admin/update', function(req,res) {
+ 
+ // UPDATES variable should be introduced, incremets each update on a place
 
  // var vplacename = req.body.placename ,
  // vnameru = req.body.nameru,
@@ -319,23 +335,19 @@ app.post('/admin/update', function(req,res) {
  // vtelephone = req.body.telephone,
  // vwww = req.body.www,
  // vppredir = req.body.ppredir,
- // vcigarsbool = req.body.cigars,
- // vshishabool = req.body.shisha,
  // vworkinghours = req.body.workinghours,
  // vrooftopbool = req.body.rooftop,
  // vterracebool = req.body.terrace,
  // vfid = req.body.fid ,
  // foid = req.body.oid ,
  // vmid = req.body.mid ,
- // vtype = req.body.type,
- // vglbtype = req.body.glbtype,
  // vcity = req.body.city,
  // vcountry = req.body.country,
  // vyearnow = req.body.yearnow,
  // vyearfounded = req.body.yearfounded,
- // vtoptype= req.body.toptype,
  // vadressru = req.body.adressru,
  // vadressen = req.body.adressen;
+
 
   if(req.files.images.length > 0) {
     var data = JSON.stringify(req.files);
@@ -378,34 +390,29 @@ app.post('/admin/update', function(req,res) {
   
 });
 
-app.post('/testupload', function(req,res){
-    var firstfield = req.body.textupload;
-    var secondfield = req.files.fileupload.name;
-    if (secondfield != 0) {console.log(secondfield);}
-    else {
-    	console.log('its fucking empty , bro !');
-         }
-    vteset ="/public/images/places/" + req.files.fileupload.name;
-    console.log(vteset);
-});
-
-//app.get('/geo', function(req,res){
-//  res.render('geo');
+//app.post('/testupload', function(req,res){
+//    var firstfield = req.body.textupload;
+//    var secondfield = req.files.fileupload.name;
+//    if (secondfield != 0) {console.log(secondfield);}
+//    else {
+//    	console.log('its fucking empty , bro !');
+//         }
+//    vteset ="/public/images/places/" + req.files.fileupload.name;
+//    console.log(vteset);
 //});
 
 
-
-app.post('/search', function(req,res){
-
-	var query = req.body.search;
-	console.log('searching for '+query);
-	var docs = [];
-	places.find({placename:query}, function(err,docs){
-       console.log(docs);
-       res.render('searchresults', {'searchresults': docs});
-       // placename:query});
-    });
- });
+//app.post('/search', function(req,res){
+//
+//	var query = req.body.search;
+//	console.log('searching for '+query);
+//	var docs = [];
+//	places.find({placename:query}, function(err,docs){
+//       console.log(docs);
+//       res.render('searchresults', {'searchresults': docs});
+//       // placename:query});
+//    });
+// });
 
 app.get('/upload', function(req,res) {
 	    console.log('got request on /upload');
@@ -413,8 +420,8 @@ app.get('/upload', function(req,res) {
 	    });
 
 app.post('/uploadauth', function(req,res){
-  var masterlogin = 'tooleetoo676';
-  var masterpassword = 'cloderstam555';
+  var masterlogin = 'test';
+  var masterpassword = 'test';
   var login = req.body.login;
   var pass = req.body.password;
 
@@ -429,35 +436,40 @@ app.post('/uploadauth', function(req,res){
 
 });  
 
+app.get('/hostel',function(){
+  res.render('hostel');
+})
+app.post('/enquery/:hostel/:price', function(){
+  x = req.params.hostel;
+  y = req.params.price;
+  z = req.body;
+  res.send(' HOSTEL IS: '+x+'\n'+'PRICE IS: '+y+'\n'+'BODY IS: '+z)
+});
+
 app.post('/upload',function(req,res) {
 	console.log('UPLOAD SEQUENCE');
  
-
+//AUTH NEEDED HERE/ Something simple like hardcoded passphrase, can be passed through req.body
 
 if (req.body.nameru === undefined||
   req.body.nameen === undefined||
+  req.body.coord === undefined||
+  req.body.postn === undefined||
    req.body.telephone === undefined||
   req.body.www === undefined||
   req.body.ppredir === undefined||
   req.files.mainpreview.name === undefined||
-  req.body.workinghours === undefined||
-  //vblankbool = req.body.blankbool,
-  //vblanktextru = req.body.blanktextru,
-  //vblanktexten = req.body.blanktexten,
   req.body.fid === undefined ||
   req.body.oid === undefined ||
   req.body.mid  === undefined ||
-  req.body.type  === undefined||
-  req.body.glbtype  === undefined||
   req.body.city  === undefined||
   req.body.country === undefined||
   req.body.yearnow  === undefined||
-  req.body.yearfounded === undefined||
-  req.body.toptype === undefined||
   req.body.adressru === undefined||
   req.body.adressen === undefined||
     req.files.xml.name === undefined||
   req.body.placename  === undefined||
+  req.body.xmlqntt === undefined||
   req.body.imgqntt === undefined)
   {res.send('Something wrong with your data, try again');}
 
@@ -519,6 +531,13 @@ if (req.body.nameru === undefined||
                 }
                 console.log('UPLOADLOOP EXIT');
              }
+             function uploadloopxml(n) {
+               console.log('XMLUPLOADLOOP START,'+n+' files will be processed');
+                for(i=0;i<n;i++) {
+                 eval("upload(req.files.images["+i+"].path,req.files.images["+i+"].name,vimg_"+i+");");
+                }
+                console.log('UPLOADLOOP EXIT');
+             }
               
               var newplace = __dirname +"/public/images/places/" +vplacename;
              fs.mkdirs(newplace , function(err){
@@ -538,62 +557,38 @@ if (req.body.nameru === undefined||
          	vwww = req.body.www,
          	vppredir = req.body.ppredir,
          	vmainpreview = "/images/places/"+req.body.placename+"/"+ req.files.mainpreview.name,
-         	vworkinghours = req.body.workinghours,
-         	//vblankbool = req.body.blankbool,
-         	//vblanktextru = req.body.blanktextru,
-         	//vblanktexten = req.body.blanktexten,
          	vfid = req.body.fid ,
            foid = req.body.oid ,
            vmid = req.body.mid ,
-         	vtype = req.body.type,
-          vglbtype = req.body.glbtype,
          	vcity = req.body.city,
          	vcountry = req.body.country,
          	vyearnow = req.body.yearnow,
-         	vyearfounded = req.body.yearfounded,
-         	vtoptype= req.body.toptype,
            vadressru = req.body.adressru,
            vadressen = req.body.adressen,
-           vcigars = true,
-           vshisha = true,
-           vterrace = true,
-           vrooftop = true,
            vxml = "/images/places/"+req.body.placename+"/" + req.files.xml.name;
          
             console.log(vplacename);
             console.log(vxml);
 
-             if(req.body.cigars === undefined) {vcigars = false}
-             if(req.body.shisha === undefined) {vshisha = false}
-             if(req.body.rooftop === undefined) {vrooftop = false}
-             if(req.body.terrace === undefined) {vterrace = false}
+             
          
            
          	
          
-         	places.insert({placename : vplacename,
+         	hostels.insert({placename : vplacename,
          nameru : vnameru,
          nameen : vnameen,
          telephone : vtelephone,
          www : vwww,
          ppredir : vppredir,
          mainpreview : vmainpreview,
-         cigarsbool : vcigars,
-         shishabool : vshisha,
-         workinghours : vworkinghours,
-         rooftopbool : vrooftop,
-         terracebool : vterrace,
          fid : vfid,
          mid : vmid,
          oid : foid,
-         toptype : vtoptype,
          city : vcity,
          country : vcountry,
          yearnow : vyearnow,
-         type : vtype,
-         glbtype : vglbtype,
          xml : vxml,
-         yearfounded : vyearfounded,
          images : photonum,
          });
          
@@ -601,7 +596,7 @@ if (req.body.nameru === undefined||
          	
          
                var docs;
-             places.find({placename:vplacename},function(err,docs){
+             hostelss.find({placename:vplacename},function(err,docs){
                  console.log('wrote to the places collection:' + docs);
                  });
            

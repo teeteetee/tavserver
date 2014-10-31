@@ -1,0 +1,60 @@
+html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Hostel
+    //
+       Bootstrap 
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    
+    style
+     :css
+      #header{
+      text-align:left;
+      }
+      .offer {
+      border-bottom:1px solid gray;
+      background-color:#ddd;
+      }
+      .enqnumber {
+      border-left:1px solid gray;
+      }
+      .enquiry {
+      }
+  body
+    .container
+      #header.row
+        .col-xs-12
+          h1 Личный кабинет
+      #offers.row
+        .col-xs-12
+          #p1500.row.offer
+            .col-xs-10
+              h2  Price : 1500
+            .col-xs-2.enqnuber
+              h2 0 enquires
+          .row.enquiry
+            .class
+      //
+         jQuery (necessary for Bootstrap's JavaScript plugins) 
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+      //
+         Include all compiled plugins (below), or include individual files as needed 
+      script(src='/bootstrap/js/bootstrap.min.js')
+      script.
+        $("#p1500").click(function(){
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+        $('#p1500e').append(responseText);
+        }
+        };
+        request.open('POST', '/enquery/1/p1500', true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+        // Most libraries like jQuery/Prototype/Dojo do this
+        request.send("bundle");
+        $('#p1500e').slideToggle();
+        })
