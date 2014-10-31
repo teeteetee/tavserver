@@ -147,27 +147,27 @@ app.post('/admin/clear',function(req,res){
     res.send('ERROR');}
 });
 
-app.get('/upload', function(req,res) {
-      console.log('got request on /upload');
-      res.render('uploadauth');
-      });
+//app.get('/upload', function(req,res) {
+//      console.log('got request on /upload');
+//      res.render('uploadauth');
+//      });
 
-app.post('/uploadauth', function(req,res){
-  var masterlogin = 'tooleetoo676';
-  var masterpassword = 'cloderstam555';
-  var login = req.body.login;
-  var pass = req.body.password;
-
-  if (masterlogin !== login || masterpassword !== pass ) 
-                                                        {
-                                                          res.render('uploadauth');
-                                                        }
-  else 
-      {
-        res.render('upload');
-      }                                                      
-
-});  
+//app.post('/uploadauth', function(req,res){
+//  var masterlogin = 'tooleetoo676';
+//  var masterpassword = 'cloderstam555';
+//  var login = req.body.login;
+//  var pass = req.body.password;
+//
+//  if (masterlogin !== login || masterpassword !== pass ) 
+//                                                        {
+//                                                          res.render('uploadauth');
+//                                                        }
+//  else 
+//      {
+//        res.render('upload');
+//      }                                                      
+//
+//});  
 
 // mobile version start here
 
