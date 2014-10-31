@@ -443,7 +443,7 @@ app.post('/uploadauth', function(req,res){
 
 
 
-app.post('/enquery/:hostel/:price', function(){
+app.post('/enquery/:hostel/:price', function(req,res){
   x = req.params.hostel;
   y = req.params.price;
   z = req.body;
