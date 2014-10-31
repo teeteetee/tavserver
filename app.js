@@ -438,7 +438,7 @@ app.post('/uploadauth', function(req,res){
 
 app.get('/hostel',function(){
   res.render('hostel');
-})
+});
 app.post('/enquery/:hostel/:price', function(){
   x = req.params.hostel;
   y = req.params.price;
