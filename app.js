@@ -436,7 +436,7 @@ app.post('/uploadauth', function(req,res){
 
 });  
 
-app.get('/hostel',function(req,res){
+app.get('/hostel', function(req,res) {
   console.log('JESUS !!!');
   res.render('hostel');
 });
