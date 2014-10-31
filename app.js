@@ -429,8 +429,9 @@ app.post('/uploadauth', function(req,res){
   var masterpassword = 'test';
   var login = req.body.login;
   var pass = req.body.password;
-  console.log(login,pass);
-
+  console.log(pass);
+  console.log(login);
+  console.log("JESUS");
   if (masterlogin != login || masterpassword != pass ) 
                                                         {
                                                           res.render('uploadauth');
