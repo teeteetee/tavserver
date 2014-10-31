@@ -13,8 +13,18 @@ head
       .row
         .col-xs-12(style='text-align: center; margin-top: 48vh;')
           form(role='form', action='/uploadauth', method='post')
-            input(type='text', name='password')
-            input(type='text', name='login')
+            .row
+              .col-xs-6
+                 p 
+                   pass
+              .col-xs-6
+                input(type='text', name='password')
+            .row
+              .col-xs-6
+                p
+                  login
+              .col-xs-6
+                input(type='text', name='login')
             .row
               button(type='submit')  SUBMIT
 
