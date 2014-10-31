@@ -430,7 +430,7 @@ app.post('/uploadauth', function(req,res){
   var login = req.body.login;
   var pass = req.body.password;
 
-  if (masterlogin !== login || masterpassword !== pass ) 
+  if (masterlogin != login || masterpassword != pass ) 
                                                         {
                                                           res.render('uploadauth');
                                                         }
@@ -458,6 +458,7 @@ app.post('/upload',function(req,res) {
 if (req.body.nameru === undefined||
   req.body.nameen === undefined||
   req.body.coord === undefined||
+  req.body.ctype === undefined||
   req.body.postn === undefined||
    req.body.telephone === undefined||
   req.body.www === undefined||
