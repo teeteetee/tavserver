@@ -153,10 +153,13 @@ head
               label  ADRESSRU  
             p
               label  ADRESSEN  
+            p
+              label CENTER (1-2-3)
           .col-xs-3.zerop
             input#www.form-control(type='text', name='www')
             input#adressru.form-control(type='text', name='adressru')
             input#adressen.form-control(type='text', name='adressen')
+            input#ctype.form-control(type='text', name='ctype')
         #four.row
           .col-xs-3.zerop
             button#addfield(type='button') ADD FIELD
@@ -186,6 +189,8 @@ head
               label  WIFI   
             p
               label  PARKING  
+            p
+              label COORDINATES
             //
                <p><label > TEXT RUS  </label></p>
                            
@@ -200,6 +205,8 @@ head
             input#ppredir.form-control(type='text', name='ppredir')
             input#wifi.form-control(type='checkbox', name='wifi')
             input#parking.form-control(type='checkbox', name='parking')
+            input#coord.form-control(type='checkbox', name='coord')
+
             //
                <input type='text' class='form-control'  id='textru' name='textru'>
                               <input type='text' class='form-control'  id='texten' name='texten'>
