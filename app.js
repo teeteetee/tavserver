@@ -24,6 +24,11 @@ app.use(require('connect').bodyParser());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/hostel', function(req,res) {
+  console.log('JESUS !!!');
+  res.render('hostel');
+});
+
 
  app.get('/index',function(req,res){
    var incomming = req.headers.host;
@@ -436,10 +441,6 @@ app.post('/uploadauth', function(req,res){
 
 });  
 
-app.get('/hostel', function(req,res) {
-  console.log('JESUS !!!');
-  res.render('hostel');
-});
 
 
 app.post('/enquery/:hostel/:price', function(){
