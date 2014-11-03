@@ -294,6 +294,8 @@ app.get('/hostels/:hostel',function(req,res){
   }
 });
 
+
+
 //
 //app.get('/:lang/geo/:city/new', function(req,res){
 //   var nlang = req.params.lang;
@@ -361,7 +363,7 @@ app.post('/admin/update', function(req,res) {
   else 
     {res.send('empty files');
   }
-    
+
     
 
 //	places.update({placename: vplacename},{
@@ -449,6 +451,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
   x = req.params.hostel;
   y = req.params.price;
   z = req.body;
+  console.log(z);
   res.send(' HOSTEL IS: '+x+'\n'+'PRICE IS: '+y+'\n'+'BODY IS: '+z)
 });
 
