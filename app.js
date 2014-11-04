@@ -450,7 +450,7 @@ app.post('/uploadauth', function(req,res){
 app.post('/enquery/:hostel/:price', function(req,res){
   x = req.params.hostel;
   y = req.params.price;
-  z = req.body;
+  z = req.body.coco;
   console.log(z);
   res.send(' HOSTEL IS: '+x+'\n'+'PRICE IS: '+y+'\n'+'BODY IS: '+z)
 });
