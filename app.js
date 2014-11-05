@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
-  , places = db.get('hostels');
+  , hostels = db.get('hostels'),orders = db.get('orders');
 var fs = require('fs-extra');
 
 var app = express();
@@ -122,9 +122,36 @@ app.get('/test',function(req,res) {
 //full version starts here, mobile will be below
 
 
-app.get('/admin', function(req,res) {
-  res.render('adminauth',{'message' : null});
+app.get('/admin/:section',function(req,res,next){
+  switch (req.params.section) {
+    case ('clear'):
+    next
+    break
+    case ('orders'):
+      orders.find({},function(err,docs){
+        res.render('adminorders',{'docs' : docs});
+      });
+    break
+    case('hostels'):
+      hostels.find({},function(err,docs){
+        res.render('adminhostels',{'docs' : docs});
+      });
+    break
+    case('users'):
+      users.find({},function(err,docs){
+        res.render('adminusers',{'docs' : docs});
+      });
+    break
+    default:
+    //ERROR HERE OR SOMETHING
+    break
+  }
+
 });
+
+//app.get('/admin', function(req,res) {
+//  res.render('adminauth',{'message' : null});
+//});
 
 app.post('/admin/clear',function(req,res){
   console.log(req.ip+" ENTERED /CLEAR");
@@ -445,15 +472,60 @@ app.post('/uploadauth', function(req,res){
 
 });  
 
+var testcount=1;
+app.post('/orders/:hostel/:price',function(req,res){
+  //ORDERCOUNT must go here, this is begining of getting statistic together. Orders taken, objects added, visitors etc.
+  vdates=req.params('dates');
+  vphonep = req.params('phonep');
+  vmail = req.params('mail');
+  vphone = req.params('phone');
+  vregistered = req.params('registered')
+  vhostelid = req.params.hostel;
+  vofferid= req.params.price;
+   if (vofferid === 'test')
+   { vdates={[12,10,2014],[20,10,2014]};
+     vphonep = 1;
+     vmail = 'test@test.com';
+     vphone = 79237364453;
+     vregistered = 0;
+     vhostelid = testcount;
+    orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vohonep,phone:vphone,dates:vdates});
+    testcount++;
 
+   }
+   else {
+  orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vohonep,phone:vphone,dates:vdates});
+   }
+});
 
 app.post('/enquery/:hostel/:price', function(req,res){
+  //all the hostelclient magic happens here
   x = req.params.hostel;
   y = req.params.price;
   z = req.param('coco');
-  console.log(z);
-  res.send(' HOSTEL IS: '+x+'\n'+'PRICE IS: '+y+'\n'+'BODY IS: '+z)
+  //console.log(z);
+  //res.send(' HOSTEL IS: '+x+'\n'+'PRICE IS: '+y+'\n'+'BODY IS: '+z)
+  switch ( z ) {
+   case "enquires":
+  
+  orders.find({hostel:x,price:y},function(err,results){
+
+  });
+   break
+   case "calendar":
+     month = req.param('month');
+   break
+   case "remove":
+   break
+   case"add":
+   break
+   default:
+   //ADD SOME TYPE OF ERROR HERE
+   break
+  }
 });
+
+
 
 app.post('/upload',function(req,res) {
 	console.log('UPLOAD SEQUENCE');

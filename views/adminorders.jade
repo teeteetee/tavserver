@@ -1,0 +1,72 @@
+html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Admin orders
+    //
+       Bootstrap 
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    
+    style
+     :css
+      #header {
+      text-align:center;
+      background-color:#ddd;
+      }
+      .order {
+      border-bottom:1px solid #gray
+      text-align:center;
+      }
+      .field {
+      border-right:1px solid #ddd;
+      }
+      #legend{
+      color:gray
+      border-bottom:1px solid #333
+      }
+  body
+    .container
+      #header.row
+        .col-xs-12
+          h1  Admin
+          h3  All orders 
+      #results.row
+        .col-xs-12
+          #legend.row
+            .col-xs-.field
+              HOSTEL ID
+            .col-xs-.field
+              OFFER ID
+            .col-xs-.field
+              REGISTERED
+            .col-xs-.field
+              MAIL
+            .col-xs-.field
+              PHONEP
+            .col-xs-.field
+              PHONE
+            .col-xs-.field
+              DATES
+                         
+          each order , i in docs
+            .row.order
+              .col-xs-.field
+                {order.hostelid}
+              .col-xs-.field
+                {order.offerid}
+              .col-xs-.field
+                {order.registered}
+              .col-xs-.field
+                {order.mail}
+              .col-xs-.field
+                {order.phonep}
+              .col-xs-.field
+                {order.phone}
+              .col-xs-.field
+                {order.dates}
+              
+
+
+        
