@@ -28,7 +28,6 @@ head
       border-right:1px solid #ddd;
       }
       #legend{
-      color:gray
       border-bottom:1px solid #333
       }
   body
@@ -45,33 +44,32 @@ head
             .col-xs-1.field
               h3 OFFER ID
             .col-xs-1.field
-              h3
-                REGISTERED
+              h3 REGISTERED
             .col-xs-1.field
-              MAIL
+              h3 MAIL
             .col-xs-1.field
-              PHONEP
+              h3 PHONEP
             .col-xs-1.field
-              PHONE
+              h3 PHONE
             .col-xs-1.field
-              DATES
+              h3 DATES
                          
           each order , i in docs
             .row.order
               .col-xs-1.field
-                #{order.hostelid}
+                h5 #{order.hostelid}
               .col-xs-1.field
-                #{order.offerid}
+                h5 #{order.offerid}
               .col-xs-1.field
-                #{order.registered}
+                h5 #{order.registered}
               .col-xs-1.field
-                #{order.mail}
+                h5 #{order.mail}
               .col-xs-1.field
-                #{order.phonep}
+                h5 #{order.phonep}
               .col-xs-1.field
-                #{order.phone}
+                h5 #{order.phone}
               .col-xs-1.field
-                #{order.dates}
+                h5 #{order.dates}
               
 
 
