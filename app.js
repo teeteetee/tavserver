@@ -122,11 +122,8 @@ app.get('/test',function(req,res) {
 //full version starts here, mobile will be below
 
 
-app.get('/admin/:section',function(req,res,next){
+app.get('/admin/:section',function(req,res){
   switch (req.params.section) {
-    case ('clear'):
-    next();
-    break
     case ('orders'):
       orders.find({},function(err,docs){
         res.render('adminorders',{'docs' : docs});
@@ -472,7 +469,7 @@ app.post('/uploadauth', function(req,res){
 
 });  
 
-app.get('/orderstest',function(req,res){
+app.get('/ququ',function(req,res){
   console.log('request for orderstest');
   res.render('orderstest');
 });
