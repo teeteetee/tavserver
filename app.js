@@ -130,8 +130,16 @@ app.get('/admin/:section',function(req,res){
   switch (req.params.section) {
     case ('orders'):
       orders.find({},function(err,docs){
+        if (err) {res.send('error');}
+        else {
+        if (docs != {}){
+        console.log(docs);
         res.render('adminorders',{'docs' : docs});
-      });
+      });}
+        else {
+          res.send('empty db');
+        }
+      }
     break
     case('hostels'):
       hostels.find({},function(err,docs){
