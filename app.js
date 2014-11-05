@@ -483,11 +483,11 @@ app.get('/piu',function(req,res){
 var testcount=1;
 app.post('/orders/:hostel/:price',function(req,res){
   //ORDERCOUNT must go here, this is begining of getting statistic together. Orders taken, objects added, visitors etc.
-  vdates=req.params('dates');
-  vphonep = req.params('phonep');
-  vmail = req.params('mail');
-  vphone = req.params('phone');
-  vregistered = req.params('registered')
+  vdates=req.body.dates;
+  vphonep = req.body,phonep;
+  vmail = req.body.mail;
+  vphone = req.body.phone;
+  vregistered = req.body.registered;
   vhostelid = req.params.hostel;
   vofferid= req.params.price;
    if (vofferid === 'test')
