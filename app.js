@@ -121,6 +121,10 @@ app.get('/test',function(req,res) {
 
 //full version starts here, mobile will be below
 
+app.get('/ququ',function(req,res){
+  console.log('request for ququ');
+  res.render('orderstest');
+});
 
 app.get('/admin/:section',function(req,res){
   switch (req.params.section) {
@@ -469,10 +473,7 @@ app.post('/uploadauth', function(req,res){
 
 });  
 
-app.get('/ququ',function(req,res){
-  console.log('request for ququ');
-  res.render('orderstest');
-});
+
 
 app.get('/piu',function(req,res){
   console.log('request for piu');
