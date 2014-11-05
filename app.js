@@ -468,10 +468,15 @@ app.post('/uploadauth', function(req,res){
       }                                                      
 
 });  
-console.log('just before ququ');
+
 app.get('/ququ',function(req,res){
-  console.log('request for orderstest');
+  console.log('request for ququ');
   res.render('orderstest');
+});
+
+app.get('/piu',function(req,res){
+  console.log('request for piu');
+  res.send('piu piu');
 });
 
 var testcount=1;
