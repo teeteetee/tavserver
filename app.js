@@ -468,7 +468,7 @@ app.post('/uploadauth', function(req,res){
       }                                                      
 
 });  
-
+console.log('just before ququ');
 app.get('/ququ',function(req,res){
   console.log('request for orderstest');
   res.render('orderstest');
