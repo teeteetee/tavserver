@@ -125,7 +125,7 @@ app.get('/test',function(req,res) {
 app.get('/admin/:section',function(req,res,next){
   switch (req.params.section) {
     case ('clear'):
-    next
+    next();
     break
     case ('orders'):
       orders.find({},function(err,docs){
