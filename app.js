@@ -483,7 +483,7 @@ app.post('/orders/:hostel/:price',function(req,res){
   vhostelid = req.params.hostel;
   vofferid= req.params.price;
    if (vofferid === 'test')
-   { vdates={[12,10,2014],[20,10,2014]};
+   { vdates=[12102014,20102014];
      vphonep = 1;
      vmail = 'test@test.com';
      vphone = 79237364453;
