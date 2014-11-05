@@ -497,12 +497,12 @@ app.post('/orders/:hostel/:price',function(req,res){
      vphone = 79237364453;
      vregistered = 0;
      vhostelid = testcount;
-    orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vohonep,phone:vphone,dates:vdates});
+    orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,dates:vdates});
     testcount++;
 
    }
    else {
-  orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vohonep,phone:vphone,dates:vdates});
+  orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,dates:vdates});
    }
 });
 
