@@ -132,14 +132,17 @@ app.get('/admin/:section',function(req,res){
       orders.find({},function(err,docs){
         if (err) {res.send('error');}
         else {
-        if (docs != {}){
-        console.log(docs);
-        res.render('adminorders',{'docs' : docs});
-      });}
-        else {
-          res.send('empty db');
-        }
-      }
+             if (docs != {})
+                           {
+                           console.log(docs);
+                           res.render('adminorders',{'docs' : docs});
+                            }
+      
+              else {
+                    res.send('empty db');
+                   }
+              }
+    });
     break
     case('hostels'):
       hostels.find({},function(err,docs){
