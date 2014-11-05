@@ -1,0 +1,35 @@
+html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Bootstrap 101 Template
+    //
+       Bootstrap 
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    
+  body
+   :css
+    .container
+      #header.row
+        .col-xs-12
+          h1  Orders test
+      .row
+        .col-xs-2
+          form(action='/orders/1/test', method='post', role='form')
+            button.form-control(style='background-color: green;', type='submit') TEST SUBMIT
+      .row
+        .col-xs-12
+          form(action='/orders/1/1000', method='post', role='form')
+            input(name='dates', type='text')
+            br
+            input(name='phonep', type='text')
+            br
+            input(name='mail', type='text')
+            br
+            input(name='phone', type='text')
+            br
+            input(name='registered', type='text')
+            br
+            button.form-control(style='background-color: red;', type='submit') DATA SUBMIT
