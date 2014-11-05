@@ -473,8 +473,10 @@ app.post('/uploadauth', function(req,res){
 });  
 
 app.get('/orderstest',function(req,res){
+  console.log('request for orderstest');
   res.render('orderstest');
 });
+
 var testcount=1;
 app.post('/orders/:hostel/:price',function(req,res){
   //ORDERCOUNT must go here, this is begining of getting statistic together. Orders taken, objects added, visitors etc.
