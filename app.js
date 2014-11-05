@@ -484,7 +484,7 @@ var testcount=1;
 app.post('/orders/:hostel/:price',function(req,res){
   //ORDERCOUNT must go here, this is begining of getting statistic together. Orders taken, objects added, visitors etc.
   vdates=req.body.dates;
-  vphonep = req.body,phonep;
+  vphonep = req.body.phonep;
   vmail = req.body.mail;
   vphone = req.body.phone;
   vregistered = req.body.registered;
