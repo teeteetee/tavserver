@@ -525,7 +525,7 @@ app.post('/orders/:hostel/:price',function(req,res){
   vmonth = req.params.tomonth;
   vday = req.params.today;
    if (vofferid === 'test')
-   { vdates=[12102014,20102014];
+   {
      vphonep = 1;
      vmail = 'test@test.com';
      vphone = 79237364453;
