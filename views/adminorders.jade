@@ -36,6 +36,14 @@ head
         .col-xs-12
           h1  Admin
           h3  All orders 
+      #drop.row
+        .col-xs-4 col-xs-4-offset-4
+          form
+            label(for='drop') Enter pass phrase:
+            br
+            input.form-control(type='text' name='drop')
+            br
+            button.form-control(method='post' action='/drop' role='form' style='background-color:#c35;color:white;') Drop the database
       #results.row
         .col-xs-12
           #legend.row
@@ -69,7 +77,7 @@ head
               .col-xs-2.field
                 h5 #{order.phone}
               .col-xs-2.field
-                h5 #{order.dates}
+                h5 #{order.fday}/#{order.fmonth}/#{order.fyear}-#{order.today}/#{order.tomonth}/#{order.toyear}
               
 
 

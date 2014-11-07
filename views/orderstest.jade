@@ -19,9 +19,30 @@ head
           form(action='/orders/1/test', method='post', role='form')
             button.form-control(style='background-color: green;', type='submit') TEST SUBMIT
       .row
-        .col-xs-12
+        .col-xs-6
+            h2  from year
+            h2  from month
+            h2  from day
+            h2  to year
+            h2  to month
+            h2  to day
+            h2  Phone is present
+            h2  Mail
+            h2  Phone
+            h2  User is registered
+        .col-xs-6
           form(action='/orders/1/1000', method='post', role='form')
-            input(name='dates', type='text')
+            input(name='fyear', type='text')
+            br
+            input(name='fmonth', type='text')
+            br
+            input(name='fday', type='text')
+            br
+            input(name='toyear', type='text')
+            br
+            input(name='tomonth', type='text')
+            br
+            input(name='today', type='text')
             br
             input(name='phonep', type='text')
             br
@@ -32,3 +53,4 @@ head
             input(name='registered', type='text')
             br
             button.form-control(style='background-color: red;', type='submit') DATA SUBMIT
+        

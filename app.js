@@ -501,6 +501,12 @@ app.post('/orders/:hostel/:price',function(req,res){
   vregistered = req.body.registered;
   vhostelid = req.params.hostel;
   vofferid= req.params.price;
+  year = req.params.fyear;
+  vmonth = req.params.fmonth;
+  vday = req.params.fday;
+  year = req.params.toyear;
+  vmonth = req.params.tomonth;
+  vday = req.params.today;
    if (vofferid === 'test')
    { vdates=[12102014,20102014];
      vphonep = 1;
@@ -508,12 +514,18 @@ app.post('/orders/:hostel/:price',function(req,res){
      vphone = 79237364453;
      vregistered = 0;
      vhostelid = testcount;
-    orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,dates:vdates});
+     vfyear = 2014;
+     vfmonth = 11;
+     vfday = 07;
+     vtoyear = 2014;
+     vtomonth = 12;
+     vtoday = 10;
+    orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday});
     testcount++;
 
    }
    else {
-  orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,dates:vdates});
+  orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday});
    }
 });
 
