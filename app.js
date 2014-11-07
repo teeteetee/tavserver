@@ -486,9 +486,24 @@ app.post('/uploadauth', function(req,res){
 
 
 
-app.get('/piu',function(req,res){
-  console.log('request for piu');
-  res.send('piu piu');
+app.post('/drop',function(req,res){
+  pass = req.params.drop;
+  pp = 'secureshit';
+  if (pass = pp)
+  {
+    orders.remove({},function (err,done){
+      if (err){console.log('ERROR DROPIG DB');
+         res.send('ERROR DROPIG DB');
+       }
+      else {
+      console.log('all recordsorders deleted');
+      res.send('all records deleted');
+       }
+    });
+  }
+  else {
+    res.send('Error')
+  }
 });
 
 var testcount=1;
