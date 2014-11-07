@@ -358,6 +358,26 @@ app.get('/hostels/:hostel',function(req,res){
 //   });
 //});
 
+app.post('/drop',function(req,res){
+  pass = req.params.drop;
+  pp = 'secureshit';
+  if (pass = pp)
+  {
+    orders.remove({},function (err,done){
+      if (err){console.log('ERROR DROPIG DB');
+         res.send('ERROR DROPIG DB');
+       }
+      else {
+      console.log('all recordsorders deleted');
+      res.send('all records deleted');
+       }
+    });
+  }
+  else {
+    res.send('Error')
+  }
+});
+
 
 app.post('/adminsr/updatepage', function(req,res) {
 	var placenametest = req.body.placename;
@@ -486,25 +506,7 @@ app.post('/uploadauth', function(req,res){
 
 
 
-app.post('/drop',function(req,res){
-  pass = req.params.drop;
-  pp = 'secureshit';
-  if (pass = pp)
-  {
-    orders.remove({},function (err,done){
-      if (err){console.log('ERROR DROPIG DB');
-         res.send('ERROR DROPIG DB');
-       }
-      else {
-      console.log('all recordsorders deleted');
-      res.send('all records deleted');
-       }
-    });
-  }
-  else {
-    res.send('Error')
-  }
-});
+
 
 var testcount=1;
 app.post('/orders/:hostel/:price',function(req,res){
