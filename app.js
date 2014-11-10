@@ -566,7 +566,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
    case "enquires":
    //used on main page of hostel web client
   orders.find({hostelid:x,offerid:y},function(err,results){
-
+    res.send(results);
   });
    break
    case "calendar":
