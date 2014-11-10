@@ -315,10 +315,10 @@ head
       $('#result').append(responseText);
       }
       };
-      request.open('POST', '/enquery/1/p1500', true);
+      request.open('POST', '/enquery/1/test', true);
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       // Most libraries like jQuery/Prototype/Dojo do this
-      request.send("bundle");
+      request.send("month=11&year=2014&coco=calendar");
       $('#putithere').slideToggle();
       })
       $('#hone').click(function(){
