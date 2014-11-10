@@ -1,0 +1,339 @@
+html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Bootstrap 101 Template
+    //
+       Bootstrap 
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    //
+       HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries 
+    //
+       WARNING: Respond.js doesn't work if you view the page via file:// 
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+    style
+     :css
+      @font-face {
+      font-family:roboto-thin;
+      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
+      }
+      @font-face {
+      font-family:attentica;
+      src:url('/bootstrap/fonts/Attentica.ttf');
+      }
+      @font-face {
+      font-family:br;
+      src:url('/bootstrap/fonts/bebasneue_regular.ttf');
+      }
+      h3 {
+      font-family:roboto-thin;
+      font-size:4vw;
+      color:#333;
+      letter-spacing:1px;
+      }
+      h1 {
+      font-family:br;
+      color:gray;
+      }
+      h2 {
+      font-family:attentica;
+      }
+      .row {
+      margin:0px;
+      padding:0px;
+      }
+      .container {
+      margin:0px;
+      padding:0px;
+      }
+      #header{
+      text-align:left;
+      }
+      .offer {
+      border-bottom:1px solid gray;
+      background-color:#ddd;
+      }
+      .enqnumber {
+      border-left:1px solid gray;
+      }
+      .enquiry {
+      }
+      #hone {
+      opacity:0.7;
+      }
+      #hone:hover {
+      background-color:#ffc773;
+      opacity:1;
+      }
+      #settingsblock {
+      display:none;
+      }
+      .offerstngs {
+      border-bottom:1px solid #333;
+      }
+      .highlightred:hover {
+      background-color:#a61717;
+      }
+      .highlightred:hover span {
+      color:#333;
+      }
+      .red {
+      background-color:#ff4646;
+      }
+      .whitef {
+      color:white;
+      }
+      .delno{
+      background-color:#009999;
+      color:white;
+      border-left:1px solid white;
+      }
+      .delno:hover{
+      background-color:#006363;
+      }
+      .delye {
+      background-color:#ff4646;
+      color:white;
+      }
+      .delye:hover {
+      background-color:#a61717;
+      }
+      .deletion {
+      display:none;
+      border-bottom:1px solid #333;
+      text-align:center;
+      }
+      #addanoffer {
+      color:#00b74a;
+      }
+      .plus {color:#00b74a;
+      border-left:2px solid white;
+      }
+      .plus:hover {
+      background-color:#00b74a;
+      }
+      .plus:hover h3 span {
+      color:white;
+      }
+      #offeradd {
+      padding-right:15px;
+      }
+      .calendar {
+      background-color:gray;
+      color:white;
+      }
+      .weeknum {
+      background-color:#ffc773;
+      border-right:1px solid black;
+      border-bottom:1px solid black;
+      }
+      .day {
+      border-right:1px solid #ddd:;
+      border-bottom:1px solid #ddd;
+      }
+      .weekend h2 {
+      color:#c35;
+      }
+      .off {
+      background-color:#ddd;
+      }
+      #calendarblock {
+      display:none;
+      }
+      #putithere {
+      display:none;
+      }
+  body
+    #searchbutton(style='position: fixed; z-index: 2001; right: 0.5vw; top: 1vh;')
+      h3#hone
+        span.glyphicon.glyphicon-cog
+      //
+        background-color:#00b74a;
+    .container
+      #header.row
+        .col-xs-12
+          h1(style='color: #ddd;') Хостел номер 1
+      #offers.row
+        .col-xs-12
+          .row
+            .col-xs-12
+              h3  Предложения 
+          #p1500.row.offer
+            .col-xs-8
+              h2  Price : 1500
+            #calendarbutton1.col-xs-2.calendar
+              h2 Календарь
+            .col-xs-2.enqnuber(style='background-color: white;')
+              h2 0 enquires
+          .row.enquiry
+            //
+               WHAT WAS THIS ONE SUPPOSED TO DO ?
+          #calendarblock.row
+            .col-xs-12
+              .row
+                .col-xs-6(style='text-align: right;')
+                  h2
+                    span.glyphicon.glyphicon-chevron-left(style='color: white;')
+                    | NOVEMBER
+                .col-xs-6
+                  h2
+                    span.glyphicon.glyphicon-chevron-right(style='color: gray;')
+                    span(style='padding-left: 15px; color: #ddd;') DECEMBER
+              #putithere.row
+                .col-sx-12
+                  p#result
+              .row.week
+                .col-xs-1.weeknum
+                  h2 42
+                .col-xs-1.day
+                  h2 1
+                .col-xs-1.day
+                  h2 2
+                .col-xs-1.day
+                  h2 3
+                .col-xs-1.day
+                  h2 4
+                .col-xs-1.day
+                  h2 5
+                .col-xs-1.day.weekend
+                  h2 6
+                .col-xs-1.day.weekend
+                  h2 7
+              .row.week
+                .col-xs-1.weeknum
+                  h2 43
+                .col-xs-1.day
+                  h2 8
+                .col-xs-1.day
+                  h2 9
+                .col-xs-1.day
+                  h2 10
+                .col-xs-1.day
+                  h2 11
+                .col-xs-1.day
+                  h2 12
+                .col-xs-1.day.weekend
+                  h2 13
+                .col-xs-1.day.weekend
+                  h2 14
+              .row.week
+                .col-xs-1.weeknum
+                  h2 44
+                .col-xs-1.day
+                  h2 15
+                .col-xs-1.day
+                  h2 16
+                .col-xs-1.day
+                  h2 17
+                .col-xs-1.day
+                  h2 18
+                .col-xs-1.day
+                  h2 19
+                .col-xs-1.day.weekend
+                  h2 20
+                .col-xs-1.day.weekend
+                  h2 21
+              .row.week
+                .col-xs-1.weeknum
+                  h2 45
+                .col-xs-1.day
+                  h2 22
+                .col-xs-1.day
+                  h2 23
+                .col-xs-1.day
+                  h2 24
+                .col-xs-1.day
+                  h2 25
+                .col-xs-1.day
+                  h2 26
+                .col-xs-1.day.weekend
+                  h2 27
+                .col-xs-1.day.weekend
+                  h2 28
+              .row.week
+                .col-xs-1.weeknum
+                  h2 45
+                .col-xs-1.day
+                  h2 29
+                .col-xs-1.day
+                  h2 30
+                .col-xs-1.day
+                  h2 31
+                .col-xs-1.day.off
+                  h2 1
+                .col-xs-1.day.off
+                  h2 2
+                .col-xs-1.day.weekend.off
+                  h2 3
+                .col-xs-1.day.weekend.off
+                  h2 4
+      #settingsblock.row
+        form(method='post', role='form', action='/hostelsettings')
+          .col-xs-12
+            .row
+              .col-xs-12
+                h3  Настройки предложений
+            #offeradd.row
+              .col-xs-11(style='text-align: right;')
+                h2 Добавить предложение
+              .col-xs-1.plus(style='text-align: right;')
+                h3#addanoffer
+                  span.glyphicon.glyphicon-plus
+            #exstoffers.row
+              .col-xs-12
+                #remove1.row.deletion
+                  .col-xs-2.delqu
+                    h2(style='font-weight: 900;') Удалить
+                  #yes1.col-xs-5.delye
+                    h2(style='font-weight: 900;') ДА
+                  #no1.col-xs-5.delno
+                    h2(style='font-weight: 900;') НЕТ
+                #offerstngs1.row.offerstngs
+                  .col-xs-9
+                    h1 500
+                  .col-xs-2
+                    h1 0 pending
+                  #removebutton1.col-xs-1.highlightred.red
+                    h3
+                      span.glyphicon.glyphicon-remove.whitef
+    //
+       jQuery (necessary for Bootstrap's JavaScript plugins) 
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    //
+       Include all compiled plugins (below), or include individual files as needed 
+    script(src='/bootstrap/js/bootstrap.min.js')
+    script.
+      $("#p1500").click(function(){
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      $('#result').append(responseText);
+      }
+      };
+      request.open('POST', '/enquery/1/p1500', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      // Most libraries like jQuery/Prototype/Dojo do this
+      request.send("bundle");
+      $('#putithere').slideToggle();
+      })
+      $('#hone').click(function(){
+      //check if any remove actions are present , discard on exit
+      $('#offers').slideToggle();
+      $('#settingsblock').slideToggle();
+      });
+      $('#removebutton1').click(function(){
+      $('#remove1').slideToggle();
+      $('#offerstngs1').slideToggle();
+      });
+      $('#no1').click(function(){
+      $('#remove1').slideToggle();
+      $('#offerstngs1').slideToggle();
+      });
+      $('#calendarbutton1').click(function(){
+      $('#calendarblock').slideToggle();
+      });

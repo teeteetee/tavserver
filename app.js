@@ -368,6 +368,7 @@ app.post('/drop',function(req,res){
          res.send('ERROR DROPIG DB');
        }
       else {
+      testcount = 0;
       console.log('all recordsorders deleted');
       res.send('all records deleted');
        }
@@ -518,12 +519,13 @@ app.post('/orders/:hostel/:price',function(req,res){
   vregistered = req.body.registered;
   vhostelid = req.params.hostel;
   vofferid= req.params.price;
-  year = req.params.fyear;
-  vmonth = req.params.fmonth;
-  vday = req.params.fday;
-  year = req.params.toyear;
-  vmonth = req.params.tomonth;
-  vday = req.params.today;
+  year = req.body.fyear;
+  vmonth = req.body.fmonth;
+  vday = req.body.fday;
+  year = req.body.toyear;
+  vmonth = req.body.tomonth;
+  vday = req.body.today;
+  vnights = req.body.nights;
    if (vofferid === 'test')
    {
      vphonep = 1;
@@ -537,12 +539,13 @@ app.post('/orders/:hostel/:price',function(req,res){
      vtoyear = 2014;
      vtomonth = 12;
      vtoday = 10;
-    orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday});
+     vnights = 3; 
+    orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday,nights:vnights});
     testcount++;
 
    }
    else {
-  orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday});
+  orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday,nights:vnights});
    }
 });
 
@@ -551,17 +554,22 @@ app.post('/enquery/:hostel/:price', function(req,res){
   x = req.params.hostel;
   y = req.params.price;
   z = req.param('coco');
-  //console.log(z);
-  //res.send(' HOSTEL IS: '+x+'\n'+'PRICE IS: '+y+'\n'+'BODY IS: '+z)
+  month = req.param('month');
+  year = req.param('year');
+  
   switch ( z ) {
    case "enquires":
   
-  orders.find({hostel:x,price:y},function(err,results){
+  orders.find({hostelid:x,offerid:y},function(err,results){
 
   });
    break
    case "calendar":
-     month = req.param('month');
+     // nights parameter must be used to form a class by an offerid name which then can be light up in web intrface calendar to see the length of stay
+     orders.find({hostelid:x,offerid:y,fmonth:month,fyear:year},function(err,docs)}{
+      if (err) {res.send('ERROR')}
+      else {res.send(docs)}
+     });
    break
    case "remove":
    break
