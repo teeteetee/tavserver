@@ -9,7 +9,8 @@ var bodyParser = require('body-parser');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
-  , hostels = db.get('hostels'),orders = db.get('orders');
+  , hostels = db.get('hostels'),orders = db.get('orders'),posts = db.get('posts'),objects = db.get('objects');
+// POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
 
 var app = express();
@@ -99,6 +100,10 @@ app.get('/',function(req,res) {
   if(req.headers.host === 'topandviews.co.uk') 
     {console.log(d+' request on .co.uk from '+req.ip);
      res.render('index');}
+});
+
+app.get('/calendar',function(req,res){
+  res.render('calendar');
 });
 
 app.get('/full',function(req,res) {
@@ -559,21 +564,31 @@ app.post('/enquery/:hostel/:price', function(req,res){
   
   switch ( z ) {
    case "enquires":
-  
+   //used on main page of hostel web client
   orders.find({hostelid:x,offerid:y},function(err,results){
 
   });
    break
    case "calendar":
+     // used to form calendar in hostel web client , obviously
      // nights parameter must be used to form a class by an offerid name which then can be light up in web intrface calendar to see the length of stay
      orders.find({hostelid:x,offerid:y,fmonth:month,fyear:year},function(err,docs)}{
       if (err) {res.send('ERROR')}
-      else {res.send(docs)}
+      else {res.send(docs);}
      });
    break
    case "remove":
+    //used to remove an offer 
    break
    case"add":
+    //used to create an offer
+    //OFFERS MUST BE CONFIRMED 
+    // must add quntity of spaces for that price like {offer1:2}, offerid is for price register , 
+   break
+   case "confirm":
+    //used to confirm a request for a room
+   break
+   case "dismiss":
    break
    default:
    //ADD SOME TYPE OF ERROR HERE
