@@ -572,7 +572,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
    case "calendar":
      // used to form calendar in hostel web client , obviously
      // nights parameter must be used to form a class by an offerid name which then can be light up in web intrface calendar to see the length of stay
-     orders.find({hostelid:x,offerid:y,fmonth:month,fyear:year},function(err,docs)}{
+     orders.find({hostelid:x,offerid:y,fmonth:month,fyear:year},function(err,docs){
       if (err) {res.send('ERROR')}
       else {res.send(docs);}
      });
