@@ -307,7 +307,7 @@ head
        Include all compiled plugins (below), or include individual files as needed 
     script(src='/bootstrap/js/bootstrap.min.js')
     script.
-      $("#p1500").click(function(){
+      $("#calendarbutton1").click(function(){
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
       var DONE = this.DONE || 4;
@@ -334,6 +334,6 @@ head
       $('#remove1').slideToggle();
       $('#offerstngs1').slideToggle();
       });
-      $('#calendarbutton1').click(function(){
-      $('#calendarblock').slideToggle();
-      });
+      //$('#calendarbutton1').click(function(){
+      //$('#calendarblock').slideToggle();
+      //});
