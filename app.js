@@ -165,6 +165,7 @@ app.get('/admin/:section',function(req,res){
   }
 
 });
+console.log('FIRST BREAKPOINT');
 
 //app.get('/admin', function(req,res) {
 //  res.render('adminauth',{'message' : null});
@@ -190,7 +191,7 @@ app.post('/admin/clear',function(req,res){
   else {
     res.send('ERROR');}
 });
-
+ console.log('SECOND BREAKPOINT');
 //app.get('/upload', function(req,res) {
 //      console.log('got request on /upload');
 //      res.render('uploadauth');
@@ -338,7 +339,7 @@ app.get('/hostels/:hostel',function(req,res){
   }
 });
 
-
+console.log('THIRD BREAKPOINT');
 
 //
 //app.get('/:lang/geo/:city/new', function(req,res){
@@ -396,7 +397,7 @@ app.post('/adminsr/updatepage', function(req,res) {
 	});
 	
 });
-
+console.log('FOURTH BREAKPOINT');
 app.post('/admin/update', function(req,res) {
  
  // UPDATES variable should be introduced, incremets each update on a place
@@ -461,7 +462,7 @@ app.post('/admin/update', function(req,res) {
 
   
 });
-
+console.log('FIFTH BREAKPOINT');
 //app.post('/testupload', function(req,res){
 //    var firstfield = req.body.textupload;
 //    var secondfield = req.files.fileupload.name;
@@ -553,14 +554,16 @@ app.post('/orders/:hostel/:price',function(req,res){
   orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday,nights:vnights});
    }
 });
-
+console.log('SIXTH BREAKPOINT');
 app.post('/enquery/:hostel/:price', function(req,res){
+  console.log('GOT INTO ENQUERY !!!');
   //all the hostelclient magic happens here
   x = req.params.hostel;
   y = req.params.price;
-  z = req.param('coco');
-  month = req.param('month');
-  year = req.param('year');
+  //z = req.param('coco');
+  z = req.body.coco;
+  month = req.body.month;
+  year = req.body.year;
   
   switch ( z ) {
    case "enquires":
@@ -570,6 +573,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
   });
    break
    case "calendar":
+   console.log('GOT INTO CALENDAR');
      // used to form calendar in hostel web client , obviously
      // nights parameter must be used to form a class by an offerid name which then can be light up in web intrface calendar to see the length of stay
      orders.find({hostelid:x,offerid:y,fmonth:month,fyear:year},function(err,docs){
