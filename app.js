@@ -564,6 +564,9 @@ app.post('/enquery/:hostel/:price', function(req,res){
   z = req.body.coco;
   month = req.body.month;
   year = req.body.year;
+  console.log(z);
+  console.log(month);
+  console.log(year);
   
   switch ( z ) {
    case "enquires":
