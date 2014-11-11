@@ -312,7 +312,7 @@ head
       request.onreadystatechange = function () {
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
-      $('#result').append(responseText);
+      $('#result').append(request.responseText);
       $('#putithere').slideToggle();
       }
       };
