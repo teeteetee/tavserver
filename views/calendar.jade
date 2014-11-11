@@ -314,6 +314,7 @@ head
       if (this.readyState === DONE){
       $('#result').append(request.responseText);
       $('#putithere').slideToggle();
+      $('#calendarblock').slideToggle();
       }
       };
       request.open('POST', '/enquery/1/test', true);
