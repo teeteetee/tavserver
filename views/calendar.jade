@@ -186,16 +186,16 @@ head
               .row
                 #previousmonth.col-xs-2.col-xs-offset-3
                   h2
+                    span(style='padding-right: 2vw; color: #ddd;') OCTOBER
                     span.glyphicon.glyphicon-chevron-left(style='color: gray;')
-                    span(style='padding-left: 15px; color: #ddd;') OCTOBER
-                #thismonth.col-xs-2(style='text-align: right;')
+                #thismonth.col-xs-2
                   h2
                     span.glyphicon.glyphicon-chevron-left(style='color: white;')
                     | NOVEMBER
                 #nextmonth.col-xs-2
                   h2
                     span.glyphicon.glyphicon-chevron-right(style='color: gray;')
-                    span(style='padding-left: 15px; color: #ddd;') DECEMBER
+                    span(style='padding-left: 2vw; color: #ddd;') DECEMBER
               #putithere.row
                 .col-sx-12
                   h6#result
@@ -367,8 +367,8 @@ head
       $('#nextmonth').empty();
       $('#previousmonth').empty();
       $('#thismonth').append("<h2><span style='color:white;' class='glyphicon glyphicon-chevron-left'></span>DECEMBER</h2>");
-      $('#nextmonth').append("<h2><span style='color:gray;' class='glyphicon glyphicon-chevron-right'></span> <span style='padding-left:15px;color:#ddd;'>DECEMBER</span></h2>");
-      $('#previousmonth').append("<h2><span style='padding-left:15px;color:#ddd;'>DECEMBER</span><span style='color:gray;' class='glyphicon glyphicon-chevron-left'></span> </h2>");
+      $('#nextmonth').append("<h2><span style='color:gray;' class='glyphicon glyphicon-chevron-right'></span> <span style='padding-left:15px;color:#ddd;'>JANUARY</span></h2>");
+      $('#previousmonth').append("<h2><span style='padding-left:15px;color:#ddd;'>NOVEMBER</span><span style='color:gray;' class='glyphicon glyphicon-chevron-left'></span> </h2>");
 
 
       $('#calendarblock').css({"opacity":"1"});
