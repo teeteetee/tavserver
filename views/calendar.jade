@@ -317,6 +317,7 @@ head
       for (index = 0; index < request.responseText.length; ++index) {
           
           order=request.responseText[index];
+          console.log(order);
           console.log('Day '+order.fday+' and month '+order.fmonth);
           eval('if($("#d'+order.fday+'m'+order.fmonth+'").text().length != 0){$("#d'+order.fday+'m'+order.fmonth+'").css({"background-color":"#64de89"});} ');
 
