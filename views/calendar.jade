@@ -153,8 +153,17 @@ head
       #nextmonth {
       text-align:left;
       }
+      #nextmonth:hover h2 {
+      color:white;
+      }
       #previousmonth{
       text-align:right;
+      }
+      #previousmonth:hover h2 {
+      color:white;
+      }
+      .navilight:hover{
+      background-color:#ffc773;
       }
   body
     #searchbutton(style='position: fixed; z-index: 2001; right: 0.5vw; top: 1vh;')
@@ -184,15 +193,15 @@ head
           #calendarblock.row
             .col-xs-12
               .row
-                #previousmonth.col-xs-2.col-xs-offset-3
+                #previousmonth.col-xs-2.col-xs-offset-3.navilight
                   h2
                     span(style='padding-right: 2vw; color: #ddd;') OCTOBER
                     span.glyphicon.glyphicon-chevron-left(style='color: gray;')
-                #thismonth.col-xs-2
+                #thismonth.col-xs-2.navilight
                   h2
                     span.glyphicon.glyphicon-chevron-left(style='color: white;')
                     | NOVEMBER
-                #nextmonth.col-xs-2
+                #nextmonth.col-xs-2.navilight
                   h2
                     span.glyphicon.glyphicon-chevron-right(style='color: gray;')
                     span(style='padding-left: 2vw; color: #ddd;') DECEMBER
@@ -337,8 +346,8 @@ head
           eval('if($("#d'+order.fday+'m'+order.fmonth+'").text().length != 0){$("#d'+order.fday+'m'+order.fmonth+'").css({"background-color":"#64de89"});} ');
 
       } 
-      $('#result').append(request.responseText);
-      $('#putithere').slideToggle();
+      //$('#result').append(request.responseText);
+      //$('#putithere').slideToggle();
       $('#calendarblock').slideToggle();
       }
       };
