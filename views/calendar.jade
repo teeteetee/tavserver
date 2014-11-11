@@ -339,6 +339,8 @@ head
     //
        Include all compiled plugins (below), or include individual files as needed 
     script(src='/bootstrap/js/bootstrap.min.js')
+    script(src='/bootstrap/js/jquery-ui.js')
+     
     script.
       // REQUEST FOR CALENDAR DATA
       $("#calendarbutton1").click(function(){
@@ -381,6 +383,7 @@ head
       order=parsed[index];
       console.log(order);
       console.log('Day '+order.fday+' and month '+order.fmonth);
+      console.log('going to switch classes');
       $(".m12").switchClass("m12","m13");
       $(".m11").switchClass("m11","m12");
       console.log('switched classes');
