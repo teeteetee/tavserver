@@ -147,6 +147,15 @@ head
       #putithere {
       display:none;
       }
+      #thismonth {
+      text-align:center;
+      }
+      #nextmonth {
+      text-align:left;
+      }
+      #previousmonth{
+      text-align:right;
+      }
   body
     #searchbutton(style='position: fixed; z-index: 2001; right: 0.5vw; top: 1vh;')
       h3#hone
@@ -175,11 +184,15 @@ head
           #calendarblock.row
             .col-xs-12
               .row
-                .col-xs-6(style='text-align: right;')
+                #previousmonth.col-xs-2.col-xs-offset-3
+                  h2
+                    span.glyphicon.glyphicon-chevron-left(style='color: gray;')
+                    span(style='padding-left: 15px; color: #ddd;') OCTOBER
+                #thismonth.col-xs-2(style='text-align: right;')
                   h2
                     span.glyphicon.glyphicon-chevron-left(style='color: white;')
                     | NOVEMBER
-                .col-xs-6
+                #nextmonth.col-xs-2
                   h2
                     span.glyphicon.glyphicon-chevron-right(style='color: gray;')
                     span(style='padding-left: 15px; color: #ddd;') DECEMBER
@@ -307,6 +320,7 @@ head
        Include all compiled plugins (below), or include individual files as needed 
     script(src='/bootstrap/js/bootstrap.min.js')
     script.
+      // REQUEST FOR CALENDAR DATA
       $("#calendarbutton1").click(function(){
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
@@ -333,7 +347,42 @@ head
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       // Most libraries like jQuery/Prototype/Dojo do this
       request.send("month=11&year=2014&coco=enquires");
-      })
+      });
+      //REQUEST FOR NEXT MONTH'S CALENDAR DATA
+      $("#nextmonth").click(function(){
+      $('#claendarblock').css({"opacity":"0.5"});
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var index;
+      parsed = JSON.parse(request.responseText);
+      for (index = 0; index < parsed.length; ++index) {    
+      order=parsed[index];
+      console.log(order);
+      console.log('Day '+order.fday+' and month '+order.fmonth);
+      eval('if($("#d'+order.fday+'m'+order.fmonth+'").text().length != 0){$("#d'+order.fday+'m'+order.fmonth+'").css({"background-color":"#64de89"});} else {$("#d'+order.fday+'m'+order.fmonth+'").css({"background-color":"white"});} ');
+      } 
+      $('#thismonth').empty();
+      $('#nextmonth').empty();
+      $('#previousmonth').empty();
+      $('#thismonth').append("<h2><span style='color:white;' class='glyphicon glyphicon-chevron-left'></span>DECEMBER</h2>");
+      $('#nextmonth').append("<h2><span style='color:gray;' class='glyphicon glyphicon-chevron-right'></span> <span style='padding-left:15px;color:#ddd;'>DECEMBER</span></h2>");
+      $('#previousmonth').append("<h2><span style='padding-left:15px;color:#ddd;'>DECEMBER</span><span style='color:gray;' class='glyphicon glyphicon-chevron-left'></span> </h2>");
+
+
+      $('#calendarblock').css({"opacity":"1"});
+      $('#calendarblock').slideToggle();
+      }
+      };
+      request.open('POST', '/enquery/1/test', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      // Most libraries like jQuery/Prototype/Dojo do this
+      request.send("month=12&year=2014&coco=enquires");
+      });
+      });
+      //BUTTONS
       $('#hone').click(function(){
       //check if any remove actions are present , discard on exit
       $('#offers').slideToggle();
