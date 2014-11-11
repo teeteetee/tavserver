@@ -136,7 +136,6 @@ head
       border-bottom:1px solid black;
       }
       .day {
-      border-right:1px solid #ddd:;
       border-bottom:1px solid #ddd;
       }
       .weekend h2 {
@@ -180,9 +179,11 @@ head
       }
       .dayname {
       color:#ddd;
+      border-left:1px solid #ddd;
+      border-bottom:1px solid #ddd;
       }
       .weekendname {
-      color:#9d4848;
+      color:#c89191;
       }
   body
     #searchbutton(style='position: fixed; z-index: 2001; right: 0.5vw; top: 1vh;')
@@ -228,7 +229,7 @@ head
                   h6#result
               .row.week
                 .col-xs-1.weeknum
-                  
+                  h2(style='color:white;') :-)
                 .col-xs-1.dayname
                   h2 MON
                 .col-xs-1.dayname
