@@ -313,7 +313,7 @@ head
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
       var index;
-      parsed = JSON.stringify(request.responseText);
+      parsed = JSON.parse(request.responseText);
       console.log(parsed);
       for (index = 0; index < parsed.length; ++index) {
           
