@@ -126,6 +126,9 @@ head
       background-color:gray;
       color:white;
       }
+      .calendar:hover {
+      background-color:#ffc773;
+      }
       .weeknum {
       background-color:#ffc773;
       border-right:1px solid black;
@@ -149,18 +152,27 @@ head
       }
       #thismonth {
       text-align:center;
+      cursor:pointer;
       }
       #nextmonth {
       text-align:left;
+      cursor:pointer;
       }
       #nextmonth:hover h2 {
       color:white;
       }
+      #nextmonth h2 {
+      color:#ddd;
+      }
       #previousmonth{
       text-align:right;
+      cursor:pointer;
       }
       #previousmonth:hover h2 {
       color:white;
+      }
+      #previousmonth h2 {
+      color:#ddd;
       }
       .navilight:hover{
       background-color:#ffc773;
@@ -195,103 +207,102 @@ head
               .row
                 #previousmonth.col-xs-2.col-xs-offset-3.navilight
                   h2
-                    span(style='padding-right: 2vw; color: #ddd;') OCTOBER
+                    span(style='padding-right: 2vw;') OCTOBER
                     span.glyphicon.glyphicon-chevron-left(style='color: gray;')
                 #thismonth.col-xs-2.navilight
-                  h2
-                    span.glyphicon.glyphicon-chevron-left(style='color: white;')
-                    | NOVEMBER
+                  h2 
+                    NOVEMBER
                 #nextmonth.col-xs-2.navilight
                   h2
                     span.glyphicon.glyphicon-chevron-right(style='color: gray;')
-                    span(style='padding-left: 2vw; color: #ddd;') DECEMBER
+                    span(style='padding-left: 2vw; ') DECEMBER
               #putithere.row
                 .col-sx-12
                   h6#result
               .row.week
                 .col-xs-1.weeknum
                   h2 42
-                #d1m11.col-xs-1.day
+                #d1m11.m11.col-xs-1.day
                   h2 1
-                #d2m11.col-xs-1.day
+                #d2m11.m11.col-xs-1.day
                   h2 2
-                #d3m11.col-xs-1.day
+                #d3m11.m11.col-xs-1.day
                   h2 3
-                #d4m11.col-xs-1.day
+                #d4m11.m11.col-xs-1.day
                   h2 4
-                #d5m11.col-xs-1.day
+                #d5m11.m11.col-xs-1.day
                   h2 5
-                #d6m11.col-xs-1.day.weekend
+                #d6m11.m11.col-xs-1.day.weekend
                   h2 6
-                #d7m11.col-xs-1.day.weekend
+                #d7m11.m11.col-xs-1.day.weekend
                   h2 7
               .row.week
                 .col-xs-1.weeknum
                   h2 43
-                #d8m11.col-xs-1.day
+                #d8m11.m11.col-xs-1.day
                   h2 8
-                #d9m11.col-xs-1.day
+                #d9m11.m11.col-xs-1.day
                   h2 9
-                #d10m11.col-xs-1.day
+                #d10m11.m11.col-xs-1.day
                   h2 10
-                #d11m11.col-xs-1.day
+                #d11m11.m11.col-xs-1.day
                   h2 11
-                #d12m11.col-xs-1.day
+                #d12m11.m11.col-xs-1.day
                   h2 12
-                #d13m11.col-xs-1.day.weekend
+                #d13m11.m11.col-xs-1.day.weekend
                   h2 13
-                #d14m11.col-xs-1.day.weekend
+                #d14m11.m11.col-xs-1.day.weekend
                   h2 14
               .row.week
                 .col-xs-1.weeknum
                   h2 44
-                #d15m11.col-xs-1.day
+                #d15m11.m11.col-xs-1.day
                   h2 15
-                #d16m11.col-xs-1.day
+                #d16m11.m11.col-xs-1.day
                   h2 16
-                #d17m11.col-xs-1.day
+                #d17m11.m11.col-xs-1.day
                   h2 17
-                #d18m11.col-xs-1.day
+                #d18m11.m11.col-xs-1.day
                   h2 18
-                #d19m11.col-xs-1.day
+                #d19m11.m11.col-xs-1.day
                   h2 19
-                #d20m11.col-xs-1.day.weekend
+                #d20m11.m11.col-xs-1.day.weekend
                   h2 20
-                #d21m11.col-xs-1.day.weekend
+                #d21m11.m11.col-xs-1.day.weekend
                   h2 21
               .row.week
                 .col-xs-1.weeknum
                   h2 45
-                #d22m11.col-xs-1.day
+                #d22m11.m11.col-xs-1.day
                   h2 22
-                #d23m11.col-xs-1.day
+                #d23m11.m11.col-xs-1.day
                   h2 23
-                #d24m11.col-xs-1.day
+                #d24m11.m11.col-xs-1.day
                   h2 24
-                #d25m11.col-xs-1.day
+                #d25m11.m11.col-xs-1.day
                   h2 25
-                #d26m11.col-xs-1.day
+                #d26m11.m11.col-xs-1.day
                   h2 26
-                #d27m11.col-xs-1.day.weekend
+                #d27m11.m11.col-xs-1.day.weekend
                   h2 27
-                #d28m11.col-xs-1.day.weekend
+                #d28m11.m11.col-xs-1.day.weekend
                   h2 28
               .row.week
-                #d29m11.col-xs-1.weeknum
+                col-xs-1.weeknum
                   h2 45
-                #d30m11.col-xs-1.day
+                #d29m11.m11.col-xs-1.day
                   h2 29
-                #d31m11.col-xs-1.day
+                #d30m11.m11.col-xs-1.day
                   h2 30
-                #d1m12.col-xs-1.day
+                #d31m11.m11.col-xs-1.day
                   h2 31
-                #d2m12.col-xs-1.day.off
+                #d1m12.m12.col-xs-1.day.off
                   h2 1
-                #d3m12.col-xs-1.day.off
+                #d2m12.m12.col-xs-1.day.off
                   h2 2
-                #d4m12.col-xs-1.day.weekend.off
+                #d3m12.m12.col-xs-1.day.weekend.off
                   h2 3
-                #d5m12.col-xs-1.day.weekend.off
+                #d4m12.m12.col-xs-1.day.weekend.off
                   h2 4
       #settingsblock.row
         form(method='post', role='form', action='/hostelsettings')
@@ -370,7 +381,14 @@ head
       order=parsed[index];
       console.log(order);
       console.log('Day '+order.fday+' and month '+order.fmonth);
+      $(".m11").switchClass(m12,m13);
+      $(".m11").switchClass(m11,m12);
+      for (i=1,i<32,i++)
+      {eval("$('#d"+i+"m11').attr('id','#d"+i+"m12');)}
+      for (i=1,i<5,i++)
+      {eval("$('#d"+i+"m12').attr('id','#d"+i+"m13');)}
       eval('if($("#d'+order.fday+'m'+order.fmonth+'").text().length != 0){$("#d'+order.fday+'m'+order.fmonth+'").css({"background-color":"#64de89"});} else {$("#d'+order.fday+'m'+order.fmonth+'").css({"background-color":"white"});} ');
+      $('.off').css({"background-color":"#ddd"});
       } 
       $('#thismonth').empty();
       $('#nextmonth').empty();
