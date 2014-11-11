@@ -185,7 +185,7 @@ head
                     span(style='padding-left: 15px; color: #ddd;') DECEMBER
               #putithere.row
                 .col-sx-12
-                  p#result
+                  h6#result
               .row.week
                 .col-xs-1.weeknum
                   h2 42
@@ -313,6 +313,7 @@ head
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
       $('#result').append(responseText);
+      $('#putithere').slideToggle();
       }
       };
       request.open('POST', '/enquery/1/test', true);
@@ -321,7 +322,6 @@ head
       request.setRequestHeader("Connection", "close");
       // Most libraries like jQuery/Prototype/Dojo do this
       request.send("month=11&year=2014&coco=enquires");
-      $('#putithere').slideToggle();
       })
       $('#hone').click(function(){
       //check if any remove actions are present , discard on exit
