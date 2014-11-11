@@ -189,87 +189,87 @@ head
               .row.week
                 .col-xs-1.weeknum
                   h2 42
-                .col-xs-1.day
+                #d1m11.col-xs-1.day
                   h2 1
-                .col-xs-1.day
+                #d2m11.col-xs-1.day
                   h2 2
-                .col-xs-1.day
+                #d3m11.col-xs-1.day
                   h2 3
-                .col-xs-1.day
+                #d4m11.col-xs-1.day
                   h2 4
-                .col-xs-1.day
+                #d5m11.col-xs-1.day
                   h2 5
-                .col-xs-1.day.weekend
+                #d6m11.col-xs-1.day.weekend
                   h2 6
-                .col-xs-1.day.weekend
+                #d7m11.col-xs-1.day.weekend
                   h2 7
               .row.week
                 .col-xs-1.weeknum
                   h2 43
-                .col-xs-1.day
+                #d8m11.col-xs-1.day
                   h2 8
-                .col-xs-1.day
+                #d9m11.col-xs-1.day
                   h2 9
-                .col-xs-1.day
+                #d10m11.col-xs-1.day
                   h2 10
-                .col-xs-1.day
+                #d11m11.col-xs-1.day
                   h2 11
-                .col-xs-1.day
+                #d12m11.col-xs-1.day
                   h2 12
-                .col-xs-1.day.weekend
+                #d13m11.col-xs-1.day.weekend
                   h2 13
-                .col-xs-1.day.weekend
+                #d14m11.col-xs-1.day.weekend
                   h2 14
               .row.week
                 .col-xs-1.weeknum
                   h2 44
-                .col-xs-1.day
+                #d15m11.col-xs-1.day
                   h2 15
-                .col-xs-1.day
+                #d16m11.col-xs-1.day
                   h2 16
-                .col-xs-1.day
+                #d17m11.col-xs-1.day
                   h2 17
-                .col-xs-1.day
+                #d18m11.col-xs-1.day
                   h2 18
-                .col-xs-1.day
+                #d19m11.col-xs-1.day
                   h2 19
-                .col-xs-1.day.weekend
+                #d20m11.col-xs-1.day.weekend
                   h2 20
-                .col-xs-1.day.weekend
+                #d21m11.col-xs-1.day.weekend
                   h2 21
               .row.week
                 .col-xs-1.weeknum
                   h2 45
-                .col-xs-1.day
+                #d22m11.col-xs-1.day
                   h2 22
-                .col-xs-1.day
+                #d23m11.col-xs-1.day
                   h2 23
-                .col-xs-1.day
+                #d24m11.col-xs-1.day
                   h2 24
-                .col-xs-1.day
+                #d25m11.col-xs-1.day
                   h2 25
-                .col-xs-1.day
+                #d26m11.col-xs-1.day
                   h2 26
-                .col-xs-1.day.weekend
+                #d27m11.col-xs-1.day.weekend
                   h2 27
-                .col-xs-1.day.weekend
+                #d28m11.col-xs-1.day.weekend
                   h2 28
               .row.week
-                .col-xs-1.weeknum
+                #d29m11.col-xs-1.weeknum
                   h2 45
-                .col-xs-1.day
+                #d30m11.col-xs-1.day
                   h2 29
-                .col-xs-1.day
+                #d31m11.col-xs-1.day
                   h2 30
-                .col-xs-1.day
+                #d1m12.col-xs-1.day
                   h2 31
-                .col-xs-1.day.off
+                #d2m12.col-xs-1.day.off
                   h2 1
-                .col-xs-1.day.off
+                #d3m12.col-xs-1.day.off
                   h2 2
-                .col-xs-1.day.weekend.off
+                #d4m12.col-xs-1.day.weekend.off
                   h2 3
-                .col-xs-1.day.weekend.off
+                #d5m12.col-xs-1.day.weekend.off
                   h2 4
       #settingsblock.row
         form(method='post', role='form', action='/hostelsettings')
@@ -312,6 +312,14 @@ head
       request.onreadystatechange = function () {
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
+      var index;
+      
+      for (index = 0; index < request.responseText.length; ++index) {
+          
+          order=request.responseText[index];
+          eval('if($("#d'+order.fday+'m'+order.fmonth+'").text().length != 0){$("#d'+order.fday+'m'+order.fmonth+'").css({"background-color":"#64de89"});} );
+
+      } 
       $('#result').append(request.responseText);
       $('#putithere').slideToggle();
       $('#calendarblock').slideToggle();
