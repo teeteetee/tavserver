@@ -317,7 +317,7 @@ head
       for (index = 0; index < request.responseText.length; ++index) {
           console.log('Day '+order.fday+' and month '+order.fmonth);
           order=request.responseText[index];
-          eval('if($("#d'+order.fday+'m'+order.fmonth+'").text().length != 0){$("#d'+order.fday+'m'+order.fmonth+'").css({"background-color":"#64de89"});} );
+          eval('if($("#d'+order.fday+'m'+order.fmonth+'").text().length != 0){$("#d'+order.fday+'m'+order.fmonth+'").css({"background-color":"#64de89"});} ');
 
       } 
       $('#result').append(request.responseText);
