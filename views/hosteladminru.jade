@@ -1,0 +1,676 @@
+html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title #{hostelname}
+    //
+       Bootstrap 
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    //
+       HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries 
+    //
+       WARNING: Respond.js doesn't work if you view the page via file:// 
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+    style
+     :css
+      @font-face {
+      font-family:roboto-thin;
+      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
+      }
+      @font-face {
+      font-family:attentica;
+      src:url('/bootstrap/fonts/Attentica.ttf');
+      }
+      @font-face {
+      font-family:br;
+      src:url('/bootstrap/fonts/bebasneue_regular.ttf');
+      }
+      h3 {
+      font-family:roboto-thin;
+      font-size:4vw;
+      color:#333;
+      letter-spacing:1px;
+      }
+      h1 {
+      font-family:br;
+      color:gray;
+      }
+      h2 {
+      font-family:attentica;
+      font-size:3vw;
+      }
+      .row {
+      margin:0px;
+      padding:0px;
+      }
+      .container {
+      margin:0px;
+      padding:0px;
+      }
+      #header{
+      text-align:left;
+      }
+      .offer {
+      border-bottom:1px solid gray;
+      background-color:#ddd;
+      }
+      .enqnumber {
+      border-left:1px solid gray;
+      }
+      .enquiry {
+      }
+      #hone {
+      opacity:0.7;
+      }
+      #hone:hover {
+      background-color:#ffc773;
+      opacity:1;
+      }
+      #settingsblock {
+      display:none;
+      }
+      .offerstngs {
+      border-bottom:1px solid #333;
+      }
+      .highlightred:hover {
+      background-color:#a61717;
+      }
+      .highlightred:hover span {
+      color:#333;
+      }
+      .red {
+      background-color:#ff4646;
+      }
+      .whitef {
+      color:white;
+      }
+      .delno{
+      background-color:#009999;
+      color:white;
+      border-left:1px solid white;
+      }
+      .delno:hover{
+      background-color:#006363;
+      }
+      .delye {
+      background-color:#ff4646;
+      color:white;
+      }
+      .delye:hover {
+      background-color:#a61717;
+      }
+      .deletion {
+      display:none;
+      border-bottom:1px solid #333;
+      text-align:center;
+      }
+      #addanoffer {
+      color:#00b74a;
+      }
+      .plus {color:#00b74a;
+      border-left:2px solid white;
+      }
+      .plus:hover {
+      background-color:#00b74a;
+      }
+      .plus:hover h3 span {
+      color:white;
+      }
+      #offeradd {
+      padding-right:15px;
+      }
+      .calendar {
+      background-color:gray;
+      color:white;
+      cursor:pointer;
+      }
+      .calendar:hover {
+      background-color:#ffc773;
+      }
+      .weeknum {
+      background-color:#ffc773;
+      border-right:1px solid #bfa070;
+      border-bottom:1px solid #bfa070;
+      text-align:center;
+      }
+      .weeknum h2
+      {color:#bfa070;}
+      .day {
+      border-bottom:1px solid #ddd;
+      }
+      .weekend h2 {
+      color:#c35;
+      }
+      .off {
+      background-color:#ddd;
+      }
+      #calendarblock {
+      display:none;
+      }
+      #putithere {
+      display:none;
+      }
+      #thismonth {
+      text-align:center;
+      
+      }
+      #nextmonth {
+      text-align:left;
+      cursor:pointer;
+      border-right:1px solid white;
+      background-color:#c2e4ee;
+      }
+      #nextmonth:hover h2 {
+      color:white;
+      }
+      #nextmonth h2 {
+      color:#ddd;
+      }
+      #nextmonth:hover {
+        background-color:#ffc773;
+      }
+      #previousmonth{
+      text-align:right;
+      cursor:pointer;
+      border-left:1px solid white;
+      background-color:#c2e4ee;
+      }
+      #previousmonth:hover {
+        background-color:#ffc773;
+      }
+      #previousmonth:hover h2 {
+      color:white;
+      }
+      #previousmonth h2 {
+      color:#ddd;
+      }
+      .navlight:hover{
+      background-color:#ffc773;
+      }
+      .dayname {
+      color:#ddd;
+      border-bottom:1px solid #ddd;
+      }
+      .weekendname {
+      color:#c89191;
+      border-bottom:1px solid #ddd;
+      }
+      .weeknumblank {
+      border-bottom:1px solid #bfa070;
+      }
+      .weekdays {
+      border-top:1px solid #ddd;
+      }
+
+  body
+    #searchbutton(style='position: fixed; z-index: 2001; right: 0.5vw; top: 1vh;')
+      h3#hone
+        span.glyphicon.glyphicon-cog
+      //
+        background-color:#00b74a;
+    .container
+      #header.row
+        .col-xs-12
+          h1(style='color: #ddd;') Хостел номер 1
+      #offers.row
+        .col-xs-12
+          .row
+            .col-xs-12
+              h3  Предложения 
+          #p1500.row.offer
+            .col-xs-8
+              h2  Price : 1500
+            #calendarbutton1.col-xs-2.calendar
+              h2 Календарь
+            .col-xs-2.enqnuber(style='background-color: white;')
+              h2 0 enquires
+          .row.enquiry
+            //
+               WHAT WAS THIS ONE SUPPOSED TO DO ?
+          #calendarblock.row
+            #inserts.col-xs-12
+              #monthsselect.row
+                #previousmonth.col-xs-2.col-xs-offset-3
+                #thismonth.col-xs-2
+                #nextmonth.col-xs-2
+              .row
+                .col-xs-10
+                  .row
+                    #yearwin.col-xs-1.weeknum.weeknumblank
+                    .col-xs-1.dayname
+                      h2 MON
+                    .col-xs-1.dayname
+                      h2 TUE
+                    .col-xs-1.dayname
+                      h2 WED
+                    .col-xs-1.dayname
+                      h2 THU
+                    .col-xs-1.dayname
+                      h2 FRI
+                    .col-xs-1.weekendname
+                      h2 SAT
+                    .col-xs-1.weekendname
+                      h2 SUN
+              .row
+                #inserts.col-xs-10
+
+      #settingsblock.row
+        form(method='post', role='form', action='/hostelsettings')
+          .col-xs-12
+            .row
+              .col-xs-12
+                h3  Настройки предложений
+            #offeradd.row
+              .col-xs-11(style='text-align: right;')
+                h2 Добавить предложение
+              .col-xs-1.plus(style='text-align: right;')
+                h3#addanoffer
+                  span.glyphicon.glyphicon-plus
+            #exstoffers.row
+              .col-xs-12
+                #remove1.row.deletion
+                  .col-xs-2.delqu
+                    h2(style='font-weight: 900;') Удалить
+                  #yes1.col-xs-5.delye
+                    h2(style='font-weight: 900;') ДА
+                  #no1.col-xs-5.delno
+                    h2(style='font-weight: 900;') НЕТ
+                #offerstngs1.row.offerstngs
+                  .col-xs-9
+                    h1 500
+                  .col-xs-2
+                    h1 0 pending
+                  #removebutton1.col-xs-1.highlightred.red
+                    h3
+                      span.glyphicon.glyphicon-remove.whitef
+    //
+       jQuery (necessary for Bootstrap's JavaScript plugins) 
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    //
+       Include all compiled plugins (below), or include individual files as needed 
+    script(src='/bootstrap/js/bootstrap.min.js')
+    script(src='/bootstrap/js/jquery-ui.js')
+     
+    script
+    //GENERATE CALENDAR
+      function populate (km,ky) {
+      console.log("START");
+      var months = {1:"ЯНВАРЬ",2:"ФЕВРАЛЬ",3:"МАРТ",4:"АПРЕЛЬ",5:"МАЙ",6:"ИЮНЬ",7:"ИЮЛЬ",8:"АВГУСТ",9:"СЕНТЯБРЬ",10:"ОКТЯБРЬ",11:"НОЯБРЬ",12:"ДЕКАБРЬ"};
+      function DaysInMonth (year, month) {
+      var monthStart = new Date(year, month, 1);
+      var monthEnd = new Date(year, month + 1, 1);
+      var monthLength = (monthEnd - monthStart) ;
+      return monthLength/86400000;};
+      var d = new Date();
+      var year = d.getUTCFullYear() + ky;
+      if(ky>0){
+      console.log(" !!! KY IS :" +ky+", AND THE YEAR IS: "+year+", WHILE MONTH MULTIPLIER IS:"+km);
+      }
+      var month = km;
+      console.log("date is: "+d+"; and month is: "+month);
+      var vnextmonth = month+2;
+      if (vnextmonth === 13 )
+      {vnextmonth =1;}
+      var vpreviousmonth = month;
+      if(vpreviousmonth ===0)
+      {vpreviousmonth =12}
+      var firstdaydate = new Date(year, month, 1);
+      var firstday  = firstdaydate.getDay();
+      var calendarprime = DaysInMonth (year,month);
+      var mcp = calendarprime;
+      var monthc = month + 1;
+      if(monthc === 13)
+      {monthc = 1}
+      console.log("P:"+vpreviousmonth+", T: "+monthc+" , N: "+vnextmonth);
+      $("#previousmonth").append("<h2><span style='padding-right:2vw;color:white;letter-spacing:2px;'>"+months[vpreviousmonth]+"</span><span class='glyphicon glyphicon-chevron-left' style='color:#216477;'></span></h2>");
+      $("#thismonth").append("<h2 style='color:#025167;font-size:3.4vw;'>"+months[monthc]+"</h2>");
+      $("#nextmonth").append("<h2><span class='glyphicon glyphicon-chevron-right' style='color:#216477;'></span><span style='padding-left:2vw;color:white;'>"+months[vnextmonth]+"</span></h2>");
+      $("#yearwin").empty();
+      $("#yearwin").append("<h2 style='color:white;'>"+year+"</h2>");
+      var uname;
+      var udata;
+      function evjq(uname,udata){
+      $(uname).append(udata);
+      };
+      var iter;
+      switch(calendarprime)
+      {
+      case(28):
+      if(firstday!=1)//If month doesn't start on monday
+      {iter=5;}
+      else
+      {iter=4;}//if it does
+      break
+      case(29):
+      iter =5;
+      break
+      case(30):
+      if(firstday===0)//if month starts on sunday
+      {iter=6;}
+      else
+      {iter=5;}//if it does not
+      break
+      case(31):
+      if(firstday===6 || firstday ===0) //if month starts on sat or sun
+      {iter=6;}
+      else
+      {iter=5;}//if it does not
+      break
+      }
+      Date.prototype.getWeek = function() {
+      var onejan = new Date(this.getFullYear(), 0, 1);
+      return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() - 1) / 7); }
+      // THOSE VARIABLES ARE INSERTED IN CLASS AND ID
+      var nextm = vnextmonth ;
+      var previousm = vpreviousmonth ;
+      //END
+      // NUMBER OF DAYS IN THE NEXT AND THE PREVIOUS MONTH
+      var calendarprimep = DaysInMonth (year,vpreviousmonth);
+      var calendarpremen = DaysInMonth (year,vnextmonth);
+      //END
+      // IF NEXT OR PREVIOUS MONTH IS GOING TO BE ANOTHER YEAR THIS BLOCK IS SORTING IT OUT
+      if(vnextmonth===1){
+      year=year+1;
+      calendarprimen = DaysInMonth (year,0);
+      year=year-1;
+      }
+      if(vpreviousmonth === 12){
+      year=year-1;
+      calendarprimep = DaysInMonth (year,11);
+      year=year+1;
+      }
+      //END
+      //OVERALL WRITES WILL BE LIMITED TO THIS NUMBER PLUS GREY DATES OF NEIHBORING MONTHS
+      var dayscount = 0;
+      //END
+      for (i=0;i<iter;i++)
+      {
+      $("#inserts").append("<div class='row week' id='week"+i+"'></div>");
+      var thisday = dayscount +1;
+      var frtpr = new Date(year,month,thisday);
+      var wni=frtpr.getWeek();
+      if(i>0)
+      {wni++;
+      }
+      uname = "#week"+i;
+      udata =  "<div class='col-xs-1 weeknum'><h2>"+wni+"</h2></div>";
+      evjq(uname,udata);
+      weekdayscount = 0;//7 DAYS IN A WEEK WRITE CONTROL
+      // SWITCH TO DETERMINE THE ITERATION COUNT
+      switch (i)
+      {
+      case(0): //POPULATING THE FIRST WEEK
+      if(firstday === 0)
+      {firstday = 8}
+      for (var k=0;k<firstday-1;k++)
+      { //HERE WE FILL IN THE GREY FIELDS BEFORE MONTH'S START
+      var coef=calendarprimep -(firstday-2) + k;
+      if(k===6 )
+      {
+      udata = "<div class='col-xs-1 day off weekend m"+previousm+"' id='d"+coef+"m"+previousm+"'><h2>"+coef+"</h2></div> ";
+      uname = "#week"+i;
+      evjq(uname,udata);
+      weekdayscount++;
+      }
+      else{
+      udata = "<div class='col-xs-1 day off m"+previousm+"' id='d"+coef+"m"+previousm+"'><h2>"+coef+"</h2></div> ";
+      uname = "#week"+i;
+      evjq(uname,udata);
+      weekdayscount++;
+      }
+      }
+      firstday = firstdaydate.getDay();
+      //INSERTING NORMAL DAYS
+      var left = 7 - weekdayscount;
+      for(var l=0;l<left;l++)
+      {
+      if(weekdayscount >4) //IF ITS BEYOND FRIDAY, OBVIOUSLY, ITS A WEEKEND
+      {
+      coef = dayscount+1;
+      var tmonth = month +1;
+      udata = "<div class='col-xs-1 day weekend m"+tmonth+"' id='d"+coef+"m"+tmonth+"'><h2>"+coef+"</h2></div> ";
+      uname = "#week"+i;
+      evjq(uname,udata);
+      weekdayscount++;
+      dayscount++;
+      }
+      else {
+      coef = dayscount+1;
+      var tmonth = month +1;
+      udata = "<div class='col-xs-1 day m"+tmonth+"' id='d"+coef+"m"+tmonth+"'><h2>"+coef+"</h2></div> ";
+      uname = "#week"+i;
+      evjq(uname,udata);
+      weekdayscount++;
+      dayscount++;
+      }
+      }
+      break
+      case(iter-1): //POPULATING THE LAST
+      //if(dayscount === calendarprime)
+      //INSERTING NORMAL DAYS
+      var left = calendarprime-dayscount;
+      for(var l=0;l<left;l++)
+      {
+      if(weekdayscount >4) //IF ITS BEYOND FRIDAY, OBVIOUSLY, ITS A WEEKEND
+      {
+      coef = dayscount+1;
+      var tmonth = month +1;
+      udata = "<div class='col-xs-1 day weekend m"+tmonth+"' id='d"+coef+"m"+tmonth+"'><h2>"+coef+"</h2></div> ";
+      uname = "#week"+i;
+      evjq(uname,udata);
+      weekdayscount++;
+      dayscount++;
+      }
+      else{
+      coef = dayscount+1;
+      var tmonth = month +1;
+      udata = "<div class='col-xs-1 day m"+tmonth+"' id='d"+coef+"m"+tmonth+"'><h2>"+coef+"</h2></div> ";
+      uname = "#week"+i;
+      evjq(uname,udata);
+      weekdayscount++;
+      dayscount++;
+      }
+      }
+      left = 7 - weekdayscount;
+      for (var k=0;k<left;k++)
+      { //HERE WE FILL IN THE GREY FIELDS AFTER MONTH'S END
+      var coef=k+1;
+      if(k=== left -1|| k === left -2 )
+      {
+      udata = "<div class='col-xs-1 day off weekend m"+nextm+"' id='d"+coef+"m"+nextm+"'><h2>"+coef+"</h2></div> ";
+      uname = "#week"+i;
+      evjq(uname,udata);
+      weekdayscount++;
+      }
+      else{
+      udata = "<div class='col-xs-1 day off m"+nextm+"' id='d"+coef+"m"+nextm+"'><h2>"+coef+"</h2></div> ";
+      uname = "#week"+i;
+      evjq(uname,udata);
+      weekdayscount++;
+      }
+      }
+      break
+      default:
+      for(var l=0;l<7;l++)
+      {
+      if(weekdayscount >4) //IF ITS BEYOND FRIDAY, OBVIOUSLY, ITS A WEEKEND
+      {
+      coef = dayscount+1;
+      var tmonth = month +1;
+      udata = "<div class='col-xs-1 day weekend m"+tmonth+"' id='d"+coef+"m"+tmonth+"'><h2>"+coef+"</h2></div> ";
+      uname = "#week"+i;
+      evjq(uname,udata);
+      weekdayscount++;
+      dayscount++;
+      }
+      else{
+      coef = dayscount+1;
+      var tmonth = month +1;
+      udata = "<div class='col-xs-1 day m"+tmonth+"' id='d"+coef+"m"+tmonth+"'><h2>"+coef+"</h2></div> ";
+      uname = "#week"+i;
+      evjq(uname,udata);
+      weekdayscount++;
+      dayscount++;
+      }
+      }
+      }
+      }
+      }// END OF THE POPULATE FUNCTION
+      var d = new Date();
+      var month = d.getMonth();
+      var monthscount=month;
+      var ky =0;
+      populate(monthscount,0);
+      $("#nextmonth").click(function () {
+      console.log("KY IS: "+ky);
+      if (monthscount === 11)
+      {
+      console.log("N PATH ONE");
+      ky= ky+1;
+      monthscount=0;
+      $("#inserts").empty();
+      $("#nextmonth").empty();
+      $("#thismonth").empty();
+      $("#previousmonth").empty();
+      populate(monthscount,ky);
+      }
+      else {
+      console.log("N PATH TWO");
+      $("#inserts").empty();
+      $("#nextmonth").empty();
+      $("#thismonth").empty();
+      $("#previousmonth").empty();
+      populate(monthscount,ky);
+      monthscount++;
+      }
+      console.log("___________________________________________________________");
+      });
+      $("#previousmonth").click(function () {
+      console.log("HEY ITS PREVIOUS MONTH");
+      if(monthscount === 0)
+      {
+      console.log("P PATH ONE");
+      ky=ky-1;
+      monthscount=11;
+      console.log("MONTHSCOUNT: "+monthscount+" WE ARE IN A YEAR SUBSTRACTING PART");
+      $("#inserts").empty();
+      $("#nextmonth").empty();
+      $("#thismonth").empty();
+      $("#previousmonth").empty();
+      populate(monthscount,ky);
+      }
+      else {
+      console.log("P PATH TWO");
+      monthscount--;
+      console.log("MONTHSCOUNT: "+monthscount);
+      $("#inserts").empty();
+      $("#nextmonth").empty();
+      $("#thismonth").empty();
+      $("#previousmonth").empty();
+      populate(monthscount,ky);
+      }
+      console.log("___________________________________________________________");
+      });
+
+
+      // REQUEST FOR CALENDAR DATA
+      var calendarcount=0;
+      $("#calendarbutton1").click(function(){
+      if (calendarcount%2 === 0){
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var index;
+      parsed = JSON.parse(request.responseText);
+      console.log(parsed);
+      for (index = 0; index < parsed.length; ++index) {
+          
+          order=parsed[index];
+          console.log(order);
+          console.log('Day '+order.fday+' and month '+order.fmonth);
+          eval('if($("#d'+order.fday+'m'+order.fmonth+'").text().length != 0){$("#d'+order.fday+'m'+order.fmonth+'").css({"background-color":"#64de89"});} ');
+
+      } 
+      //$('#result').append(request.responseText);
+      //$('#putithere').slideToggle();
+      $('#calendarblock').slideToggle();
+      calendarcount++;
+      }
+      
+      };
+      request.open('POST', '/enquery/1/test', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      // Most libraries like jQuery/Prototype/Dojo do this
+      request.send("month=11&year=2014&coco=enquires");
+      }//if calendarcount
+      else {
+       $('#calendarblock').slideToggle();
+       calendarcount++;
+      }
+      });
+      //REQUEST FOR NEXT MONTH'S CALENDAR DATA
+      $("#nextmonth").click(function(){
+      $('#claendarblock').css({"opacity":"0.5"});
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var index;
+      parsed = JSON.parse(request.responseText);
+      for (index = 0; index < parsed.length; ++index) {    
+      order=parsed[index];
+      console.log(order);
+      console.log('Day '+order.fday+' and month '+order.fmonth);
+      console.log('going to switch classes');
+      $(".m12").switchClass("m12","m13");
+      $(".m11").switchClass("m11","m12");
+      console.log('switched classes');
+      for (var i=1;i<32;i++)
+      {eval("$('#d"+i+"m11').attr('id','#d"+i+"m12');");}
+      for ( var i=1;i<5;i++)
+      {eval("$('#d"+i+"m12').attr('id','#d"+i+"m13');");}
+      eval('if($("#d'+order.fday+'m'+order.fmonth+'").text().length != 0){$("#d'+order.fday+'m'+order.fmonth+'").css({"background-color":"#64de89"});} else {$("#d'+order.fday+'m'+order.fmonth+'").css({"background-color":"white"});} ');
+      $('.off').css({"background-color":"#ddd"});
+      } 
+      $('#thismonth').empty();
+      $('#nextmonth').empty();
+      $('#previousmonth').empty();
+      $('#thismonth').append("<h2><span style='color:white;' class='glyphicon glyphicon-chevron-left'></span>DECEMBER</h2>");
+      $('#nextmonth').append("<h2><span style='color:gray;' class='glyphicon glyphicon-chevron-right'></span> <span style='padding-left:2vw;color:#ddd;'>JANUARY</span></h2>");
+      $('#previousmonth').append("<h2><span style='padding-right:2vw;color:#ddd;'>NOVEMBER</span><span style='color:gray;' class='glyphicon glyphicon-chevron-left'></span> </h2>");
+
+
+      $('#calendarblock').css({"opacity":"1"});
+      
+      }
+      };
+      request.open('POST', '/enquery/1/test', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      // Most libraries like jQuery/Prototype/Dojo do this
+      request.send("month=12&year=2014&coco=enquires");
+      });
+      
+      //BUTTONS
+      $('#hone').click(function(){
+      //check if any remove actions are present , discard on exit
+      $('#offers').slideToggle();
+      $('#settingsblock').slideToggle();
+      });
+      $('#removebutton1').click(function(){
+      $('#remove1').slideToggle();
+      $('#offerstngs1').slideToggle();
+      });
+      $('#no1').click(function(){
+      $('#remove1').slideToggle();
+      $('#offerstngs1').slideToggle();
+      });
+      //$('#calendarbutton1').click(function(){
+      //$('#calendarblock').slideToggle();
+      //});
