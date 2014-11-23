@@ -24,13 +24,13 @@ app.use(logger('dev'));
 app.use(require('connect').bodyParser());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(sessions{
+app.use(sessions({
   cookieName: 'session';,
   secret:'2342kjhkj2h3i2uh32j3hk2jDKLKSl23kh42u3ih4',
   duration:4320 * 60 *1000,
   activeduration:1440 * 60 * 1000,
   httpOnly: true;
-});
+}));
 
 var lguser = {};
 app.use(function(req,res,next){
@@ -402,14 +402,14 @@ app.post('/admin/clear',function(req,res){
 //
 //});  
 
-// mobile version start here
+// MOBILE VERSION STARTS HERE
 
-app.get('/m/',function(req,res){
-  console.log('got to /m/ section, render depending on req.headers.host');
-  if (req.headers.host === 'm.topandviews.ru') {res.render('mindex')}
-  if (req.headers.host === 'm.topandviews.com') {res.render('mindex')}
-  if (req.headers.host === 'm.topandviews.co.uk') {res.render('mindex')}  
-});
+//app.get('/m/',function(req,res){
+//  console.log('got to /m/ section, render depending on req.headers.host');
+//  if (req.headers.host === 'm.topandviews.ru') {res.render('mindex')}
+//  if (req.headers.host === 'm.topandviews.com') {res.render('mindex')}
+//  if (req.headers.host === 'm.topandviews.co.uk') {res.render('mindex')}  
+//});
 
 //app.get('/m/:lang/*',function (req,res,next){
 //  var checklang = req.params.lang;
@@ -429,16 +429,16 @@ app.get('/m/',function(req,res){
 //   if (lang === 'it'){res.render('mgeoit');} 
 //});
 
-app.get('/m/:lang', function(req,res){
-  console.log('got into /m/:lang route')
-   var lang = req.params.lang;
-   if (lang === 'ru'){res.render('mindexru');} 
-   if (lang === 'en'){res.render('mindex');} 
-   if (lang === 'de'){res.render('mindexde');} 
-   if (lang === 'fr'){res.render('blank');} 
-   if (lang === 'es'){res.render('blank');} 
-   if (lang === 'it'){res.render('blank');} 
-});
+//app.get('/m/:lang', function(req,res){
+//  console.log('got into /m/:lang route')
+//   var lang = req.params.lang;
+//   if (lang === 'ru'){res.render('mindexru');} 
+//   if (lang === 'en'){res.render('mindex');} 
+//   if (lang === 'de'){res.render('mindexde');} 
+//   if (lang === 'fr'){res.render('blank');} 
+//   if (lang === 'es'){res.render('blank');} 
+//   if (lang === 'it'){res.render('blank');} 
+//});
 
 //app.get('/m/:lang/geo/:city', function(req,res){
 //    var lang = req.params.lang;
@@ -477,37 +477,40 @@ app.get('/m/:lang', function(req,res){
 
 
 
-app.get('/:lang',function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'en') {res.render('index')}
-  if (lang === 'ru') {res.render('indexru')}
-  if (lang === 'fr') {res.render('indexfr')}
-  if (lang === 'de') {res.render('indexde')}
-  if (lang === 'es') {res.render('indexes')}
-  if (lang === 'it') {res.render('indexit')} 
-});
+//app.get('/:lang',function(req,res){
+//  var lang = req.params.lang;
+//  if (lang === 'en') {res.render('index')}
+//  if (lang === 'ru') {res.render('indexru')}
+//  if (lang === 'fr') {res.render('indexfr')}
+//  if (lang === 'de') {res.render('indexde')}
+//  if (lang === 'es') {res.render('indexes')}
+//  if (lang === 'it') {res.render('indexit')} 
+//});
 
-app.get('/:lang/contact', function(req,res){
-  var lang = req.params.lang;
-  if (lang === 'en') {res.render('contact')}
-  if (lang === 'ru') {res.render('contactru')}
-  if (lang === 'fr') {res.render('contactfr')}
-  if (lang === 'de') {res.render('contactde')}
-  if (lang === 'es') {res.render('contactes')}
-  if (lang === 'it') {res.render('contactit')} 
-});
+//app.get('/:lang/contact', function(req,res){
+//  var lang = req.params.lang;
+//  if (lang === 'en') {res.render('contact')}
+//  if (lang === 'ru') {res.render('contactru')}
+//  if (lang === 'fr') {res.render('contactfr')}
+//  if (lang === 'de') {res.render('contactde')}
+//  if (lang === 'es') {res.render('contactes')}
+//  if (lang === 'it') {res.render('contactit')} 
+//});
 
-app.get('/search', function(req,res){
-  var vhname = req.params.hname;
-  var vmixgenders = req.params.mixgenders;
-  var vtrndist = req.params.trndist;
-  var vwifi = req.params.wifi;
-  var vppr = req.params.ppr;
-  var vprice = req.params.price
+app.post('/search', function(req,res){
+  var vmixgenders = req.body.mixgenders;
+  var vctype = req.body.ctype;
+  var vwifi = req.body.wifi;
+  var vppr = req.body.parking;
+  var vprice = req.body.price;
   
-  hostels.find({price:vprice,hname:vhname,mixgenders:vmixgenders,trndist:vtrndist,wifi:vwifi,ppr:vppr},function(err,hostels){
+  hostels.find({price:vprice,mixgenders:vmixgenders,trndist:vtrndist,wifi:vwifi,ppr:vppr},function(err,hostels){
     if (hostels.length != 0)
       {res.render("sr",{"hostels":hostels});}
+    else {
+      //NO EMPTYSR YET EXISTS , MUST BE CREATED
+      res.render("emptysr");
+    }
   });
 });
 
@@ -1100,7 +1103,7 @@ if (req.body.nameru === undefined||
              
          
            
-         	
+         	// CTYPE MUST BE ADDED - TELLS DISTANCE FROM THE CENTER
          
          	hostels.insert({placename : vplacename,
          nameru : vnameru,
