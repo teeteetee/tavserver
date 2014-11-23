@@ -171,7 +171,7 @@ app.post('/newuser',function(req,res){
         //DO SMTH
       }
       else {
-        if(doc.length === 0)
+        if(doc)
         {
           users.insert({mail:vmail,phr:vp,lgn:vu,enquiries:{all:0,accepted:0}});
           find.users({email:vmail},function(err,docdoc){
@@ -179,9 +179,11 @@ app.post('/newuser',function(req,res){
               //DO SMTH
             }
             else{
-               if (docdoc.length != 0) {
+               if (docdoc) {
                 req.session.user = confirmed;
-                res.render('index',{'hello':confirmed.lgn,'userid':confirmed.userid});
+                // INDEX MUST BE DIFFERENT FOR REGISTERD ONES, IT IS TEMPORARY THE SAME
+                console.log('SOMEBODY REGISTERED');
+                res.render('index');
                }
                else {
                   ms.mtext ='fail';
