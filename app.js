@@ -44,9 +44,9 @@ app.use(function(req,res,next){
         lguser = user;
         delete lguser.phr;
         req.session = lguser;
-
         next();}
-
+      else {next();}
+      } 
      });
    }
    else {
