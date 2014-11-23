@@ -834,6 +834,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
       }
     }
   });
+
   var venqid = enqnum++;
   //var vofferid= req.params.price; - already set as "y"
   var year = req.body.fyear;
@@ -860,7 +861,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
    else {
     //WHAT?
    }
-   {
+   }
    });
    break
    case "confirm":
