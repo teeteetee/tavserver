@@ -899,16 +899,16 @@ app.post('/enquery/:hostel/:price', function(req,res){
                                       vownclients++;
                                       vcapacity--;
                                       vaccepted++;
-                                      hostel.update({hostelid:x},{set${vofferid:{capacity:vcapacity},ownclients:vownclients,enquires:{accepted:vaccepted}}});
-                                      orders.update({enqid:venqid},{set${confirmed:1}}});
+                                      hostel.update({hostelid:x},{$set:{vofferid:{capacity:vcapacity},ownclients:vownclients,enquires:{accepted:vaccepted}}});
+                                      orders.update({enqid:venqid},{$set:{confirmed:1}}});
                                        }
                                   else {
 
                                       var vaccepted = doc.enquiries.accepted;
                                       vcapacity--;
                                       vaccepted++;
-                                      hostel.update({hostelid:x},{set${vofferid:{capacity:vcapacity},enquires:{accepted:vaccepted}}});
-                                      orders.update({enqid:venqid},{set${confirmed:1}}});
+                                      hostel.update({hostelid:x},{$set:{vofferid:{capacity:vcapacity},enquires:{accepted:vaccepted}}});
+                                      orders.update({enqid:venqid},{$set:{confirmed:1}}});
                                       users.find({userid:vuserid},function(err,someuser){
                                         if (err)
                                         {
@@ -920,7 +920,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
                                           {
                                             var vuaccepted = someuser.enquiries.accepted;
                                             vuaccepted++;
-                                            users.update({userid:vuserid},{set${enquiries:{accepted:vuaccepted}}});
+                                            users.update({userid:vuserid},{$set:{enquiries:{accepted:vuaccepted}}});
                                           }
                                           else
                                           {
@@ -952,7 +952,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
    case "dismiss":
     //used to dismiss a request for a room came through our system
      var venqid = req.body.enqid;
-    orders.update({enqid:venqid},{set${accepted:2}});
+    orders.update({enqid:venqid},{$set:{accepted:2}});
    break
    default:
    //ADD SOME TYPE OF ERROR HERE
