@@ -176,7 +176,7 @@ app.post('/newuser',function(req,res){
           gmonth = now.getMonth();
           gyear = now.getYear();
           gday = now.getDay();
-          users.insert({mail:vmail,phr:vp,lgn:vu,enquiries:{all:0,accepted:0},regdate:{year:gyear,month:gmonth,day;gday}});
+          users.insert({mail:vmail,phr:vp,lgn:vu,enquiries:{all:0,accepted:0},regdate:{year:gyear,month:gmonth,day:gday}});
           users.findOne({mail:vmail},function(err,docdoc){
             if (err){
               //DO SMTH
@@ -588,6 +588,12 @@ app.post('/drop/:part',function(req,res){
     break
   }
 
+});
+
+app.post('/drop/users/mail',function(req,res){
+  var vmail = req.params.mail;
+  users.remove({mail:vmail});
+  res.send('done');
 });
 
 //UPDATE HOSTELS PAGE (STILL PACES NEEDS AN UPDATE)
