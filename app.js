@@ -505,8 +505,8 @@ app.post('/search', function(req,res){
   var vwifi = req.body.wifi;
   var vppr = req.body.parking;
   var vprice = req.body.price;
-  
-  hostels.find({price:vprice,mixgenders:vmixgenders,trndist:vtrndist,wifi:vwifi,ppr:vppr},function(err,hostels){
+  // ADD SEARCH CRITERIAS
+  hostels.find({price:vprice},function(err,hostels){
     if (hostels.length != 0)
       {res.render("sr",{"hostels":hostels});}
     else {
