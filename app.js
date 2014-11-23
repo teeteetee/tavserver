@@ -507,9 +507,12 @@ app.post('/search', function(req,res){
   var vprice = req.body.price;
   // ADD SEARCH CRITERIAS
   hostels.find({price:vprice},function(err,hostels){
+    cosnole.log(" ID DID SEARCH THE DB");
     if (hostels.length != 0)
-      {res.render("sr",{"hostels":hostels});}
+      { cosnole.log(" , FOUND SOMETHING AND GOING TO SEND IT TO YOU");
+        res.render("sr",{"hostels":hostels});}
     else {
+      cosnole.log(" IT WAS EMPTY AND IM GOING TO RENDER");
       //NO EMPTYSR YET EXISTS , MUST BE CREATED
       res.render("emptysr");
     }
