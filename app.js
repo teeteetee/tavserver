@@ -54,7 +54,7 @@ app.use(function(req,res,next){
    }
 });
 
-app.get('userdrop',function(req,res){
+app.get('/userdrop',function(req,res){
   users.remove();
   res.send('DB DROPPED');
 });
