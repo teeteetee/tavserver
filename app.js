@@ -4,12 +4,12 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
-
+var sessions = require('client-sessions');
+var bcrypt = require('bcrypt');
 
 var mongo = require('mongodb');
 var db = require('monk')('localhost/tav')
-  , hostels = db.get('hostels'),orders = db.get('orders'),posts = db.get('posts'),objects = db.get('objects');
+  , hostels = db.get('hostels'),orders = db.get('orders'),users=db.get('users'),posts = db.get('posts'),objects = db.get('objects');
 // POSTS and OBJECTS BELONGS TO MALESHIN PROJECT DELETE WHEN PUSHING TOPANDVIEWS TO PRODUCTION
 var fs = require('fs-extra');
 
@@ -24,59 +24,95 @@ app.use(logger('dev'));
 app.use(require('connect').bodyParser());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(sessions{
+  cookieName: 'session';,
+  secret:'2342kjhkj2h3i2uh32j3hk2jDKLKSl23kh42u3ih4',
+  duration:4320 * 60 *1000,
+  activeduration:1440 * 60 * 1000,
+  httpOnly: true;
+});
+
+var lguser = {};
+app.use(function(req,res,next){
+   if(req.session && req.session.lgn){
+     users.findOne({mail:req.session.mail},function(err,user){
+      if(err){
+        next();
+      }
+      else {
+        if(user){
+        lguser = user;
+        delete lguser.phr;
+        req.session = lguser;
+
+        next();}
+
+     });
+   }
+   else {
+    next();
+   }
+});
 
 app.get('/hostel', function(req,res) {
   console.log('JESUS !!!');
   res.render('hostel');
 });
 
-
- app.get('/index',function(req,res){
-   var incomming = req.headers.host;
-
-  if (incomming === 'topandviews.ru') {
-    console.log(' serving RU');
-    res.render('index');
-  } 
-  
-  if (incomming === 'topandviews.co.uk') {
-    console.log(' serving CO.UK');
-    res.render('index');
-  }
-
-  if (incomming === 'topandviews.com') {
-    console.log(' serving COM');
-    res.render('index');
-     }
+app.get('logout',function(req,res){
+  delete req.session;
+  res.redirect('/');
 });
 
+
+ //app.get('/index',function(req,res){
+ //  var incomming = req.headers.host;
+
+ // if (incomming === 'topandviews.ru') {
+ //   console.log(' serving RU');
+ //   res.render('index');
+ // } 
   
-//subdomain magic 
-app.get('*', function(req,res,next) { 
-  var d = new Date();
-  if(req.headers.host === 'm.topandviews.com')  //if it's a sub-domain
-   {console.log(d+' got a mobile version request on .com from '+req.ip);
-    req.url = '/m' + req.url; 
-    console.log(req.url); //append some text yourself
-  next();} 
+ // if (incomming === 'topandviews.co.uk') {
+ //   console.log(' serving CO.UK');
+ //   res.render('index');
+ // }
+
+ // if (incomming === 'topandviews.com') {
+ //   console.log(' serving COM');
+ //   res.render('index');
+ //    }
+//});
+
+  
+//SUBDOMAIN MAGIC 
+
+
+//app.get('*', function(req,res,next) { 
+//  var d = new Date();
+//  if(req.headers.host === 'm.topandviews.com')  //if it's a sub-domain
+//   {console.log(d+' got a mobile version request on .com from '+req.ip);
+//    req.url = '/m' + req.url; 
+//    console.log(req.url); //append some text yourself
+//  next();} 
  
 
-  if(req.headers.host === 'm.topandviews.co.uk')  //if it's a sub-domain
-    {console.log(d+' got a mobile version request on co.uk from '+req.ip);
-    req.url = '/m' + req.url;  //append some text yourself
-    console.log(req.url);
-    next();} 
+ // if(req.headers.host === 'm.topandviews.co.uk')  //if it's a sub-domain
+ //   {console.log(d+' got a mobile version request on co.uk from '+req.ip);
+ //   req.url = '/m' + req.url;  //append some text yourself
+ //   console.log(req.url);
+ //   next();} 
      
   
-  if(req.headers.host === 'm.topandviews.ru')  //if it's a sub-domain
-    {console.log(d+' got a mobile version request on .ru from  '+req.ip);
-    req.url = '/m' + req.url ;  //append some text yourself
-    console.log(req.url);
-    next();}
-    
-    else {next();}
+ // if(req.headers.host === 'm.topandviews.ru')  //if it's a sub-domain
+ //   {console.log(d+' got a mobile version request on .ru from  '+req.ip);
+ //   req.url = '/m' + req.url ;  //append some text yourself
+ //   console.log(req.url);
+ //   next();}
+ //   
+ //   else {next();}
 
-}); 
+//}); 
 
 
 
@@ -84,7 +120,7 @@ app.get('/',function(req,res) {
   
   console.log('entered "/" route');
   console.log('User-Agent: ' + req.headers['user-agent']);
-  var userAgent=req.headers['user-agent']
+  var userAgent=req.headers['user-agent'];
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
   var d = new Date();
@@ -104,20 +140,166 @@ app.get('/',function(req,res) {
 
 app.get('/calendar',function(req,res){
   res.render('calendar');
+  
 });
 
-app.get('/full',function(req,res) {
-  if(req.headers.host === 'topandviews.ru') 
-    {console.log(d+' request on .ru from '+req.ip);
-     res.render('index');}
-  if(req.headers.host === 'topandviews.com') 
-    {console.log(d+' request on .com from '+req.ip);
-     res.render('index');}
-  if(req.headers.host === 'topandviews.co.uk') 
-    {console.log(d+' request on .co.uk from '+req.ip);
-     res.render('index');}
+//REGISTRATION
+app.get('/rrregisterrr',function(req,res){
+     res.render('register');
 });
 
+app.post('/newuser',function(req,res){
+    //THOSE USERS ARE NORMAL PEOPLE, HOSTEL STUF WILL BE REGISTERED THROUGH ADMIN
+    var vmail = req.body.mail; 
+    var vu = req.body.u; //NEEDED TO WRITE COMMENTS, DONT ASK AT REGISTRATION
+    if (vu.length === 0 )
+      {vu = 0;}
+    var vp = bcrypt.hashSync(req.body.p,bcrypt.genSaltSync(10));
+    var ms = {};
+    ms.trouble=1;
+    ms.mtext='email incorrect';
+    // MUST INCLUDE enquiries - all  - accepted WHEN WRITING TO THE DB
+    // CHECK MAIL BEFOR WRTING
+    function validateEmail(email) { 
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+} 
+    if (validateEmail(vmail) === true) {
+    users.find({mail:vmail},function(err,doc){
+      if (err)
+      {
+        //DO SMTH
+      }
+      else {
+        if(doc.length === 0)
+        {
+          users.insert({mail:vmail,phr:vp,lgn:vu,enquiries:{all:0,accepted:0}});
+          find.users({email:vmail},function(err,docdoc){
+            if (err){
+              //DO SMTH
+            }
+            else{
+               if (docdoc.length != 0) {
+                req.session.user = confirmed;
+                res.render('index',{'hello':confirmed.lgn,'userid':confirmed.userid});
+               }
+               else {
+                  ms.mtext ='fail';
+                  res.send(ms);
+               }
+            }
+          });
+        }
+        else {
+           ms.mtext='email exists'
+           res.send(ms);
+        }
+      }// end of err's else
+    });
+    }   
+    else {
+      // INCORRECT EMAIL, SO WE SEND A NOTIFICATION
+      res.send(ms);
+    }
+
+    });
+    
+
+//LOGIN MECHANICS
+app.post('/check',function(req,res){
+  //CHECK FOR PASSPORT PRIOR TO HOSTEL CHECK, SORT THIS OUT AFTER ALPHA
+  vphr=req.body.phr;
+  vlgn=req.body.lgn; // email
+  //adding a marker to send to client
+  // MARKER MECHANICS IS NOT PRESENT YET , NEEDS TO BE IMPLEMENTED
+   var  ms = {};
+  ms.trouble=1;
+  ms.text='db';
+  //end of marker
+  users.findOne({lgn:vlgn},function(err,confirmed){
+    if (err)
+      {res.send(ms);}
+    else 
+    {
+      if (confirmed.length != 0)
+      {
+         if(confirmed.hostel != 0) //HOSTEL LOGED IN , SERVE HOSTELCLIENT
+            {
+              if (bcrypt.compareSync(vphr,confirmed.phr))
+               {
+             var x = confirmed.hostel;
+              hostels.find({hostelid:x},function(err,hostel){
+                if (err)
+                {
+                  //DO SOMETHING
+                }
+                else {
+                  if (hostel.length != 0)
+                  {
+                    var offridlst = hostel.offerids;
+                     if (hostel.country === "russia")
+                    { 
+                      req.session = confirmed;
+                      var name=hostel.nameru;
+                    res.render('hosteladminru',{'offers':offridlst,'hostelname':name});
+                    //
+                    }
+                    else {
+                       req.session = confirmed;
+                      res.render('hosteladminen',{'offers':offridlst,'hostelname':name});
+                    }
+                  }   
+              }
+              else
+              {
+                //DO SOMETHING
+              }
+            });
+            }
+            else
+            {
+              ms.mtext('wrong pas');
+              res.send(ms);
+              //WRONG PASSWORD
+            }
+         }
+         else
+          //USER LOGED IN 
+         {
+          if(bcrypt.compareSync(vphr,confirmed.phr))
+          {
+          //INDEX MUST BE MODIFIED TO SUPPORT NEW LOGING IN SYSTEM
+          req.session = confirmed;
+          res.redirect('index',{'hello':req.session.lgn,'usrid':req.session.usrid});
+           }
+           else {
+            ms.mtext('wrong pas');
+              res.send(ms);
+              //WRONG PASSWORD
+           }
+         }
+      }
+      else {
+        ms.text='wronguser'
+        res.send(ms);
+      }
+    }
+  });
+});
+
+//app.get('/full',function(req,res) {
+//  if(req.headers.host === 'topandviews.ru') 
+//    {console.log(d+' request on .ru from '+req.ip);
+//     res.render('index');}
+//  if(req.headers.host === 'topandviews.com') 
+//    {console.log(d+' request on .com from '+req.ip);
+//     res.render('index');}
+//  if(req.headers.host === 'topandviews.co.uk') 
+//    {console.log(d+' request on .co.uk from '+req.ip);
+//     res.render('index');}
+//});
+
+//SEARCH RESULTS PROTOTYPE PAGE
 app.get('/test',function(req,res) {
   res.render('sr')
 });
@@ -126,11 +308,14 @@ app.get('/test',function(req,res) {
 
 //full version starts here, mobile will be below
 
+//ORDER MECHANICS TEST
 app.get('/ququ',function(req,res){
+
   console.log('request for ququ');
   res.render('orderstest');
 });
 
+//ADMIN SECTION FOR DB CONTROL
 app.get('/admin/:section',function(req,res){
   switch (req.params.section) {
     case ('orders'):
@@ -151,11 +336,13 @@ app.get('/admin/:section',function(req,res){
     break
     case('hostels'):
       hostels.find({},function(err,docs){
+        //NO PAGE , NEEDS TO BE CREATED ('adminorders' AS  A TEMPLATE)
         res.render('adminhostels',{'docs' : docs});
       });
     break
     case('users'):
       users.find({},function(err,docs){
+        //NO PAGE , NEEDS TO BE CREATED ('adminorders' AS  A TEMPLATE)
         res.render('adminusers',{'docs' : docs});
       });
     break
@@ -171,6 +358,7 @@ console.log('FIRST BREAKPOINT');
 //  res.render('adminauth',{'message' : null});
 //});
 
+//EMPTY DB (STILL PLACES NEEDS CORRECTION) NAND DELETE PICTURES
 app.post('/admin/clear',function(req,res){
   console.log(req.ip+" ENTERED /CLEAR");
   var clearpass = 'proventobewrong';
@@ -364,6 +552,7 @@ console.log('THIRD BREAKPOINT');
 //   });
 //});
 
+//EMPTY ORDERS
 app.post('/drop',function(req,res){
   pass = req.params.drop;
   pp = 'secureshit';
@@ -385,7 +574,7 @@ app.post('/drop',function(req,res){
   }
 });
 
-
+//UPDATE HOSTELS PAGE (STILL PACES NEEDS AN UPDATE)
 app.post('/adminsr/updatepage', function(req,res) {
 	var placenametest = req.body.placename;
 
@@ -397,7 +586,10 @@ app.post('/adminsr/updatepage', function(req,res) {
 	});
 	
 });
+
 console.log('FOURTH BREAKPOINT');
+
+//UPDATE HOSTELS MECHANICS (STILL PLACES NEEDS AN UPDATE)
 app.post('/admin/update', function(req,res) {
  
  // UPDATES variable should be introduced, incremets each update on a place
@@ -518,7 +710,6 @@ app.post('/uploadauth', function(req,res){
 var testcount=1;
 app.post('/orders/:hostel/:price',function(req,res){
   //ORDERCOUNT must go here, this is begining of getting statistic together. Orders taken, objects added, visitors etc.
-  vdates=req.body.dates;
   vphonep = req.body.phonep;
   vmail = req.body.mail;
   vphone = req.body.phone;
@@ -532,6 +723,7 @@ app.post('/orders/:hostel/:price',function(req,res){
   vmonth = req.body.tomonth;
   vday = req.body.today;
   vnights = req.body.nights;
+  //DONT FORGET ABOUT "OUTER" FIELD
    if (vofferid === 'test')
    {
      vphonep = 1;
@@ -546,15 +738,17 @@ app.post('/orders/:hostel/:price',function(req,res){
      vtomonth = 12;
      vtoday = 10;
      vnights = 3; 
-    orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday,nights:vnights});
+    orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday,nights:vnights,confirmed:0,reqip:req.ip,outer:0});
     testcount++;
 
    }
    else {
-  orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday,nights:vnights});
+  orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday,nights:vnights,confirmed:0,reqip:req.ip,outer:0});
    }
 });
+
 console.log('SIXTH BREAKPOINT');
+
 app.post('/enquery/:hostel/:price', function(req,res){
   console.log('GOT INTO ENQUERY !!!');
   //all the hostelclient magic happens here
@@ -569,9 +763,9 @@ app.post('/enquery/:hostel/:price', function(req,res){
   console.log(year);
   
   switch ( z ) {
-   case "enquires":
+   case "enquiries":
    //used on main page of hostel web client
-  orders.find({offerid:y},function(err,results){
+  orders.find({hostelid:x,offerid:y},function(err,results){
     res.send(results);
   });
    break
@@ -586,16 +780,177 @@ app.post('/enquery/:hostel/:price', function(req,res){
    break
    case "remove":
     //used to remove an offer 
+
+    hostels.find({hostel:x},function(err,result){
+      var offrcnt =  result.offrqntt;
+      if (offrcnt > 0){
+      offrcnt--;
+      hostels.update({hostelid:x},{$set:{offrqntt:offrcnt}});
+      eval("hostels.update({hostelid:x},{$set:{offer"+y+":undefined}});");
+      hostels.find({hotelid:x},function(err,result){
+        offrcnt++;
+        eval(
+        "if (result.offer"+offrcnt+" === undefined)
+          {console.log('OFFER SUCCESFULY DELETED');}
+        else {console.log('OFFER SEEMS TO STILL BE PRESENT: '+results.offer"+offrcnt+");}");
+      });
+    }
+      else 
+        //WHAT SHOUD BE DONE IN THIS CASE ? 
+        {res.send("NOTHING TO BE DELETED")}
+    });
+     //SHOULD ANYTHING BE SENT TO CLIENT TO CONFIRM ???
    break
    case"add":
     //used to create an offer
     //OFFERS MUST BE CONFIRMED 
-    // must add quntity of spaces for that price like {offer1:2}, offerid is for price register , 
+    var voffrprc=req.body.offrprc;
+    var vcapacity = req.body.capacity;
+    hostels.find({hostelid:x},function(err,result){
+      var offrcnt =result.offrqntt;
+      var offrcnt++;
+      eval("hostels.update({hostelid:x},{$set:{offer"+offrcnt+":{price:"+voffrprc+",capacity:"+vcapacity+",enquiries:0}}});");
+    });
+    
+   break
+   case "removeownclient":
+    //used to remove clients enquieries which didn't come through our booking system 
+    var venqid = req.body.enqid;
+    orders.update({enqid:venqid},{$set:{confirmed:2}});
+   break
+   case"addownclient":
+    //used to create a client enquiries which are not comming through our system
+  var = enqnum;
+  hostels.find({hostelid:x},function(err,result){
+    if (err)
+    {console.log('DB ERROR WHILE LOOKUP FOR ADDOWNCLIENT');}
+    else
+    {
+      if(result.length != 0)
+      {enqnum = results.ownclients; }
+      else{
+        //WHAT ELSE ? 
+      }
+    }
+  });
+  var venqid = enqnum++;
+  //var vofferid= req.params.price; - already set as "y"
+  var year = req.body.fyear;
+  var vmonth = req.body.fmonth;
+  var vday = req.body.fday;
+  var year = req.body.toyear;
+  var vmonth = req.body.tomonth;
+  var vday = req.body.today;
+  var vnights = req.body.nights;
+   orders.insert({hostelid:vhostelid,offerid:y,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday,nights:vnights,confirmed:1,reqip:req.ip,outer:1,enqid:venqid});
+   hostels.find({hostelid:x},function(err,result){
+    if (err)
+    {
+      //WHAT ??
+    }
+   else
+   {
+    if(result.length != 0)
+    {
+      var vownclients = result.ownclients;
+      vownclients++;
+      hostel.
+    }
+   else {
+    //WHAT?
+   }
+   {
+   });
    break
    case "confirm":
-    //used to confirm a request for a room
+    //used to confirm a request for a room came through our system
+    var venqid = req.body.enqid;
+    orders.find({enqid:venqid},function(err,result){
+      if (err)
+         {
+           //WHAT ??
+         }
+      else
+         {
+          if(result.length != 0)
+             { 
+               if (result.registered != 0)
+               {var vuserid = result.registered}
+               var vofferid = result.offerid;
+               var vouter = results.outer;
+                  hostels.find({hostelid:x},function(err,doc){
+                    if(err)
+                    {
+                      //DO SMTH
+                    }
+                    else {
+                      if(doc.length != 0)
+                        {
+                          //!!! CHECK IF ENOUGH CAPACITY
+                         eval("var vcapacity = doc."+vofferid+".capacity;");
+                         if (vcapacity > 0) 
+                                    {
+                                  //ADD CHECK IF OUTER
+                                  if (vouter === 1){
+                                      var vaccepted = doc.enquiries.accepted;
+                                      var vownclients = doc.ownclients;
+                                      vownclients++;
+                                      vcapacity--;
+                                      vaccepted++;
+                                      hostel.update({hostelid:x},{set${vofferid:{capacity:vcapacity},ownclients:vownclients,enquires:{accepted:vaccepted}}});
+                                      orders.update({enqid:venqid},{set${confirmed:1}}});
+                                       }
+                                  else {
+
+                                      var vaccepted = doc.enquiries.accepted;
+                                      vcapacity--;
+                                      vaccepted++;
+                                      hostel.update({hostelid:x},{set${vofferid:{capacity:vcapacity},enquires:{accepted:vaccepted}}});
+                                      orders.update({enqid:venqid},{set${confirmed:1}}});
+                                      users.find({userid:vuserid},function(err,someuser){
+                                        if (err)
+                                        {
+                                          //DO SOMETHING
+                                        }
+                                        else
+                                        {
+                                          if(someuser.length != 0)
+                                          {
+                                            var vuaccepted = someuser.enquiries.accepted;
+                                            vuaccepted++;
+                                            users.update({userid:vuserid},{set${enquiries:{accepted:vuaccepted}}});
+                                          }
+                                          else
+                                          {
+                                            //DO SOMETHING
+                                          }
+                                        }
+                                      });
+                                    }
+                                  }
+                          else {
+                            // HAPPENS WHEN TWO PEOPLE ORDER AND ONE IS MORE LUCKY THAN THE OTHER
+                            res.send("OFFER IS NOT AVALIABLE")
+                          }
+                        } 
+                      else{
+                        //DO SMTH
+                      }
+                    }
+                  });
+                 
+             }//if result.length !=0
+          else 
+              {
+               //WHAT?
+              }
+         {
+    });
    break
    case "dismiss":
+    //used to dismiss a request for a room came through our system
+     var venqid = req.body.enqid;
+    orders.update({enqid:venqid},{set${accepted:2}});
    break
    default:
    //ADD SOME TYPE OF ERROR HERE
@@ -631,6 +986,8 @@ if (req.body.nameru === undefined||
   req.body.placename  === undefined||
   req.body.xmlqntt === undefined||
   req.body.imgqntt === undefined)
+  //ctype is for how close it is to the citycenter
+ //wi-fi and parking should be added
   {res.send('Something wrong with your data, try again');}
 
      else{
@@ -709,12 +1066,21 @@ if (req.body.nameru === undefined||
                        });
          
          
-           
+           if (req.body.wifi != undefined)
+             {var vwifi = 1;}
+           else 
+            {var vwifi = 0;}
+           if (req.body.parking != undefined)
+            {var vparking = 1;}
+           else 
+            {var vparking = 0;}
+
          
          	var vnameru = req.body.nameru,
          	vnameen = req.body.nameen,
          	vtelephone = req.body.telephone,
          	vwww = req.body.www,
+          vcoord = req.body.coord,
          	vppredir = req.body.ppredir,
          	vmainpreview = "/images/places/"+req.body.placename+"/"+ req.files.mainpreview.name,
          	vfid = req.body.fid ,
@@ -725,6 +1091,7 @@ if (req.body.nameru === undefined||
          	vyearnow = req.body.yearnow,
            vadressru = req.body.adressru,
            vadressen = req.body.adressen,
+           vxmlqntt = req.body.xmlqntt,
            vxml = "/images/places/"+req.body.placename+"/" + req.files.xml.name;
          
             console.log(vplacename);
@@ -738,6 +1105,11 @@ if (req.body.nameru === undefined||
          	hostels.insert({placename : vplacename,
          nameru : vnameru,
          nameen : vnameen,
+         aderssru: vadressru,
+         adressen: vadressen,
+         coord: vcoord,
+         parking:vparking,
+         wifi:vwifi,
          telephone : vtelephone,
          www : vwww,
          ppredir : vppredir,
@@ -749,7 +1121,12 @@ if (req.body.nameru === undefined||
          country : vcountry,
          yearnow : vyearnow,
          xml : vxml,
-         images : photonum,
+         imgqntt : photonum,
+         xmlqntt : vxmlqntt,
+         offrqntt : 0,
+         enquiries : {all:0,accepted:0},
+         ownclients : 0,
+
          });
          
          	
