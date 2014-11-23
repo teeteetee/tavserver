@@ -221,7 +221,7 @@ app.post('/check',function(req,res){
       {res.send(ms);}
     else 
     {
-      if (confirmed.length != 0)
+      if (confirmed)
       {
          if(confirmed.hostel != 0) //HOSTEL LOGED IN , SERVE HOSTELCLIENT
             {
@@ -234,7 +234,7 @@ app.post('/check',function(req,res){
                   //DO SOMETHING
                 }
                 else {
-                  if (hostel.length != 0)
+                  if (hostel)
                   {
                     var offridlst = hostel.offerids;
                      if (hostel.country === "russia")
