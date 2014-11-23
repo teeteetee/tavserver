@@ -30,6 +30,9 @@ head
       #legend{
       border-bottom:1px solid #333
       }
+      .cap {
+      text-align:center;
+      }
   body
     .container
       #header.row
@@ -38,23 +41,25 @@ head
           h3  All orders 
       #drop.row
         .col-xs-4.col-xs-offset-4
-          form(method='post' action='/drop' role='form' )
+          form(method='post' action='/drop/users' role='form' )
             label(for='drop') Enter pass phrase:
             br
-            input.form-control(type='text' name='drop')
+            input.form-control(type='text' name='p')
             br
-            button.form-control(style='background-color:#c35;color:white;') Drop the database
+            button.form-control(style='background-color:#c35;color:white;',type='submit') Drop the database
       #results.row
         .col-xs-12
           #legend.row
-            .col-xs-2.field
+            .col-xs-2.field.cap
               h3 MAIL
-            .col-xs-2.field
+            .col-xs-2.field.cap
               h3 LOGIN
-            .col-xs-2.field
+            .col-xs-2.field.cap
               h3 ENQUIRIES
-            .col-xs-2.field
+            .col-xs-2.field.cap
               h3 CONFORMED
+            .col-xs-2.field.cap
+              h3 REGDATE
             
                          
           each user , i in docs
@@ -63,10 +68,14 @@ head
                 h5 #{user.mail}
               .col-xs-2.field
                 h5 #{user.lgn}
-              .col-xs-2.field
+              .col-xs-1.field
                 h5 #{user.enquiries.all}
-              .col-xs-2.field
+              .col-xs-1.field
                 h5 #{user.enquiries.accepted}
+              .col-xs-2.field
+                h5 #{user.regdate.day}.#{user.regdate.month}.#{user.regdate.year}
+              
+                
               
               
 

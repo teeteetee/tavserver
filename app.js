@@ -172,8 +172,11 @@ app.post('/newuser',function(req,res){
       }
       else {
         if(doc)
-        {
-          users.insert({mail:vmail,phr:vp,lgn:vu,enquiries:{all:0,accepted:0}});
+        { var now = new date();
+          gmonth = now.getMonth();
+          gyear = now.getYear();
+          gday = now.getDay();
+          users.insert({mail:vmail,phr:vp,lgn:vu,enquiries:{all:0,accepted:0},regdate:{year:gyear,month:gmonth,day;gday}});
           users.findOne({mail:vmail},function(err,docdoc){
             if (err){
               //DO SMTH
@@ -569,25 +572,22 @@ console.log('THIRD BREAKPOINT');
 //});
 
 //EMPTY ORDERS
-app.post('/drop',function(req,res){
-  pass = req.params.drop;
-  pp = 'secureshit';
-  if (pass = pp)
+app.post('/drop/:part',function(req,res){
+  var pp = 'secureshit';
+  switch(req.params.part)
   {
-    orders.remove({},function (err,done){
-      if (err){console.log('ERROR DROPIG DB');
-         res.send('ERROR DROPIG DB');
-       }
-      else {
-      testcount = 0;
-      console.log('all recordsorders deleted');
-      res.send('all records deleted');
-       }
-    });
+    case('orders'):
+     if(req.body.p ===  pp)
+      {orders.remove();
+        console.log('ORDERS DB DROPPED FROM '+ req.ip);}
+    break
+    case('users'):
+     if(req.body.p ===  pp)
+     {users.remove();
+     console.log('USERS DB DROPPED FROM '+ req.ip);}
+    break
   }
-  else {
-    res.send('Error')
-  }
+
 });
 
 //UPDATE HOSTELS PAGE (STILL PACES NEEDS AN UPDATE)

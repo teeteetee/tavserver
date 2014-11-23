@@ -38,12 +38,12 @@ head
           h3  All orders 
       #drop.row
         .col-xs-4.col-xs-offset-4
-          form(method='post' action='/drop' role='form' )
+          form(method='post' action='/drop/orders' role='form' )
             label(for='drop') Enter pass phrase:
             br
-            input.form-control(type='text' name='drop')
+            input.form-control(type='text' name='p')
             br
-            button.form-control(style='background-color:#c35;color:white;') Drop the database
+            button.form-control(style='background-color:#c35;color:white;',type='submit') Drop the database
       #results.row
         .col-xs-12
           #legend.row
