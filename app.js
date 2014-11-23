@@ -514,10 +514,14 @@ app.post('/search', function(req,res){
     else {
       console.log(" IT WAS EMPTY AND IM GOING TO RENDER");
       //NO EMPTYSR YET EXISTS , MUST BE CREATED
-      res.render("emptysr");
+      res.redirect('/emptysr');
     }
   });
 });
+
+app.get('/emptysr',function(req,res){
+  res.render('emptysr');
+}); 
 
 app.get('/hostels/:hostel',function(req,res){
   var word=req.params.hostel 
