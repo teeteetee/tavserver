@@ -25,7 +25,7 @@ app.use(require('connect').bodyParser());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(sessions({
-  cookieName: 'session';,
+  cookieName: 'session',
   secret:'2342kjhkj2h3i2uh32j3hk2jDKLKSl23kh42u3ih4',
   duration:4320 * 60 *1000,
   activeduration:1440 * 60 * 1000,
