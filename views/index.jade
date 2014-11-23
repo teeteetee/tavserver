@@ -250,14 +250,9 @@ head
           h5 есть
       .row(style='margin-top: 3vh; margin-bottom: 7vh;')
         .col-xs-4.col-xs-offset-4(style='text-align: center;')
-          button#find(style='background-color: #00b74a; border-radius: 4px; border: 2px solid black;', type='submit')
+          button#find(style='background-color: #00b74a; border-radius: 4px; border: 2px solid black;', )
             h5(style='font-size: 3vw; font-family: attentica; letter-spacing: 2px; color: white; margin: 0px; margin-left: 2vw; margin-right: 2vw; margin-top: 0.4vh;') НАЙТИ
-      //
-        <div class='row' id='bottomb'>
-                 <div class='col-xs-12'>
-                   <h2 style='color:transparent'>:-)</h2>
-                 </div>
-               </div>
+      
     #login.container
       form#entform(role='form', action='/check', method='post')
         .row
@@ -277,13 +272,7 @@ head
           .col-xs-8(style='margin: 0px; padding: 0px;')
             button#regb(style='border-radius: 4px; border: 1px solid white; background-color: transparent; margin-left: 2vw;')
               h5(style='color: white; margin: 2vh;')  Регистрация
-        //
-           <div class='col-xs-4' style='padding:0px;margin:0px;'>
-                 <button type='submit' style='border-radius:4px;border:1px solid white;background-color:transparent;'><h5 style='color:white;'> Регистрация</h5></button>
-                </div>
-                <div class='col-xs-4' style='padding:0px;margin:0px;'>
-                <button type='submit' style='border-radius:4px;border:1px solid #f30021;background-color:transparent;'><h5 style='color:#f30021;'> назад</h5></button>
-                </div>
+        
     #main.container
       #header.row
         .col-xs-12
@@ -294,14 +283,7 @@ head
                 span(style='color: #ff9900;') &
                 | VIEWS
             .col-xs-2.col-xs-offset-2(style='padding-top: 0.67em;')
-              //
-                <form role='search' method='post' action='/search'>
-                      <input class='form-control'>
-                        <span style='color:gray;right:-80px;top:-23px;display:inline;'class=' glyphicon glyphicon-search'></span>
-                        </input>
-                      </form>
-              //
-                <h2> ПОСИК </h2>
+              
           #choice.row
             .col-xs-4.col-xs-offset-4
               h3(style='display: inline;') 3D ТУРЫ ХОСТЕЛОВ В МОСКВЕ
