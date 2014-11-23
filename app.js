@@ -946,7 +946,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
               {
                //WHAT?
               }
-         {
+         }
     });
    break
    case "dismiss":
