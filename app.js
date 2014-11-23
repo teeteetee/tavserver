@@ -173,7 +173,7 @@ app.post('/newuser',function(req,res){
       }
       else {
         if(doc)
-        { var now = new date();
+        { var now = new Date();
           var gmonth = now.getMonth();
           var gyear = now.getYear();
           var gday = now.getDay();
