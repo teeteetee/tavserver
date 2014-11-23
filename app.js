@@ -54,17 +54,13 @@ app.use(function(req,res,next){
    }
 });
 
-app.get('/userdrop',function(req,res){
-  users.remove();
-  res.send('DB DROPPED');
-});
 
 app.get('/hostel', function(req,res) {
   console.log('JESUS !!!');
   res.render('hostel');
 });
 
-app.get('logout',function(req,res){
+app.get('/logout',function(req,res){
   delete req.session;
   res.redirect('/');
 });
@@ -178,9 +174,9 @@ app.post('/newuser',function(req,res){
       else {
         if(doc)
         { var now = new date();
-          gmonth = now.getMonth();
-          gyear = now.getYear();
-          gday = now.getDay();
+          var gmonth = now.getMonth();
+          var gyear = now.getYear();
+          var gday = now.getDay();
           users.insert({mail:vmail,phr:vp,lgn:vu,enquiries:{all:0,accepted:0},regdate:{year:gyear,month:gmonth,day:gday}});
           users.findOne({mail:vmail},function(err,docdoc){
             if (err){
