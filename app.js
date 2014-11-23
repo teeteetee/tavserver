@@ -821,7 +821,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
    break
    case"addownclient":
     //used to create a client enquiries which are not comming through our system
-  var = enqnum;
+  var enqnum;
   hostels.find({hostelid:x},function(err,result){
     if (err)
     {console.log('DB ERROR WHILE LOOKUP FOR ADDOWNCLIENT');}
