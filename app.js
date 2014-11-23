@@ -248,12 +248,13 @@ app.post('/check',function(req,res){
                        req.session = confirmed;
                       res.render('hosteladminen',{'offers':offridlst,'hostelname':name});
                     }
-                  }   
-              }
-              else
+                  }  
+                  else
               {
                 //DO SOMETHING
+              } 
               }
+              
             });
             }
             else
