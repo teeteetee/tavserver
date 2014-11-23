@@ -180,7 +180,7 @@ app.post('/newuser',function(req,res){
             }
             else{
                if (docdoc) {
-                req.session.user = confirmed;
+                req.session.user = docdoc;
                 ms.trouble =0;
                 ms.mtext='success';
                 // INDEX MUST BE DIFFERENT FOR REGISTERD ONES, IT IS TEMPORARY THE SAME

@@ -1,0 +1,74 @@
+html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Admin orders
+    //
+       Bootstrap 
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    
+    style
+     :css
+      .container {
+      width:100%;
+      margin:0px;
+      padding:0px;
+      }
+      #header {
+      text-align:center;
+      background-color:#ddd;
+      }
+      .order {
+      border-bottom:1px solid gray;
+      text-align:center;
+      }
+      .field {
+      border-right:1px solid #ddd;
+      }
+      #legend{
+      border-bottom:1px solid #333
+      }
+  body
+    .container
+      #header.row
+        .col-xs-12
+          h1  Admin
+          h3  All orders 
+      #drop.row
+        .col-xs-4.col-xs-offset-4
+          form(method='post' action='/drop' role='form' )
+            label(for='drop') Enter pass phrase:
+            br
+            input.form-control(type='text' name='drop')
+            br
+            button.form-control(style='background-color:#c35;color:white;') Drop the database
+      #results.row
+        .col-xs-12
+          #legend.row
+            .col-xs-2.field
+              h3 MAIL
+            .col-xs-2.field
+              h3 LOGIN
+            .col-xs-2.field
+              h3 ENQUIRIES
+            .col-xs-2.field
+              h3 CONFORMED
+            
+                         
+          each user , i in docs
+            .row.order
+              .col-xs-2.field
+                h5 #{user.mail}
+              .col-xs-2.field
+                h5 #{user.lgn}
+              .col-xs-2.field
+                h5 #{user.enquiries.all}
+              .col-xs-2.field
+                h5 #{user.enquiries.accepted}
+              
+              
+
+
+        
