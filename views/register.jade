@@ -153,7 +153,6 @@ head
       request.onreadystatechange = function () {
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
-      var index;
       parsed = JSON.parse(request.responseText);
       console.log(parsed);
       // do your job here
@@ -168,9 +167,11 @@ head
       case('email exists'):
       $('#message').append("<h5 style='color:#fc454e;'>Provided email is already used by one of the users</h5>");
       break
+      default
+      break
       }
       }
-      else { window.location = '/index';}
+      else { console.log('HEY');window.location = 'http://topandviews.ru';}
       }
       };
       request.open('POST', '/newuser', true);
