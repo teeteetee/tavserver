@@ -855,7 +855,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
     {
       var vownclients = result.ownclients;
       vownclients++;
-      hostel.update(hostelid:x,{set${ownclients:vownclients}});
+      hostel.update({hostelid:x,{set${ownclients:vownclients}}});
     }
    else {
     //WHAT?
