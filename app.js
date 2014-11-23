@@ -181,9 +181,11 @@ app.post('/newuser',function(req,res){
             else{
                if (docdoc) {
                 req.session.user = confirmed;
+                ms.trouble =0;
+                ms.mtext='success';
                 // INDEX MUST BE DIFFERENT FOR REGISTERD ONES, IT IS TEMPORARY THE SAME
                 console.log('SOMEBODY REGISTERED');
-                res.render('index');
+                res.send(ms);
                }
                else {
                   ms.mtext ='fail';
