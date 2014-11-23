@@ -793,10 +793,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
       eval("hostels.update({hostelid:x},{$set:{offer"+y+":undefined}});");
       hostels.find({hotelid:x},function(err,result){
         offrcnt++;
-        eval(
-        "if (result.offer"+offrcnt+" === undefined)
-          {console.log('OFFER SUCCESFULY DELETED');}
-        else {console.log('OFFER SEEMS TO STILL BE PRESENT: '+results.offer"+offrcnt+");}");
+        eval("if (result.offer"+offrcnt+" === undefined){console.log('OFFER SUCCESFULY DELETED');}else {console.log('OFFER SEEMS TO STILL BE PRESENT: '+results.offer"+offrcnt+");}");
       });
     }
       else 
