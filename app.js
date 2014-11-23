@@ -499,7 +499,7 @@ app.post('/admin/clear',function(req,res){
 //});
 
 app.post('/search', function(req,res){
-  console.log("INTO SEARCH , REQ.BODY:"+req.body);
+  console.log("INTO SEARCH , REQ.BODY:"+req.body.wifi);
   var vmixgenders = req.body.mixgenders;
   var vctype = req.body.ctype;
   var vwifi = req.body.wifi;
