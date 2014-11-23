@@ -475,21 +475,23 @@ head
       $("#regb").click(function(){
       location.href = "/rrregisterrr";
       });
-      $('#find').click(function(req,res){
-      request = new XMLHttpRequest();
-      request.onreadystatechange = function () {
-      var DONE = this.DONE || 4;
-      if (this.readyState === DONE){
-      var index;
-      parsed = JSON.parse(request.responseText);
-      console.log(parsed);
-      //do your job here
-      
-      }
-      };
-      request.open('POST', '/search', true);
-      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      // Most libraries like jQuery/Prototype/Dojo do this
-      request.send("price="+criteriaOne+"&ctype="+criteriaTwo+"&mixgenders="+criteriaThree+"&wifi="+criteriaFour+"&parking="+criteriaFive);
+      $('#find').click(function(){
+      $.form('/search', { price: criteriaOne, ctype: criteriaTwo, mixgenders : criteriaThree, wifi : criteriaFour, parking : criteriaFive }, 'post').submit();
       });
+      //$('#find').click(function(req,res){
+      //request = new XMLHttpRequest();
+      //request.onreadystatechange = function () {
+      //var DONE = this.DONE || 4;
+      //if (this.readyState === DONE){
+      //var index;
+      //parsed = JSON.parse(request.responseText);
+      //console.log(parsed);
+      //do your job here
+      //}
+      //};
+      //request.open('POST', '/search', true);
+      //request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      //request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      // Most libraries like jQuery/Prototype/Dojo do this
+      //request.send("price="+criteriaOne+"&ctype="+criteriaTwo+"&mixgenders="+criteriaThree+"&wifi="+criteriaFour+"&parking="+criteriaFive);
+      //});
