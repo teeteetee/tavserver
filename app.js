@@ -908,7 +908,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
                                       vcapacity--;
                                       vaccepted++;
                                       hostel.update({hostelid:x},{$set:{vofferid:{capacity:vcapacity},enquires:{accepted:vaccepted}}});
-                                      orders.update({enqid:venqid},{$set:{confirmed:1}}});
+                                      orders.update({enqid:venqid},{$set:{confirmed:1}});
                                       users.find({userid:vuserid},function(err,someuser){
                                         if (err)
                                         {
