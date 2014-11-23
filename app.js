@@ -174,7 +174,7 @@ app.post('/newuser',function(req,res){
         if(doc)
         {
           users.insert({mail:vmail,phr:vp,lgn:vu,enquiries:{all:0,accepted:0}});
-          find.users({email:vmail},function(err,docdoc){
+          users.findOne({email:vmail},function(err,docdoc){
             if (err){
               //DO SMTH
             }
