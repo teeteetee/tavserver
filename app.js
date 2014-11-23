@@ -808,8 +808,8 @@ app.post('/enquery/:hostel/:price', function(req,res){
     var voffrprc=req.body.offrprc;
     var vcapacity = req.body.capacity;
     hostels.find({hostelid:x},function(err,result){
-      var offrcnt =result.offrqntt;
-      var offrcnt++;
+      var offrcnt = result.offrqntt;
+       offrcnt++;
       eval("hostels.update({hostelid:x},{$set:{offer"+offrcnt+":{price:"+voffrprc+",capacity:"+vcapacity+",enquiries:0}}});");
     });
     
