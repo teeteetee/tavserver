@@ -228,7 +228,7 @@ app.post('/check',function(req,res){
   ms.trouble=1;
   ms.text='db';
   //end of marker
-  users.findOne({lgn:vlgn},function(err,confirmed){
+  users.findOne({mail:vlgn},function(err,confirmed){
     if (err)
       {res.send(ms);}
     else 
@@ -283,7 +283,9 @@ app.post('/check',function(req,res){
           {
           //INDEX MUST BE MODIFIED TO SUPPORT NEW LOGING IN SYSTEM
           req.session = confirmed;
-          res.redirect('index',{'hello':req.session.lgn,'usrid':req.session.usrid});
+          ms.trouble = 0;
+          ms.mtext= 'success'
+          res.send(ms);
            }
            else {
             ms.mtext('wrong pas');
