@@ -536,28 +536,28 @@ head
       console.log(parsed);
       if(parsed.trouble >0)
       {switch (parsed.mtext){
-        case('db'):
-        $('#message').empty();
-        $('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
-        break;
-        case('wrong pas'):
-        $('#message').empty();
-        $('#message').append("<h5 style='color:#fc454e;'>Wrong password</h5>");
-        break;
-        case('wrong user'):
-        $('#message').empty();
-        $('#message').append("<h5 style='color:#fc454e;'>Wrong email</h5>");
-        break;
+      case('db'):
+      $('#message').empty();
+      $('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
+      break;
+      case('wrong pas'):
+      $('#message').empty();
+      $('#message').append("<h5 style='color:#fc454e;'>Wrong password</h5>");
+      break;
+      case('wrong user'):
+      $('#message').empty();
+      $('#message').append("<h5 style='color:#fc454e;'>Wrong email</h5>");
+      break;
       }}
       else {
       //trouble === 0
-       window.ocation = 'http://topandviews.ru';
+      window.ocation = 'http://topandviews.ru';
       }
       }
       };
       request.open('POST', '/check', true);
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-       Most libraries like jQuery/Prototype/Dojo do this
+      //Most libraries like jQuery/Prototype/Dojo do this
       request.send("phr="+vphr+"&lgn="+vlgn);
       });
