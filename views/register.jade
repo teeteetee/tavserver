@@ -151,8 +151,7 @@ head
       $("#regform").submit();
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
-      var DONE = this.DONE || 4;
-      if (this.readyState === DONE){
+      if (requst.readyState == 4 && request.status == 200){
       parsed = JSON.parse(request.responseText);
       console.log(parsed);
       // do your job here
