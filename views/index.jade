@@ -195,6 +195,11 @@ head
       border-bottom:1px solid black;
       border-top:1px solid black;
       }
+      #message {
+      margin-bottom:7vh;
+      margin-top:7vh;
+      text-align:center;
+      }
   body
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
     
@@ -253,6 +258,8 @@ head
             h5(style='font-size: 3vw; font-family: attentica; letter-spacing: 2px; color: white; margin: 0px; margin-left: 2vw; margin-right: 2vw; margin-top: 0.4vh;') НАЙТИ
       
     #login.container
+      .row
+        #message.col-xs-12
       form#entform(role='form', action='/check', method='post')
         .row
           .col-xs-6
@@ -266,7 +273,7 @@ head
             input(type='password', name='vphr')
         .row(style='text-align: left; margin-top: 2vh;')
           .col-xs-4(style='padding: 0px; margin: 0px;')
-            button#loginb(type='submit', style='border-radius: 4px; border: 1px solid white; background-color: transparent; margin-left: 15px;')
+            button#loginb(type='button', style='border-radius: 4px; border: 1px solid white; background-color: transparent; margin-left: 15px;')
               h5(style='color: white; margin: 2vh;')  войти
           .col-xs-8(style='margin: 0px; padding: 0px;')
             button#regb(type='button',style='border-radius: 4px; border: 1px solid white; background-color: transparent; margin-left: 2vw;')
@@ -517,20 +524,40 @@ head
       $('#find').click(function(){
       $.form('/search', { price: criteriaOne, ctype: criteriaTwo, mixgenders : criteriaThree, wifi : criteriaFour, parking : criteriaFive }).submit();
       });
-      //$('#find').click(function(req,res){
-      //request = new XMLHttpRequest();
-      //request.onreadystatechange = function () {
-      //var DONE = this.DONE || 4;
-      //if (this.readyState === DONE){
-      //var index;
-      //parsed = JSON.parse(request.responseText);
-      //console.log(parsed);
-      //do your job here
-      //}
-      //};
-      //request.open('POST', '/search', true);
-      //request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-      //request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      // Most libraries like jQuery/Prototype/Dojo do this
-      //request.send("price="+criteriaOne+"&ctype="+criteriaTwo+"&mixgenders="+criteriaThree+"&wifi="+criteriaFour+"&parking="+criteriaFive);
-      //});
+      $('#loginb').click(function(req,res){
+      var vlgn = $('#vlgn').val();
+      var vphr = $('#vphr').val();
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var index;
+      parsed = JSON.parse(request.responseText);
+      console.log(parsed);
+      if(parsed.trouble >0)
+      {switch (parsed.mtext){
+        case('db'):
+        $('#message').empty();
+        $('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
+        break;
+        case('wrong pas'):
+        $('#message').empty();
+        $('#message').append("<h5 style='color:#fc454e;'>Wrong password</h5>");
+        break;
+        case('wrong user'):
+        $('#message').empty();
+        $('#message').append("<h5 style='color:#fc454e;'>Wrong email</h5>");
+        break;
+      }}
+      else {
+      //trouble === 0
+       window.ocation = 'http://topandviews.ru';
+      }
+      }
+      };
+      request.open('POST', '/check', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+       Most libraries like jQuery/Prototype/Dojo do this
+      request.send("phr="+vphr+"&lgn="+vlgn);
+      });
