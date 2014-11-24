@@ -44,6 +44,7 @@ app.use(function(req,res,next){
         lguser = user;
         delete lguser.phr;
         req.session = lguser;
+        console.log('USER WITH COOOOOKIEES !');
         next();}
       else {next();}
       } 
