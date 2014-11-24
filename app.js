@@ -580,12 +580,15 @@ app.post('/drop/:part',function(req,res){
     case('orders'):
      if(req.body.p ===  pp)
       {orders.remove();
-        console.log('ORDERS DB DROPPED FROM '+ req.ip);}
+        console.log('ORDERS DB DROPPED FROM '+ req.ip);
+        res.render('adminorders');
+      }
     break;
     case('users'):
      if(req.body.p ===  pp)
      {users.remove();
-     console.log('USERS DB DROPPED FROM '+ req.ip);}
+     console.log('USERS DB DROPPED FROM '+ req.ip);
+     res.render('adminusers');}
     break;
   }
 

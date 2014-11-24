@@ -148,7 +148,7 @@ head
       return
       }
       console.log('submitting now');
-      $("#regform").submit();
+      //$("#regform").submit();
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
       if (requst.readyState == 4 && request.status == 200){
@@ -176,6 +176,5 @@ head
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       // Most libraries like jQuery/Prototype/Dojo do this
-      //21.11 month and year was hardcoded, changing to dynamic values
       request.send("mail="+vmail+"&u="+vusername+"&p="+vp);
       });
