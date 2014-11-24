@@ -525,8 +525,8 @@ head
       $.form('/search', { price: criteriaOne, ctype: criteriaTwo, mixgenders : criteriaThree, wifi : criteriaFour, parking : criteriaFive }).submit();
       });
       $('#loginb').click(function(req,res){
-      var vlgn = $('#vlgn').val();
-      var vphr = $('#vphr').val();
+      var vlgn = $('#vlgn').text();
+      var vphr = $('#vphr').text();
       console.log(vlgn +" , "+vphr);
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
