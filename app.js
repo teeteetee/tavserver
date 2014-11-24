@@ -62,7 +62,7 @@ app.get('/hostel', function(req,res) {
 });
 
 app.get('/logout',function(req,res){
-  delete req.session;
+  req.session.reset();
   res.redirect('/');
 });
 
