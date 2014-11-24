@@ -342,22 +342,22 @@ app.get('/admin/:section',function(req,res){
                    }
               }
     });
-    break
+    break;
     case('hostels'):
       hostels.find({},function(err,docs){
         //NO PAGE , NEEDS TO BE CREATED ('adminorders' AS  A TEMPLATE)
         res.render('adminhostels',{'docs' : docs});
       });
-    break
+    break;
     case('users'):
       users.find({},function(err,docs){
         //NO PAGE , NEEDS TO BE CREATED ('adminorders' AS  A TEMPLATE)
         res.render('adminusers',{'docs' : docs});
       });
-    break
+    break;
     default:
     //ERROR HERE OR SOMETHING
-    break
+    break;
   }
 
 });
@@ -581,12 +581,12 @@ app.post('/drop/:part',function(req,res){
      if(req.body.p ===  pp)
       {orders.remove();
         console.log('ORDERS DB DROPPED FROM '+ req.ip);}
-    break
+    break;
     case('users'):
      if(req.body.p ===  pp)
      {users.remove();
      console.log('USERS DB DROPPED FROM '+ req.ip);}
-    break
+    break;
   }
 
 });
@@ -791,7 +791,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
   orders.find({hostelid:x,offerid:y},function(err,results){
     res.send(results);
   });
-   break
+   break;
    case "calendar":
    console.log('GOT INTO CALENDAR');
      // used to form calendar in hostel web client , obviously
@@ -800,7 +800,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
       if (err) {res.send('ERROR')}
       else {res.send(docs);}
      });
-   break
+   break;
    case "remove":
     //used to remove an offer 
 
@@ -820,7 +820,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
         {res.send("NOTHING TO BE DELETED")}
     });
      //SHOULD ANYTHING BE SENT TO CLIENT TO CONFIRM ???
-   break
+   break;
    case"add":
     //used to create an offer
     //OFFERS MUST BE CONFIRMED 
@@ -832,12 +832,12 @@ app.post('/enquery/:hostel/:price', function(req,res){
       eval("hostels.update({hostelid:x},{$set:{offer"+offrcnt+":{price:"+voffrprc+",capacity:"+vcapacity+",enquiries:0}}});");
     });
     
-   break
+   break;
    case "removeownclient":
     //used to remove clients enquieries which didn't come through our booking system 
     var venqid = req.body.enqid;
     orders.update({enqid:venqid},{$set:{confirmed:2}});
-   break
+   break;
    case"addownclient":
     //used to create a client enquiries which are not comming through our system
   var enqnum;
@@ -882,7 +882,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
    }
    }
    });
-   break
+   break;
    case "confirm":
     //used to confirm a request for a room came through our system
     var venqid = req.body.enqid;
@@ -967,15 +967,15 @@ app.post('/enquery/:hostel/:price', function(req,res){
               }
          }
     });
-   break
+   break;
    case "dismiss":
     //used to dismiss a request for a room came through our system
      var venqid = req.body.enqid;
     orders.update({enqid:venqid},{$set:{accepted:2}});
-   break
+   break;
    default:
    //ADD SOME TYPE OF ERROR HERE
-   break
+   break;
   }
 });
 
