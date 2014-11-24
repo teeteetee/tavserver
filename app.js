@@ -588,7 +588,7 @@ app.post('/drop/:part',function(req,res){
      if(req.body.p ===  pp)
      {users.remove();
      console.log('USERS DB DROPPED FROM '+ req.ip);
-     res.redirect('/drop/users');}
+     res.redirect('/admin/users');}
     break;
   }
 
