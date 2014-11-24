@@ -534,7 +534,7 @@ head
       var index;
       parsed = JSON.parse(request.responseText);
       console.log(parsed);
-      if(parsed.trouble >0)
+      if(parsed.trouble === 1)
       {switch (parsed.mtext){
       case('db'):
       $('#message').empty();

@@ -222,6 +222,7 @@ app.post('/check',function(req,res){
   //CHECK FOR PASSPORT PRIOR TO HOSTEL CHECK, SORT THIS OUT AFTER ALPHA
   vphr=req.body.phr;
   vlgn=req.body.lgn; // email
+  console.log(vphr+" , "+vlgn);
   //adding a marker to send to client
   // MARKER MECHANICS IS NOT PRESENT YET , NEEDS TO BE IMPLEMENTED
    var  ms = {};
