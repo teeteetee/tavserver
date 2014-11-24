@@ -527,6 +527,7 @@ head
       $('#loginb').click(function(req,res){
       var vlgn = $('#vlgn').val();
       var vphr = $('#vphr').val();
+      console.log(vlgn +" , "+vphr);
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
       var DONE = this.DONE || 4;
