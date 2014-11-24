@@ -175,7 +175,7 @@ app.post('/newuser',function(req,res){
         if(doc)
         { var now = new Date();
           var gmonth = now.getMonth();
-          var gyear = now.getYear();
+          var gyear = now.getUTCFullYEar();
           var gday = now.getDay();
           users.insert({mail:vmail,phr:vp,lgn:vu,enquiries:{all:0,accepted:0},regdate:{year:gyear,month:gmonth,day:gday}});
           users.findOne({mail:vmail},function(err,docdoc){
