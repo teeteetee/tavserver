@@ -235,7 +235,7 @@ app.post('/check',function(req,res){
     else 
     {
       if (confirmed)
-      {
+      {console.log('we have found :'+confirmed);
          if(confirmed.hostel != 0) //HOSTEL LOGED IN , SERVE HOSTELCLIENT
             {
               if (bcrypt.compareSync(vphr,confirmed.phr))
