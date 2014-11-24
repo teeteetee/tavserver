@@ -125,6 +125,9 @@ app.get('/',function(req,res) {
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
   var d = new Date();
+  if ( lguser.length > 0 )
+    {res.render('indexreg');
+    console.log('!!! REGISTERED USER CAME BACK !!!');}
   if(uacheck === true) {
     res.render('mindex');
   }
