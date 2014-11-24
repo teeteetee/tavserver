@@ -296,7 +296,7 @@ app.post('/check',function(req,res){
          }
       }
       else {
-        ms.text='wronguser'
+        ms.mtext='wronguser'
         res.send(ms);
       }
     }

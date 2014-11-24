@@ -265,12 +265,12 @@ head
           .col-xs-6
             h5(style='color: white;') Почта
           .col-xs-6
-            input(type='text', name='vlgn')
+            input(type='text',id='vlgn', name='vlgn')
         .row
           .col-xs-6
             h5(style='color: white;') Пароль
           .col-xs-6
-            input(type='password', name='vphr')
+            input(type='password',id='vphr', name='vphr')
         .row(style='text-align: left; margin-top: 2vh;')
           .col-xs-4(style='padding: 0px; margin: 0px;')
             button#loginb(type='button', style='border-radius: 4px; border: 1px solid white; background-color: transparent; margin-left: 15px;')
@@ -525,8 +525,8 @@ head
       $.form('/search', { price: criteriaOne, ctype: criteriaTwo, mixgenders : criteriaThree, wifi : criteriaFour, parking : criteriaFive }).submit();
       });
       $('#loginb').click(function(req,res){
-      var vlgn = $('#vlgn').text();
-      var vphr = $('#vphr').text();
+      var vlgn = $('#vlgn').val();
+      var vphr = $('#vphr').val();
       console.log(vlgn +" , "+vphr);
       request = new XMLHttpRequest();
       request.onreadystatechange = function () {
