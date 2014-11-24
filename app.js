@@ -126,21 +126,33 @@ app.get('/',function(req,res) {
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
   var d = new Date();
-  if ( lguser.mail )
-    {res.render('indexreg');
-    console.log('!!! REGISTERED USER CAME BACK !!!');}
   if(uacheck === true) {
     res.render('mindex');
   }
   if(req.headers.host === 'topandviews.ru') 
     {console.log(d+' request on .ru from '+req.ip);
+     if (lguser.mail)
+      {res.render('indexreg');
+  console.log('!!! REGISTERED USER CAME BACK !!!');}
+     else {
      res.render('index');}
+   }
   if(req.headers.host === 'topandviews.com') 
     {console.log(d+' request on .com from '+req.ip);
+     if (lguser.mail)
+      {res.render('indexreg');
+  console.log('!!! REGISTERED USER CAME BACK !!!');}
+     else {
      res.render('index');}
+   }
   if(req.headers.host === 'topandviews.co.uk') 
     {console.log(d+' request on .co.uk from '+req.ip);
+     if (lguser.mail)
+      {res.render('indexreg');
+  console.log('!!! REGISTERED USER CAME BACK !!!');}
+     else {
      res.render('index');}
+   }
 });
 
 app.get('/calendar',function(req,res){
