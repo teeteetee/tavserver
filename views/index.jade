@@ -124,7 +124,6 @@ head
       }
       #main {
       -webkit-filter:grayscale(0);
-      -webkit-filter:brightness(100%);
       -webkit-filter:blur(0);
       z-index:2001;
       }
@@ -170,6 +169,8 @@ head
       font-size:1vw;
       }
       #search {
+      background-color:white;
+      opacity:0.7;
       position:fixed;
       display:none;
       z-index:3000;
@@ -366,7 +367,6 @@ head
       if (scount%2 === 0){
       $("#search").css({'display':'block'});
       $('#main').css({'-webkit-filter':'blur(4px)'});
-      $('#main').css({'-webkit-filter':'brightness(10%)'});
       scount++
       }
       else {
