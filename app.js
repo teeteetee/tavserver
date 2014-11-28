@@ -132,7 +132,7 @@ app.get('/',function(req,res) {
   if(req.headers.host === 'topandviews.ru') 
     {console.log(d+' request on .ru from '+req.ip);
      if (lguser.mail)
-      {res.render('indexreg',{'prfname':lguser.lgn});
+      {res.render('indexreg',{'prfname':"Привет, "+lguser.lgn+"!"});
   console.log('!!! REGISTERED USER CAME BACK !!!');}
      else {
      res.render('index');}
