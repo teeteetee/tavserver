@@ -297,6 +297,8 @@ head
      
     script
     //GENERATE CALENDAR
+      var reqyear;
+      var reqmonth;
       function populate (km,ky) {
       console.log("START");
       var months = {1:"ЯНВАРЬ",2:"ФЕВРАЛЬ",3:"МАРТ",4:"АПРЕЛЬ",5:"МАЙ",6:"ИЮНЬ",7:"ИЮЛЬ",8:"АВГУСТ",9:"СЕНТЯБРЬ",10:"ОКТЯБРЬ",11:"НОЯБРЬ",12:"ДЕКАБРЬ"};
@@ -307,10 +309,12 @@ head
       return monthLength/86400000;};
       var d = new Date();
       var year = d.getUTCFullYear() + ky;
+      reqyear = year;
       if(ky>0){
       console.log(" !!! KY IS :" +ky+", AND THE YEAR IS: "+year+", WHILE MONTH MULTIPLIER IS:"+km);
       }
       var month = km;
+      reqmonth = month;
       console.log("date is: "+d+"; and month is: "+month);
       var vnextmonth = month+2;
       if (vnextmonth === 13 )
@@ -607,7 +611,8 @@ head
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       // Most libraries like jQuery/Prototype/Dojo do this
-      request.send("month=11&year=2014&coco=enquires");
+      //21.11 month and year was hardcoded, changing to dynamic values
+      request.send("month="+reqmonth+"&year="reqyear"&coco=enquires");
       }//if calendarcount
       else {
        $('#calendarblock').slideToggle();

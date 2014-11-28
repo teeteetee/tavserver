@@ -792,7 +792,6 @@ app.post('/orders/:hostel/:price',function(req,res){
    }
 });
 
-console.log('SIXTH BREAKPOINT');
 
 app.post('/enquery/:hostel/:price', function(req,res){
   console.log('GOT INTO ENQUERY !!!');
