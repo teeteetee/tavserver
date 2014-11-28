@@ -124,6 +124,7 @@ head
       }
       #main {
       -webkit-filter:grayscale(0);
+      -webkit-filter:brightness(100%);
       -webkit-filter:blur(0);
       z-index:2001;
       }
@@ -365,6 +366,7 @@ head
       if (scount%2 === 0){
       $("#search").css({'display':'block'});
       $('#main').css({'-webkit-filter':'blur(4px)'});
+      $('#main').css({'-webkit-filter':'brightness(10%)'});
       scount++
       }
       else {
