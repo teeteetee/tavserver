@@ -364,20 +364,51 @@ app.get('/admin/:section',function(req,res){
     break;
     case('hostels'):
       hostels.find({},function(err,docs){
-        //NO PAGE , NEEDS TO BE CREATED ('adminorders' AS  A TEMPLATE)
         res.render('adminhostels',{'docs' : docs});
       });
     break;
     case('users'):
-      users.find({},function(err,docs){
-        //NO PAGE , NEEDS TO BE CREATED ('adminorders' AS  A TEMPLATE)
+      users.find({hostelid:0},function(err,docs){
         res.render('adminusers',{'docs' : docs});
       });
+    break;
+    case('hostelusers'):
+      users.find({hostel:1},function(err,docs){
+        res.render('adminhostelusers',{'docs' : docs});
+      });
+    break;
+    case('addhosteluser'):
+      res.render('newhosteluser');
     break;
     default:
     //ERROR HERE OR SOMETHING
     break;
   }
+
+});
+
+app.post('/admin/hostels/add',function(){
+  // AUTH NEDDED
+  if (
+    req.body.hostelid === undefined||
+    req.body.mail === undefined||
+    req.body.pc === undefined||
+    req.body.cname === undefined||
+    req.body.cphone === undefined||
+    req.body.regdate === undefined||)
+  {res.send('ERROR: Some fields were empty');}
+else
+  {var vhostelid = req.body.hostelid,
+     vmail = req.body.mail,
+     vpass =req.body.pc,
+     vcname = req.body.cname,
+     vcphone = req.body.cphone,
+     vregdate = req.body.regdate;
+     var ms={};
+     ms.trouble= 0;
+     users.insert({hostelid:vhostelid,hostel:1,contact:{name:vcname,phone:vcphone},mail:vmail,phr:vpass,regdate:vregdate});
+     res.send(ms);}
+
 
 });
 console.log('FIRST BREAKPOINT');
@@ -551,11 +582,11 @@ app.post('/search', function(req,res){
 //}); 
 
 app.get('/hostels/:hostel',function(req,res){
-  var word=req.params.hostel 
-  if (word === null) {res.render('index')}
+  var word=req.params.hostel ;
+  if (word === null) {res.render('index');}
   else {
     hostels.find({ppredir:word},function(err,hostel){
-      if (hostel.length != 0) {
+      if (hostel) {
        res.render('pp',{"hostel":hostel});
       }
       else {
@@ -1006,8 +1037,91 @@ app.post('/upload',function(req,res) {
 	console.log('UPLOAD SEQUENCE');
  
 //AUTH NEEDED HERE/ Something simple like hardcoded passphrase, can be passed through req.body
+if(req.body.pano === 1){
+    if(
+    req.body.hid === undefined ||
+    req.body.nameru === undefined||
+    req.body.nameen === undefined||
+    req.body.coord === undefined||
+    req.body.ctype === undefined||
+    req.body.postn === undefined||
+     req.body.telephone === undefined||
+    req.body.www === undefined||
+    req.body.ppredir === undefined||
+    req.body.fid === undefined ||
+    req.body.oid === undefined ||
+    req.body.mid  === undefined ||
+    req.body.city  === undefined||
+    req.body.country === undefined||
+    req.body.yearnow  === undefined||
+    req.body.adressru === undefined||
+    req.body.adressen === undefined||
+    erq.body.wifi === undefined||
+    req.body.vk  === undefined||
+    req.body.fb === undefined||
+    req.body.tw === undefined||
+    req.body.placename  === undefined
+    )
+      
+    {
+      res.send('Some of the fields were empty, try again. If you see this tell IT to rewrite this so it would not submit the form until fuly cmpleted, and check if there is security');
+     }
+   else {
+       
+      var vhid = req.body.hid,
+      vnameru = req.body.nameru,
+          vnameen = req.body.nameen,
+          vtelephone = req.body.telephone,
+          vwww = req.body.www,
+          vctype = req.body.ctype,
+          vpostn = req.body.postn,
+          vcoord = req.body.coord,
+          vppredir = req.body.ppredir,
+          vfid = req.body.fid ,
+           foid = req.body.oid ,
+           vmid = req.body.mid ,
+          vcity = req.body.city,
+          vvk = req.body.vk,
+          vfb = req.body.fb,
+          vtw = req.body.tw,
+          vwifi  = req.body.wifi,
+          vcountry = req.body.country,
+          vyearnow = req.body.yearnow,
+           vadressru = req.body.adressru,
+           vadressen = req.body.adressen;
 
-if (req.body.nameru === undefined||
+      hostels.insert({placename : vplacename,
+         nameru : vnameru,
+         nameen : vnameen,
+         aderssru: vadressru,
+         adressen: vadressen,
+         coord: vcoord,
+         ctype : vctype,
+         postn: vpostn,
+         vk : vvk,
+         fb : vfb,
+         tw: vtw,
+         wifi:vwifi,
+         telephone : vtelephone,
+         www : vwww,
+         ppredir : vppredir,
+         hid:vhid,
+         fid : vfid,
+         mid : vmid,
+         oid : foid,
+         city : vcity,
+         country : vcountry,
+         yearnow : vyearnow,
+         offrqntt : 0,
+         enquiries : {all:0,accepted:0},
+         ownclients : 0,
+
+         });
+   }
+}
+else
+{if (req.body.hid === undefined||
+  req.body.nameru === undefined||
   req.body.nameen === undefined||
   req.body.coord === undefined||
   req.body.ctype === undefined||
@@ -1024,6 +1138,10 @@ if (req.body.nameru === undefined||
   req.body.yearnow  === undefined||
   req.body.adressru === undefined||
   req.body.adressen === undefined||
+  req.body.vk  === undefined||
+    req.body.fb === undefined||
+    req.body.tw === undefined||
+    req.body.wifi === undefined||
     req.files.xml.name === undefined||
   req.body.placename  === undefined||
   req.body.xmlqntt === undefined||
@@ -1108,17 +1226,11 @@ if (req.body.nameru === undefined||
                        });
          
          
-           if (req.body.wifi != undefined)
-             {var vwifi = 1;}
-           else 
-            {var vwifi = 0;}
-           if (req.body.parking != undefined)
-            {var vparking = 1;}
-           else 
-            {var vparking = 0;}
+           
 
          
-         	var vnameru = req.body.nameru,
+         	var vhid = req.body.hid,
+          vnameru = req.body.nameru,
          	vnameen = req.body.nameen,
          	vtelephone = req.body.telephone,
          	vwww = req.body.www,
@@ -1129,6 +1241,7 @@ if (req.body.nameru === undefined||
            foid = req.body.oid ,
            vmid = req.body.mid ,
          	vcity = req.body.city,
+          vwifi = req.body.wifi,
          	vcountry = req.body.country,
          	vyearnow = req.body.yearnow,
            vadressru = req.body.adressru,
@@ -1144,13 +1257,18 @@ if (req.body.nameru === undefined||
            
          	// CTYPE MUST BE ADDED - TELLS DISTANCE FROM THE CENTER
          
-         	hostels.insert({placename : vplacename,
+         	hostels.insert({hid:vhid,
+            placename : vplacename,
          nameru : vnameru,
          nameen : vnameen,
          aderssru: vadressru,
          adressen: vadressen,
          coord: vcoord,
-         parking:vparking,
+         ctype : vctype,
+         postn: vpostn,
+         vk : vvk,
+         fb : vfb,
+         tw: vtw,
          wifi:vwifi,
          telephone : vtelephone,
          www : vwww,
@@ -1195,6 +1313,7 @@ if (req.body.nameru === undefined||
          		res.redirect('/');
          };
      }
+  }//ELSE OF (pano===0)
 });
 
 
