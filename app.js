@@ -387,7 +387,7 @@ app.get('/admin/:section',function(req,res){
 
 });
 
-app.post('/admin/hostels/add',function(){
+app.post('/admin/hostels/add',function(req,res){
   // AUTH NEDDED
   console.log('DDING HOSTEL USER');
   if (
