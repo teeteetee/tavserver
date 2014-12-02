@@ -72,7 +72,7 @@ head
         #message.col-xs-12
       .row
         .col-xs-6.col-xs-offset-3
-          form#regform(role='form', action='/admin/hostels/add', method='post')
+          form#regform(role='form')
             .row
               .col-xs-6
                 h5 HostelId 
@@ -176,7 +176,7 @@ head
       else { $('#message').empty();$('#message').append("<h5 style='color:green;'>Success</h5>");}
       }
       };
-      request.open('POST', '/newuser', true);
+      request.open('POST', '/admin/hostels/add', true);
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       // Most libraries like jQuery/Prototype/Dojo do this
