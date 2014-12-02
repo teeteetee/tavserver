@@ -395,7 +395,7 @@ app.post('/admin/hostels/add',function(){
     req.body.pc === undefined||
     req.body.cname === undefined||
     req.body.cphone === undefined||
-    req.body.regdate === undefined||)
+    req.body.regdate === undefined)
   {res.send('ERROR: Some fields were empty');}
 else
   {var vhostelid = req.body.hostelid,
