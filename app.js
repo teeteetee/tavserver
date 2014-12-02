@@ -405,6 +405,7 @@ else
      vcname = req.body.cname,
      vcphone = req.body.cphone,
      vregdate = req.body.regdate;
+     console.log(vhostelid+" "+vcname+" "+vcphone+" "+vregdate);
      var ms={};
      ms.trouble= 0;
      users.insert({hostelid:vhostelid,hostel:1,contact:{name:vcname,phone:vcphone},mail:vmail,phr:vpass,regdate:vregdate});
