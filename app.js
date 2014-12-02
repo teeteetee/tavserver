@@ -642,6 +642,12 @@ app.post('/drop/:part',function(req,res){
      console.log('USERS DB DROPPED FROM '+ req.ip);
      res.redirect('/admin/users');}
     break;
+    case('hostelusers'):
+     if(req.body.p ===  pp)
+     {users.remove({hostel:1});
+     console.log('HOSTEL USERS DB DROPPED FROM '+ req.ip);
+     res.redirect('/admin/hostelusers');}
+    break;
   }
 
 });
