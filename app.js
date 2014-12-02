@@ -399,12 +399,12 @@ app.post('/admin/hostels/add',function(req,res){
     req.body.regdate === undefined)
   {res.send('ERROR: Some fields were empty');}
 else
-  {var vhostelid = req.body.hostelid,
-     vmail = req.body.mail,
-     vpass =req.body.pc,
-     vcname = req.body.cname,
-     vcphone = req.body.cphone,
-     vregdate = req.body.regdate;
+  {var vhostelid = req.body.hostelid;
+     var vmail = req.body.mail;
+     var vpass =req.body.pc;
+     var vcname = req.body.cname;
+     var vcphone = req.body.cphone;
+     var vregdate = req.body.regdate;
      console.log(vhostelid+" "+vcname+" "+vcphone+" "+vregdate);
      var ms={};
      ms.trouble= 0;
