@@ -4,7 +4,7 @@ head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    title Admin: USERS
+    title Admin:HOSTEL USERS
     //
        Bootstrap 
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
@@ -38,7 +38,7 @@ head
       #header.row
         .col-xs-12
           h1  Admin
-          h3  All orders 
+          h3  HOSTEL USERS
       #drop.row
         .col-xs-4.col-xs-offset-4
           form(method='post' action='/drop/users' role='form' )
@@ -53,11 +53,11 @@ head
             .col-xs-2.field.cap
               h3 MAIL
             .col-xs-2.field.cap
-              h3 LOGIN
+              h3 HOSTELID
             .col-xs-2.field.cap
-              h3 ENQUIRIES
+              h3 CONTACT NAME
             .col-xs-2.field.cap
-              h3 CONFORMED
+              h3 CONTACT PHONE
             .col-xs-2.field.cap
               h3 REGDATE
             
@@ -67,11 +67,11 @@ head
               .col-xs-2.field
                 h5 #{user.mail}
               .col-xs-2.field
-                h5 #{user.lgn}
+                h5 #{user.hostelid}
               .col-xs-2.field
-                h5 #{user.enquiries.all}
+                h5 #{user.contact.name}
               .col-xs-2.field
-                h5 #{user.enquiries.accepted}
+                h5 #{user.contact.phone}
               .col-xs-2.field
                 h5 #{user.regdate}
               
