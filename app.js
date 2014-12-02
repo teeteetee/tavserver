@@ -389,6 +389,7 @@ app.get('/admin/:section',function(req,res){
 
 app.post('/admin/hostels/add',function(){
   // AUTH NEDDED
+  console.log('DDING HOSTEL USER');
   if (
     req.body.hostelid === undefined||
     req.body.mail === undefined||
