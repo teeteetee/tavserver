@@ -125,6 +125,9 @@ head
       return re.test(email);} 
       $('#loginb').click(function(){
       var vmail = $('#mail').val();
+      var cname = $('#cname').val();
+      var cphone = $('#cphone').val();
+      var regdate = $('#regdate').val();
       var errcount =0;
       var vp =$('#p').val();
       var vpc =$('#pc').val();
@@ -176,5 +179,5 @@ head
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       // Most libraries like jQuery/Prototype/Dojo do this
-      request.send("mail="+vmail+"&u="+username+"&p="+vp);
+      request.send("mail="+vmail+"&hostelid="+hostelid+"&pc="+vp"&cname="+cname+"&cphone="+cphone+"&regdate="+regdate);
       });
