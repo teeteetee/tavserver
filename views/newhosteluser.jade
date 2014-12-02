@@ -124,6 +124,7 @@ head
       var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);} 
       $('#loginb').click(function(){
+      var vmail = $('#mail').val();
       var errcount =0;
       var vp =$('#p').val();
       var vpc =$('#pc').val();
