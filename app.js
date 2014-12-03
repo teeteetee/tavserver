@@ -159,7 +159,16 @@ app.get('/calendar',function(req,res){
   res.render('calendar');
   
 });
-
+app.get('/top',function(req,res){
+  if(lguser.mail)
+  {
+    //TOP NEEDS TO BE CREATED 
+    res.render('top');
+  }
+  else {
+    res.render('login');
+  }
+});
 //REGISTRATION
 app.get('/rrregisterrr',function(req,res){
      res.render('register');

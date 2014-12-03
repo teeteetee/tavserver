@@ -277,6 +277,8 @@ head
       #footer.row
         #searchbutton.col-xs-2.col-xs-offset-3
           h5 Поиск
+        #topbutton.col-xs-2
+          h5 Рейтинг
         #logoutbutton.col-xs-2
           h5 Выход
         #aboutbutton.col-xs-2
@@ -297,6 +299,9 @@ head
       var criteriaFive=0;
       var count=0;
       var scount=0;
+      $("#topbutton").click(function(){
+       window.location='http://topandviews.ru/top';
+      });
       $("#logoutbutton").click(function(){
       window.location = 'http://topandviews.ru/logout';
       });

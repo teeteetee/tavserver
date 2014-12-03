@@ -302,12 +302,15 @@ head
         .col-xs-12(style='padding: 0px; margin: 0px;')
           #mapitself.map
       #footer.row
-        #searchbutton.col-xs-2.col-xs-offset-3
+        #searchbutton.col-xs-2.col-xs-offset-2
           h5 Поиск
+        #topbutton.col-xs-2
+          h5 Рейтинг
         #loginbutton.col-xs-2
           h5 Войти
         #aboutbutton.col-xs-2
           h5 О проекте
+
     //
        jQuery (necessary for Bootstrap's JavaScript plugins) 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
@@ -350,6 +353,18 @@ head
       var count=0;
       var scount=0;
       $("#loginbutton").click(function(){
+      if (count%2 === 0){
+      $("#login").css({'display':'block'});
+      $('#main').css({'-webkit-filter':'blur(4px)'});
+      count++
+      }
+      else {
+      $("#login").css({'display':'none'});
+      $('#main').css({'-webkit-filter':'blur(0)'});
+      count++
+      }
+      });
+      $("#topbutton").click(function(){
       if (count%2 === 0){
       $("#login").css({'display':'block'});
       $('#main').css({'-webkit-filter':'blur(4px)'});

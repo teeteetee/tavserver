@@ -1,0 +1,145 @@
+html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Registration
+    //
+       Bootstrap 
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    //
+       HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries 
+    //
+       WARNING: Respond.js doesn't work if you view the page via file:// 
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+    style
+     :css
+      body {
+      min-width:768px;
+      }
+      @font-face {
+      font-family:roboto-thin;
+      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
+      }
+      @font-face {
+      font-family:attentica;
+      src:url('/bootstrap/fonts/Attentica.ttf');
+      }
+      @font-face {
+      font-family:br;
+      src:url('/bootstrap/fonts/bebasneue_regular.ttf');
+      }
+      h2 {
+      font-size:2vw;
+      font-family:roboto-thin;
+      letter-spacing:0.3vw;
+      text-transform:uppercase;
+      color:black;
+      }
+      h5 {
+      font-size:1vw;
+      font-family:arial;
+      letter-spacing:0.3vw;
+      text-transform:uppercase;
+      color:black;
+      }
+      #header {
+      text-align:center;
+      margin-top:15vh;
+      }
+      input{
+      font-family:arial;
+      letter-spacing:1px;
+      font-size:1.5vw;
+      }
+      .col-xs-6 {
+      padding-right:0px;
+      }
+      #message {
+      margin-bottom:7vh;
+      margin-top:7vh;
+      text-align:center;
+      }
+  body
+    .container
+      #header.row
+        .col-xs-12
+          h2  Авторизация
+      .row
+        #message.col-xs-12
+      .row
+        .col-xs-6.col-xs-offset-3
+          .row
+        #message.col-xs-12
+      form#entform(role='form', action='/check', method='post')
+        .row
+          .col-xs-6
+            h5(style='color: white;') Почта
+          .col-xs-6
+            input(type='text',id='vlgn', name='vlgn')
+        .row
+          .col-xs-6
+            h5(style='color: white;') Пароль
+          .col-xs-6
+            input(type='password',id='vphr', name='vphr')
+        .row(style='text-align: left; margin-top: 2vh;')
+          .col-xs-4(style='padding: 0px; margin: 0px;')
+            button#loginb(type='button', style='border-radius: 4px; border: 1px solid white; background-color: transparent; margin-left: 15px;')
+              h5(style='color: white; margin: 2vh;')  войти
+          .col-xs-8(style='margin: 0px; padding: 0px;')
+            button#regb(type='button',style='border-radius: 4px; border: 1px solid white; background-color: transparent; margin-left: 2vw;')
+              h5(style='color: white; margin: 2vh;')  Регистрация
+
+
+       jQuery (necessary for Bootstrap's JavaScript plugins) 
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    //
+       Include all compiled plugins (below), or include individual files as needed 
+    script(src='/bootstrap/js/bootstrap.min.js')
+    script.
+      $("#regb").click(function(){
+      location.href = "/rrregisterrr";
+      });
+      $('#loginb').click(function(req,res){
+      var vlgn = $('#vlgn').val();
+      var vphr = $('#vphr').val();
+      console.log(vlgn +" , "+vphr);
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var index;
+      parsed = JSON.parse(request.responseText);
+      console.log(parsed);
+      if(parsed.trouble === 1)
+      {
+      console.log('TROUBLE === 1');
+      switch (parsed.mtext){
+      case('db'):
+      $('#message').empty();
+      $('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
+      break;
+      case('wrong pas'):
+      $('#message').empty();
+      $('#message').append("<h5 style='color:#fc454e;'>Wrong password</h5>");
+      break;
+      case('wronguser'):
+      $('#message').empty();
+      $('#message').append("<h5 style='color:#fc454e;'>Wrong email</h5>");
+      break;
+      }}
+      else {
+      //trouble === 0
+      window.location = 'http://topandviews.ru';
+      }
+      }
+      };
+      request.open('POST', '/check', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      //Most libraries like jQuery/Prototype/Dojo do this
+      request.send("phr="+vphr+"&lgn="+vlgn);
+      });
