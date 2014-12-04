@@ -160,7 +160,7 @@ head
       input{
       font-family:arial;
       letter-spacing:1px;
-      font-size:1vw;
+      font-size:1.5vw;
       }
       #search {
       background-color:white;
@@ -259,24 +259,26 @@ head
     #login.container
       .row
         #message.col-xs-12
-      form#entform(role='form', action='/check', method='post')
-        .row
-          .col-xs-6
-            h5(style='color: white;') Почта
-          .col-xs-6
-            input(type='text',id='vlgn', name='vlgn')
-        .row
-          .col-xs-6
-            h5(style='color: white;') Пароль
-          .col-xs-6
-            input(type='password',id='vphr', name='vphr')
-        .row(style='text-align: left; margin-top: 2vh;')
-          .col-xs-4(style='padding: 0px; margin: 0px;')
-            button#loginb(type='button', style='border-radius: 4px; border: 1px solid white; background-color: transparent; margin-left: 15px;')
-              h5(style='color: white; margin: 2vh;')  войти
-          .col-xs-8(style='margin: 0px; padding: 0px;')
-            button#regb(type='button',style='border-radius: 4px; border: 1px solid white; background-color: transparent; margin-left: 2vw;')
-              h5(style='color: white; margin: 2vh;')  Регистрация
+      .row
+        .col-xs-6.col-xs-offset-3  
+          form#entform(role='form', action='/check', method='post')
+            .row
+              .col-xs-6
+                h5(style='color: white;') Почта
+              .col-xs-6
+                input(type='text',id='vlgn', name='vlgn',style='margin-bottom:1vh;background-color:transparent;border-1px solid white;')
+            .row
+              .col-xs-6
+                h5(style='color: white;') Пароль
+              .col-xs-6
+                input(type='password',id='vphr', name='vphr',style='background-color:transparent;border-1px solid white;')
+            .row(style='text-align: left; margin-top: 2vh;')
+              .col-xs-4(style='padding: 0px; margin: 0px;')
+                button#loginb(type='button', style='border-radius: 4px; border: 1px solid white; background-color: transparent; margin-left: 15px;')
+                  h5(style='color: white; margin: 2vh;')  войти
+              .col-xs-8(style='margin: 0px; padding: 0px;')
+                button#regb(type='button',style='border-radius: 4px; border: 1px solid white; background-color: transparent; margin-left: 2vw;')
+                  h5(style='color: white; margin: 2vh;')  Регистрация
         
     #main.container
       #header.row
