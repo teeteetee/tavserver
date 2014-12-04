@@ -159,14 +159,19 @@ head
       font-family:arial;
       letter-spacing:1px;
       font-size:1.5vw;
+      outline:none;
+      box-shadow:none;
+      -webkit-box-shadow:none;
       }
       input:focus {
+      outline:none;
       text-decoration:none;
       border:1px solid white;
       box-shadow:none;
       -webkit-box-shadow:none;
       }
       input:active {
+      outline:none;
       text-decoration:none;
       border:1px solid white;
       box-shadow:none;
@@ -266,7 +271,7 @@ head
           button#find(style='background-color: #00b74a; border-radius: 4px; border: 1px solid black;', )
             h5(style='font-size: 3vw; font-family: attentica; letter-spacing: 2px; color: white; margin: 0px; margin-left: 2vw; margin-right: 2vw; margin-top: 0.4vh;') НАЙТИ
       
-    #login.container(style='width:inherit;')
+    #login.container
       .row
         #message.col-xs-12
       .row
