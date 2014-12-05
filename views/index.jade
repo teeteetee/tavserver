@@ -38,7 +38,6 @@ head
       display:inline;
       }
       .container{
-      width:100%;
       z-index:0;
       }
       .row{
@@ -213,7 +212,7 @@ head
   body
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
     
-    #search.container(stle='padding:0px;margin:0px;')
+    #search.container(stle='padding:0px;margin:0px; width:100%;')
       .row(style='margin-top: 10vh; border: 1px solid black; border-bottom: 0px;')
         .col-xs-12
           h2 Цена
@@ -294,7 +293,7 @@ head
                 button#regb(type='button',style='border-radius: 4px; border: 1px solid white; background-color: transparent; margin-left: 2vw;')
                   h5(style='color: white; margin: 2vh;')  Регистрация
         
-    #main.container(style='padding:0px;margin:0px;')
+    #main.container(style='padding:0px;margin:0px; width:100%;')
       #header.row
         .col-xs-12
           .row
