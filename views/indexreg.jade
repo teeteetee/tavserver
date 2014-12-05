@@ -37,6 +37,77 @@ head
       border-bottom:1px solid #333;
       display:inline;
       }
+      h3{
+      font-family:br;
+      font-size:2vw;
+      }
+      h5 {
+      font-size:1vw;
+      font-family:arial;
+      letter-spacing:0.3vw;
+      text-transform:uppercase;
+      color:black;
+      }
+      .map{
+      height:60vh;
+      width:100%;
+      background-color:#ddd;
+      margin-right:auto;
+      margin-left:auto;
+      text-align:right;
+      }
+      @media only screen
+      and (min-device-width : 768px) 
+      and (max-device-width : 1024px) 
+      and (orientation : portrait) 
+      {
+       h1{
+       font-size:12vw;
+       }
+       h3{
+       font-size:3vw;
+       }
+       .map{
+       height:75vh;
+       }
+       h5{
+       font-size:2vw;
+       }
+       #vphr{
+       font-size:3vw;
+       letter-spacing:2px;   
+       }
+       #vlgn{
+       font-size:3vw;
+       letter-spacing:2px;
+       }
+      }
+      @media only  screen
+      and (min-device-width : 768px) 
+      and (max-device-width : 1024px) 
+      and (orientation : landscape) 
+      {
+       h1{
+       font-size:9vw;
+       }
+       h3{
+       font-size:2vw;
+       }
+       .map{
+       height:70vh;
+       }
+       h5{
+       font-size:2vw;
+       }
+       #vphr{
+       font-size:3vw;
+       letter-spacing:2px;   
+       }
+       #vlgn{
+       font-size:3vw;
+       letter-spacing:2px;
+       }
+      }
       .container{
       padding:0px;
       margin:0px;
@@ -48,20 +119,9 @@ head
       margin:0px;
       width:100%;
       }
-      h3{
-      font-family:br;
-      font-size:2vw;
-      }
       h2 {
       font-size:2vw;
       font-family:roboto-thin;
-      letter-spacing:0.3vw;
-      text-transform:uppercase;
-      color:black;
-      }
-      h5 {
-      font-size:1vw;
-      font-family:arial;
       letter-spacing:0.3vw;
       text-transform:uppercase;
       color:black;
@@ -79,14 +139,6 @@ head
       #choice1{
       text-align:center;
       -webkit-filter:grayscale(0);
-      }
-      .map{
-      height:60vh;
-      width:100%;
-      background-color:#ddd;
-      margin-right:auto;
-      margin-left:auto;
-      text-align:right;
       }
       #footer{
       text-align:center;
@@ -277,6 +329,10 @@ head
           h5 Выход
         #aboutbutton.col-xs-2
           h5 О проекте
+      script.
+        if ( document.documentElement.clientWidth <= 1024)
+        {
+        document.getElementById('footer').innerHTML = "<div class='col-xs-3' id='searchbutton'><h5>Поиск</h5></div><div class='col-xs-3'   id='topbutton'><h5>Рейтинг</h5></div><div class='col-xs-3' id='loginbutton'><h5>Выход</h5></div><div class='col-xs-3' id='aboutbutton'><h5>  О проекте</h5></div> ";    }    
     //
        jQuery (necessary for Bootstrap's JavaScript plugins) 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
