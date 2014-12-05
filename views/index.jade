@@ -65,6 +65,14 @@ head
       box-shadow:none;!important
       -webkit-box-shadow:none;!important
       }
+      #login {
+      position:absolute;
+      display:none;
+      z-index:3000;
+      background-color:transparent;
+      margin-top:40vh;  
+      margin-left:15vw;
+      }
       @media only screen
       and (min-device-width : 768px) 
       and (max-device-width : 1024px) 
@@ -89,6 +97,9 @@ head
        #vlgn{
        font-size:3vw;
        letter-spacing:2px;
+       }
+       #login {
+       margin-left:auto;
        }
       }
       @media only  screen
@@ -115,6 +126,9 @@ head
        #vlgn{
        font-size:3vw;
        letter-spacing:2px;
+       }
+       #login {
+       margin-left:auto;
        }
       }
       .container{
@@ -199,14 +213,6 @@ head
       border:0px;
       box-shadow:none;
       -webkit-box-shadow:none;
-      }
-      #login {
-      position:absolute;
-      display:none;
-      z-index:3000;
-      background-color:transparent;
-      margin-top:40vh;
-      margin-left:15vw;  
       }
       button:focus {
       outline:none;
