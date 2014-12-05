@@ -94,7 +94,7 @@ head
       {
        
        .map{
-       height:50vh;
+       height:55vh;
        }
        h5{
        font-size:2vw;
@@ -363,7 +363,7 @@ head
         #aboutbutton.col-xs-2
           h5 О проекте
       script.
-        if ( document.documentElement.clientWidth < 1024)
+        if ( document.documentElement.clientWidth <= 1024)
         {
         document.getElementById('footer').innerHTML = "<div class='col-xs-3' id='searchbutton'><h5>Поиск</h5></div><div class='col-xs-3'   id='topbutton'><h5>Рейтинг</h5></div><div class='col-xs-3' id='loginbutton'><h5>Войти</h5></div><div class='col-xs-3' id='aboutbutton'><h5>  О проекте</h5></div> ";    }    
     //
