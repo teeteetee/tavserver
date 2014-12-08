@@ -34,7 +34,6 @@ head
       h1 {
       font-family:attentica;
       font-size:8vw;
-      border-bottom:1px solid #333;
       display:inline;
       }
       h3{
@@ -271,7 +270,7 @@ head
   body
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
     
-    #search.container(stle='padding:0px;margin:0px; width:100%;')
+    #search.container(style='padding:0px;margin:0px; width:100%;')
       .row(style='margin-top: 10vh; border: 1px solid black; border-bottom: 0px;')
         .col-xs-12
           h2 Цена
@@ -294,7 +293,7 @@ head
           h5 1
         #c3.col-xs-3.labelm
           h5 2
-        #c4.col-xs-3.labelm
+        #c4.col-xs-3.labelml
           h5 3
       .row.sides
         .col-xs-12
@@ -456,6 +455,12 @@ head
       $('#main').css({'-webkit-filter':'blur(0)'});
       count++
       }
+      });
+      $('#topbutton').click(function(){
+        window.location='http://topandviews.com/top'
+      });
+      $('#aboutbutton').click(function(){
+        window.loaction='http://topandviews.com/about';
       });
       $("#mapitself").mousedown(function(){
       if(count%2 !=0)
