@@ -328,11 +328,11 @@ head
         #logoutbutton.col-xs-2
           h5 Выход
         #aboutbutton.col-xs-2
-          h5 О проекте
+          h5 Инфо
       script.
         if ( document.documentElement.clientWidth <= 1024)
         {
-        document.getElementById('footer').innerHTML = "<div class='col-xs-3' id='searchbutton'><h5>Поиск</h5></div><div class='col-xs-3'   id='topbutton'><h5>Рейтинг</h5></div><div class='col-xs-3' id='loginbutton'><h5>Выход</h5></div><div class='col-xs-3' id='aboutbutton'><h5>  О проекте</h5></div> ";    }    
+        document.getElementById('footer').innerHTML = "<div class='col-xs-3' id='searchbutton'><h5>Поиск</h5></div><div class='col-xs-3'   id='topbutton'><h5>Рейтинг</h5></div><div class='col-xs-3' id='loginbutton'><h5>Выход</h5></div><div class='col-xs-3' id='aboutbutton'><h5>  Инфо</h5></div> ";    }    
     //
        jQuery (necessary for Bootstrap's JavaScript plugins) 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
@@ -354,6 +354,9 @@ head
       });
       $("#logoutbutton").click(function(){
       window.location = 'http://topandviews.ru/logout';
+      });
+      $('#aboutbutton').click(function(){
+      window.location='http://topandviews.com/about';
       });
       $("#mapitself").mousedown(function(){
       if(count%2 !=0)
