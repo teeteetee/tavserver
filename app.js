@@ -169,6 +169,12 @@ app.get('/top',function(req,res){
     res.render('login');
   }
 });
+
+app.get('/about',function(req,res){
+  // NO SUCH TEMPLATE , TO BE CREATED
+  console.log('request for about');
+  res.render('about');
+});
 //REGISTRATION
 app.get('/rrregisterrr',function(req,res){
      res.render('register');
