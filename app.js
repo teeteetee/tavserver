@@ -634,10 +634,16 @@ app.post('/search', function(req,res){
 
 app.get('/hostels/:hostel',function(req,res){
   var word=req.params.hostel ;
-  if (word === null) {res.render('index');}
+  if (word === null) {
+    if (lguser.mail)
+        {res.render('indexreg',{'pfrname':lguser.lgn});}
+         else {
+        res.render('index');
+        }
+  }
   else {
     hostels.find({placename:word},function(err,hostel){
-      if (hostel) {
+      if (hostel.length > 0) {
         if (hostel.pano === 1)
        {res.render('pp',{"hostel":hostel});}
         else {
