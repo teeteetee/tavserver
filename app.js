@@ -447,10 +447,7 @@ app.get('/admin/:section',function(req,res){
   }
  }
  else {
-   if (lguser.mail)
-      {res.render('indexreg',{'prfname':lguser.lgn});}
-     else {
-     res.render('index');}
+   res.redirect('http://topandviews.ru');
  }
 });
 
