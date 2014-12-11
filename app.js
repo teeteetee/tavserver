@@ -19,7 +19,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(favicon(__dirname + '/public/images/favicon.ico'));
+//app.use(favicon('/images/tavlogobw.png'));
 app.use(logger('dev'));
 app.use(require('connect').bodyParser());
 app.use(cookieParser());
@@ -168,12 +168,6 @@ app.get('/top',function(req,res){
   else {
     res.render('login');
   }
-});
-
-app.get('/about',function(req,res){
-  // NO SUCH TEMPLATE , TO BE CREATED
-  console.log('request for about');
-  res.render('about');
 });
 //REGISTRATION
 app.get('/rrregisterrr',function(req,res){
