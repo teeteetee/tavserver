@@ -68,6 +68,7 @@ app.get('/hostel', function(req,res) {
 });
 
 app.get('/logout',function(req,res){
+  console.log('trying to logout');
   req.session.reset();
   res.redirect('/');
 });
