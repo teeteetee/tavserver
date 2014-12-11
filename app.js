@@ -35,7 +35,8 @@ app.use(sessions({
 var lguser = {};
 app.use(function(req,res,next){
   console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.lgn);
-   if(req.session.admin === 1){next();}
+   if(req.session.admin === 1){
+    next();}
    else {
    if(req.session && req.session.lgn){
      users.findOne({mail:req.session.mail},function(err,user){
@@ -407,6 +408,7 @@ app.post('/alogin',function(req,res){
   if(req.body.p === p && l === req.body.l && lguser.mail)
   {
     req.session.admin = 1;
+    users.update({mail:req.session.mail},{$set{admin:1}});
     console.log(req.session);
     res.redirect('http://topandviews.ru/admin');
     }
