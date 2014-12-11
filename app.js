@@ -37,6 +37,7 @@ app.use(function(req,res,next){
   console.log("CHECKING COOKIES: "+req.session+" "+req.session.lgn);
    if(req.session && req.session.lgn){
      users.findOne({mail:req.session.mail},function(err,user){
+      console.log('found user: '+JSON.stringify(user));
       if(err){
         next();
       }
