@@ -75,7 +75,7 @@ head
       z-index:3000;
       background-color:transparent;
       margin-top:40vh;  
-      width:100%
+      margin-rigth:2vw;
       }
       @media only screen
       and (min-device-width : 768px) 
@@ -349,10 +349,9 @@ head
               .col-xs-6
                 input(type='password',id='vphr', name='vphr',style='background-color:transparent;border-1px solid white;width:100%;')
             .row(style='text-align: left; margin-top: 2vh;')
-              .col-xs-12(style='padding: 0px; margin: 0px;')
-                button#loginb(type='button', style='border-radius: 4px; border: 1px solid white; background-color: transparent; margin-left: 15px;')
+              #loginb.col-xs-4(style='padding: 0px; margin: 0px;border-radius: 4px; border: 1px solid white; background-color: transparent;')
                   h5(style='color: white; margin: 0.7vw;')  войти
-                button#regb(type='button',style='border-radius: 4px; border: 1px solid white; background-color: transparent; margin-left: 2vw;')
+              #regb.col-xs-8(style='padding: 0px;margin: 0px;border-radius: 4px; border: 1px solid white; background-color: transparent;')
                   h5(style='color: white; margin: 0.7vw;')  Регистрация
         
     #main.container(style='padding:0px;margin:0px; width:100%;')
