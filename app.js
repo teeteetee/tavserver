@@ -360,7 +360,6 @@ app.get('/admin',function(req,res){
     {}
   else {
     oc= c;
-    console.log('ORDERS COUNT: '+c+', and OC is: '+oc);
 
   }
   });
@@ -1163,7 +1162,7 @@ if(req.body.pano === 1){
          telephone : vtelephone,
          www : vwww,
          ppredir : vppredir,
-         hid:vhid,
+         hostelid:vhid,
          fid : vfid,
          mid : vmid,
          oid : foid,
@@ -1315,7 +1314,7 @@ else
            
          	// CTYPE MUST BE ADDED - TELLS DISTANCE FROM THE CENTER
          
-         	hostels.insert({hid:vhid,
+         	hostels.insert({hostelid:vhid,
             placename : vplacename,
          nameru : vnameru,
          nameen : vnameen,

@@ -80,17 +80,17 @@ head
             |           
             .col-xs-3.count
               h2 #{husers}
-          |         
-          .row
-            .col-xs-9.item
-              h2 &Dcy;&ocy;&bcy;&acy;&vcy;&icy;&tcy;&softcy; &pcy;&ocy;&lcy;&softcy;&zcy;&ocy;&vcy;&acy;&tcy;&iecy;&lcy;&yacy; (&khcy;)
-            |           
-            .col-xs-3
         .col-xs-6  
           .row
             #simulate.col-xs-12.item(style='border-left:1px solid #ddd;')
               h2 СИмулировать заказ
-              
+          .row
+            col-xs-12
+          .row
+            col-xs-12       
+          .row
+            #addhuser.col-xs-12.item(style='border-left:1px solid #ddd;')
+              h2 Добавить     
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
@@ -111,4 +111,7 @@ head
       });
       $('#simulate').click(function(){
       window.location = 'http://topandviews.ru/ququ'
+      });
+      $('#addhuser').click(function(){
+      window.location = 'http://topandviews.ru/addhosteluser'
       });
