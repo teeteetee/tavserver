@@ -155,10 +155,6 @@ app.get('/',function(req,res) {
    }
 });
 
-app.get('/calendar',function(req,res){
-  res.render('calendar');
-  
-});
 
 app.get('/about',function(req,res){
   res.render('about');
@@ -357,6 +353,9 @@ app.get('/ququ',function(req,res){
 });
 
 //ADMIN SECTION FOR DB CONTROL
+app.get('/admin',function(req,res){
+  res.render('admingeneral');
+});
 app.get('/admin/:section',function(req,res){
   switch (req.params.section) {
     case ('orders'):
