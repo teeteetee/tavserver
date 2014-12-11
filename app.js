@@ -354,10 +354,10 @@ app.get('/ququ',function(req,res){
 
 //ADMIN SECTION FOR DB CONTROL
 app.get('/admin',function(req,res){
-  var oc = orders.count({});
-  var hc = hostels.count({});
-  var uc = users.count({});
-  var huc = users.count({hostel:1});
+  var oc = orders.find({}).count();
+  var hc = hostels.find({}).count();
+  var uc = users.find({}).count();
+  var huc = users.find({hostel:1}).count();
   console.log(oc+' '+hc+' '+uc+' '+huc);
   res.render('admingeneral',{'orders':oc,'hostels':hc,'users':uc,'husers':huc});
 });
