@@ -370,25 +370,28 @@ app.get('/admin',function(req,res){
     {}
   else {
     hc= c;
-  }
-  });
-  var uc ;
+    var uc ;
   orders.count({},function(err,c){
     if (err)
     {}
   else {
     uc= c;
-  }
-  });
-  var huc; orders.count({hostel:1},function(err,c){
+    var huc; orders.count({hostel:1},function(err,c){
     if (err)
     {}
   else {
     huc= c;
+    res.render('admingeneral',{'orders':oc,'hostels':hc,'users':uc,'husers':huc});
   }
   });
-  console.log(oc+' '+hc+' '+uc+' '+huc);
-  res.render('admingeneral',{'orders':oc,'hostels':hc,'users':uc,'husers':huc});
+  }
+  });
+  }
+  });
+
+  
+  
+  
 });
 
 app.get('/admin/:section',function(req,res){
