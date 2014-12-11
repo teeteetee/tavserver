@@ -70,6 +70,7 @@ app.get('/hostel', function(req,res) {
 app.get('/logout',function(req,res){
   console.log('trying to logout');
   req.session.reset();
+  console.log(JSON.stringify(req.session));
   res.redirect('/');
 });
 
