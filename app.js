@@ -404,6 +404,7 @@ app.post('/alogin',function(req,res){
   if(req.body.p === p && l === req.body.l && lguser.mail)
   {
     req.session.admin = 1;
+    console.log(req.session);
     res.redirect('http://topandviews.ru/admin');
     }
 else
