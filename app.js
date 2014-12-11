@@ -360,6 +360,7 @@ app.get('/admin',function(req,res){
     {}
   else {
     oc= c;
+    console.log('ORDERS COUNT'+c);
   }
   });
   var hc; 
