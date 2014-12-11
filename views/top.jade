@@ -11,7 +11,6 @@ head
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
     |     
     link(href='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css', rel='stylesheet')
-    |     
     style.
       body {
       min-width:768px;
@@ -121,9 +120,12 @@ head
       cursor:pointer;
       background-color:#eee;
       border-top:1px solid #ddd;
-      }    
+      }
+      #sop {
+      display:none;
+      }   
   body
-    script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')     
+    script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')    
     .container
       .row
         #menu.col-xs-2
@@ -155,7 +157,10 @@ head
         |      
         #hostel.col-xs-10.col-xs-offset-2(style='background-color:#eee;overflow:auto;')
           .row(style='background-color:white;')
-            .col-xs-3.nopadding(style='height:100vh;overflow:auto;')
+            #sop.col-md-9.nopadding
+              #mapitself.map
+            |         
+            .col-md-3.nopadding(style='height:100vh;overflow:auto;')
               #first.row.nopadding.nrmr.item
                 .col-xs-12.nopadding
                   .row.nopadding.nrmr
@@ -236,7 +241,7 @@ head
                     .col-xs-12
                       h5 &Rcy;&acy;&zcy;&ncy;&ycy;&iecy; &dcy;&iecy;&tcy;&acy;&lcy;&icy; &tcy;&icy;&pcy;&acy; &acy;&dcy;&rcy;&iecy;&scy;&acy;
             |         
-            .col-xs-9.nopadding(style='height:100vh;')
+            #clear.col-md-9.nopadding(style='height:100vh;')
               #mapitself.map
         |      
         #hotel.col-xs-10.col-xs-offset-2(style='background-color:#eee;overflow:auto;')
@@ -264,6 +269,11 @@ head
     script(src='/bootstrap/js/bootstrap.min.js')
     |     
     script.
+      if ( document.documentElement.clientWidth < 1024) {
+      $('#clear').empty();
+      $('.map').css('height','50vh');
+      $('#sop').css('display','block');
+      }
       var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o');
       map.setView([55.753,  37.622], 14);
       map.scrollWheelZoom.disable();
@@ -285,11 +295,6 @@ head
       }
       $('#first').click(function(){
       itemchoose('first','HM Hostel');
-      // map.featureLayer.setFilter(function(f) {
-      //     return f.properties['title'] === 'HM Hostel';
-      // });
-      // map.setView([55.7508191,37.5996429],14);
-      // $('#first').css("background-color","#ddd");
       });
       $('#hostelbutton').click(function(){
       displaysect('hostel');
