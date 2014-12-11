@@ -205,7 +205,12 @@ head
       .weekdays {
       border-top:1px solid #ddd;
       }
-
+      #checkenq {
+      cursor:pointer;
+      }
+      #checkenq:hover {
+       background-color:#ddd;
+      }
   body
     #searchbutton(style='position: fixed; z-index: 2001; right: 0.5vw; top: 1vh;')
       h3#hone
@@ -226,8 +231,10 @@ head
               h2  Price : 1500
             #calendarbutton1.col-xs-2.calendar
               h2 Календарь
-            .col-xs-2.enqnuber(style='background-color: white;')
+            #enqnumber.col-xs-2.enqnumber(style='background-color: white;')
               h2 0 enquires
+            #checkenq.col-xs-2(style='background-color: white;')
+              h2 check
           .row.enquiry
             //
                WHAT WAS THIS ONE SUPPOSED TO DO ?
@@ -590,7 +597,7 @@ head
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
       var index;
-      parsed = JSON.parse(request.responseText);
+      var parsed = JSON.parse(request.responseText);
       console.log(parsed);
       for (index = 0; index < parsed.length; ++index) {
           
@@ -627,7 +634,7 @@ head
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
       var index;
-      parsed = JSON.parse(request.responseText);
+      var parsed = JSON.parse(request.responseText);
       for (index = 0; index < parsed.length; ++index) {    
       order=parsed[index];
       console.log(order);
@@ -679,3 +686,21 @@ head
       //$('#calendarbutton1').click(function(){
       //$('#calendarblock').slideToggle();
       //});
+      $('#checkenq').click(function(){
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var parsed = JSON.parse(request.responseText);
+      if (parsed.length === 0)
+       {alert('NO ORDERS');
+      else {
+      alert('SERVER RETURNED: '+parsed);
+      }}
+      };
+      request.open('POST', '/enquery/1/0', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      // Most libraries like jQuery/Prototype/Dojo do this
+      request.send("coco=enquiries");
+      });
