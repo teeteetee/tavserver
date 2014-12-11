@@ -417,7 +417,7 @@ app.get('/admin/:section',function(req,res){
       });
     break;
     case('users'):
-      users.find({hostelid:0},function(err,docs){
+      users.find({hostel:0},function(err,docs){
         res.render('adminusers',{'docs' : docs});
       });
     break;
