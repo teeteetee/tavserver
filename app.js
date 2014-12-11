@@ -34,7 +34,7 @@ app.use(sessions({
 
 var lguser = {};
 app.use(function(req,res,next){
-  console.log("CHECKING COOKIES: "+req.session+" "+req.session.lgn);
+  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.lgn);
    if(req.session.admin){next();}
    if(req.session && req.session.lgn){
      users.findOne({mail:req.session.mail},function(err,user){
