@@ -159,6 +159,10 @@ app.get('/calendar',function(req,res){
   res.render('calendar');
   
 });
+
+app.get('/about',function(req,res){
+  res.render('about');
+});
 app.get('/top',function(req,res){
   if(lguser.mail)
   {
