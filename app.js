@@ -34,6 +34,7 @@ app.use(sessions({
 
 var lguser = {};
 app.use(function(req,res,next){
+  console.log("CHECKING COOKIES: "+req.session+" "+req.session.lgn);
    if(req.session && req.session.lgn){
      users.findOne({mail:req.session.mail},function(err,user){
       if(err){
@@ -303,7 +304,7 @@ app.post('/check',function(req,res){
          {
           if(bcrypt.compareSync(vphr,confirmed.phr))
           {
-          //INDEX MUST BE MODIFIED TO SUPPORT NEW LOGING IN SYSTEM
+          
           req.session = confirmed;
           ms.trouble = 0;
           ms.mtext= 'success'
