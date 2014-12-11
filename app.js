@@ -40,7 +40,7 @@ app.use(function(req,res,next){
         next();
       }
       else {
-        if(user){
+        if(user.length>0){
         lguser = user;
         delete lguser.phr;
         req.session = lguser;
@@ -400,8 +400,8 @@ app.post('/alogin',function(req,res){
   var l = 'mrtheluckYEST99@';
 
   if(req.body.p === p && l === req.body.l && lguser.mail)
-  { lguser.admin = 1;
-    req.session = lguser;
+  {
+    req.session.admin = 1;
     res.redirect('http://topandviews.ru/admin');
     }
 else
