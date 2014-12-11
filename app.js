@@ -354,7 +354,16 @@ app.get('/ququ',function(req,res){
 
 //ADMIN SECTION FOR DB CONTROL
 app.get('/admin',function(req,res){
-  var oc;
+ res.render('adminauth');
+});
+
+app.post('/alogin',function(req,res){
+  var p = 'testtestfortiestOO@';
+  var l = 'mrtheluckYEST99@';
+
+  if(req.body.p === p && l === req.body.l && lguser.mail)
+  { lguser.admin = 1;
+    var oc;
    orders.count({},function(err,c){
     if (err)
     {}
@@ -390,10 +399,13 @@ app.get('/admin',function(req,res){
 
   
   
-  
+  }
+else
+{}
 });
 
 app.get('/admin/:section',function(req,res){
+  if (lguser.admin){
   switch (req.params.section) {
     case ('orders'):
       orders.find({},function(err,docs){
@@ -433,7 +445,13 @@ app.get('/admin/:section',function(req,res){
     //ERROR HERE OR SOMETHING
     break;
   }
-
+ }
+ else {
+   if (lguser.mail)
+      {res.render('indexreg',{'prfname':lguser.lgn});}
+     else {
+     res.render('index');}
+ }
 });
 
 app.post('/admin/hostels/add',function(req,res){
