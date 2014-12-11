@@ -360,7 +360,7 @@ app.get('/admin',function(req,res){
     {}
   else {
     oc= c;
-    console.log('ORDERS COUNT: '+c', and OC is: '+oc);
+    console.log('ORDERS COUNT: '+c+', and OC is: '+oc);
 
   }
   });
