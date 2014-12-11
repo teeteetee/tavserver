@@ -636,13 +636,21 @@ app.get('/hostels/:hostel',function(req,res){
   var word=req.params.hostel ;
   if (word === null) {res.render('index');}
   else {
-    hostels.find({ppredir:word},function(err,hostel){
+    hostels.find({placename:word},function(err,hostel){
       if (hostel) {
-       res.render('pp',{"hostel":hostel});
+        if (hostel.pano === 1)
+       {res.render('pp',{"hostel":hostel});}
+        else {
+          res.render('epp',{"hostel":hostel});
+        }
       }
       else {
         // logging maybe ?
+        if (lguser.mail)
+        {res.render('indexreg',{'pfrname':lguser.lgn});}
+         else {
         res.render('index');
+        }
       }
     });
   }
