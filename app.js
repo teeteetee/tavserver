@@ -403,7 +403,8 @@ app.post('/alogin',function(req,res){
 
   if(req.body.p === p && l === req.body.l && lguser.mail)
   {
-    req.session.admin = 1;
+    lguser.admin = 1;
+    req.session = lguser;
     res.redirect('http://topandviews.ru/admin');
     }
 else
