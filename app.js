@@ -354,16 +354,8 @@ app.get('/ququ',function(req,res){
 
 //ADMIN SECTION FOR DB CONTROL
 app.get('/admin',function(req,res){
- res.render('adminauth');
-});
-
-app.post('/alogin',function(req,res){
-  var p = 'testtestfortiestOO@';
-  var l = 'mrtheluckYEST99@';
-
-  if(req.body.p === p && l === req.body.l && lguser.mail)
-  { lguser.admin = 1;
-    var oc;
+  if (lguser.admin) {
+   var oc;
    orders.count({},function(err,c){
     if (err)
     {}
@@ -397,11 +389,22 @@ app.post('/alogin',function(req,res){
   }
   });
 
-  
-  
   }
+  else {
+ res.render('adminauth');
+}
+});
+
+app.post('/alogin',function(req,res){
+  var p = 'testtestfortiestOO@';
+  var l = 'mrtheluckYEST99@';
+
+  if(req.body.p === p && l === req.body.l && lguser.mail)
+  { lguser.admin = 1;
+    res.redirect('http://topandviews.ru/admin');
+    }
 else
-{}
+{res.redirect('http://topandviews.ru');}
 });
 
 app.get('/admin/:section',function(req,res){
