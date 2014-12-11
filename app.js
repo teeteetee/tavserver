@@ -42,7 +42,7 @@ app.use(function(req,res,next){
         next();
       }
       else {
-        if(user.length>0){
+        if(user){
         lguser = user;
         delete lguser.phr;
         req.session = lguser;
