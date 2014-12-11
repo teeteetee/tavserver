@@ -354,10 +354,37 @@ app.get('/ququ',function(req,res){
 
 //ADMIN SECTION FOR DB CONTROL
 app.get('/admin',function(req,res){
-  var oc = orders.find({}).count();
-  var hc = hostels.find({}).count();
-  var uc = users.find({}).count();
-  var huc = users.find({hostel:1}).count();
+  var oc;
+   orders.count({},function(err,c){
+    if (err)
+    {}
+  else {
+    oc= c;
+  }
+  });
+  var hc; 
+  hostels.count({},function(err,c){
+    if (err)
+    {}
+  else {
+    hc= c;
+  }
+  });
+  var uc ;
+  orders.count({},function(err,c){
+    if (err)
+    {}
+  else {
+    uc= c;
+  }
+  });
+  var huc; orders.count({hostel:1},function(err,c){
+    if (err)
+    {}
+  else {
+    huc= c;
+  }
+  });
   console.log(oc+' '+hc+' '+uc+' '+huc);
   res.render('admingeneral',{'orders':oc,'hostels':hc,'users':uc,'husers':huc});
 });
