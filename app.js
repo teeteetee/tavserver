@@ -396,8 +396,8 @@ app.get('/admin',function(req,res){
 });
 
 app.post('/alogin',function(req,res){
-  var p = 'testtestfortiestOO@';
-  var l = 'mrtheluckYEST99@';
+  var p = 'testtest';
+  var l = 'testtest';
 
   if(req.body.p === p && l === req.body.l && lguser.mail)
   {
