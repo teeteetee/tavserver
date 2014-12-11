@@ -135,6 +135,7 @@ app.get('/',function(req,res) {
   if(uacheck === true) {
     res.render('mindex');
   }
+  //MIGH ADD AN ELSE
   if(req.headers.host === 'topandviews.ru') 
     {console.log(d+' request on .ru from '+req.ip);
      if (lguser.mail)
@@ -408,7 +409,7 @@ app.post('/alogin',function(req,res){
   if(req.body.p === p && l === req.body.l && lguser.mail)
   {
     req.session.admin = 1;
-    users.update({mail:req.session.mail},{$set{admin:1}});
+    users.update({mail:req.session.mail},{$set:{admin:1}});
     console.log(req.session);
     res.redirect('http://topandviews.ru/admin');
     }
