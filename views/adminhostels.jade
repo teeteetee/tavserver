@@ -1,0 +1,80 @@
+html
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Admin: hostels
+    //
+       Bootstrap 
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    
+    style
+     :css
+      .container {
+      width:100%;
+      margin:0px;
+      padding:0px;
+      }
+      #header {
+      text-align:center;
+      background-color:#ddd;
+      }
+      .order {
+      border-bottom:1px solid gray;
+      text-align:center;
+      }
+      .field {
+      border-right:1px solid #ddd;
+      }
+      #legend{
+      border-bottom:1px solid #333
+      }
+      .cap {
+      text-align:center;
+      }
+  body
+    .container
+      #header.row
+        .col-xs-12
+          h1  Admin
+          h3  All orders 
+      #results.row
+        .col-xs-12
+          #legend.row
+            .col-xs-2.field.cap
+              h3 ID
+            .col-xs-2.field.cap
+              h3 Name(link)
+            .col-xs-2.field.cap
+              h3 Web
+            .col-xs-2.field.cap
+              h3 OFFERS
+            .col-xs-2.field.cap
+              h3 ENQUIRIES(c)
+            .col-xs-2.field.cap
+              h3 OWNCLIENTS
+            
+                         
+          each hostel , i in docs
+            .row.order
+              .col-xs-2.field
+                h5 #{hostel.hostelid}
+              .col-xs-2.field
+                h5
+                  a(href='#{ppredir}') #{hostel.nameen}
+              .col-xs-2.field
+                h5 #{hostel.www}
+              .col-xs-2.field
+                h5 #{hostel.offrqntt}
+              .col-xs-2.field
+                h5 #{hostel.enquiries.accepted}
+              .col-xs-2.field
+                h5 #{hostel.ownclients}
+              
+                
+              
+              
+
+
+        
