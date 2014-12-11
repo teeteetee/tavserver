@@ -208,7 +208,7 @@ app.post('/newuser',function(req,res){
               //DO SMTH
             }
             else{
-               if (docdoc) {
+               if (docdoc.length>0) {
                 req.session = docdoc;
                 ms.trouble =0;
                 ms.mtext='success';
