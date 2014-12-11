@@ -314,6 +314,7 @@ app.post('/check',function(req,res){
           {
           
           req.session = confirmed;
+          console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
           ms.trouble = 0;
           ms.mtext= 'success'
           res.send(ms);
