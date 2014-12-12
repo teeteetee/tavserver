@@ -241,6 +241,9 @@ head
       border-bottom:1px solid black;
       border-top:1px solid black;
       }
+      .cursor {
+      cursor:pointer;
+      }
   body
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
     
@@ -321,13 +324,13 @@ head
         .col-xs-12(style='padding: 0px; margin: 0px;')
           #mapitself.map
       #footer.row
-        #searchbutton.col-xs-2.col-xs-offset-2
+        #searchbutton.col-xs-2.col-xs-offset-2.cursor
           h5 Поиск
-        #topbutton.col-xs-2
+        #topbutton.col-xs-2.cursor
           h5 Рейтинг
-        #logoutbutton.col-xs-2
+        #logoutbutton.col-xs-2.cursor
           h5 Выход
-        #aboutbutton.col-xs-2
+        #aboutbutton.col-xs-2.cursor
           h5 Инфо
       script.
         if ( document.documentElement.clientWidth <= 1024)
