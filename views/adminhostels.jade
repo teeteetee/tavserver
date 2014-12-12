@@ -79,7 +79,7 @@ head
 
       #results.row
         .col-xs-12
-          #legend.row
+          #legend.row(style='border-left:1px solid #ddd;')
             .col-xs-2.field.cap
               h5 ID
             .col-xs-2.field.cap
@@ -95,7 +95,7 @@ head
             
                          
           each hostel , i in docs
-            .row.order
+            .row.order(style='border-left:1px solid #ddd;')
               .col-xs-2.field
                 h5 #{hostel.hostelid}
               .col-xs-2.field
