@@ -668,9 +668,21 @@ app.get('/hostels/:hostel',function(req,res){
     hostels.find({placename:word},function(err,hostel){
       if (hostel.length > 0) {
         if (hostel.pano === 1)
-       {res.render('pp',{"hostel":hostel});}
+       {
+         if(hostel.offrqntt ===0)
+         {res.render('noofferspp',{"hostel":hostel})}
+       else {
+        res.render('pp',{"hostel":hostel});
+      }
+      }
         else {
+          if (hostel.offrqntt === 0)
+          {
+            res.render('noofferspp',{"hostel":hostel});
+          }
+          else{
           res.render('epp',{"hostel":hostel});
+         }
         }
       }
       else {
