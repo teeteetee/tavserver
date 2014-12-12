@@ -658,8 +658,8 @@ app.post('/search', function(req,res){
 //  res.render('emptysr');
 //}); 
 
-app.get('/hostels/:hostel',function(req,res){
-  var word=req.params.hostel ;
+app.get('/hostels/:hostelll',function(req,res){
+  var word=req.params.hostelll ;
   if (word === null) {
     if (req.session.mail)
         {res.render('indexreg',{'pfrname':lguser.lgn});}
