@@ -668,7 +668,7 @@ app.get('/hostels/:hostel',function(req,res){
         }
   }
   else {
-    hostels.find({},function(err,hostel){
+    hostels.find({placename:word},function(err,hostel){
 
       console.log(JSON.stringify(hostel));
       if (hostel.length > 0) {
