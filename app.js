@@ -140,7 +140,7 @@ app.get('/',function(req,res) {
   //MIGH ADD AN ELSE
   if(req.headers.host === 'topandviews.ru') 
     {console.log(d+' request on .ru from '+req.ip);
-     if (lguser.mail.length >0)
+     if (lguser.mail != undefined)
       {res.render('indexreg',{'prfname':"Привет, "+lguser.lgn+"!"});
   console.log('!!! REGISTERED USER CAME BACK !!!');}
      else {
