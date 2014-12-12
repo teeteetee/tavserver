@@ -400,7 +400,7 @@ app.post('/alogin',function(req,res){
   var p = 'testtest';
   var l = 'testtest';
 
-  if(req.body.p === p && l === req.body.l && lguser.mail)
+  if(req.body.p === p && l === req.body.l && req.session.mail)
   {
     req.session.admin = 1;
     users.update({mail:req.session.mail},{$set:{admin:1}});
