@@ -960,7 +960,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
       if (offrcnt > 0){
       offrcnt--;
       hostels.update({hostelid:x},{$set:{offrqntt:offrcnt}});
-      eval("hostels.update({hostelid:x},{$set:{offer"+y+":undefined}});");
+      eval("hostels.update({hostelid:x},{$set:{offers:{offer"+y+":undefined}}});");
       hostels.find({hotelid:x},function(err,result){
         offrcnt++;
         eval("if (result.offer"+offrcnt+" === undefined){console.log('OFFER SUCCESFULY DELETED');}else {console.log('OFFER SEEMS TO STILL BE PRESENT: '+results.offer"+offrcnt+");}");
@@ -980,7 +980,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
     hostels.find({hostelid:x},function(err,result){
       var offrcnt = result.offrqntt;
        offrcnt++;
-      eval("hostels.update({hostelid:x},{$set:{offer"+offrcnt+":{price:"+voffrprc+",capacity:"+vcapacity+",enquiries:0}}});");
+      eval("hostels.update({hostelid:x},{$set:{offers:{offer"+offrcnt+":{price:"+voffrprc+",capacity:"+vcapacity+",enquiries:0}}}});");
     });
     
    break;

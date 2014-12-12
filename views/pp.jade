@@ -1,0 +1,265 @@
+doctype html(lang='en')
+head
+    meta(charset='utf-8')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |     
+    title #{hostel.nameen}
+    // Bootstrap
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')   
+    style.
+      body {
+      width:1024px;
+      height:768px;
+      z-index:0;
+      text-align:center;
+      }
+      @font-face {
+      font-family:roboto-thin;
+      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
+      }
+      @font-face {
+      font-family:attentica;
+      src:url('/bootstrap/fonts/Attentica.ttf');
+      }
+      @font-face {
+      font-family:br;
+      src:url('/bootstrap/fonts/bebasneue_regular.ttf');
+      }
+      .container{
+      padding:0px;
+      width:100vw;
+      }
+      .row{
+      padding:0px;
+      margin:0px;
+      width:100%;
+      }
+      .col-xs-12 {
+      margin:0px;
+      padding:0px;
+      }
+      #header {
+      text-align:center;
+      }
+      h2 {
+      font-family:roboto-thin;
+      font-size:4vw;
+      color:#333;
+      border:2px solid #333;
+      letter-spacing:1px;
+      background-color:#333;
+      }
+      h1 {
+      font-family:attentica;
+      font-size:4vw;
+      display:inline;
+      color:black;
+      }
+      h6 {
+      font-family:br;
+      letter-spacing:2px;
+      font-size:2vw;
+      margin-top:0px;
+      color:#333;
+      }
+      #info {
+      position:fixed;
+      opacity:0.5;
+      text-align:center;
+      top:45vh;
+      left:0px;
+      z-index:1001;
+      }
+      #info:hover {
+      opacity:1;
+      }
+      #infoblock {
+      position:fixed;
+      z-index:2000;
+      display:none;
+      }
+      #shadow {
+      opacity:0.5;
+      height:10px;
+      background-color:black;
+      }
+      #pano {
+      height:768px;
+      width:100vw;
+      background-color:#c35;
+      }
+      #header {
+      background-color:white;
+      text-align:left;
+      }
+      #infotext {
+      text-align:left;
+      background-color:white;
+      }
+      #book {
+      text-align:center;
+      background-color:white;
+      padding-bottom:3vh;
+      z-index:3000;
+      }
+      .form-control {
+      height:100%;
+      }
+      #bookbutton:hover {
+      background-color:#005713;
+      }
+      .br {
+      border-right:1px solid #ddd;
+      }  
+  body
+    #pano.container
+      //
+        <div class='row' id='header'>
+        <div class='col-xs-12' style='background-color:#333;'>
+        <h1 style='color:#00b74a;display:inline;border-bottom:1px solid white;'>#{hostel.nameen}</h1>
+        <h6 style='color:#ddd;'>#{hostel.adressen}</h6>
+        </div>
+        </div>
+        <div class='row' style='padding:0px;margin:0px;'>
+        <div class='col-xs-12' style='padding:0px;margin:0px;'>
+        <div style='width:100%;height:400px;background-color:#ddd;margin-left:auto;margin-right:auto;' class='pano'>
+        </div>
+        </div>
+        </div>
+      // jQuery (necessary for Bootstrap's JavaScript plugins)
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+      // Include all compiled plugins (below), or include individual files as needed
+      script(src='/bootstrap/js/bootstrap.min.js')
+      |     
+      script(type='text/javascript', src='pano2vr_player.js')
+      |     
+      script.
+        // create the panorama player with the container
+        pano=new pano2vrPlayer("pano");
+        pano.readConfigUrl("#{hostel.xml}");
+      |       
+      #infoblock.row
+        .col-xs-12
+          #header.row
+            .col-xs-3
+              h1
+                | #{hostel.nameru}
+                span(style='color:#eee;font-size:2vw') #{hostel.nameen}
+          |           
+          #infotext.row
+            .col-xs-6
+              h6
+                a(href='#{hostel.www}') #{hostel.www}
+              |  
+              |                
+              h6 #{hostel.tekephone}
+              |                
+              h6 #{hostel.adressru}
+              |                
+              h7 #{hostel.adressen}
+            |             
+            .col-sx-6
+              h6 Some text here
+          .row(style='background-color:white;border-bottom:1px solid #ddd;')
+            .col-xs-3
+              h7 VK
+            .col-xs-3.br
+              h7 FB
+            .col-xs-3.br
+              h7 TW
+            .col-xs-3
+              h7 Skype
+          #sn.row(style='background-color:white;')
+            .col-xs-3
+              h7 #{hostel.vk}
+            .col-xs-3.br
+              h7 #{hostel.fb}
+            .col-xs-3.br
+              h7 #{hostel.tw}
+            .col-xs-3
+              h7 #{hostel.skype}  
+          .row(style='background-color:white;')
+            .col-xs-6.br
+              h7 Мальчики\девочки раздельно
+            .col-xs-6 
+              #{hostel.sepgenders}  
+          .row(style='background-color:white;')
+            .col-xs-6.br
+              h7 До метро (метров)
+            .col-xs-6 
+              #{hostel.subdist}  
+          .row(style='background-color:white;')
+            .col-xs-6.br
+              h7 Ближайший транспорт
+            .col-xs-6 
+              #{hostel.neartrnsp}     
+          .row(style='background-color:white;')
+            .col-xs-6.br
+              h7 Wi-Fi
+            .col-xs-6 
+              #{hostel.wifi}              
+          #book.row
+            .col-xs-12(style='margin:0px;padding:0px;')
+             each offer, i in offers 
+               .row
+                 .col-xs-8
+                   #{offer.price}
+                 #book#{offer.price}.col-xs-4
+                   h6 Заказ
+                   script.
+                     $('#book#{offer.price}').click(function(){
+                       $('.orderblock').css('display','none');
+                       $('#book#{offer.price}bb').slideToggle();
+                     })
+               #book#{offer.price}bb.row.orderblock(style='display:none') 
+                 form(action='/orders/#{hostel.hostelid}/#{offer.price}',method='POST',role='form')
+                   .row
+                     .col-xs-6
+                         h2  from year
+                         h2  from month
+                         h2  from day
+                         h2  to year
+                         h2  to month
+                         h2  to day
+                         h2  Phone is present
+                         h2  Mail
+                         h2  Phone
+                         h2  User is registered
+                     .col-xs-6
+                       form(action='/orders/1/1000', method='post', role='form')
+                         input.form-control(name='fyear', type='text')
+                         br
+                         input.form-control(name='fmonth', type='text')
+                         br
+                         input.form-control(name='fday', type='text')
+                         br
+                         input.form-control(name='toyear', type='text')
+                         br
+                         input.form-control(name='tomonth', type='text')
+                         br
+                         input.form-control(name='today', type='text')
+                         br
+                         input.form-control(name='phonep', type='text')
+                         br
+                         input.form-control(name='mail', type='text')
+                         br
+                         input.form-control(name='phone', type='text')
+                         br
+                         input.form-control(name='registered', type='text')
+                         br
+                   button(type='submit',style='border-radius:4px; border: 1px solid #333;')Book     
+
+
+          .row
+            #shadow.col-xs-12    
+      #info
+        h2 INFO     
+      #back      
+    script.
+      $('#info').click(function(){
+      $('#infoblock').slideToggle();
+      $('#info').css("opacity",0.5);
+      });
