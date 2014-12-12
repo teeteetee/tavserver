@@ -147,21 +147,11 @@ app.get('/',function(req,res) {
      res.render('index');}
    }
   if(req.headers.host === 'topandviews.com') 
-    {console.log(d+' request on .com from '+req.ip);
-     if (lguser.mail)
-      {res.render('indexreg',{'prfname':lguser.lgn});
-  console.log('!!! REGISTERED USER CAME BACK !!!');}
-     else {
-     res.render('index');}
-   }
+    {res.redirect('http://topandviews.ru')}
+   
   if(req.headers.host === 'topandviews.co.uk') 
-    {console.log(d+' request on .co.uk from '+req.ip);
-     if (lguser.mail)
-      {res.render('indexreg',{'prfname':lguser.lgn});
-  console.log('!!! REGISTERED USER CAME BACK !!!');}
-     else {
-     res.render('index');}
-   }
+    {res.redirect('http://topandviews.ru')}
+   
 });
 
 
