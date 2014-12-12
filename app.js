@@ -666,7 +666,7 @@ app.get('/hostels/:hostel',function(req,res){
   }
   else {
     hostels.find({placename:word},function(err,hostel){
-      console.log('hostel.pano is: '+hostel.pano+', has offers: '+hostel.offrqntt);
+      console.log('word is: '+word+'hostel.pano is: '+hostel.pano+', has offers: '+hostel.offrqntt);
       if (hostel.length > 0) {
         if (hostel.pano === 1)
        {
@@ -688,11 +688,7 @@ app.get('/hostels/:hostel',function(req,res){
       }
       else {
         // logging maybe ?
-        if (req.session.mail)
-        {res.render('indexreg',{'pfrname':lguser.lgn});}
-         else {
-        res.render('index');
-        }
+        res.redirect('http://topandviews.ru');
       }
     });
   }
