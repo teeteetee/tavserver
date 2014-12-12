@@ -160,7 +160,7 @@ app.get('/about',function(req,res){
   res.render('about');
 });
 app.get('/top',function(req,res){
-  if(lguser.mail)
+  if(req.session.mail)
   {
     //TOP NEEDS TO BE CREATED 
     res.render('top');
