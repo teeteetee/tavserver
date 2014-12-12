@@ -49,6 +49,9 @@ app.use(function(req,res,next){
         if(user.length>0){
         lguser = user;
         delete lguser.phr;
+        delete lguser._id;
+        delete lguser.enquiries;
+        delete lguser.regdate;
         req.session = lguser;
         console.log('USER WITH COOOOOKIEES !');
         next();}
