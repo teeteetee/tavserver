@@ -670,7 +670,7 @@ app.get('/hostels/:hostel',function(req,res){
   else {
     hostels.find({placename:word},function(err,hostel){
 
-      console.log(JSON.stringify(hostel));
+      console.log(hostel.length+' '+hostel.pano);
       if (hostel.length > 0) {
         if (hostel.pano === 1)
        {
