@@ -752,7 +752,7 @@ app.post('/drop/:part',function(req,res){
     case('hostels'):
      if(req.body.p ===  pp)
      {var hid = req.body.hid;
-      hostels.remove({hostelid:1},function(err){
+      hostels.remove({hostelid:hid},function(err){
         if (!err)
         {
           console.log('HOSTELID '+ hid+' DROPPED FROM '+ req.ip);
