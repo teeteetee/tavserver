@@ -662,13 +662,13 @@ app.get('/hostels/:hostelll',function(req,res){
   var word=req.params.hostelll ;
   if (word === null) {
     if (req.session.mail)
-        {res.render('indexreg',{'pfrname':lguser.lgn});}
+        {res.render('indexreg',{'pfrname':req.session.lgn});}
          else {
         res.render('index');
         }
   }
   else {
-    hostels.find({placename:word},function(err,hostel){
+    hostels.findOne({placename:word},function(err,hostel){
 
       console.log(hostel.length+' '+hostel.pano);
       if (hostel.length > 0) {
