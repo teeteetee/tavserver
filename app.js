@@ -373,12 +373,12 @@ app.get('/admin',function(req,res){
   else {
     hc= c;
     var uc ;
-  orders.count({},function(err,c){
+  users.count({},function(err,c){
     if (err)
     {}
   else {
     uc= c;
-    var huc; orders.count({hostel:1},function(err,c){
+    var huc; users.count({hostel:1},function(err,c){
     if (err)
     {}
   else {
