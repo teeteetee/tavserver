@@ -1131,7 +1131,38 @@ app.post('/enquery/:hostel/:price', function(req,res){
 });
 
 
+app.post('/testnopanoupload',function(req,res){
 
+  hostels.insert({placename : {'testhostel','Testhostel','тестхостел'},
+         nameru : 'Тестхостел',
+         nameen : 'Testhostel',
+         aderssru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
+         adressen: 'Somefucking emb. 10 bld.3 flat 12',
+         coord: [37.5996429,55.7508191],
+         skype: 'SKYPELOG',
+         vk : 'http://vk.com',
+         fb : 'http://ya.ru',
+         tw: 'http://google.com',
+         wifi:'yes',
+         telephone : '+782764236452',
+         www : 'http://d3.ru',
+         ppredir : 'http://topandviews.ru/hostels/testhostel',
+         hostelid:1,
+         fid : 1,
+         mid : 1,
+         oid : 1,
+         city : 'moscow',
+         country : 'russia',
+         yearnow : 2014,
+         sepgenders:'yes',
+         pano : 0,
+         offrqntt : 0,
+         enquiries : {all:0,accepted:0},
+         ownclients : 0,
+
+         });
+     res.redirect(vppredir);
+});
 app.post('/upload',function(req,res) {
 	console.log('UPLOAD SEQUENCE');
  

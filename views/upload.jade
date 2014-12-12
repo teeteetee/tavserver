@@ -113,6 +113,12 @@ head
       #choice.row
         .col-xs-12.zerop
           h4(style='color: #c35;') HOSTELS
+      .row(style='background-color:#ddd')
+        .col-xs-12
+          h4 SIMULATE SUBMISSION (PANO === 0)
+          form(action='/testnopanoupload',method='post',role='form')
+            button(type='submit') GO
+
       form(style='text-align: left;', role='form', action='/upload', method='post', enctype='multipart/form-data')
         #one.row
           .col-xs-3.zerop
