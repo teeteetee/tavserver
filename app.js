@@ -666,7 +666,8 @@ app.get('/hostels/:hostel',function(req,res){
   }
   else {
     hostels.find({},function(err,hostel){
-      console.log('word is: '+word+'hostel.pano is: '+hostel.pano+', has offers: '+hostel.offrqntt);
+
+      console.log(JSON.stringify(hostel));
       if (hostel.length > 0) {
         if (hostel.pano === 1)
        {
