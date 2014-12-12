@@ -27,6 +27,7 @@ head
       }
       #legend{
       border-bottom:1px solid #ddd;
+      background-color:white;
       }
       .cap {
       text-align:center;
@@ -64,7 +65,7 @@ head
           h1(style='color:#eee;')  Views 
             span(style='color:#c35') Admin : 
             span(style='color:#e18282') Hostels 
-      .row
+      .row(style='border-bottom:1px solid #ddd;')
         form(action='/drop/hostels',method='post',role='form')
           .col-xs-3
             h5 Drop by HOSTEL ID
