@@ -681,7 +681,7 @@ app.get('/hostels/:hostel',function(req,res){
       }
       }
         else {
-          console.log('PANO IS ZERO');
+          console.log('PANO IS ZERO and oq: '+hostel.offrqntt);
           if (hostel.offrqntt === 0)
           {
             res.render('noofferspp',{"hostel":hostel});
