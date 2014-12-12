@@ -668,7 +668,7 @@ app.get('/hostels/:hostel',function(req,res){
         }
   }
   else {
-    hostels.findOne({placename:word},function(err,hostel){
+    hostels.find({placename:word},function(err,hostel){
 
       console.log(hostel.length+' '+hostel.pano);
       if (hostel.length > 0) {
