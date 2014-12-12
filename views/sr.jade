@@ -109,16 +109,17 @@ head
           .row
             #mapitself.map
         .col-xs-8(style='padding: 0px; margin: 0px; padding-top: 0.67em; padding-right: 0.67em; height: 100vh; overflow: auto;')
+        each result, i in results
           .row.item(style='border-bottom: 1px solid white; background-color: #ddd;')
             .col-xs-3(style='padding: 0px; margin: 0px; background-color: #ddd;')
               img(src='/bootstrap/images/sample6.jpg', style='width: 100%;')
             .col-xs-9(style='padding: 0px; padding-left: 1.34em; margin: 0px; text-align: left;')
               .row
                 .col-xs-6(style='padding: 0px; margin: 0px;')
-                  h2  Yo People
-                  h4 Дорогомиловская наб. 17 стр. 2
+                  h2  #{result.nameen}
+                  h4 #{result.adressru}
                 .col-xs-3
-                  h5 600-1500 р.
+                  h5 #{result.lp}-#{result.hp} р.
                 .col-xs-3(style='padding: 5px; overflow: auto; text-align: center;')
                   .row
                     .col-xs-4
@@ -142,231 +143,7 @@ head
                         h6(style='margin: auto;') P
                       .circle(style='background-color: #c35204;')
                         h6(style='margin: auto;') P
-                  //
-                    row end
-          .row.item(style='border-bottom: 1px solid white; background-color: #ddd;')
-            .col-xs-3(style='padding: 0px; margin: 0px; background-color: #ddd;')
-              img(src='/bootstrap/images/sample6.jpg', style='width: 100%;')
-            .col-xs-9(style='padding: 0px; padding-left: 1.34em; margin: 0px; text-align: left;')
-              .row
-                .col-xs-6(style='padding: 0px; margin: 0px;')
-                  h2  Yo People
-                  h4 Дорогомиловская наб. 17 стр. 2
-                .col-xs-3
-                  h5 600-1500 р.
-                .col-xs-3(style='padding: 5px; overflow: auto; text-align: center;')
-                  .row
-                    .col-xs-4
-                      .circle
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35204;')
-                        h6(style='margin: auto;') P
-                    .col-xs-4
-                      .circle(style='background-color: #009e8e;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #f5ab4b;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #3e5da4;')
-                        h6(style='margin: auto;') P
-                    .col-xs-4
-                      .circle(style='background-color: #06799f;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35204;')
-                        h6(style='margin: auto;') P
-                  //
-                    row end
-          .row.item(style='border-bottom: 1px solid white; background-color: #ddd;')
-            .col-xs-3(style='padding: 0px; margin: 0px; background-color: #ddd;')
-              img(src='/bootstrap/images/sample6.jpg', style='width: 100%;')
-            .col-xs-9(style='padding: 0px; padding-left: 1.34em; margin: 0px; text-align: left;')
-              .row
-                .col-xs-6(style='padding: 0px; margin: 0px;')
-                  h2  Yo People
-                  h4 Дорогомиловская наб. 17 стр. 2
-                .col-xs-3
-                  h5 600-1500 р.
-                .col-xs-3(style='padding: 5px; overflow: auto; text-align: center;')
-                  .row
-                    .col-xs-4
-                      .circle
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35204;')
-                        h6(style='margin: auto;') P
-                    .col-xs-4
-                      .circle(style='background-color: #009e8e;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #f5ab4b;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #3e5da4;')
-                        h6(style='margin: auto;') P
-                    .col-xs-4
-                      .circle(style='background-color: #06799f;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35204;')
-                        h6(style='margin: auto;') P
-                  //
-                    row end
-          .row.item(style='border-bottom: 1px solid white; background-color: #ddd;')
-            .col-xs-3(style='padding: 0px; margin: 0px; background-color: #ddd;')
-              img(src='/bootstrap/images/sample6.jpg', style='width: 100%;')
-            .col-xs-9(style='padding: 0px; padding-left: 1.34em; margin: 0px; text-align: left;')
-              .row
-                .col-xs-6(style='padding: 0px; margin: 0px;')
-                  h2  Yo People
-                  h4 Дорогомиловская наб. 17 стр. 2
-                .col-xs-3
-                  h5 600-1500 р.
-                .col-xs-3(style='padding: 5px; overflow: auto; text-align: center;')
-                  .row
-                    .col-xs-4
-                      .circle
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35204;')
-                        h6(style='margin: auto;') P
-                    .col-xs-4
-                      .circle(style='background-color: #009e8e;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #f5ab4b;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #3e5da4;')
-                        h6(style='margin: auto;') P
-                    .col-xs-4
-                      .circle(style='background-color: #06799f;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35204;')
-                        h6(style='margin: auto;') P
-                  //
-                    row end
-          .row.item(style='border-bottom: 1px solid white; background-color: #ddd;')
-            .col-xs-3(style='padding: 0px; margin: 0px; background-color: #ddd;')
-              img(src='/bootstrap/images/sample6.jpg', style='width: 100%;')
-            .col-xs-9(style='padding: 0px; padding-left: 1.34em; margin: 0px; text-align: left;')
-              .row
-                .col-xs-6(style='padding: 0px; margin: 0px;')
-                  h2  Yo People
-                  h4 Дорогомиловская наб. 17 стр. 2
-                .col-xs-3
-                  h5 600-1500 р.
-                .col-xs-3(style='padding: 5px; overflow: auto; text-align: center;')
-                  .row
-                    .col-xs-4
-                      .circle
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35204;')
-                        h6(style='margin: auto;') P
-                    .col-xs-4
-                      .circle(style='background-color: #009e8e;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #f5ab4b;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #3e5da4;')
-                        h6(style='margin: auto;') P
-                    .col-xs-4
-                      .circle(style='background-color: #06799f;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35204;')
-                        h6(style='margin: auto;') P
-                  //
-                    row end
-          .row.item(style='border-bottom: 1px solid white; background-color: #ddd;')
-            .col-xs-3(style='padding: 0px; margin: 0px; background-color: #ddd;')
-              img(src='/bootstrap/images/sample6.jpg', style='width: 100%;')
-            .col-xs-9(style='padding: 0px; padding-left: 1.34em; margin: 0px; text-align: left;')
-              .row
-                .col-xs-6(style='padding: 0px; margin: 0px;')
-                  h2  Yo People
-                  h4 Дорогомиловская наб. 17 стр. 2
-                .col-xs-3
-                  h5 600-1500 р.
-                .col-xs-3(style='padding: 5px; overflow: auto; text-align: center;')
-                  .row
-                    .col-xs-4
-                      .circle
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35204;')
-                        h6(style='margin: auto;') P
-                    .col-xs-4
-                      .circle(style='background-color: #009e8e;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #f5ab4b;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #3e5da4;')
-                        h6(style='margin: auto;') P
-                    .col-xs-4
-                      .circle(style='background-color: #06799f;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35204;')
-                        h6(style='margin: auto;') P
-                  //
-                    row end
-          .row.item(style='border-bottom: 1px solid white; background-color: #ddd;')
-            .col-xs-3(style='padding: 0px; margin: 0px; background-color: #ddd;')
-              img(src='/bootstrap/images/sample6.jpg', style='width: 100%;')
-            .col-xs-9(style='padding: 0px; padding-left: 1.34em; margin: 0px; text-align: left;')
-              .row
-                .col-xs-6(style='padding: 0px; margin: 0px;')
-                  h2  Yo People
-                  h4 Дорогомиловская наб. 17 стр. 2
-                .col-xs-3
-                  h5 600-1500 р.
-                .col-xs-3(style='padding: 5px; overflow: auto; text-align: center;')
-                  .row
-                    .col-xs-4
-                      .circle
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35204;')
-                        h6(style='margin: auto;') P
-                    .col-xs-4
-                      .circle(style='background-color: #009e8e;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #f5ab4b;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #3e5da4;')
-                        h6(style='margin: auto;') P
-                    .col-xs-4
-                      .circle(style='background-color: #06799f;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35204;')
-                        h6(style='margin: auto;') P
-                  //
-                    row end
+                  
     script.
       var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([55.753,  37.622], 14);
-      map.scrollWheelZoom.disable();
-      var markers = {
-    
-        "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates":  [55.761808, 37.610118]
-        },
-        "properties": {
-          "title": "It is a test",
-          "marker-symbol": "monument"
-        }
-      }; 
-      featureLayer.setGeoJSON(markers);
+      

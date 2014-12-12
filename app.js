@@ -141,8 +141,8 @@ app.get('/',function(req,res) {
   //MIGH ADD AN ELSE
   if(req.headers.host === 'topandviews.ru') 
     {console.log(d+' request on .ru from '+req.ip);
-     if (lguser.mail != undefined && lguser.lgn != undefined)
-      {res.render('indexreg',{'prfname':"Привет, "+lguser.lgn+"!"});
+     if (req.session.mail != undefined && req.session.lgn != undefined)
+      {res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});
   console.log('!!! REGISTERED USER CAME BACK !!!');}
      else {
      res.render('index');}
@@ -1135,7 +1135,7 @@ app.post('/upload',function(req,res) {
 	console.log('UPLOAD SEQUENCE');
  
 //AUTH NEEDED HERE/ Something simple like hardcoded passphrase, can be passed through req.body
-if(req.body.pano === 1){
+if(req.body.pano === 0){
     if(
     req.body.hid === undefined ||
     req.body.nameru === undefined||
@@ -1158,6 +1158,7 @@ if(req.body.pano === 1){
     req.body.vk  === undefined||
     req.body.fb === undefined||
     req.body.tw === undefined||
+    req.body.skype === undefined||
     req.body.placename  === undefined
     )
       
@@ -1182,6 +1183,7 @@ if(req.body.pano === 1){
           vvk = req.body.vk,
           vfb = req.body.fb,
           vtw = req.body.tw,
+          vskype = req.body.skype,
           vwifi  = req.body.wifi,
           vcountry = req.body.country,
           vyearnow = req.body.yearnow,
@@ -1199,6 +1201,7 @@ if(req.body.pano === 1){
          vk : vvk,
          fb : vfb,
          tw: vtw,
+         skype:vskype,
          wifi:vwifi,
          telephone : vtelephone,
          www : vwww,
@@ -1210,6 +1213,7 @@ if(req.body.pano === 1){
          city : vcity,
          country : vcountry,
          yearnow : vyearnow,
+         pano : 0,
          offrqntt : 0,
          enquiries : {all:0,accepted:0},
          ownclients : 0,
