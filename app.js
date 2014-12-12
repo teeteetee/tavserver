@@ -668,26 +668,26 @@ app.get('/hostels/:hostel',function(req,res){
         }
   }
   else {
-    hostels.find({placename:word},function(err,hostel){
+    hostels.find({placename:word},function(err,jesus){
 
-      console.log(hostel.length+' '+hostel.pano);
-      if (hostel.length > 0) {
-        if (hostel.pano === 1)
+      console.log(jesus.length+' '+jesus.pano);
+      if (jesus.length > 0) {
+        if (jesus.pano === 1)
        {
-         if(hostel.offrqntt ===0)
-         {res.render('noofferspp',{"hostel":hostel})}
+         if(jesus.offrqntt ===0)
+         {res.render('noofferspp',{"hostel":jesus})}
        else {
-        res.render('pp',{"hostel":hostel,"offers":hostel.offers});
+        res.render('pp',{"hostel":jesus,"offers":jesus.offers});
       }
       }
         else {
-          console.log('PANO IS ZERO and oq: '+hostel.offrqntt+' '+hostel.placename+' '+hostel.ownclients);
-          if (hostel.offrqntt === 0)
+          console.log('PANO IS ZERO and oq: '+jesus.offrqntt+' '+jesus.placename+' '+jesus.ownclients);
+          if (jesus.offrqntt === 0)
           {
-            res.render('noofferspp',{"hostel":hostel});
+            res.render('noofferspp',{"hostel":jesus});
           }
           else{
-          res.render('epp',{"hostel":hostel,"offers":hostel.offers});
+          res.render('epp',{"hostel":jesus,"offers":jesus.offers});
          }
         }
       }
@@ -1189,7 +1189,7 @@ app.post('/testnopanoupload',function(req,res){
          pano : 0,
          offrqntt : 0,
          enquiries : {all:0,accepted:0},
-         ownclients : 0,
+         ownclients : 0
 
          });
     hostels.findOne({hostelid:1},function(err,found){
