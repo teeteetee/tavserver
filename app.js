@@ -752,9 +752,15 @@ app.post('/drop/:part',function(req,res){
     case('hostels'):
      if(req.body.p ===  pp)
      {var hid = req.body.hid;
-      hostels.remove({hostelid:hid});
-     console.log('HOSTELID '+ hid+' DROPPED FROM '+ req.ip);
-     res.redirect('/admin/hostels');}
+      hostels.remove({hostelid:hid},function(err){
+        if (!err)
+        {
+          console.log('HOSTELID '+ hid+' DROPPED FROM '+ req.ip);
+           res.redirect('/admin/hostels');}
+        }
+       else
+        {res.send('there was an error');}
+      });
     break;
   }
  }
