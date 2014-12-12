@@ -1171,7 +1171,7 @@ app.post('/testnopanoupload',function(req,res){
     if(found.city)
     {
       console.log('----------SUCCESFULY SIMULATED SUBMITION--------------');
-      res.redirect(vppredir);
+      res.redirect('http://topandviews.ru/hostels/testhostel');
     }
     else {
       console.log('returned empty doc after submission');
