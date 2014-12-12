@@ -1161,7 +1161,25 @@ app.post('/testnopanoupload',function(req,res){
          ownclients : 0,
 
          });
-     res.redirect(vppredir);
+    hostels.findOne({hostelid:1},function(err,found){
+     if(err)
+     {
+      console.log('ERROR from DB while executing findOne');
+      res.redirect('http://topandviews.ru/admin')
+     }
+   else{
+    if(found.city)
+    {
+      console.log('----------SUCCESFULY SIMULATED SUBMITION--------------');
+      res.redirect(vppredir);
+    }
+    else {
+      console.log('returned empty doc after submission');
+      res.redirect('http://topandviews.ru/admin');
+    }
+   }
+    });
+     
 });
 app.post('/upload',function(req,res) {
 	console.log('UPLOAD SEQUENCE');
