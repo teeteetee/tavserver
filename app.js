@@ -197,7 +197,7 @@ app.post('/newuser',function(req,res){
         //DO SMTH
       }
       else {
-        if(doc)
+        if(doc.length === 0)
         { var now = new Date();
           var gmonth = now.getMonth();
           var gyear = now.getUTCFullYear();
