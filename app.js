@@ -36,6 +36,7 @@ var lguser = {};
 app.use(function(req,res,next){
   console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.lgn);
    if(req.session.admin === 1){
+    lguser = req.session;
     next();}
    else {
    if(req.session && req.session.lgn){
@@ -45,7 +46,7 @@ app.use(function(req,res,next){
         next();
       }
       else {
-        if(user){
+        if(user.length>0){
         lguser = user;
         delete lguser.phr;
         req.session = lguser;
@@ -140,7 +141,7 @@ app.get('/',function(req,res) {
   //MIGH ADD AN ELSE
   if(req.headers.host === 'topandviews.ru') 
     {console.log(d+' request on .ru from '+req.ip);
-     if (lguser.mail != undefined)
+     if (lguser.mail != undefined && lguser.lgn != undefined)
       {res.render('indexreg',{'prfname':"Привет, "+lguser.lgn+"!"});
   console.log('!!! REGISTERED USER CAME BACK !!!');}
      else {
