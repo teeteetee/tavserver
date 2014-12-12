@@ -658,7 +658,7 @@ app.post('/search', function(req,res){
 app.get('/hostels/:hostel',function(req,res){
   var word=req.params.hostel ;
   if (word === null) {
-    if (lguser.mail)
+    if (req.session.mail)
         {res.render('indexreg',{'pfrname':lguser.lgn});}
          else {
         res.render('index');
@@ -675,7 +675,7 @@ app.get('/hostels/:hostel',function(req,res){
       }
       else {
         // logging maybe ?
-        if (lguser.mail)
+        if (req.session.mail)
         {res.render('indexreg',{'pfrname':lguser.lgn});}
          else {
         res.render('index');
@@ -1133,7 +1133,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
 
 app.post('/testnopanoupload',function(req,res){
 
-  hostels.insert({placename : {'testhostel','Testhostel','тестхостел'},
+  hostels.insert({placename : ['testhostel','Testhostel','тестхостел'],
          nameru : 'Тестхостел',
          nameen : 'Testhostel',
          aderssru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
