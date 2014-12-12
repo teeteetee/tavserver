@@ -665,7 +665,7 @@ app.get('/hostels/:hostel',function(req,res){
         }
   }
   else {
-    hostels.find({placename:word},function(err,hostel){
+    hostels.find({},function(err,hostel){
       console.log('word is: '+word+'hostel.pano is: '+hostel.pano+', has offers: '+hostel.offrqntt);
       if (hostel.length > 0) {
         if (hostel.pano === 1)
