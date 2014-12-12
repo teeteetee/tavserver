@@ -88,8 +88,8 @@ head
             #simulate.col-xs-12.item(style='border-left:1px solid #ddd;')
               h2 СИмулировать заказ
           .row
-            .col-xs-12.item(style='border-left:1px solid #ddd;')
-              h2(style='color:#eee') :-) ПУСТО
+            #upload.col-xs-12.item(style='border-left:1px solid #ddd;')
+              h2(style='color:#eee') Добавить новый объект
           .row
             .col-xs-12.item(style='border-left:1px solid #ddd;')
               h2(style='color:#eee') :-) ПУСТО       
@@ -116,6 +116,9 @@ head
       });
       $('#simulate').click(function(){
       window.location = 'http://topandviews.ru/ququ'
+      });
+      $('#upload').click(function(){
+      window.location = 'http://topandviews.ru/upload'
       });
       $('#addhuser').click(function(){
       window.location = 'http://topandviews.ru/addhosteluser'

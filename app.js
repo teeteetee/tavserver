@@ -849,8 +849,13 @@ console.log('FIFTH BREAKPOINT');
 // });
 
 app.get('/upload', function(req,res) {
-	    console.log('got request on /upload');
-	    res.render('uploadauth');
+      if(lguser.admin != undefined)
+      {
+        res.render('upload');
+      }
+      else
+      {console.log('got request on /upload');
+      res.render('uploadauth');}
 	    });
 
 app.post('/uploadauth', function(req,res){
