@@ -33,27 +33,51 @@ head
       .cap {
       text-align:center;
       }
+      input{
+      font-family:arial;
+      letter-spacing:1px;
+      font-size:1.5vw;
+      }
+      h5 {
+      font-size:1vw;
+      font-family:arial;
+      letter-spacing:0.3vw;
+      text-transform:uppercase;
+      color:black;
+      }
   body
     .container
       #header.row
         .col-xs-12
           h1  Admin
           h3  All orders 
+      .row
+        form(action='/drop/hostels',method='post',role='form')
+          .col-xs-3
+            h5 Drop by HOSTEL ID
+          .col-xs-3
+            input(type='text', name='hid',style='margin-bottom:1vh;')
+          .col-xs-3
+            input(type='password', name='p',style='margin-bottom:1vh;')
+          .col-xs-2
+            button(type='submit',style='background-color:#c35;color:white')
+              h5 Drop
+
       #results.row
         .col-xs-12
           #legend.row
             .col-xs-2.field.cap
-              h3 ID
+              h5 ID
             .col-xs-2.field.cap
-              h3 Name(link)
+              h5 Name(link)
             .col-xs-2.field.cap
-              h3 Web
+              h5 Web
             .col-xs-2.field.cap
-              h3 OFFERS
+              h5 OFFERS
             .col-xs-2.field.cap
-              h3 ENQUIRIES(c)
+              h5 ENQUIRIES(c)
             .col-xs-2.field.cap
-              h3 OWNCLIENTS
+              h5 OWNCLIENTS
             
                          
           each hostel , i in docs

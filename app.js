@@ -722,7 +722,9 @@ console.log('THIRD BREAKPOINT');
 
 //EMPTY ORDERS
 app.post('/drop/:part',function(req,res){
-  var pp = 'secureshit';
+  if(req.session.admin === 1)
+  {
+    var pp = 'secureshit';
   switch(req.params.part)
   {
     case('orders'):
@@ -744,8 +746,17 @@ app.post('/drop/:part',function(req,res){
      console.log('HOSTEL USERS DB DROPPED FROM '+ req.ip);
      res.redirect('/admin/hostelusers');}
     break;
+    case('hostels'):
+     if(req.body.p ===  pp)
+     {var vid = req.body.hid;
+      hostels.remove({hostelid:hid});
+     console.log('HOSTELID '+ hid+' DROPPED FROM '+ req.ip);
+     res.redirect('/admin/hostels');}
+    break;
   }
-
+ }
+ else
+  {res.redirect('http://topandviews.ru');}
 });
 
 app.post('/drop/users/mail',function(req,res){
