@@ -756,11 +756,11 @@ app.post('/drop/:part',function(req,res){
         if (!err)
         {
           console.log('HOSTELID '+ hid+' DROPPED FROM '+ req.ip);
-           res.redirect('/admin/hostels');}
+           res.redirect('/admin/hostels');
         }
        else
         {res.send('there was an error');}
-      });
+      });}
     break;
   }
  }
