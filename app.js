@@ -1146,7 +1146,7 @@ app.post('/enquery/:hostel/:price', function(req,res){
 
 app.post('/testnopanoupload',function(req,res){
 
-  hostels.insert({placename : ['testhostel','Testhostel','тестхостел'],
+  hostels.insert({placename :'testhostel',
          nameru : 'Тестхостел',
          nameen : 'Testhostel',
          aderssru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
