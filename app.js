@@ -751,7 +751,7 @@ app.post('/drop/:part',function(req,res){
     break;
     case('hostels'):
      if(req.body.p ===  pp)
-     {var vid = req.body.hid;
+     {var hid = req.body.hid;
       hostels.remove({hostelid:hid});
      console.log('HOSTELID '+ hid+' DROPPED FROM '+ req.ip);
      res.redirect('/admin/hostels');}
