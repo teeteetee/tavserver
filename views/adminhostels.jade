@@ -11,24 +11,18 @@ head
     
     style
      :css
-      .container {
-      width:100%;
-      margin:0px;
-      padding:0px;
-      }
-      #header {
-      text-align:center;
-      background-color:#ddd;
+      .container{
+      background-color:#eee;
       }
       .order {
-      border-bottom:1px solid gray;
+      border-bottom:1px solid #ddd;
       text-align:center;
       }
       .field {
       border-right:1px solid #ddd;
       }
       #legend{
-      border-bottom:1px solid #333
+      border-bottom:1px solid #ddd;
       }
       .cap {
       text-align:center;
@@ -47,21 +41,24 @@ head
       }
   body
     .container
-      #header.row
+      #header.row(style='background-color:#333;')
         .col-xs-12
-          h1  Admin
-          h3  All orders 
+          h1(style='color:#eee;')  Top 
+            span(style='color:#ff9900;') &
+          h1(style='color:#eee;')  Views 
+            span(style='color:#c35') Admin : 
+            span(style='color:#c35555') Hostels 
       .row
         form(action='/drop/hostels',method='post',role='form')
           .col-xs-3
             h5 Drop by HOSTEL ID
           .col-xs-3
-            input(type='text', name='hid',style='margin-bottom:1vh;')
+            input(type='text', name='hid',style='margin:1vh;')
           .col-xs-3
-            input(type='password', name='p',style='margin-bottom:1vh;')
+            input(type='password', name='p',style='margin:1vh;')
           .col-xs-2
-            button(type='submit',style='background-color:#c35;color:white')
-              h5 Drop
+            button(type='submit',style='background-color:#c35;border-radius:4px;margin:1vh;')
+              h5(style='color:white;') Drop
 
       #results.row
         .col-xs-12
