@@ -677,7 +677,7 @@ app.get('/hostels/:hostel',function(req,res){
          if(hostel.offrqntt ===0)
          {res.render('noofferspp',{"hostel":hostel})}
        else {
-        res.render('pp',{"hostel":hostel});
+        res.render('pp',{"hostel":hostel,"offers":hostel.offers});
       }
       }
         else {
@@ -686,7 +686,7 @@ app.get('/hostels/:hostel',function(req,res){
             res.render('noofferspp',{"hostel":hostel});
           }
           else{
-          res.render('epp',{"hostel":hostel});
+          res.render('epp',{"hostel":hostel,"offers":hostel.offers});
          }
         }
       }
