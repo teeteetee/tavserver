@@ -11,6 +11,10 @@ head
     
     style
      :css
+     @font-face {
+      font-family:attentica;
+      src:url('/bootstrap/fonts/Attentica.ttf');
+      }
       .container{
       background-color:#eee;
       }
@@ -52,7 +56,7 @@ head
             span(style='color:#ff9900;') &
           h1(style='color:#eee;')  Views 
             span(style='color:#c35') Admin : 
-            span(style='color:#c35555') Hostels 
+            span(style='color:#e18282') Hostels 
       .row
         form(action='/drop/hostels',method='post',role='form')
           .col-xs-3
