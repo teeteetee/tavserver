@@ -131,8 +131,11 @@ head
               .col-xs-6
                 h4 HOSTEL ID
               .col-xs-6
-                input  (name='hostelid',type='text',style='margin:1vh')  
-            button(type='submit') GO
+                input  (name='hostelid',type='text',style='margin:1vh') 
+            .row
+              .col-xs-12(style='text-align:center;') 
+                button(type='submit')
+                  h4 GO
 
       form(style='text-align: left;', role='form', action='/upload', method='post', enctype='multipart/form-data')
         #one.row
