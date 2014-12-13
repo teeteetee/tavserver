@@ -270,16 +270,16 @@ app.get('/manage/:hid',function(req,res){
                       if(done.offrqntt === 0)
                         {res.render('nooffershosteladminru',{'hostel':done});}
                       else
-                        {var offridlst = done.offerids;
-                        res.render('hosteladminru',{'offers':offridlst,'hostel':done});}
+                        {
+                        res.render('hosteladminru',{'offers':done.offers,'hostel':done});}
                     //
                     }
                     else {  
                       if(done.offrqntt === 0)
                         {res.render('nooffershosteladminen',{'hostel':done});}
                       else
-                        {var offridlst = done.offerids;
-                        res.render('hosteladminen',{'offers':offridlst,'hostel':done});}
+                        {
+                        res.render('hosteladminen',{'offers':done.offers,'hostel':done});}
                     }
                   }  
                   else

@@ -229,7 +229,7 @@ head
       #offers.row
         .col-xs-12
         each offer, i in offers
-          #p500.row.offer
+          #p#{offer.price}.row.offer
             .col-xs-7
               h2  #{offer.price}
             #enqnumber.col-xs-2.enqnumber(style='background-color: white;')
