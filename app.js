@@ -312,7 +312,7 @@ app.post('/check',function(req,res){
   // MARKER MECHANICS IS NOT PRESENT YET , NEEDS TO BE IMPLEMENTED
    var  ms = {};
   ms.trouble=1;
-  ms.text='db';
+  ms.mtext='db';
   //end of marker
   users.findOne({mail:vlgn},function(err,confirmed){
     if (err)
@@ -335,7 +335,8 @@ app.post('/check',function(req,res){
                 }
                 else {
                   if (done)
-                  {ms.mtext= 'success';
+                  {ms.trouble=0;
+                    ms.mtext= 'success';
                    ms.mhostel = done.hostelid;
                    res.send(ms);
 
