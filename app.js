@@ -325,6 +325,7 @@ app.post('/check',function(req,res){
             {
               if (bcrypt.compareSync(vphr,confirmed.phr))
                {
+                console.log('PASSWORD IS GOOD, EXTRACTING INFO FROM HOSTELS DB');
              var x = confirmed.hostel;
               hostels.find({hostelid:x},function(err,hostel){
                 if (err)
@@ -334,10 +335,11 @@ app.post('/check',function(req,res){
                 else {
                   if (hostel)
                   {
+                    console.log('SUCCESFULLY EXTRACTED :'+hostel.placename);
                     var offridlst = hostel.offerids;
                      if (hostel.country === "russia")
                     { 
-                      
+                       console.log('GOING TO SERVE RUS');
                        req.session = confirmed;
                       
                       var name=hostel.nameru;
