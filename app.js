@@ -341,10 +341,9 @@ app.post('/check',function(req,res){
                     { 
                        console.log('GOING TO SERVE RUS');
                        req.session = confirmed;
-                      
-                      var name=done.nameru;
                       if(done.offrqntt === 0)
-                      {res.render('nooffershosteladminru',{'hostel':done});}
+                      {console.log('RUS OFFER');
+                        res.render('nooffershosteladminru',{'hostel':done});}
                       else
                       {
                         var offridlst = done.offers;
@@ -354,7 +353,6 @@ app.post('/check',function(req,res){
                     else {
                        
                        req.session = confirmed;
-                      var name=done.nameen;
                       if(done.offrqntt === 0)
                       {res.render('nooffershosteladminen',{'hostel':done});}
                       else
