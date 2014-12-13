@@ -46,7 +46,7 @@ app.use(function(req,res,next){
         next();
       }
       else {
-        if(user.length>0){
+        if(user.length>0 && user.hostel != 1){
         lguser = user;
         delete lguser.phr;
         delete lguser._id;
