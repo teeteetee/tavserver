@@ -364,7 +364,7 @@ app.post('/check',function(req,res){
             }
             else
             {
-              ms.mtext('wrong pas');
+              ms.mtext='wrong pas';
               res.send(ms);
               //WRONG PASSWORD
             }
