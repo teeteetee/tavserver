@@ -147,6 +147,9 @@ app.get('/',function(req,res) {
      if (req.session.mail != undefined && req.session.lgn != undefined)
       {res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});
   console.log('!!! REGISTERED USER CAME BACK !!!');}
+     else if (req.session.admin === 1) {
+      res.render('adminindex');
+     }
      else {
      res.render('index');}
    }
