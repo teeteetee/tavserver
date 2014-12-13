@@ -343,7 +343,8 @@ app.post('/check',function(req,res){
                        req.session = confirmed;
                       if(done.offrqntt === 0)
                       {console.log('RUS OFFER');
-                        res.render('nooffershosteladminru',{'hostel':done});}
+                        res.render('index');
+                      }
                       else
                       {
                         var offridlst = done.offers;
