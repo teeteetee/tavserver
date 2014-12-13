@@ -1096,7 +1096,7 @@ app.post('/enquery/:hostel', function(req,res){
     hostels.find({hostelid:x},function(err,result){
       var offrcnt = result.offrqntt;
        offrcnt++;
-      eval("hostels.update({hostelid:x},{$set:{offers:{offer"+offrcnt+":{price:"+y+",capacity:"+vcapacity+",enquiries:0}}}});");
+      eval("hostels.update({hostelid:x},{$set:{offrqntt:"+offrcnt+",offers:{offer"+offrcnt+":{price:"+y+",capacity:"+vcapacity+",enquiries:0}}}});");
     });
     res.redirect('http://topandviews.ru/manage/'+x);
 
