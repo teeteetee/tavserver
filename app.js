@@ -1090,7 +1090,7 @@ app.post('/enquery/:hostel', function(req,res){
     //OFFERS MUST BE CONFIRMED 
     //var voffrprc=req.body.offrprc;
     var vcapacity = req.body.capacity;
-    hostels.find({hostelid:x},function(err,result){
+    hostels.findOne({hostelid:x},function(err,result){
       var offrcnt = result.offrqntt;
        offrcnt++;
        console.log('OFFRCNT ID: '+offrcnt);
