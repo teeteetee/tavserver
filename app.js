@@ -262,7 +262,8 @@ app.get('/manage/:hid',function(req,res){
                 }
                 else {
                   if (hostel)
-                  {
+                  { 
+                    console.log(JSON.stringify(hostel));
                     var offridlst = hostel.offerids;
                      if (hostel.country === "russia")
                     { 
