@@ -225,7 +225,7 @@ head
           .row
             #map
               script.
-                var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView(#{hostel.coord}, 14);
+                var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([#{hostel.coord}], 14);
                 var myLayer = L.mapbox.featureLayer().addTo(map);
                 var geojson = {
                 type: 'FeatureCollection',
@@ -240,7 +240,7 @@ head
                 },
                 geometry: {
                 type: 'Point',
-                coordinates: #{hostel.coord}
+                coordinates: [#{hostel.coord}]
                 }
                 }]
                 };
