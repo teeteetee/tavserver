@@ -326,8 +326,9 @@ app.post('/check',function(req,res){
               if (bcrypt.compareSync(vphr,confirmed.phr))
                {
                 console.log('PASSWORD IS GOOD, EXTRACTING INFO FROM HOSTELS DB');
-             var x = confirmed.hostelid;
+               var x = confirmed.hostelid;
               hostels.findOne({hostelid:x},function(err,done){
+                console.log(JSON.stringify(done));
                 if (err)
                 {
                   //DO SOMETHING
