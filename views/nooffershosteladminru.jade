@@ -228,18 +228,16 @@ head
       //
         background-color:#00b74a;
     .container
-      #header.row(style='background-color:#333;cursor:pointer;')
+      #header.row(style='background-color:#333;')
         .col-xs-12
           h1(style='color:#eee;')  Top 
             span(style='color:#ff9900;') &
           h1(style='color:#eee;')  Views 
             span(style='color:#c35') #{hostel.nameen} 
       .row(style='text-align:center;')
-        .col-xs-8(style='border-left:1px solid #ddd;')
+        .col-xs-12(style='border-left:1px solid #ddd;border-right:1px solid #ddd;')
           h2 Предложения
-        .col-xs-4(style='border-left:1px solid #ddd;border-right:1px solid #ddd;')
-          h2 Добавить 
-      #newaddoffer.row(style='display:none;')
+      #newaddoffer.row(style='background-color:#eee')
         .col-xs-12
           .form(role='form',action='/enquery/#{hostel.hostelid',method='post')
             .row
