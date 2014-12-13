@@ -228,18 +228,18 @@ head
           h2 Предложения
       #offers.row
         .col-xs-12
-        each offer, i in offers
-          #p#{offer.price}.row.offer
-            .col-xs-7
-              h2  #{offer.price}
-            #enqnumber.col-xs-2.enqnumber(style='background-color: white;')
-              h2 #{offer.enquiries} 
-            #calendarbutton1.col-xs-2.calendar
-              h2 Календарь
-            #checkenq.col-xs-2(style='background-color: white;')
-              h2 R
-            #del.col-xs-1
-              h2 -
+          each offer, i in offers
+            #p500.row.offer
+              .col-xs-7
+                h2  #{offer.price}
+              #enqnumber.col-xs-2.enqnumber(style='background-color: white;')
+                h2 #{offer.enquiries} 
+              #calendarbutton1.col-xs-2.calendar
+                h2 Календарь
+              #checkenq.col-xs-2(style='background-color: white;')
+                h2 R
+              #del.col-xs-1
+                h2 -
             //
                #p1500.row.offer
                  .col-xs-8
