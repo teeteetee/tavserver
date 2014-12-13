@@ -270,7 +270,7 @@ app.get('/manage/:hid',function(req,res){
                       if(done.offrqntt === 0)
                         {res.render('nooffershosteladminru',{'hostel':done});}
                       else
-                        {console.log(done.offers);
+                        {console.log(done.offers+' '+done.offers.offer1.price);
                         res.render('hosteladminru',{'offers':done.offers,'hostel':done});}
                     //
                     }
