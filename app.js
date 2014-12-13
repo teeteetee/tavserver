@@ -1047,19 +1047,19 @@ app.post('/enquery/:hostel', function(req,res){
   //z = req.param('coco');
   z = req.body.coco;
   console.log(z);
-  console.log(month);
-  console.log(year);
   
   switch ( z ) {
-   case "enquiries":
+   case ("enquiries"):
    //used on main page of hostel web client
   orders.find({hostelid:x,offerid:y},function(err,results){
     res.send(results);
   });
    break;
-   case "calendar":
+   case ("calendar"):
    month = req.body.month;
    year = req.body.year;
+   console.log(month);
+   console.log(year);
    console.log('GOT INTO CALENDAR');
      // used to form calendar in hostel web client , obviously
      // nights parameter must be used to form a class by an offerid name which then can be light up in web intrface calendar to see the length of stay
@@ -1068,7 +1068,7 @@ app.post('/enquery/:hostel', function(req,res){
       else {res.send(docs);}
      });
    break;
-   case "remove":
+   case ("remove"):
     //used to remove an offer 
 
     hostels.find({hostel:x},function(err,result){
@@ -1088,7 +1088,7 @@ app.post('/enquery/:hostel', function(req,res){
     });
      //SHOULD ANYTHING BE SENT TO CLIENT TO CONFIRM ???
    break;
-   case"add":
+   case ("add"):
     //used to create an offer
     //OFFERS MUST BE CONFIRMED 
     //var voffrprc=req.body.offrprc;
@@ -1101,12 +1101,12 @@ app.post('/enquery/:hostel', function(req,res){
     res.redirect('http://topandviews.ru/manage/'+x);
 
    break;
-   case "removeownclient":
+   case ("removeownclient"):
     //used to remove clients enquieries which didn't come through our booking system 
     var venqid = req.body.enqid;
     orders.update({enqid:venqid},{$set:{confirmed:2}});
    break;
-   case"addownclient":
+   case ("addownclient"):
     //used to create a client enquiries which are not comming through our system
   var enqnum;
   hostels.find({hostelid:x},function(err,result){
