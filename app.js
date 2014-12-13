@@ -335,7 +335,7 @@ app.post('/check',function(req,res){
                 else {
                   if (done && done.length>0)
                   {
-                    console.log('SUCCESFULLY EXTRACTED :'+done.placename);
+                    console.log('SUCCESFULLY EXTRACTED :'+JSON.stringify(done));
                     var offridlst = done.offerids;
                      if (done.country === "russia")
                     { 
