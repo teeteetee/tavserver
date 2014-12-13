@@ -264,7 +264,7 @@ app.get('/manage/:hid',function(req,res){
                   if (hostel)
                   { 
                     console.log(JSON.stringify(hostel));
-                    var offridlst = hostel.offerids;
+                    
                      if (hostel.country === "russia")
                     { 
                       
@@ -272,7 +272,8 @@ app.get('/manage/:hid',function(req,res){
                       if(hostel.offrqntt === 0)
                       {res.render('nooffershosteladminru',{'hostelname':name});}
                       else
-                      {res.render('hosteladminru',{'offers':offridlst,'hostelname':name});}
+                      {var offridlst = hostel.offerids;
+                        res.render('hosteladminru',{'offers':offridlst,'hostelname':name});}
                     //
                     }
                     else {
@@ -280,12 +281,13 @@ app.get('/manage/:hid',function(req,res){
                       if(hostel.offrqntt === 0)
                       {res.render('nooffershosteladminen',{'hostelname':name});}
                       else
-                      {res.render('hosteladminen',{'offers':offridlst,'hostelname':name});}
+                      {var offridlst = hostel.offerids;
+                        res.render('hosteladminen',{'offers':offridlst,'hostelname':name});}
                     }
                   }  
                   else
               {
-                //DO SOMETHING
+                console.log('error');
               } 
               }
               
