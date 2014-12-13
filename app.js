@@ -1166,10 +1166,12 @@ app.post('/enquery/:hostel/:price', function(req,res){
 app.post('/testnopanoupload',function(req,res){
   var vplacename = 'testhostel';
   var vhostelid = 1;
+  var vppredir = 'http://topandviews.ru/hostels/testhostel';
 
   if(req.body.custom) {
     vplacename = req.body.placename;
     vhostelid = req.body.hostelid;
+    vppredir = 'http://topandviews.ru/hostels/'+vplacename;
   }
 
   hostels.insert({placename :vplacename,
@@ -1185,7 +1187,7 @@ app.post('/testnopanoupload',function(req,res){
          wifi:'yes',
          telephone : '+782764236452',
          www : 'http://d3.ru',
-         ppredir : 'http://topandviews.ru/hostels/testhostel',
+         ppredir : vppredir,
          hostelid:vhostelid,
          fid : 1,
          mid : 1,
@@ -1212,7 +1214,7 @@ app.post('/testnopanoupload',function(req,res){
     if(found.city)
     {
       console.log('----------SUCCESFULY SIMULATED SUBMITION--------------');
-      res.redirect('http://topandviews.ru/hostels/testhostel');
+      res.redirect(vppredir);
     }
     else {
       console.log('returned empty doc after submission');
