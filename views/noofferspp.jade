@@ -125,6 +125,14 @@ head
       border-left:1px solid #ddd;
       border-right:1px solid #ddd;
       }
+      .map{
+      height:40vh;
+      width:100%;
+      background-color:#ddd;
+      margin-right:auto;
+      margin-left:auto;
+      text-align:right;
+      }
   body
     #pano.container
       //
@@ -214,6 +222,29 @@ head
               h5 #{hostel.wifi}              
           #book.row
             .col-xs-12(style='margin:0px;padding:0px;')
+          .row
+            #map
+              script.
+              var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView(#{hostel.coord}, 14);
+              var myLayer = L.mapbox.featureLayer().addTo(map);
+              var geojson = {
+              type: 'FeatureCollection',
+              features: [{
+              type: 'Feature',
+              properties: {
+              title: '<a href="http://en.wikipedia.org/wiki/Washington,_D.C."><h5>Washington, D.C.</h5></a>',
+              'marker-color': '#f86767',
+              'marker-size': 'large',
+              'marker-symbol': 'star',
+              url: 'http://en.wikipedia.org/wiki/Washington,_D.C.'
+              },
+              geometry: {
+              type: 'Point',
+              coordinates: #{hostel.coord}
+              }
+              }]
+              };
+              myLayer.setGeoJSON(geojson);
           .row
             #shadow.col-xs-12    
       #info
