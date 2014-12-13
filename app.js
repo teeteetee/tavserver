@@ -255,7 +255,7 @@ app.get('/manage/:hid',function(req,res){
           else {
             if(done)
             {
-              hostels.find({hostelid:x},function(err,hostel){
+              hostels.find({hostelid:vhostelid},function(err,hostel){
                 if (err)
                 {
                   //DO SOMETHING
