@@ -263,7 +263,7 @@ app.get('/manage/:hid',function(req,res){
                 else {
                   if (done)
                   { 
-                    console.log(JSON.stringify(done));
+                    console.log(JSON.stringify(done)+' GOING INTO COUTRY CHECK');
                     
                      if (done.country === "russia")
                     { 
