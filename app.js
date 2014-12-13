@@ -1164,8 +1164,15 @@ app.post('/enquery/:hostel/:price', function(req,res){
 
 
 app.post('/testnopanoupload',function(req,res){
+  var vplacename = 'testhostel';
+  var vhostelid = 1;
 
-  hostels.insert({placename :'testhostel',
+  if(req.body.custom) {
+    vplacename = req.body.placename;
+    vhostelid = req.body.hostelid;
+  }
+
+  hostels.insert({placename :vplacename,
          nameru : 'Тестхостел',
          nameen : 'Testhostel',
          aderssru: 'Какаятосраная наб. дом 10 к.3 кв. 12',
@@ -1179,7 +1186,7 @@ app.post('/testnopanoupload',function(req,res){
          telephone : '+782764236452',
          www : 'http://d3.ru',
          ppredir : 'http://topandviews.ru/hostels/testhostel',
-         hostelid:1,
+         hostelid:vhostelid,
          fid : 1,
          mid : 1,
          oid : 1,
@@ -1187,13 +1194,15 @@ app.post('/testnopanoupload',function(req,res){
          country : 'russia',
          yearnow : 2014,
          sepgenders:'yes',
+         subdist:'300',
+         neartrnsp:'sub',
          pano : 0,
          offrqntt : 0,
          enquiries : {all:0,accepted:0},
          ownclients : 0
 
          });
-    hostels.findOne({hostelid:1},function(err,found){
+    hostels.findOne({hostelid:vhostelid},function(err,found){
      if(err)
      {
       console.log('ERROR from DB while executing findOne');

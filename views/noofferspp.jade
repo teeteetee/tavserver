@@ -65,6 +65,13 @@ head
       margin-top:0px;
       color:#333;
       }
+      h5 {
+      font-size:1vw;
+      font-family:arial;
+      letter-spacing:0.3vw;
+      text-transform:uppercase;
+      color:black;
+      }
       #info {
       position:fixed;
       opacity:0.5;
@@ -151,54 +158,54 @@ head
           |           
           #infotext.row
             .col-xs-6
-              h6
+              h5
                 a(href='#{hostel.www}') #{hostel.www}
               |  
               |                
-              h6 #{hostel.tekephone}
+              h5 #{hostel.tekephone}
               |                
-              h6 #{hostel.adressru}
+              h5 #{hostel.adressru}
               |                
-              h7 #{hostel.adressen}
+              h5 #{hostel.adressen}
             |             
             .col-sx-6
-              h6 Some text here
+              h5 Some text here
           .row(style='background-color:white;border-bottom:1px solid #ddd;')
             .col-xs-3
-              h7 VK
+              h5 VK
             .col-xs-3.br
-              h7 FB
+              h5 FB
             .col-xs-3.br
-              h7 TW
+              h5 TW
             .col-xs-3
-              h7 Skype
-          #sn.row(style='background-color:white;')
+              h5 Skype
+          #sn.row(style='background-color:#eee;')
             .col-xs-3
-              h7 #{hostel.vk}
+              h5 #{hostel.vk}
             .col-xs-3.br
-              h7 #{hostel.fb}
+              h5 #{hostel.fb}
             .col-xs-3.br
-              h7 #{hostel.tw}
+              h5 #{hostel.tw}
             .col-xs-3
-              h7 #{hostel.skype}  
-          .row(style='background-color:white;')
+              h5 #{hostel.skype}  
+          .row(style='background-color:#eee;')
             .col-xs-6.br
-              h7 Мальчики\девочки раздельно
+              h5 Мальчики\девочки раздельно
             .col-xs-6 
               #{hostel.sepgenders}  
-          .row(style='background-color:white;')
+          .row(style='background-color:#eee;')
             .col-xs-6.br
-              h7 До метро (метров)
+              h5 До метро (метров)
             .col-xs-6 
               #{hostel.subdist}  
-          .row(style='background-color:white;')
+          .row(style='background-color:#eee;')
             .col-xs-6.br
-              h7 Ближайший транспорт
+              h5 Ближайший транспорт
             .col-xs-6 
               #{hostel.neartrnsp}     
-          .row(style='background-color:white;')
+          .row(style='background-color:#eee;')
             .col-xs-6.br
-              h7 Wi-Fi
+              h5 Wi-Fi
             .col-xs-6 
               #{hostel.wifi}              
           #book.row
