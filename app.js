@@ -267,21 +267,18 @@ app.get('/manage/:hid',function(req,res){
                     console.log('-----------'+done.country+'-----------');
                      if (done.country === "russia")
                     { 
-                      
-                      
                       if(done.offrqntt === 0)
-                      {res.render('nooffershosteladminru',{'hostel':done});}
+                        {res.render('nooffershosteladminru',{'hostel':done});}
                       else
-                      {var offridlst = done.offerids;
+                        {var offridlst = done.offerids;
                         res.render('hosteladminru',{'offers':offridlst,'hostel':done});}
                     //
                     }
-                    else {
-                      
+                    else {  
                       if(done.offrqntt === 0)
-                      {res.render('nooffershosteladminen',{'hostel':done});}
+                        {res.render('nooffershosteladminen',{'hostel':done});}
                       else
-                      {var offridlst = done.offerids;
+                        {var offridlst = done.offerids;
                         res.render('hosteladminen',{'offers':offridlst,'hostel':done});}
                     }
                   }  
@@ -1096,6 +1093,7 @@ app.post('/enquery/:hostel', function(req,res){
     hostels.find({hostelid:x},function(err,result){
       var offrcnt = result.offrqntt;
        offrcnt++;
+       console.log('OFFRCNT ID: '+offrcnt);
       eval("hostels.update({hostelid:x},{$set:{offrqntt:"+offrcnt+",offers:{offer"+offrcnt+":{price:"+y+",capacity:"+vcapacity+",enquiries:0}}}});");
     });
     res.redirect('http://topandviews.ru/manage/'+x);
