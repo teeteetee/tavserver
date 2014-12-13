@@ -335,32 +335,36 @@ app.post('/check',function(req,res){
                 }
                 else {
                   if (done)
-                  {
-                    console.log('SUCCESFULLY EXTRACTED :'+JSON.stringify(done));
-                     if (done.country === "russia")
-                    { 
-                       console.log('GOING TO SERVE RUS');
-                       req.session = confirmed;
-                      if(done.offrqntt === 0)
-                      {console.log('RUS OFFER');
-                        res.render('index');
-                      }
-                      else
-                      {
-                        var offridlst = done.offers;
-                        res.render('hosteladminru',{'offers':offridlst,'hostel':done});}
-                    //
-                    }
-                    else {
-                       
-                       req.session = confirmed;
-                      if(done.offrqntt === 0)
-                      {res.render('nooffershosteladminen',{'hostel':done});}
-                      else
-                      {
-                        var offridlst = done.offers;
-                        res.render('hosteladminen',{'offers':offridlst,'hostel':done});}
-                    }
+                  {ms.mtext= 'success';
+                   ms.mhostel = done.hostelid;
+                   res.send(ms);
+
+                  //
+                   // console.log('SUCCESFULLY EXTRACTED :'+JSON.stringify(done));
+                   //  if (done.country === "russia")
+                   // { 
+                   //    console.log('GOING TO SERVE RUS');
+                   //    req.session = confirmed;
+                   //   if(done.offrqntt === 0)
+                   //   {console.log('RUS OFFER');
+                   //     res.render('index');
+                   //   }
+                   //   else
+                   //   {
+                   //     var offridlst = done.offers;
+                   //     res.render('hosteladminru',{'offers':offridlst,'hostel':done});}
+                   // //
+                   // }
+                   // else {
+                   //    
+                   //    req.session = confirmed;
+                   //   if(done.offrqntt === 0)
+                   //   {res.render('nooffershosteladminen',{'hostel':done});}
+                   //   else
+                   //   {
+                   //     var offridlst = done.offers;
+                   //     res.render('hosteladminen',{'offers':offridlst,'hostel':done});}
+                   // }
                   }  
                   else
               {
@@ -386,7 +390,7 @@ app.post('/check',function(req,res){
           req.session = confirmed;
           console.log("THAT'S WHAT I WROTE TO HIS COOKIES: "+JSON.stringify(req.session));
           ms.trouble = 0;
-          ms.mtext= 'success'
+          ms.mtext= 'success';
           res.send(ms);
            }
            else {
