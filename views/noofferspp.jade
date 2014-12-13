@@ -226,26 +226,27 @@ head
           .row
             .col-xs-12
               #mapitself.map
-              var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([#{hostel.coord[1]},#{hostel.coord[0]}], 14);
-              var myLayer = L.mapbox.featureLayer().addTo(map);
-              var geojson = {
-              type: 'FeatureCollection',
-              features: [{
-              type: 'Feature',
-              properties: {
-              title: '<a href="http://en.wikipedia.org/wiki/Washington,_D.C."><h5>Washington, D.C.</h5></a>',
-              'marker-color': '#f86767',
-              'marker-size': 'large',
-              'marker-symbol': 'star',
-              url: 'http://en.wikipedia.org/wiki/Washington,_D.C.'
-              },
-              geometry: {
-              type: 'Point',
-              coordinates: [#{hostel.coord[1]},#{hostel.coord[0]}]
-              }
-              }]
-              };
-              myLayer.setGeoJSON(geojson);
+              script.
+                var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([#{hostel.coord[1]},#{hostel.coord[0]}], 14);
+                var myLayer = L.mapbox.featureLayer().addTo(map);
+                var geojson = {
+                type: 'FeatureCollection',
+                features: [{
+                type: 'Feature',
+                properties: {
+                title: '<a href="http://en.wikipedia.org/wiki/Washington,_D.C."><h5>Washington, D.C.</h5></a>',
+                'marker-color': '#f86767',
+                'marker-size': 'large',
+                'marker-symbol': 'star',
+                url: 'http://en.wikipedia.org/wiki/Washington,_D.C.'
+                },
+                geometry: {
+                type: 'Point',
+                coordinates: [#{hostel.coord[1]},#{hostel.coord[0]}]
+                }
+                }]
+                };
+                myLayer.setGeoJSON(geojson);
               
           .row
             #shadow.col-xs-12    
