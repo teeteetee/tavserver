@@ -336,7 +336,7 @@ app.post('/check',function(req,res){
                   if (done && done.length>0)
                   {
                     console.log('SUCCESFULLY EXTRACTED :'+JSON.stringify(done));
-                    console.log(done.country);
+                    console.log(done['country']);
                      if (done.country === "russia")
                     { 
                        console.log('GOING TO SERVE RUS');
