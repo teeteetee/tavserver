@@ -36,20 +36,20 @@ head
       letter-spacing:1px;
       }
       h1 {
-      font-family:br;
-      color:gray;
+      font-size:4vw;
+      font-family:attentica;
+      display:inline;
+      }
+      h5 {
+      font-size:1vw;
+      font-family:arial;
+      letter-spacing:0.3vw;
+      text-transform:uppercase;
+      color:black;
       }
       h2 {
-      font-family:attentica;
-      font-size:3vw;
-      }
-      .row {
-      margin:0px;
-      padding:0px;
-      }
-      .container {
-      margin:0px;
-      padding:0px;
+      font-family:br;
+      font-size:2vw;
       }
       #header{
       text-align:left;
@@ -228,14 +228,19 @@ head
       //
         background-color:#00b74a;
     .container
-      #header.row
+      #header.row(style='background-color:#333;cursor:pointer;')
         .col-xs-12
-          h1(style='color: #ddd;') #{hostel.nameen}
-      #offers.row
+          h1(style='color:#eee;')  Top 
+            span(style='color:#ff9900;') &
+          h1(style='color:#eee;')  Views 
+            span(style='color:#c35') #{hostel.nameen} 
+      .row(style='text-align:center;')
+        .col-xs-8(style='border-left:1px solid #ddd;')
+          h2 Предложения
+        .col-xs-4(style='border-left:1px solid #ddd;border-right:1px solid #ddd;')
+          h2 Добавить 
+      #newaddoffer.row(style='display:none;')
         .col-xs-12
-          .row
-            .col-xs-12
-              h3  Добавить предложения 
           .form(role='form',action='/enquery/#{hostel.hostelid',method='post')
             .row
               .col-xs-4
@@ -250,7 +255,9 @@ head
             .row
               .col-xs-4
                 button(type='submit',style='border-radius:4px;border:1px solid green;')    
-                  h5 Добавить
+                  h5 Добавить         
+      .row
+        #offers.col-xs-12
             
 
             //
