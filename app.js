@@ -144,12 +144,12 @@ app.get('/',function(req,res) {
   //MIGH ADD AN ELSE
   if(req.headers.host === 'topandviews.ru') 
     {console.log(d+' request on .ru from '+req.ip);
-     if (req.session.mail != undefined && req.session.lgn != undefined)
-      {res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});
-  console.log('!!! REGISTERED USER CAME BACK !!!');}
-     else if (req.session.admin === 1) {
+     if (req.session.admin === 1) {
       res.render('adminindex');
      }
+     else if (req.session.mail != undefined && req.session.lgn != undefined)
+      {res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});
+  console.log('!!! REGISTERED USER CAME BACK !!!');}
      else {
      res.render('index');}
    }
