@@ -336,7 +336,7 @@ app.post('/check',function(req,res){
                   if (done && done.length>0)
                   {
                     console.log('SUCCESFULLY EXTRACTED :'+JSON.stringify(done));
-                    var offridlst = done.offerids;
+                    
                      if (done.country === "russia")
                     { 
                        console.log('GOING TO SERVE RUS');
@@ -346,7 +346,9 @@ app.post('/check',function(req,res){
                       if(done.offrqntt === 0)
                       {res.render('nooffershosteladminru',{'hostel':done});}
                       else
-                      {res.render('hosteladminru',{'offers':offridlst,'hostel':done});}
+                      {
+                        var offridlst = done.offers;
+                        res.render('hosteladminru',{'offers':offridlst,'hostel':done});}
                     //
                     }
                     else {
@@ -356,7 +358,9 @@ app.post('/check',function(req,res){
                       if(done.offrqntt === 0)
                       {res.render('nooffershosteladminen',{'hostel':done});}
                       else
-                      {res.render('hosteladminen',{'offers':offridlst,'hostel':done});}
+                      {
+                        var offridlst = done.offers;
+                        res.render('hosteladminen',{'offers':offridlst,'hostel':done});}
                     }
                   }  
                   else
