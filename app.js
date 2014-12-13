@@ -673,7 +673,24 @@ app.get('/hostels/:hostel',function(req,res){
         //SCREAM
       }
       else {
-        res.send(done.placename+' '+done.offrqntt+' '+done.ownclients);
+        if (done.pano === 1)
+       {
+         if(done.offrqntt ===0)
+         {res.render('noofferspp',{"hostel":done})}
+       else {
+        res.render('pp',{"hostel":done,"offers":done.offers});
+      }
+      }
+        else {
+          console.log('PANO IS ZERO and oq: '+done.offrqntt+' '+done.placename+' '+done.ownclients);
+          if (done.offrqntt === 0)
+          {
+            res.render('noofferspp',{"hostel":done});
+          }
+          else{
+          res.render('epp',{"hostel":done,"offers":done.offers});
+         }
+        }
       }
     });
   //  hostels.find({placename:word},function(err,jesus){
