@@ -193,60 +193,61 @@ head
             .col-xs-3
               h5 Skype
           #sn.row(style='background-color:#eee;border-bottom:1px solid #ddd;')
-            .col-xs-3
-              h5 #{hostel.vk}
-            .col-xs-3.br
-              h5 #{hostel.fb}
-            .col-xs-3.br
-              h5 #{hostel.tw}
-            .col-xs-3
-              h5 #{hostel.skype}  
-          .row.bs(style='background-color:#ddd;border-bottom:1px solid #ddd;')
-            .col-xs-5.br
-              h5 Мальчики\девочки раздельно
-            .col-xs-5 
-              h5 #{hostel.sepgenders}  
-          .row.bs(style='background-color:#eee;border-bottom:1px solid #ddd;')
-            .col-xs-5.br
-              h5 До метро (метров)
-            .col-xs-5.
-              h5 #{hostel.subdist}  
-          .row.bs(style='background-color:#ddd;border-bottom:1px solid #ddd;')
-            .col-xs-5.br
-              h5 Ближайший транспорт
-            .col-xs-5 
-              h5 #{hostel.neartrnsp}     
-          .row.bs(style='background-color:#eee;border-bottom:1px solid #ddd;')
-            .col-xs-5.br
-              h5 Wi-Fi
-            .col-xs-5 
-              h5 #{hostel.wifi}              
-          #book.row
-            .col-xs-12(style='margin:0px;padding:0px;')
+                .col-xs-3
+                  h5 #{hostel.vk}
+                .col-xs-3.br
+                  h5 #{hostel.fb}
+                .col-xs-3.br
+                  h5 #{hostel.tw}
+                .col-xs-3
+                  h5 #{hostel.skype}      
           .row
-            .col-xs-12
+            .col-xs-6    
+              .row.bs(style='background-color:#ddd;border-bottom:1px solid #ddd;')
+                .col-xs-9.br
+                  h5 Мальчики\девочки раздельно
+                .col-xs-3 
+                  h5 #{hostel.sepgenders}  
+              .row.bs(style='background-color:#eee;border-bottom:1px solid #ddd;')
+                .col-xs-9.br
+                  h5 До метро (метров)
+                .col-xs-3.
+                  h5 #{hostel.subdist}  
+              .row.bs(style='background-color:#ddd;border-bottom:1px solid #ddd;')
+                .col-xs-9.br
+                  h5 Ближайший транспорт
+                .col-xs-3 
+                  h5 #{hostel.neartrnsp}     
+              .row.bs(style='background-color:#eee;border-bottom:1px solid #ddd;')
+                .col-xs-9.br
+                  h5 Wi-Fi
+                .col-xs-3 
+                  h5 #{hostel.wifi}              
+              #book.row
+                .col-xs-12(style='margin:0px;padding:0px;')
+            .col-xs-6    
               #mapitself.map
-              script.
-                var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([#{hostel.coord[1]},#{hostel.coord[0]}], 14);
-                var myLayer = L.mapbox.featureLayer().addTo(map);
-                var geojson = {
-                type: 'FeatureCollection',
-                features: [{
-                type: 'Feature',
-                properties: {
-                title: '<a href="http://en.wikipedia.org/wiki/Washington,_D.C."><h5>Washington, D.C.</h5></a>',
-                'marker-color': '#f86767',
-                'marker-size': 'large',
-                'marker-symbol': 'star',
-                url: 'http://en.wikipedia.org/wiki/Washington,_D.C.'
-                },
-                geometry: {
-                type: 'Point',
-                coordinates: [#{hostel.coord[1]},#{hostel.coord[0]}]
-                }
-                }]
-                };
-                myLayer.setGeoJSON(geojson);
+                script.
+                  var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([#{hostel.coord[1]},#{hostel.coord[0]}], 14);
+                  var myLayer = L.mapbox.featureLayer().addTo(map);
+                  var geojson = {
+                  type: 'FeatureCollection',
+                  features: [{
+                  type: 'Feature',
+                  properties: {
+                  title: '<a href="http://en.wikipedia.org/wiki/Washington,_D.C."><h5>Washington, D.C.</h5></a>',
+                  'marker-color': '#f86767',
+                  'marker-size': 'large',
+                  'marker-symbol': 'star',
+                  url: 'http://en.wikipedia.org/wiki/Washington,_D.C.'
+                  },
+                  geometry: {
+                  type: 'Point',
+                  coordinates: [#{hostel.coord[1]},#{hostel.coord[0]}]
+                  }
+                  }]
+                  };
+                  myLayer.setGeoJSON(geojson);
               
           .row
             #shadow.col-xs-12    
