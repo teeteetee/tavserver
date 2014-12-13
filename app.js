@@ -327,7 +327,7 @@ app.post('/check',function(req,res){
                {
                 console.log('PASSWORD IS GOOD, EXTRACTING INFO FROM HOSTELS DB');
              var x = confirmed.hostelid;
-              hostels.find({hostelid:x},function(err,done){
+              hostels.findOne({hostelid:x},function(err,done){
                 if (err)
                 {
                   //DO SOMETHING
@@ -336,7 +336,6 @@ app.post('/check',function(req,res){
                   if (done && done.length>0)
                   {
                     console.log('SUCCESFULLY EXTRACTED :'+JSON.stringify(done));
-                    console.log(done['country']);
                      if (done.country === "russia")
                     { 
                        console.log('GOING TO SERVE RUS');
