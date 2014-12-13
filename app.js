@@ -241,7 +241,64 @@ app.post('/newuser',function(req,res){
 
     });
     
-
+app.get('/manage/:hid',function(req,res){
+    var vhostelid = req.params.hid;
+    if (req.session.hostel === 1 && req.session.mail)
+    {
+      users.findOne({mail:req.session.mail,hostelid:hid},function(err,done){
+        if (err)
+          {//SCREAM
+          }
+          else {
+            if(done)
+            {
+              hostels.find({hostelid:x},function(err,hostel){
+                if (err)
+                {
+                  //DO SOMETHING
+                }
+                else {
+                  if (hostel)
+                  {
+                    var offridlst = hostel.offerids;
+                     if (hostel.country === "russia")
+                    { 
+                      
+                      var name=hostel.nameru;
+                      if(hostel.offrqntt === 0)
+                      {res.render('nooffershosteladminru',{'hostelname':name});}
+                      else
+                      {res.render('hosteladminru',{'offers':offridlst,'hostelname':name});}
+                    //
+                    }
+                    else {
+                      var name=hostel.nameen;
+                      if(hostel.offrqntt === 0)
+                      {res.render('nooffershosteladminen',{'hostelname':name});}
+                      else
+                      {res.render('hosteladminen',{'offers':offridlst,'hostelname':name});}
+                    }
+                  }  
+                  else
+              {
+                //DO SOMETHING
+              } 
+              }
+              
+            });
+            }
+            else 
+            {
+              res.redirect('http://topandviews.ru');
+            }
+          }
+      });
+    }
+  else
+  {
+    res.redirect('http://topandviews.ru');
+  }
+});
 //LOGIN MECHANICS
 app.post('/check',function(req,res){
   //CHECK FOR PASSPORT PRIOR TO HOSTEL CHECK, SORT THIS OUT AFTER ALPHA
@@ -277,14 +334,24 @@ app.post('/check',function(req,res){
                     var offridlst = hostel.offerids;
                      if (hostel.country === "russia")
                     { 
-                      req.session = confirmed;
+                      
+                       req.session = confirmed;
+                      
                       var name=hostel.nameru;
-                    res.render('hosteladminru',{'offers':offridlst,'hostelname':name});
+                      if(hostel.offrqntt === 0)
+                      {res.render('nooffershosteladminru',{'hostel':hostel});}
+                      else
+                      {res.render('hosteladminru',{'offers':offridlst,'hostel':hostel});}
                     //
                     }
                     else {
+                       
                        req.session = confirmed;
-                      res.render('hosteladminen',{'offers':offridlst,'hostelname':name});
+                      var name=hostel.nameen;
+                      if(hostel.offrqntt === 0)
+                      {res.render('nooffershosteladminen',{'hostel':hostel});}
+                      else
+                      {res.render('hosteladminen',{'offers':offridlst,'hostel':hostel});}
                     }
                   }  
                   else
@@ -955,11 +1022,12 @@ app.post('/orders/:hostel/:price',function(req,res){
 });
 
 
-app.post('/enquery/:hostel/:price', function(req,res){
+
+app.post('/enquery/:hostel', function(req,res){
   console.log('GOT INTO ENQUERY !!!');
   //all the hostelclient magic happens here
   x = req.params.hostel;
-  y = req.params.price;
+  y = req.body.price;
   //z = req.param('coco');
   z = req.body.coco;
   month = req.body.month;
@@ -1007,14 +1075,15 @@ app.post('/enquery/:hostel/:price', function(req,res){
    case"add":
     //used to create an offer
     //OFFERS MUST BE CONFIRMED 
-    var voffrprc=req.body.offrprc;
+    //var voffrprc=req.body.offrprc;
     var vcapacity = req.body.capacity;
     hostels.find({hostelid:x},function(err,result){
       var offrcnt = result.offrqntt;
        offrcnt++;
-      eval("hostels.update({hostelid:x},{$set:{offers:{offer"+offrcnt+":{price:"+voffrprc+",capacity:"+vcapacity+",enquiries:0}}}});");
+      eval("hostels.update({hostelid:x},{$set:{offers:{offer"+offrcnt+":{price:"+y+",capacity:"+vcapacity+",enquiries:0}}}});");
     });
-    
+    res.redirect('http://topandviews.ru/manage/'+x);
+
    break;
    case "removeownclient":
     //used to remove clients enquieries which didn't come through our booking system 
