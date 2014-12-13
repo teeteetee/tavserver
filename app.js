@@ -668,34 +668,42 @@ app.get('/hostels/:hostel',function(req,res){
         }
   }
   else {
-    hostels.find({placename:word},function(err,jesus){
-
-      console.log(jesus.length+' '+jesus.pano);
-      if (jesus.length > 0) {
-        if (jesus.pano === 1)
-       {
-         if(jesus.offrqntt ===0)
-         {res.render('noofferspp',{"hostel":jesus})}
-       else {
-        res.render('pp',{"hostel":jesus,"offers":jesus.offers});
-      }
-      }
-        else {
-          console.log('PANO IS ZERO and oq: '+jesus.offrqntt+' '+jesus.placename+' '+jesus.ownclients);
-          if (jesus.offrqntt === 0)
-          {
-            res.render('noofferspp',{"hostel":jesus});
-          }
-          else{
-          res.render('epp',{"hostel":jesus,"offers":jesus.offers});
-         }
-        }
+    hostels.findOne({placename:word},function(err,done){
+      if (err) {
+        //SCREAM
       }
       else {
-        // logging maybe ?
-        res.redirect('http://topandviews.ru');
+        res.send(done.placename+' '+done.offrqntt+' '+done.ownclients);
       }
     });
+  //  hostels.find({placename:word},function(err,jesus){
+//
+//  //    console.log(jesus.length+' '+jesus.pano);
+//  //    if (jesus.length > 0) {
+//  //      if (jesus.pano === 1)
+//  //     {
+//  //       if(jesus.offrqntt ===0)
+//  //       {res.render('noofferspp',{"hostel":jesus})}
+//  //     else {
+//  //      res.render('pp',{"hostel":jesus,"offers":jesus.offers});
+//  //    }
+//  //    }
+//  //      else {
+//  //        console.log('PANO IS ZERO and oq: '+jesus.offrqntt+' '+jesus.placename+' '+jesus.ownclients);
+//  //        if (jesus.offrqntt === 0)
+//  //        {
+//  //          res.render('noofferspp',{"hostel":jesus});
+//  //        }
+//  //        else{
+//  //        res.render('epp',{"hostel":jesus,"offers":jesus.offers});
+//  //       }
+//  //      }
+//  //    }
+//  //    else {
+//  //      // logging maybe ?
+//  //      res.redirect('http://topandviews.ru');
+//  //    }
+  //  });
   }
 });
 
