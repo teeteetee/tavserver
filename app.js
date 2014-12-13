@@ -248,7 +248,7 @@ app.get('/manage/:hid',function(req,res){
     var vhostelid = req.params.hid;
     if (req.session.hostel === 1 && req.session.mail)
     {
-      users.findOne({mail:req.session.mail,hostelid:hid},function(err,done){
+      users.findOne({mail:req.session.mail,hostelid:vhostelid},function(err,done){
         if (err)
           {//SCREAM
           }
