@@ -263,26 +263,26 @@ app.get('/manage/:hid',function(req,res){
                 else {
                   if (hostel)
                   { 
-                    console.log(JSON.stringify(hostel));
+                    console.log(JSON.stringify(done));
                     
-                     if (hostel.country === "russia")
+                     if (done.country === "russia")
                     { 
                       
-                      var name=hostel.nameru;
-                      if(hostel.offrqntt === 0)
-                      {res.render('nooffershosteladminru',{'hostelname':name});}
+                      
+                      if(done.offrqntt === 0)
+                      {res.render('nooffershosteladminru',{'hostel':done});}
                       else
-                      {var offridlst = hostel.offerids;
-                        res.render('hosteladminru',{'offers':offridlst,'hostelname':name});}
+                      {var offridlst = done.offerids;
+                        res.render('hosteladminru',{'offers':offridlst,'hostel':done});}
                     //
                     }
                     else {
-                      var name=hostel.nameen;
-                      if(hostel.offrqntt === 0)
-                      {res.render('nooffershosteladminen',{'hostelname':name});}
+                      
+                      if(done.offrqntt === 0)
+                      {res.render('nooffershosteladminen',{'hostel':done});}
                       else
-                      {var offridlst = hostel.offerids;
-                        res.render('hosteladminen',{'offers':offridlst,'hostelname':name});}
+                      {var offridlst = done.offerids;
+                        res.render('hosteladminen',{'offers':offridlst,'hostel':done});}
                     }
                   }  
                   else
