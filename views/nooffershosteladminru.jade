@@ -54,163 +54,6 @@ head
       #header{
       text-align:left;
       }
-      .offer {
-      border-bottom:1px solid gray;
-      background-color:#ddd;
-      }
-      .enqnumber {
-      border-left:1px solid gray;
-      }
-      .enquiry {
-      }
-      #hone {
-      opacity:0.7;
-      }
-      #hone:hover {
-      background-color:#ffc773;
-      opacity:1;
-      }
-      #settingsblock {
-      display:none;
-      }
-      .offerstngs {
-      border-bottom:1px solid #333;
-      }
-      .highlightred:hover {
-      background-color:#a61717;
-      }
-      .highlightred:hover span {
-      color:#333;
-      }
-      .red {
-      background-color:#ff4646;
-      }
-      .whitef {
-      color:white;
-      }
-      .delno{
-      background-color:#009999;
-      color:white;
-      border-left:1px solid white;
-      }
-      .delno:hover{
-      background-color:#006363;
-      }
-      .delye {
-      background-color:#ff4646;
-      color:white;
-      }
-      .delye:hover {
-      background-color:#a61717;
-      }
-      .deletion {
-      display:none;
-      border-bottom:1px solid #333;
-      text-align:center;
-      }
-      #addanoffer {
-      color:#00b74a;
-      }
-      .plus {color:#00b74a;
-      border-left:2px solid white;
-      }
-      .plus:hover {
-      background-color:#00b74a;
-      }
-      .plus:hover h3 span {
-      color:white;
-      }
-      #offeradd {
-      padding-right:15px;
-      }
-      .calendar {
-      background-color:gray;
-      color:white;
-      cursor:pointer;
-      }
-      .calendar:hover {
-      background-color:#ffc773;
-      }
-      .weeknum {
-      background-color:#ffc773;
-      border-right:1px solid #bfa070;
-      border-bottom:1px solid #bfa070;
-      text-align:center;
-      }
-      .weeknum h2
-      {color:#bfa070;}
-      .day {
-      border-bottom:1px solid #ddd;
-      }
-      .weekend h2 {
-      color:#c35;
-      }
-      .off {
-      background-color:#ddd;
-      }
-      #calendarblock {
-      display:none;
-      }
-      #putithere {
-      display:none;
-      }
-      #thismonth {
-      text-align:center;
-      
-      }
-      #nextmonth {
-      text-align:left;
-      cursor:pointer;
-      border-right:1px solid white;
-      background-color:#c2e4ee;
-      }
-      #nextmonth:hover h2 {
-      color:white;
-      }
-      #nextmonth h2 {
-      color:#ddd;
-      }
-      #nextmonth:hover {
-        background-color:#ffc773;
-      }
-      #previousmonth{
-      text-align:right;
-      cursor:pointer;
-      border-left:1px solid white;
-      background-color:#c2e4ee;
-      }
-      #previousmonth:hover {
-        background-color:#ffc773;
-      }
-      #previousmonth:hover h2 {
-      color:white;
-      }
-      #previousmonth h2 {
-      color:#ddd;
-      }
-      .navlight:hover{
-      background-color:#ffc773;
-      }
-      .dayname {
-      color:#ddd;
-      border-bottom:1px solid #ddd;
-      }
-      .weekendname {
-      color:#c89191;
-      border-bottom:1px solid #ddd;
-      }
-      .weeknumblank {
-      border-bottom:1px solid #bfa070;
-      }
-      .weekdays {
-      border-top:1px solid #ddd;
-      }
-      #checkenq {
-      cursor:pointer;
-      }
-      #checkenq:hover {
-       background-color:#ddd;
-      }
       h5 {
       font-size:1vw;
       font-family:arial;
@@ -222,11 +65,6 @@ head
       background-color:#64de89;
       }
   body
-    #searchbutton(style='position: fixed; z-index: 2001; right: 0.5vw; top: 1vh;')
-      h3#hone
-        span.glyphicon.glyphicon-cog
-      //
-        background-color:#00b74a;
     .container
       #header.row(style='background-color:#333;')
         .col-xs-12
@@ -237,7 +75,7 @@ head
       .row(style='text-align:center;')
         .col-xs-12(style='border-left:1px solid #ddd;border-right:1px solid #ddd;')
           h2 Добавьте предложения
-      #newaddoffer.row(style='background-color:#eee')
+      .row(style='background-color:#eee')
         .col-xs-12
           .form(role='form',action='/enquery/#{hostel.hostelid',method='post')
             .row
@@ -256,70 +94,5 @@ head
                   h5 Добавить         
     
                   
-    //
-       jQuery (necessary for Bootstrap's JavaScript plugins) 
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
-    //
-       Include all compiled plugins (below), or include individual files as needed 
-    script(src='/bootstrap/js/bootstrap.min.js')
-    script(src='/bootstrap/js/jquery-ui.js')
-     
-    script.
-      //BUTTONS
-      $('#hone').click(function(){
-      //check if any remove actions are present , discard on exit
-      $('#offers').slideToggle();
-      $('#settingsblock').slideToggle();
-      });
-      $('#removebutton1').click(function(){
-      $('#remove1').slideToggle();
-      $('#offerstngs1').slideToggle();
-      });
-      $('#no1').click(function(){
-      $('#remove1').slideToggle();
-      $('#offerstngs1').slideToggle();
-      });
-      //BARBARIC
-      jQuery(function($) { $.extend({
-      form: function(url, data, method) {
-      if (method == null) method = 'POST';
-      if (data == null) data = {};
-      var form = $('<form>').attr({
-      method: method,
-      action: url
-      }).css({
-      display: 'none'
-      });
-      var addData = function(name, data) {
-      if ($.isArray(data)) {
-      for (var i = 0; i < data.length; i++) {
-      var value = data[i];
-      addData(name + '[]', value);
-      }
-      } else if (typeof data === 'object') {
-      for (var key in data) {
-      if (data.hasOwnProperty(key)) {
-      addData(name + '[' + key + ']', data[key]);
-      }
-      }
-      } else if (data != null) {
-      form.append($('<input>').attr({
-      type: 'hidden',
-      name: String(name),
-      value: String(data)
-      }));
-      }
-      };
-      for (var key in data) {
-      if (data.hasOwnProperty(key)) {
-      addData(key, data[key]);
-      }
-      }
-      return form.appendTo('body');
-      }
-      }); });
-      $('#submit').click(function(){
-      var cap = $('#capacity').text();
-      var pri = $('#price').text();
-      console.log(cap+' '+pri);
-      });
+   
+    
