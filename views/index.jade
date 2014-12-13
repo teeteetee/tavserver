@@ -693,8 +693,10 @@ head
       break;
       }}
       else {
-      //trouble === 0
-      window.location = 'http://topandviews.ru';
+      if(ms.hostelid)
+      {window.loction='http://topandviews.ru/manage/'+ms.hostelid;}
+      else
+      {window.location = 'http://topandviews.ru';}
       }
       }
       };
