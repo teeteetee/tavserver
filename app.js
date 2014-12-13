@@ -1046,8 +1046,6 @@ app.post('/enquery/:hostel', function(req,res){
   y = req.body.price;
   //z = req.param('coco');
   z = req.body.coco;
-  month = req.body.month;
-  year = req.body.year;
   console.log(z);
   console.log(month);
   console.log(year);
@@ -1060,6 +1058,8 @@ app.post('/enquery/:hostel', function(req,res){
   });
    break;
    case "calendar":
+   month = req.body.month;
+   year = req.body.year;
    console.log('GOT INTO CALENDAR');
      // used to form calendar in hostel web client , obviously
      // nights parameter must be used to form a class by an offerid name which then can be light up in web intrface calendar to see the length of stay
@@ -1124,12 +1124,12 @@ app.post('/enquery/:hostel', function(req,res){
 
   var venqid = enqnum++;
   //var vofferid= req.params.price; - already set as "y"
-  var year = req.body.fyear;
-  var vmonth = req.body.fmonth;
-  var vday = req.body.fday;
-  var year = req.body.toyear;
-  var vmonth = req.body.tomonth;
-  var vday = req.body.today;
+  var vfyear = req.body.fyear;
+  var vfmonth = req.body.fmonth;
+  var vfday = req.body.fday;
+  var vtoyear = req.body.toyear;
+  var vtomonth = req.body.tomonth;
+  var vtoday = req.body.today;
   var vnights = req.body.nights;
    orders.insert({hostelid:vhostelid,offerid:y,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday,nights:vnights,confirmed:1,reqip:req.ip,outer:1,enqid:venqid});
    hostels.find({hostelid:x},function(err,result){
