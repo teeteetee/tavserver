@@ -673,54 +673,30 @@ app.get('/hostels/:hostel',function(req,res){
         //SCREAM
       }
       else {
-        if (done.pano === 1)
-       {
-         if(done.offrqntt ===0)
-         {res.render('noofferspp',{"hostel":done})}
+        if(done)
+        {if (done.pano === 1)
+               {
+                 if(done.offrqntt ===0)
+                 {res.render('noofferspp',{"hostel":done})}
+               else {
+                res.render('pp',{"hostel":done,"offers":done.offers});
+              }
+              }
+                else {
+                  console.log('PANO IS ZERO and oq: '+done.offrqntt+' '+done.placename+' '+done.ownclients);
+                  if (done.offrqntt === 0)
+                  {
+                    res.render('noofferspp',{"hostel":done});
+                  }
+                  else{
+                  res.render('epp',{"hostel":done,"offers":done.offers});
+                 }
+                }}
        else {
-        res.render('pp',{"hostel":done,"offers":done.offers});
-      }
-      }
-        else {
-          console.log('PANO IS ZERO and oq: '+done.offrqntt+' '+done.placename+' '+done.ownclients);
-          if (done.offrqntt === 0)
-          {
-            res.render('noofferspp',{"hostel":done});
-          }
-          else{
-          res.render('epp',{"hostel":done,"offers":done.offers});
-         }
-        }
+        res.redirect('http://topandviews.ru');
+       }
       }
     });
-  //  hostels.find({placename:word},function(err,jesus){
-//
-//  //    console.log(jesus.length+' '+jesus.pano);
-//  //    if (jesus.length > 0) {
-//  //      if (jesus.pano === 1)
-//  //     {
-//  //       if(jesus.offrqntt ===0)
-//  //       {res.render('noofferspp',{"hostel":jesus})}
-//  //     else {
-//  //      res.render('pp',{"hostel":jesus,"offers":jesus.offers});
-//  //    }
-//  //    }
-//  //      else {
-//  //        console.log('PANO IS ZERO and oq: '+jesus.offrqntt+' '+jesus.placename+' '+jesus.ownclients);
-//  //        if (jesus.offrqntt === 0)
-//  //        {
-//  //          res.render('noofferspp',{"hostel":jesus});
-//  //        }
-//  //        else{
-//  //        res.render('epp',{"hostel":jesus,"offers":jesus.offers});
-//  //       }
-//  //      }
-//  //    }
-//  //    else {
-//  //      // logging maybe ?
-//  //      res.redirect('http://topandviews.ru');
-//  //    }
-  //  });
   }
 });
 
