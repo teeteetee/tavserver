@@ -331,10 +331,10 @@ app.post('/check',function(req,res){
                 console.log(JSON.stringify(done));
                 if (err)
                 {
-                  //DO SOMETHING
+                  console.log('----------DB ERROR-----------');
                 }
                 else {
-                  if (done && done.length>0)
+                  if (done)
                   {
                     console.log('SUCCESFULLY EXTRACTED :'+JSON.stringify(done));
                      if (done.country === "russia")
