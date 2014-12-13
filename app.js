@@ -327,36 +327,36 @@ app.post('/check',function(req,res){
                {
                 console.log('PASSWORD IS GOOD, EXTRACTING INFO FROM HOSTELS DB');
              var x = confirmed.hostel;
-              hostels.find({hostelid:x},function(err,hostel){
+              hostels.find({hostelid:x},function(err,done){
                 if (err)
                 {
                   //DO SOMETHING
                 }
                 else {
-                  if (hostel)
+                  if (done && done.length>0)
                   {
-                    console.log('SUCCESFULLY EXTRACTED :'+hostel.placename);
-                    var offridlst = hostel.offerids;
-                     if (hostel.country === "russia")
+                    console.log('SUCCESFULLY EXTRACTED :'+done.placename);
+                    var offridlst = done.offerids;
+                     if (done.country === "russia")
                     { 
                        console.log('GOING TO SERVE RUS');
                        req.session = confirmed;
                       
-                      var name=hostel.nameru;
-                      if(hostel.offrqntt === 0)
-                      {res.render('nooffershosteladminru',{'hostel':hostel});}
+                      var name=done.nameru;
+                      if(done.offrqntt === 0)
+                      {res.render('nooffershosteladminru',{'hostel':done});}
                       else
-                      {res.render('hosteladminru',{'offers':offridlst,'hostel':hostel});}
+                      {res.render('hosteladminru',{'offers':offridlst,'hostel':done});}
                     //
                     }
                     else {
                        
                        req.session = confirmed;
-                      var name=hostel.nameen;
-                      if(hostel.offrqntt === 0)
-                      {res.render('nooffershosteladminen',{'hostel':hostel});}
+                      var name=done.nameen;
+                      if(done.offrqntt === 0)
+                      {res.render('nooffershosteladminen',{'hostel':done});}
                       else
-                      {res.render('hosteladminen',{'offers':offridlst,'hostel':hostel});}
+                      {res.render('hosteladminen',{'offers':offridlst,'hostel':done});}
                     }
                   }  
                   else
