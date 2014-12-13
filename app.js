@@ -546,7 +546,7 @@ app.post('/admin/hostels/add',function(req,res){
 else
   {var vhostelid = req.body.hostelid;
      var vmail = req.body.mail;
-     var vpass =req.body.pc;
+     var vp = bcrypt.hashSync(req.body.pc,bcrypt.genSaltSync(10));
      var vcname = req.body.cname;
      var vcphone = req.body.cphone;
      var vregdate = req.body.regdate;
