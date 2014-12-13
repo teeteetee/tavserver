@@ -553,7 +553,7 @@ else
      console.log(vhostelid+" "+vcname+" "+vcphone+" "+vregdate);
      var ms={};
      ms.trouble= 0;
-     users.insert({hostelid:vhostelid,hostel:1,contact:{name:vcname,phone:vcphone},mail:vmail,phr:vpass,regdate:vregdate});
+     users.insert({hostelid:vhostelid,hostel:1,contact:{name:vcname,phone:vcphone},mail:vmail,phr:vp,regdate:vregdate});
      res.send(ms);}
 
 
