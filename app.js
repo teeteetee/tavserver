@@ -255,13 +255,13 @@ app.get('/manage/:hid',function(req,res){
           else {
             if(done)
             {
-              hostels.find({hostelid:vhostelid},function(err,hostel){
+              hostels.find({hostelid:vhostelid},function(err,done){
                 if (err)
                 {
                   //DO SOMETHING
                 }
                 else {
-                  if (hostel)
+                  if (done)
                   { 
                     console.log(JSON.stringify(done));
                     
