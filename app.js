@@ -1036,7 +1036,7 @@ app.post('/enquery/:hostel', function(req,res){
   //all the hostelclient magic happens here
   var x = req.params.hostel;
   var y = req.body.price;
-
+  console.log(x+' '+y);
   //z = req.param('coco');
   z = req.body.coco;
   console.log(z);
