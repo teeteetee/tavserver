@@ -53,6 +53,7 @@ head
       }
       #header{
       text-align:left;
+      cursor:pointer;
       }
       .offer {
       border-top:1px solid #ddd;
@@ -685,6 +686,9 @@ head
       });
       
       //BUTTONS
+      $('#header').click(function(){
+      window.location='http://topandviews.ru';
+      });
       $('#hone').click(function(){
       //check if any remove actions are present , discard on exit
       $('#offers').slideToggle();
