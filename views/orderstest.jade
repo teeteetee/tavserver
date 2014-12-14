@@ -1,56 +1,94 @@
-
+html
 html(lang='en')
 head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    title Bootstrap 101 Template
+    title Admin
     //
        Bootstrap 
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
-    
+    style
+     :css
+      @font-face {
+      font-family:attentica;
+      src:url('/bootstrap/fonts/Attentica.ttf');
+      }
+      .container{
+      background-color:#eee;
+      }
+      #header {
+      text-align:left;
+      background-color:#ddd;
+      cursor:pointer;
+      }
+      h5 {
+      font-size:1vw;
+      font-family:arial;
+      letter-spacing:0.3vw;
+      text-transform:uppercase;
+      color:black;
+      }
+      h1 {
+      font-size:4vw;
+      font-family:attentica;
+      display:inline;
+      }
+      input{
+      font-family:arial;
+      letter-spacing:1px;
+      font-size:1.5vw;
+      margin:1vh;
+      }
   body
     .container
-      #header.row
+      script.
+        function away() {
+         window.location='http://topandviews.ru/admin';
+        }
+      #header.row(style='background-color:#333;',onclick='away()')
         .col-xs-12
-          h1  Orders test
+          h1(style='color:#eee;')  Top
+            span(style='color:#ff9900;') &
+          h1(style='color:#eee;') Views 
+            span(style='color:#c35') Admin : 
+            span(style='color:#e18282') Order Simulation 
       .row
-        .col-xs-2
+        .col-xs-12(style='text-align:center;')
           form(action='/orders/1/test', method='post', role='form')
-            button.form-control(style='background-color: #00ac6b;color:white;', type='submit') TEST SUBMIT
+            button(style='background-color: #00ac6b;color:white;', type='submit')
+              h5 TEST SUBMIT
       .row
         .col-xs-6
-            h2  from year
-            h2  from month
-            h2  from day
-            h2  to year
-            h2  to month
-            h2  to day
-            h2  Phone is present
-            h2  Mail
-            h2  Phone
-            h2  User is registered
+          h5  hostelid
+          h5  price
+          h5  from year
+          h5  from month
+          h5  from day
+          h5  to year
+          h5  to month
+          h5  to day
+          h5  User is registered
         .col-xs-6
-          form(action='/orders/1/1000', method='post', role='form')
-            input.form-control(name='fyear', type='text')
+          form(action='/orders/simulate', method='post', role='form')
+            input(name='hostel', type='text')
             br
-            input.form-control(name='fmonth', type='text')
+            input(name='price', type='text')
             br
-            input.form-control(name='fday', type='text')
+            input(name='fyear', type='text')
             br
-            input.form-control(name='toyear', type='text')
+            input(name='fmonth', type='text')
             br
-            input.form-control(name='tomonth', type='text')
+            input(name='fday', type='text')
             br
-            input.form-control(name='today', type='text')
+            input(name='toyear', type='text')
             br
-            input.form-control(name='phonep', type='text')
+            input(name='tomonth', type='text')
             br
-            input.form-control(name='mail', type='text')
+            input(name='today', type='text')
             br
-            input.form-control(name='phone', type='text')
+            input(name='registered', type='text')
             br
-            input.form-control(name='registered', type='text')
-            br
-            button.form-control(style='background-color: red;', type='submit') DATA SUBMIT
+            button(style='background-color: red;', type='submit') 
+              h5 DATA SUBMIT
         
