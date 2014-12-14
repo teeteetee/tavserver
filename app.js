@@ -995,16 +995,16 @@ app.post('/uploadauth', function(req,res){
 app.post('/orders/simulate',function(req,res){
   //ORDERCOUNT must go here, this is begining of getting statistic together. Orders taken, objects added, visitors etc.
   console.log('going to simulate an order');
-  vregistered = req.body.registered;
-  vhostelid = req.body.hostel;
-  vofferid= req.body.price;
+  vregistered = parseInt(req.body.registered);
+  vhostelid = parseInt(req.body.hostel);
+  vofferid= parseInt(req.body.price);
   vfyear = parseInt(req.body.fyear);
   vfmonth = parseInt(req.body.fmonth);
   vfday = parseInt(req.body.fday);
   vtoyear = parseInt(req.body.toyear);
   vtomonth = parseInt(req.body.tomonth);
   vtoday = parseInt(req.body.today);
-  vnights = req.body.nights;
+  vnights = parseInt(req.body.nights);
   //DONT FORGET ABOUT "OUTER" FIELD
    if (vofferid === 'test')
    {
