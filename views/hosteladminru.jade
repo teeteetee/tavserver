@@ -4,7 +4,7 @@ head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    title #{hostelname}
+    title #{hostel.placename}
     //
        Bootstrap 
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
@@ -231,7 +231,7 @@ head
         .col-xs-12
           each offer, i in offers
             #p500.row.offer
-              .col-xs-7
+              .col-xs-2
                 h2  #{offer.price}
               #enqnumber.col-xs-2.enqnumber(style='background-color: white;')
                 h2 #{offer.enquiries} 
