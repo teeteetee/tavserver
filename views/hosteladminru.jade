@@ -585,6 +585,8 @@ head
       var monthscount=month;
       var ky =0;
       populate(monthscount,0);
+      console.log('GOING TO GET DATA WITH: '+reqmonth+' '+reqyear);
+      getdata(reqmonth,reqyear);
       $("#nextmonth").click(function () {
       console.log("KY IS: "+ky);
       if (monthscount === 11)
