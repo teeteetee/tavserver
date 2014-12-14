@@ -1048,7 +1048,7 @@ app.post('/enquery/:hostel', function(req,res){
   });
    break;
    case ("calendar"):
-   month = req.body.month;
+   month = req.body.month+1;
    year = req.body.year;
    console.log(month);
    console.log(year);
