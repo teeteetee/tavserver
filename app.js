@@ -998,12 +998,12 @@ app.post('/orders/simulate',function(req,res){
   vregistered = req.body.registered;
   vhostelid = req.body.hostel;
   vofferid= req.body.price;
-  vfyear = req.body.fyear;
-  vfmonth = req.body.fmonth;
-  vfday = req.body.fday;
-  vtoyear = req.body.toyear;
-  vtomonth = req.body.tomonth;
-  vtoday = req.body.today;
+  vfyear = parseInt(req.body.fyear);
+  vfmonth = parseInt(req.body.fmonth);
+  vfday = parseInt(req.body.fday);
+  vtoyear = parseInt(req.body.toyear);
+  vtomonth = parseInt(req.body.tomonth);
+  vtoday = parseInt(req.body.today);
   vnights = req.body.nights;
   //DONT FORGET ABOUT "OUTER" FIELD
    if (vofferid === 'test')
@@ -1056,7 +1056,7 @@ app.post('/enquery/:hostel', function(req,res){
    console.log('GOT INTO CALENDAR');
      // used to form calendar in hostel web client , obviously
      // nights parameter must be used to form a class by an offerid name which then can be light up in web intrface calendar to see the length of stay
-     orders.find({hostelid:x,offerid:y},function(err,docs){
+     orders.find({hostelid:x,offerid:y,fmonth:month,fyear:year},function(err,docs){
       if (err) {res.send('ERROR')}
       else {
         console.log(JSON.stringify(docs));
