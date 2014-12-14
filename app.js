@@ -992,18 +992,12 @@ app.post('/uploadauth', function(req,res){
 });  
 
 
-
-
-
-var testcount=1;
-app.post('/orders/:hostel/:price',function(req,res){
+app.post('/orders/simulate',function(req,res){
   //ORDERCOUNT must go here, this is begining of getting statistic together. Orders taken, objects added, visitors etc.
-  vphonep = req.body.phonep;
-  vmail = req.body.mail;
-  vphone = req.body.phone;
+  console.log('going to simulate an order');
   vregistered = req.body.registered;
-  vhostelid = req.params.hostel;
-  vofferid= req.params.price;
+  vhostelid = req.body.hostel;
+  vofferid= req.body.price;
   year = req.body.fyear;
   vmonth = req.body.fmonth;
   vday = req.body.fday;
@@ -1027,11 +1021,11 @@ app.post('/orders/:hostel/:price',function(req,res){
      vtoday = 10;
      vnights = 3; 
     orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday,nights:vnights,confirmed:0,reqip:req.ip,outer:0});
-    testcount++;
-
+    res.redirect('http://topandviews.ru/admin/orders');
    }
    else {
-  orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday,nights:vnights,confirmed:0,reqip:req.ip,outer:0});
+  orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:'test@test.ru',phonep:1,phone:'+8293847293524',fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday,nights:vnights,confirmed:0,reqip:req.ip,outer:0});
+   res.redirect('http://topandviews.ru/admin/orders');
    }
 });
 
