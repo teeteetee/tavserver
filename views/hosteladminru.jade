@@ -353,7 +353,7 @@ head
       var monthc = month + 1;
       if(monthc === 13)
       {monthc = 1}
-      console.log("P:"+vpreviousmonth+", T: "+monthc+" , N: "+vnextmonth);
+      console.log("P:"+vpreviousmonth+" "+months[vpreviousmonth]+", T: "+monthc+" "+months[monthc]+", N: "+vnextmonth+" "+months[vnextmonth]);
       $("#previousmonth").append("<h2><span style='padding-right:2vw;color:white;letter-spacing:2px;'>"+months[vpreviousmonth]+"</span><span class='glyphicon glyphicon-chevron-left' style='color:#216477;'></span></h2>");
       $("#thismonth").append("<h2 style='color:#025167;font-size:3.4vw;'>"+months[monthc]+"</h2>");
       $("#nextmonth").append("<h2><span class='glyphicon glyphicon-chevron-right' style='color:#216477;'></span><span style='padding-left:2vw;color:white;'>"+months[vnextmonth]+"</span></h2>");
