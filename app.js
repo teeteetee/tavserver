@@ -998,12 +998,12 @@ app.post('/orders/simulate',function(req,res){
   vregistered = req.body.registered;
   vhostelid = req.body.hostel;
   vofferid= req.body.price;
-  year = req.body.fyear;
-  vmonth = req.body.fmonth;
-  vday = req.body.fday;
-  year = req.body.toyear;
-  vmonth = req.body.tomonth;
-  vday = req.body.today;
+  vfyear = req.body.fyear;
+  vfmonth = req.body.fmonth;
+  vfday = req.body.fday;
+  vtoyear = req.body.toyear;
+  vtomonth = req.body.tomonth;
+  vtoday = req.body.today;
   vnights = req.body.nights;
   //DONT FORGET ABOUT "OUTER" FIELD
    if (vofferid === 'test')
