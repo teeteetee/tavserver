@@ -630,12 +630,12 @@ head
       }
       
       };
-      request.open('POST', '/enquery/1/test', true);
+      request.open('POST', '/enquery/#{hostel.hostelid}', true);
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       // Most libraries like jQuery/Prototype/Dojo do this
       //21.11 month and year was hardcoded, changing to dynamic values
-      request.send("month="+reqmonth+"&year="+reqyear+"&coco=enquires");
+      request.send("month="+reqmonth+"&year="+reqyear+"&coco=enquiries");
       }//if calendarcount
       else {
        $('#calendarblock').slideToggle();
@@ -643,6 +643,7 @@ head
       }
       });
       //REQUEST FOR NEXT MONTH'S CALENDAR DATA
+      var nextmonthcount = 0;
       $("#nextmonth").click(function(){
       $('#claendarblock').css({"opacity":"0.5"});
       request = new XMLHttpRequest();
@@ -669,20 +670,31 @@ head
       $('#thismonth').empty();
       $('#nextmonth').empty();
       $('#previousmonth').empty();
-      $('#thismonth').append("<h2><span style='color:white;' class='glyphicon glyphicon-chevron-left'></span>DECEMBER</h2>");
-      $('#nextmonth').append("<h2><span style='color:gray;' class='glyphicon glyphicon-chevron-right'></span> <span style='padding-left:2vw;color:#ddd;'>JANUARY</span></h2>");
-      $('#previousmonth').append("<h2><span style='padding-right:2vw;color:#ddd;'>NOVEMBER</span><span style='color:gray;' class='glyphicon glyphicon-chevron-left'></span> </h2>");
+      $('#thismonth').append("<h2><span style='color:white;' class='glyphicon glyphicon-chevron-left'></span>"+months[nmonth]+"</h2>");
+      var pmonth = nmonth -1;
+      if (pmonth === 0)
+      {pmonth ===12}
+      var nnmonth = nmonth++;
+      if(nnmonth === 13)
+      {nnmonth ===1}
+      $('#nextmonth').append("<h2><span style='color:gray;' class='glyphicon glyphicon-chevron-right'></span> <span style='padding-left:2vw;color:#ddd;'>"+months[nnmonth]+"</span></h2>");
+      $('#previousmonth').append("<h2><span style='padding-right:2vw;color:#ddd;'>"+months[pmonth]+"</span><span style='color:gray;' class='glyphicon glyphicon-chevron-left'></span> </h2>");
 
 
       $('#calendarblock').css({"opacity":"1"});
-      
+       nextmonthcount++;
       }
       };
-      request.open('POST', '/enquery/1/test', true);
+      request.open('POST', '/enquery/#{hostel.hostelid}', true);
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       // Most libraries like jQuery/Prototype/Dojo do this
-      request.send("month=12&year=2014&coco=enquires");
+      var dd = new Date()
+      var nmonth = dd.getMonth()+2;
+      var nyear = dd.getUTCFullYear();
+      if (nmonth === 13)
+       {nmonth===1;nyear++}
+      request.send("month="+nmonth+"&year="+nyear+"&coco=enquiries");
       });
       
       //BUTTONS
@@ -717,7 +729,7 @@ head
       alert('SERVER RETURNED: '+parsed);
       }}
       };
-      request.open('POST', '/enquery/1/0', true);
+      request.open('POST', '/enquery/#{hostel.hostelid}', true);
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       // Most libraries like jQuery/Prototype/Dojo do this
