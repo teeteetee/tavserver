@@ -1034,8 +1034,8 @@ app.post('/orders/simulate',function(req,res){
 app.post('/enquery/:hostel', function(req,res){
   console.log('GOT INTO ENQUERY !!!');
   //all the hostelclient magic happens here
-  var x = req.params.hostel;
-  var y = req.body.price;
+  var x = parseInt(req.params.hostel);
+  var y = parseInt(req.body.price);
   console.log(x+' '+y);
   //z = req.param('coco');
   z = req.body.coco;
@@ -1050,7 +1050,7 @@ app.post('/enquery/:hostel', function(req,res){
    break;
    case ("calendar"):
    var month = parseInt(req.body.month)+1;
-   var year = req.body.year;
+   var year = parseInt(req.body.year);
    console.log(month);
    console.log(year);
    console.log('GOT INTO CALENDAR');
@@ -1059,8 +1059,15 @@ app.post('/enquery/:hostel', function(req,res){
      orders.find({hostelid:x,offerid:y,fmonth:month,fyear:year},function(err,docs){
       if (err) {res.send('ERROR')}
       else {
-        console.log(JSON.stringify(docs));
-        res.send(docs);}
+        if(!docs || docs.length <1)
+        {
+          orders.find({hostelid:x,offerid:y},function(errr,lftv){
+            console.log(lftv);
+          });
+        }
+        else
+        {console.log(JSON.stringify(docs));
+                res.send(docs);}}
      });
    break;
    case ("remove"):
