@@ -815,22 +815,22 @@ app.post('/drop/:part',function(req,res){
   {
     case('orders'):
      if(req.body.p ===  pp)
-      {orders.remove();
+      {orders.remove({});
         console.log('ORDERS DB DROPPED FROM '+ req.ip);
-        res.render('adminorders');
+        res.redirect('http://topandviews.ru/admin/orders');
       }
     break;
     case('users'):
      if(req.body.p ===  pp)
-     {users.remove();
+     {users.remove({});
      console.log('USERS DB DROPPED FROM '+ req.ip);
-     res.redirect('/admin/users');}
+     res.redirect('http://topandviews.ru/admin/users');}
     break;
     case('hostelusers'):
      if(req.body.p ===  pp)
      {users.remove({hostel:1});
      console.log('HOSTEL USERS DB DROPPED FROM '+ req.ip);
-     res.redirect('/admin/hostelusers');}
+     res.redirect('http://topandviews.ru/admin/hostelusers');}
     break;
     case('hostels'):
      if(req.body.p ===  pp)
@@ -839,7 +839,7 @@ app.post('/drop/:part',function(req,res){
         if (!err)
         {
           console.log('HOSTELID '+ hid+' DROPPED FROM '+ req.ip);
-           res.redirect('/admin/hostels');
+           res.redirect('http://topandviews.ru/admin/hostels');
         }
        else
         {res.send('there was an error');}
