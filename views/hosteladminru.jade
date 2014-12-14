@@ -643,67 +643,7 @@ head
        calendarcount++;
       }
       });
-      //REQUEST FOR NEXT MONTH'S CALENDAR DATA
-      var nextmonthcount = 1;
-      var nnyearcount= 1;
-      $("#nextmonth").click(function(){
-      $('#claendarblock').css({"opacity":"0.5"});
-      request = new XMLHttpRequest();
-      request.onreadystatechange = function () {
-      var DONE = this.DONE || 4;
-      if (this.readyState === DONE){
-      var index;
-      var parsed = JSON.parse(request.responseText);
-      for (index = 0; index < parsed.length; ++index) {    
-      order=parsed[index];
-      console.log(order);
-      console.log('Day '+order.fday+' and month '+order.fmonth);
-      console.log('going to switch classes');
-      $(".m12").switchClass("m12","m13");
-      $(".m11").switchClass("m11","m12");
-      console.log('switched classes');
-      for (var i=1;i<32;i++)
-      {eval("$('#d"+i+"m11').attr('id','#d"+i+"m12');");}
-      for ( var i=1;i<5;i++)
-      {eval("$('#d"+i+"m12').attr('id','#d"+i+"m13');");}
-      eval('if($("#d'+order.fday+'m'+order.fmonth+'").text().length != 0){$("#d'+order.fday+'m'+order.fmonth+'").css({"background-color":"#64de89"});} else {$("#d'+order.fday+'m'+order.fmonth+'").css({"background-color":"white"});} ');
-      $('.off').css({"background-color":"#ddd"});
-      } 
-      $('#thismonth').empty();
-      $('#nextmonth').empty();
-      $('#previousmonth').empty();
-      console.log('MONTHS EMPTY');
-      $('#thismonth').append("<h2><span style='color:white;' class='glyphicon glyphicon-chevron-left'></span>"+months[nmonth]+"</h2>");
-      var pmonth = nmonth -1;
-      if (pmonth === 0)
-      {pmonth =12}
-      var nnmonth = nmonth++;
-      if(nnmonth === 13)
-      {nnmonth =1
-       var nnyear=nyear + nnyearcount;
-       $('#yearwin').empty();
-       $('#yearwin').append("<h2 style='color:white'>"+nnyear+"</h2>");
-      }
-      $('#nextmonth').append("<h2><span style='color:gray;' class='glyphicon glyphicon-chevron-right'></span> <span style='padding-left:2vw;color:#ddd;'>"+months[nnmonth]+"</span></h2>");
-      $('#previousmonth').append("<h2><span style='padding-right:2vw;color:#ddd;'>"+months[pmonth]+"</span><span style='color:gray;' class='glyphicon glyphicon-chevron-left'></span> </h2>");
-      console.log("MONTHS POPULATED WITH : "+months[pmonth]+months[nmonth]+months[nnmonth]);
-
-      $('#calendarblock').css({"opacity":"1"});
-       nextmonthcount++;
-      }
-      };
-      request.open('POST', '/enquery/#{hostel.hostelid}', true);
-      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      // Most libraries like jQuery/Prototype/Dojo do this
-      var dd = new Date()
-      var nmonth = dd.getMonth()+2;
-      console.log(nmonth);
-      var nyear = dd.getUTCFullYear();
-      if (nmonth === 13)
-       {nmonth=1;nyear++}
-      request.send("month="+nmonth+"&year="+nyear+"&coco=enquiries");
-      });
+      
       
       //BUTTONS
       $('#header').click(function(){
