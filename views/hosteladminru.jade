@@ -644,7 +644,8 @@ head
       }
       });
       //REQUEST FOR NEXT MONTH'S CALENDAR DATA
-      var nextmonthcount = 0;
+      var nextmonthcount = 1;
+      var nnyearcount= 1;
       $("#nextmonth").click(function(){
       $('#claendarblock').css({"opacity":"0.5"});
       request = new XMLHttpRequest();
@@ -671,16 +672,21 @@ head
       $('#thismonth').empty();
       $('#nextmonth').empty();
       $('#previousmonth').empty();
+      console.log('MONTHS EMPTY');
       $('#thismonth').append("<h2><span style='color:white;' class='glyphicon glyphicon-chevron-left'></span>"+months[nmonth]+"</h2>");
       var pmonth = nmonth -1;
       if (pmonth === 0)
-      {pmonth ===12}
+      {pmonth =12}
       var nnmonth = nmonth++;
       if(nnmonth === 13)
-      {nnmonth ===1}
+      {nnmonth =1
+       var nnyear=nyear + nnyearcount;
+       $('#yearwin').empty();
+       $('#yearwin').append(<h2 style='color:white>'+nnyear+'</h2>');
+      }
       $('#nextmonth').append("<h2><span style='color:gray;' class='glyphicon glyphicon-chevron-right'></span> <span style='padding-left:2vw;color:#ddd;'>"+months[nnmonth]+"</span></h2>");
       $('#previousmonth').append("<h2><span style='padding-right:2vw;color:#ddd;'>"+months[pmonth]+"</span><span style='color:gray;' class='glyphicon glyphicon-chevron-left'></span> </h2>");
-
+      concole.log("MONTHS POPULATED WITH : "+months[pmonth]+months[nmonth]+months[nnmonth]);
 
       $('#calendarblock').css({"opacity":"1"});
        nextmonthcount++;
@@ -692,9 +698,10 @@ head
       // Most libraries like jQuery/Prototype/Dojo do this
       var dd = new Date()
       var nmonth = dd.getMonth()+2;
+      console.log(nmonth);
       var nyear = dd.getUTCFullYear();
       if (nmonth === 13)
-       {nmonth===1;nyear++}
+       {nmonth=1;nyear++}
       request.send("month="+nmonth+"&year="+nyear+"&coco=enquiries");
       });
       
