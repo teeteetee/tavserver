@@ -1059,7 +1059,7 @@ app.post('/enquery/:hostel', function(req,res){
      orders.find({hostelid:x,offerid:y,fmonth:month,fyear:year},function(err,docs){
       if (err) {res.send('ERROR')}
       else {
-        console.log(docs);
+        console.log(JSON.stringify(docs));
         res.send(docs);}
      });
    break;
