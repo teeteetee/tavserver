@@ -1048,8 +1048,8 @@ app.post('/enquery/:hostel', function(req,res){
   });
    break;
    case ("calendar"):
-   month = req.body.month+1;
-   year = req.body.year;
+   var month = req.body.month+1;
+   var year = req.body.year;
    console.log(month);
    console.log(year);
    console.log('GOT INTO CALENDAR');
