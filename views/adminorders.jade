@@ -11,56 +11,85 @@ head
     
     style
      :css
-      .container {
-      width:100%;
-      margin:0px;
-      padding:0px;
+      @font-face {
+      font-family:attentica;
+      src:url('/bootstrap/fonts/Attentica.ttf');
+      }
+      .container{
+      background-color:#eee;
       }
       #header {
-      text-align:center;
-      background-color:#ddd;
+      text-align:left;
+      background-color:#333;
+      cursor:pointer;
       }
       .order {
-      border-bottom:1px solid gray;
+      border-bottom:1px solid #ddd;
       text-align:center;
       }
       .field {
       border-right:1px solid #ddd;
       }
       #legend{
-      border-bottom:1px solid #333
+      border-bottom:1px solid #ddd;
+      background-color:white;
+      }
+      input{
+      font-family:arial;
+      letter-spacing:1px;
+      font-size:1.5vw;
+      }
+      h5 {
+      font-size:1vw;
+      font-family:arial;
+      letter-spacing:0.3vw;
+      text-transform:uppercase;
+      color:black;
+      }
+      h1 {
+      font-size:4vw;
+      font-family:attentica;
+      display:inline;
       }
   body
     .container
-      #header.row
+      script.
+        function away() {
+         window.location='http://topandviews.ru/admin';
+        }
+      #header.row(style='background-color:#333;',onclick='away()')
         .col-xs-12
-          h1  Admin
-          h3  All orders 
+          h1(style='color:#eee;')  Top 
+            span(style='color:#ff9900;') &
+          h1(style='color:#eee;')  Views 
+            span(style='color:#c35') Admin : 
+            span(style='color:#e18282') Hostels 
       #drop.row
-        .col-xs-4.col-xs-offset-4
-          form(method='post' action='/drop/orders' role='form' )
-            label(for='drop') Enter pass phrase:
-            br
-            input.form-control(type='text' name='p')
-            br
-            button.form-control(style='background-color:#c35;color:white;',type='submit') Drop the database
+        form(method='post' action='/drop/orders' role='form' )
+        .col-xs-4
+          h5 Drop Users DB
+        .col-xs-4
+          input(type='text',style='margin:1vh;',name='p')
+        .col-xs-4
+          button(style='border:1px solid #c35;border-radius:4px;margin:1vh;',type='submit')
+            h5(style='color:#c35;') Drop 
       #results.row
         .col-xs-12
-          #legend.row
+          #legend.row(style='border-left:1px solid #ddd;border-right:1px solid #ddd;')
             .col-xs-1.field
-              h3 HOSTEL ID
+              h5 HOSTEL ID
             .col-xs-1.field
-              h3 OFFER ID
+              h5 OFFER ID
             .col-xs-2.field
-              h3 REGISTERED
+              h5 REGISTERED
             .col-xs-2.field
-              h3 MAIL
+              h5 MAIL
             .col-xs-1.field
-              h3 PHONEP
+              h5 PHONEP
             .col-xs-2.field
-              h3 PHONE
+              h5 PHONE
             .col-xs-2.field
-              h3 DATES
+              h5 DATES
                          
           each order , i in docs
             .row.order

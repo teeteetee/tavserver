@@ -21,6 +21,7 @@ head
       #header {
       text-align:left;
       background-color:#ddd;
+      cursor:pointer;
       }
       .order {
       border-bottom:1px solid #ddd;
@@ -48,6 +49,11 @@ head
       font-family:attentica;
       display:inline;
       }
+      input{
+      font-family:arial;
+      letter-spacing:1px;
+      font-size:1.5vw;
+      }
   body
     .container
       script.
@@ -70,9 +76,9 @@ head
         .col-xs-4
           button(style='border:1px solid #c35;border-radius:4px;margin:1vh;',type='submit')
             h5(style='color:#c35;') Drop 
-      #results.row(style='border-left:1px solid #ddd;border-right:1px solid #ddd;')
+      #results.row
         .col-xs-12
-          #legend.row
+          #legend.row(style='border-left:1px solid #ddd;border-right:1px solid #ddd;')
             .col-xs-3.field.cap
               h5 MAIL
             .col-xs-2.field.cap
