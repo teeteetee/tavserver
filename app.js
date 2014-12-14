@@ -1056,7 +1056,7 @@ app.post('/enquery/:hostel', function(req,res){
    console.log('GOT INTO CALENDAR');
      // used to form calendar in hostel web client , obviously
      // nights parameter must be used to form a class by an offerid name which then can be light up in web intrface calendar to see the length of stay
-     orders.find({hostelid:x,offerid:y,fmonth:month,fyear:year},function(err,docs){
+     orders.find({hostelid:x,offerid:y},function(err,docs){
       if (err) {res.send('ERROR')}
       else {
         console.log(JSON.stringify(docs));
