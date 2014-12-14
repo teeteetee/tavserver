@@ -40,6 +40,9 @@ head
       font-size:1.5vw;
       margin:1vh;
       }
+      button {
+      margin:1vh;
+      }
   body
     .container
       script.
@@ -56,39 +59,56 @@ head
       .row
         .col-xs-12(style='text-align:center;')
           form(action='/orders/1/test', method='post', role='form')
-            button(style='background-color: #00ac6b;color:white;', type='submit')
-              h5 TEST SUBMIT
-      .row
-        .col-xs-6
-          h5  hostelid
-          h5  price
-          h5  from year
-          h5  from month
-          h5  from day
-          h5  to year
-          h5  to month
-          h5  to day
-          h5  User is registered
-        .col-xs-6
-          form(action='/orders/simulate', method='post', role='form')
-            input(name='hostel', type='text')
-            br
+            button(style='background-color: #00ac6b;border-radius:4px;', type='submit')
+              h5(style='color:white;') TEST SUBMIT
+      form(action='/orders/simulate', method='post', role='form')        
+        .row
+          .col-xs-6
+            h5  hostelid
+          .col-xs-6
+            input(name='hostel', type='text')  
+        .row
+          .col-xs-6
+            h5  price
+          .col-xs-6
             input(name='price', type='text')
-            br
-            input(name='fyear', type='text')
-            br
-            input(name='fmonth', type='text')
-            br
-            input(name='fday', type='text')
-            br
-            input(name='toyear', type='text')
-            br
-            input(name='tomonth', type='text')
-            br
-            input(name='today', type='text')
-            br
-            input(name='registered', type='text')
-            br
-            button(style='background-color: red;', type='submit') 
-              h5 DATA SUBMIT
+        .row
+          .col-xs-6    
+            h5  from year
+          .col-xs-6
+            input(name='fyear', type='text')  
+        .row
+          .col-xs-6    
+            h5  from month
+          .col-xs-6
+            input(name='fmonth', type='text')  
+        .row
+          .col-xs-6    
+            h5  from day
+          .col-xs-6
+            input(name='fday', type='text')  
+        .row
+          .col-xs-6
+            h5  to year
+          .col-xs-6
+            input(name='toyear', type='text')  
+        .row
+          .col-xs-6
+            h5  to month
+          .col-xs-6
+            input(name='tomonth', type='text')  
+        .row
+          .col-xs-6
+            h5  to day
+          .col-xs-6
+            input(name='today', type='text')  
+        .row
+          .col-xs-6    
+            h5  User is registered
+          .col-xs-6
+            input(name='registered', type='text')  
+        .row
+          .col-xs-12(style='text-align:center;')
+            button(style='background-color: #c35;border-radius:4px;', type='submit') 
+              h5(style='color:white;') DATA SUBMIT
         
