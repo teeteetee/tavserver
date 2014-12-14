@@ -556,6 +556,7 @@ head
       if (this.readyState === DONE){
       var index;
       var parsed = JSON.parse(request.responseText);
+      console.log('SERVER RESPONSE: '+JSON.stringify(parsed));
       for (index = 0; index < parsed.length; ++index) {    
       var order=parsed[index];
       console.log(order);
@@ -575,7 +576,7 @@ head
       request.open('POST', '/enquery/#{hostel.hostelid}', true);
       request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      request.send("month="+monthscount+"&year="+ky+"&coco=enquiries");
+      request.send("month="+monthscount+"&year="+ky+"&coco=calendar&price=500");
       }
       }
       // END OF GET ORDERS
