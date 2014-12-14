@@ -66,28 +66,28 @@ head
         .col-xs-4
           h5 Drop Users DB
         .col-xs-4
-          input.form-control(type='text' name='p')
+          input(type='text',style='margin:1vh;',name='p')
         .col-xs-4
-          button.form-control(style='border:1px solid #c35;border-radius:4px;',type='submit')
+          button(style='border:1px solid #c35;border-radius:4px;margin:1vh;',type='submit')
             h5(style='color:#c35;') Drop 
       #results.row
         .col-xs-12
           #legend.row
-            .col-xs-2.field.cap
+            .col-xs-3.field.cap
               h5 MAIL
             .col-xs-2.field.cap
               h5 LOGIN
             .col-xs-2.field.cap
               h5 ENQUIRIES
             .col-xs-2.field.cap
-              h5 CONFORMED
+              h5 CONFERMED
             .col-xs-2.field.cap
               h5 REGDATE
             
                          
           each user , i in docs
             .row.order
-              .col-xs-2.field
+              .col-xs-3.field
                 h5 #{user.mail}
               .col-xs-2.field
                 h5 #{user.lgn}
