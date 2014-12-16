@@ -714,11 +714,8 @@ head
       request.send("phr="+vphr+"&lgn="+vlgn);
       }
       $('#loginb').click(authsubmit());
-      function keypress() {
       var code = (e.keyCode ? e.keyCode : e.which);
       if (code == 13 && $('#login').css("display") === "block" && allowauth === 1)
       {
         authsubmit();
       }
-      }
-      window.onkeypress = keypress();
