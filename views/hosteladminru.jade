@@ -417,7 +417,7 @@ head
       //END
       for (i=0;i<iter;i++)
       {
-      $("#inserts").append("<div class='row week' id='week"+i+"'></div>");
+      $("#inserts").append("<div class='row week' id='week"+i+"'></div><div class='row details' style='display:none;' id='details"+i"'></div);
       var thisday = dayscount +1;
       var frtpr = new Date(year,month,thisday);
       var wni=frtpr.getWeek();
@@ -646,7 +646,7 @@ head
       }
       console.log("___________________________________________________________");
       });
-
+      
 
       // REQUEST FOR CALENDAR DATA
       var calendarcount=0;
@@ -664,7 +664,7 @@ head
           order=parsed[index];
           console.log(order);
           console.log('Day '+order.fday+' and month '+order.fmonth);
-          eval('if($("#d'+order.fday+'m'+order.fmonth+'").text().length != 0){$("#d'+order.fday+'m'+order.fmonth+'").css({"background-color":"#64de89"});} ');
+          eval('if($("#d'+order.fday+'m'+order.fmonth+'").text().length != 0){$("#d'+order.fday+'m'+order.fmonth+'").css({"background-color":"#64de89"}).attr("onclick","details("+order.fmonth+","+order.fday+")");} ');
 
       } 
       //$('#result').append(request.responseText);
@@ -686,8 +686,56 @@ head
        calendarcount++;
       }
       });
+
+      //"DETAILS" FUNCTION WHICH GETS THE INFORMATION ABOUT ENQUIRIES
+      function details(xmonth,xday) {
+      request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+      var DONE = this.DONE || 4;
+      if (this.readyState === DONE){
+      var index;
+      var parsed = JSON.parse(request.responseText);
+      console.log(parsed);
+      //WHICH WEEK
+      var weeknum;
+      if(xday<29)
+      {weeknum =3;}
+      else if (xday<22)
+      {weeknum = 2;}
+      else if (xday<15)
+      {weeknum=1;}
+      else if (xday<8)
+      {weeknum=0;}
+      else
+      {weeknum=4}
+
+      for each (var kk in parsed) {
+        var rdata = "<div class='col-xs-12'>"+kk+"</div>";
+        eval('$("#details'+weeknum+'").append(rdata);
+      }
+
+      eval("$('#d"+xday+"m"+xmonth+').attr('onclick','collapse("+weeknum+")');");
+      eval("$('#details"+weeknum+"').slideToggle();");
+      calendarcount++;
+      }
+      };
+      request.open('POST', '/enquery/#{hostel.hostelid}', true);
+      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
+      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      // Most libraries like jQuery/Prototype/Dojo do this
+      request.send("month="+xmonth+"&day="+xday+"&coco=enquiries&price=500");
+      }
+      //END OF "DETAILS" FUNCTION
+      //COLLAPSE FUNCTION
+      function collapse (weeknum) {
+       eval("$('#d"+xday+"m"+xmonth+').attr('onclick','simpleslide("+weeknum+")');");
+       eval("$('#details"+weeknum+"').slideToggle();");
+      }
       
-      
+      //END OF COLLAPSE FUNCTION
+      function simpleslide(wnum) {
+       eval('$("#details'+wnum+'").slideToggle();');
+      }
       //BUTTONS
       $('#header').click(function(){
       window.location='http://topandviews.ru';
