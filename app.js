@@ -146,7 +146,7 @@ app.get('/',function(req,res) {
   {if(req.headers.host === 'topandviews.ru') 
       {console.log(d+' request on .ru from '+req.ip);
        if (req.session.admin === 1) {
-        res.render('adminindex');
+        res.render('adminindex',{'prfname':req.session.lgn});
        }
        else if (req.session.mail != undefined && req.session.lgn != undefined)
         {res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});
@@ -306,6 +306,7 @@ app.get('/manage/:hid',function(req,res){
 //LOGIN MECHANICS
 app.post('/check',function(req,res){
   //CHECK FOR PASSPORT PRIOR TO HOSTEL CHECK, SORT THIS OUT AFTER ALPHA
+  //"LASTIMEONLINE" MUST BE ADDED AFTER ALPHA
   vphr=req.body.phr;
   vlgn=req.body.lgn; // email
   console.log(vphr+" , "+vlgn);
