@@ -715,7 +715,8 @@ head
       }
       $('#loginb').click(authsubmit());
       function keypress() {
-      if (e.keyCode == 13 && $('#login').css("display") === "block" && allowauth === 1)
+      var code = (e.keyCode ? e.keyCode : e.which);
+      if (code == 13 && $('#login').css("display") === "block" && allowauth === 1)
       {
         authsubmit();
       }
