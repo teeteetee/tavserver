@@ -337,24 +337,25 @@ head
       
     #login.container
       .row
-        #message.col-xs-12
-      .row
-        .col-xs-4.col-xs-offset-4(style='background-color:white;text-align:left;padding-top:3vh;')
+        .col-xs-4.col-xs-offset-4(style='background-color:white;text-align:left;padding-top:3vh;border-radius:4px;')
+          .row
+            #message.col-xs-4.col-xs-offset-4(style='text-align:center;baclground-color:white;')
           form#entform(role='form', action='/check', method='post')
             .row
-              .col-xs-6
+              .col-xs-4
                 h5 Email
-              .col-xs-6
-                input(type='text',id='vlgn', name='vlgn',style='margin-bottom:1vh;width:100%;')
+              .col-xs-6(style='padding:0px;margin:0px;')
+                input(type='text',id='vlgn', name='vlgn',style='margin-bottom:1vh;width:100%;border:1px solid black;')
             .row
-              .col-xs-6
+              .col-xs-4
                 h5 Пароль
-              .col-xs-6
-                input(type='password',id='vphr', name='vphr',style='width:100%;')
+              .col-xs-8(style='padding:0px;margin:0px;')
+                input(type='password',id='vphr', name='vphr',style='width:100%;border:1px solid black;')
             .row(style='text-align: left; margin-top: 2vh;')
               #loginb.col-xs-4(style='padding: 0px; text-align:center;border-radius: 4px; border: 1px solid black; background-color: transparent;')
-                  h5(style=' margin: 0.7vw;')  войти    
-              a#regb(style='margin-left:2vw;text-decoration:underline;')
+                  h5(style=' margin: 0.7vw;')  войти   
+              .col-xs-8     
+                a#regb(style='margin-left:2vw;text-decoration:underline;')
                   h5(style=' margin: 0.7vw;')  Регистрация
         
     #main.container(style='padding:0px;margin:0px; width:100%;')
@@ -664,7 +665,10 @@ head
       $('#find').click(function(){
       $.form('/search', { price: criteriaOne, ctype: criteriaTwo, mixgenders : criteriaThree, wifi : criteriaFour, parking : criteriaFive }).submit();
       });
-      $('#loginb').click(function(req,res){
+      // AUTHSUBMIT FUNCTION
+      var allowauth = 1;
+      function authsubmit(){
+      allowauth = 0;
       var vlgn = $('#vlgn').val();
       var vphr = $('#vphr').val();
       console.log(vlgn +" , "+vphr);
@@ -682,19 +686,22 @@ head
       case('db'):
       $('#message').empty();
       $('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
+      allowauth = 1;
       break;
       case('wrong pas'):
       $('#message').empty();
       $('#message').append("<h5 style='color:#fc454e;'>Wrong password</h5>");
+      allowauth = 1;
       break;
       case('wronguser'):
       $('#message').empty();
       $('#message').append("<h5 style='color:#fc454e;'>Wrong email</h5>");
+      allowauth =1;
       break;
       }}
       else {
       if(parsed.hostelid)
-      {window.loction='http://topandviews.ru/manage/'+parsed.hostelid;}
+      {window.location='http://topandviews.ru/manage/'+parsed.hostelid;}
       else
       {window.location = 'http://topandviews.ru';}
       }
@@ -705,4 +712,12 @@ head
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       //Most libraries like jQuery/Prototype/Dojo do this
       request.send("phr="+vphr+"&lgn="+vlgn);
-      });
+      }
+      $('#loginb').click(authsubmit());
+      function keypress() {
+      if (e.keyCode == 13 && $('#login').css("display") === "block" && allowauth === 1)
+      {
+        authsubmit();
+      }
+      }
+      window.onkeypress = keypress();
