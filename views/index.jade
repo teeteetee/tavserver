@@ -714,11 +714,10 @@ head
       request.send("phr="+vphr+"&lgn="+vlgn);
       }
       $('#loginb').click(authsubmit());
-      $('#vphr').onkeypress = khandle;
-      $('#vlgn').onkeypress = khandle;
+      window.onkeypress = khandle;
       function khandle(e) {
       e = e || event
-      if (e.keyCode == 13 && $('#login').css("display") === "block" && allowauth === 1)
+      if (e.keyCode == 13 && $('#login').css("display") === "block" && allowauth === 1 && $('#vphr').val() && $('#vlgn').val())
       {
         authsubmit();
       }
