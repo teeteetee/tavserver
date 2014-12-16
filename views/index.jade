@@ -344,19 +344,19 @@ head
             .row
               .col-xs-4
                 h5 Email
-              .col-xs-6(style='padding:0px;margin:0px;')
+              .col-xs-8
                 input(type='text',id='vlgn', name='vlgn',style='margin-bottom:1vh;width:100%;border:1px solid black;')
             .row
               .col-xs-4
                 h5 Пароль
-              .col-xs-8(style='padding:0px;margin:0px;')
+              .col-xs-8
                 input(type='password',id='vphr', name='vphr',style='width:100%;border:1px solid black;')
             .row(style='text-align: left; margin-top: 2vh;')
               #loginb.col-xs-4(style='padding: 0px; text-align:center;border-radius: 4px; border: 1px solid black; background-color: transparent;')
                   h5(style=' margin: 0.7vw;')  войти   
               .col-xs-8(style='text-align:center;')   
                 a#regb(style='margin-left:2vw;')
-                  h5(style=' margin: 0.7vw;color:#b4f200;')  Регистрация
+                  h5(style=' margin: 0.7vw;color:#39e444;')  Регистрация
         
     #main.container(style='padding:0px;margin:0px; width:100%;')
       #header.row
@@ -714,7 +714,8 @@ head
       request.send("phr="+vphr+"&lgn="+vlgn);
       }
       $('#loginb').click(authsubmit());
-      window.onkeypress = khandle;
+      $('#vphr').onkeypress = khandle;
+      $('#vlgn').onkeypress = khandle;
       function khandle(e) {
       e = e || event
       if (e.keyCode == 13 && $('#login').css("display") === "block" && allowauth === 1)
