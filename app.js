@@ -1043,8 +1043,12 @@ app.post('/enquery/:hostel', function(req,res){
   
   switch ( z ) {
    case ("enquiries"):
-   //used on main page of hostel web client
-  orders.find({hostelid:x,offerid:y},function(err,results){
+   var month = req.body.month;
+   var day = req.body.day;
+   var dd = new Date();
+   var yearnow = dd.getUTCFUllYEar();
+   //USED TO GET ORDERS DETAILS WHEN CLICKING ON THE DAY IN THE CALENDAR
+  orders.find({hostelid:x,offerid:y,fmonth:month,fday:day,fyear:yearnow},function(err,results){
     res.send(results);
   });
    break;
@@ -1054,13 +1058,14 @@ app.post('/enquery/:hostel', function(req,res){
    console.log(month);
    console.log(year);
    console.log('GOT INTO CALENDAR');
-     // used to form calendar in hostel web client , obviously
+     //USED FOR PRIMARY DATA GET , TO COLOR THE DAYS IN THE CALENDAR, NOTHING IS DONE WITH "NIGHTS" FIELD YET 16.12.2014
+     // used to form calendar in hostel web client , obviously (<16.12.2014)
      // nights parameter must be used to form a class by an offerid name which then can be light up in web intrface calendar to see the length of stay
      orders.find({hostelid:x,offerid:y,fmonth:month,fyear:year},function(err,docs){
       if (err) {res.send('ERROR')}
       else {
         if(!docs || docs.length <1)
-        {
+        {// THIS IS FOR TESTING , ONLY ELSE BLOCK SHOULD BE LEFT
           orders.find({hostelid:x,offerid:y},function(errr,lftv){
             console.log(lftv);
           });
