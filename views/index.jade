@@ -719,6 +719,7 @@ head
       e = e || event
       if (e.keyCode == 13 && $('#login').css("display") === "block" && allowauth === 1 && $('#vphr').val() && $('#vlgn').val())
       {
+        console.log($('#vphr').val()+' '+$('#vlgn').val());
         authsubmit();
       }
       }
