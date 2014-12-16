@@ -667,7 +667,7 @@ head
       });
       // AUTHSUBMIT FUNCTION
       var allowauth = 1;
-      function authsubmit(){
+      function authsubmit() {
       allowauth = 0;
       var vlgn = $('#vlgn').val();
       var vphr = $('#vphr').val();
@@ -713,7 +713,7 @@ head
       //Most libraries like jQuery/Prototype/Dojo do this
       request.send("phr="+vphr+"&lgn="+vlgn);
       }
-      $('#loginb').click(authsubmit());
+      $('#loginb').click(authsubmit);
       window.onkeypress = khandle;
       function khandle(e) {
       e = e || event
