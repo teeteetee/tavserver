@@ -40,7 +40,7 @@ app.use(function(req,res,next){
     next();}
    else if(req.session.hostel === 1) 
     {lguser = req.session;
-      nest();}
+      next();}
    else {
    if(req.session && req.session.lgn){
      users.findOne({mail:req.session.mail},function(err,user){
