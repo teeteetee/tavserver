@@ -1130,7 +1130,7 @@ app.post('/enquery/:hostel', function(req,res){
         //WHAT ELSE ? 
       }
     }
-  }
+  });
   break;
   }
   });
