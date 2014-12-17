@@ -686,7 +686,9 @@ head
       var DONE = this.DONE || 4;
       if (this.readyState === DONE){
       var index;
-      var parsed = JSON.stringify(request.responseText);
+      //var parsed = JSON.parse(request.responseText);
+      var fixedResponse = request.responseText.replace(/\\'/g, "'");
+      var parsed = JSON.parse(fixedResponse);
       console.log("PARSED IS :"+parsed);
       //WHICH WEEK
       var weeknum;
