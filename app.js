@@ -337,7 +337,8 @@ app.post('/check',function(req,res){
                 }
                 else {
                   if (done)
-                  {ms.trouble=0;
+                  {req.session = confirmed;
+                    ms.trouble=0;
                     ms.mtext= 'success';
                    ms.mhostel = done.hostelid;
                    res.send(ms);
