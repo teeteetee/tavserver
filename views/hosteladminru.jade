@@ -657,7 +657,7 @@ head
           order=parsed[index];
           console.log(order);
           console.log('Day '+order.fday+' and month '+order.fmonth);
-          eval('if($("#d'+order.fday+'m'+order.fmonth+'").text().length != 0){$("#d'+order.fday+'m'+order.fmonth+'").css({"background-color":"#64de89"}).attr("onclick","details("+order.fmonth+","+order.fday+")");} ');
+          eval('if($("#d'+order.fday+'m'+order.fmonth+'").text().length != 0){$("#d'+order.fday+'m'+order.fmonth+'").css({"background-color":"#64de89","cursor":"pointer"}).attr("onclick","details("+order.fmonth+","+order.fday+")");} ');
 
       } 
       //$('#result').append(request.responseText);
