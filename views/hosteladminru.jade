@@ -687,7 +687,7 @@ head
       if (this.readyState === DONE){
       var index;
       var parsed = JSON.parse(request.responseText);
-      console.log(parsed);
+      console.log("PARSED IS :"+parsed);
       //WHICH WEEK
       var weeknum;
       if(xday<29)
@@ -701,7 +701,7 @@ head
       else
       {weeknum=4}
 
-      for (var kk in parsed) {
+      for (kk in parsed) {
       var rdata = "<div class='col-xs-12'>"+kk+"</div>";
       eval('$("#details'+weeknum+'").append(rdata);');
       }
