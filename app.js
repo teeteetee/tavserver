@@ -1049,7 +1049,7 @@ app.post('/orders/simulate',function(req,res){
       {
         eval('var enq = done.offers.'+vofferid+'.enquiries;');
         enq++;
-        hostels.update({hostelid:vhostelid},{$set:{offers:{vofferid:{enquiries:enq}}});
+        hostels.update({hostelid:vhostelid},{$set:{offers:{vofferid:{enquiries:enq}}}});
          res.redirect('http://topandviews.ru/admin/orders');
       }
     });
