@@ -689,8 +689,8 @@ head
       //var parsed = JSON.parse(request.responseText);
       var fixedResponse = request.responseText.replace(/\\'/g, "'");
       var parsed = JSON.parse(fixedResponse);
-      parsed = JSON.stringify(parsed);
       console.log("PARSED IS :"+parsed);
+      console.log("PARSED LENGTH IS: "+parsed.length());
       //WHICH WEEK
       var weeknum;
       if(xday<29)
