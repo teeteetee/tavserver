@@ -700,13 +700,13 @@ head
       {weeknum=0;}
       else
       {weeknum=4}
-
+      
       for (kk in parsed) {
       var rdata = "<div class='col-xs-12'>"+kk+"</div>";
       eval('$("#details'+weeknum+'").append(rdata);');
       }
       $('.details').css("display","none");
-      eval("$('#d"+xday+"m"+xmonth+"').attr('onclick','collapse("+weeknum+")');");
+      eval("$('#d"+xday+"m"+xmonth+"').attr('onclick','collapse("+weeknum+","+xday+","+xmonth+")');");
       eval("$('#details"+weeknum+"').slideToggle();");
       console.log("was supposed to open details with weeknum "+weeknum);
       }
@@ -719,7 +719,7 @@ head
       }
       //END OF "DETAILS" FUNCTION
       //COLLAPSE FUNCTION
-      function collapse (weeknum) {
+      function collapse (weeknum,xday,xmonth) {
        eval("$('#d"+xday+"m"+xmonth+"').attr('onclick','simpleslide("+weeknum+")');");
        eval("$('#details"+weeknum+"').slideToggle();");
       }
