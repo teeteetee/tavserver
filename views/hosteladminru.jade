@@ -706,10 +706,10 @@ head
         var rdata = "<div class='col-xs-12'>"+kk+"</div>";
         eval('$("#details'+weeknum+'").append(rdata);');
       }
-
+      $('.details').css("display","none");
       eval("$('#d"+xday+"m"+xmonth+"').attr('onclick','collapse("+weeknum+")');");
       eval("$('#details"+weeknum+"').slideToggle();");
-      calendarcount++;
+      console.log("was supposed to open details");
       }
       };
       request.open('POST', '/enquery/#{hostel.hostelid}', true);
