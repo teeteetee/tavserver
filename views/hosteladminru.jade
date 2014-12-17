@@ -199,7 +199,7 @@ head
       #checkenq:hover {
        background-color:#ddd;
       }
-      #addoffer{
+      #addofferbutton{
       cursor:poiner;
       }
       #addofferbutton:hover {
@@ -225,7 +225,7 @@ head
           //IS ABSENT, NEEDS TO BE WRITTEN
           .circle(style='border-radius:50%;border:3px solid #37db79;text-align:center;height:8vh;width:8vh;margin:1vh;')
             h2(style='color:#37bd79;display:inline;font-size:10vh;line-height:7vh;') +  
-      #addoffer.row(style='display:none')  
+      #addoffer.row(style='display:none;border-top:1px solid #ddd;background-color:#eee;')  
         .col-xs-12
           form(role='form',action='/enquery/#{hostel.hostelid}',method='post')
             .row
