@@ -704,10 +704,11 @@ head
       else
       {weeknum=4}
       
-      for (kk in parsed) {
-      var rdata = "<div class='col-xs-12'>"+kk+"</div>";
+      function datainsert(element,index,array) {
+      var rdata = "<div class='col-xs-12'>"+element+"</div>";
       eval('$("#details'+weeknum+'").append(rdata);');
       }
+      parsed.forEach(datainsert);
       $('.details').css("display","none");
       eval("$('#d"+xday+"m"+xmonth+"').attr('onclick','collapse("+weeknum+","+xday+","+xmonth+")');");
       eval("$('#details"+weeknum+"').slideToggle();");
