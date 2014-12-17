@@ -1040,7 +1040,7 @@ app.post('/enquery/:hostel', function(req,res){
   var y = parseInt(req.body.price);
   console.log(x+' '+y);
   //z = req.param('coco');
-  z = req.body.coco;
+  var z = req.body.coco;
   console.log(z);
   
   switch ( z ) {
