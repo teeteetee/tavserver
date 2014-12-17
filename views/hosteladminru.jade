@@ -711,7 +711,7 @@ head
 
       for (var kk in parsed) {
         var rdata = "<div class='col-xs-12'>"+kk+"</div>";
-        eval('$("#details'+weeknum+'").append(rdata);
+        eval('$("#details'+weeknum+'").append(rdata);');
       }
 
       eval("$('#d"+xday+"m"+xmonth+').attr('onclick','collapse("+weeknum+")');");
