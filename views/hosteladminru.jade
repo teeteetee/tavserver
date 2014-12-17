@@ -214,7 +214,7 @@ head
           h1(style='color:#eee;') Views 
             span(style='color:#c35') #{hostel.nameen} 
       .row(style='text-align:center;')
-        .col-xs-11(style='border-left:1px solid #ddd;border-right:1px solid #ddd;')
+        .col-xs-11(style='border-left:1px solid #ddd;')
           h2 Предложения
         #addofferbutton.col-xs-1.actshadow(style='background-color:#c3ffe1;')
           //IS ABSENT, NEEDS TO BE WRITTEN
@@ -244,7 +244,7 @@ head
         .col-xs-12
           each offer, i in offers
             div(id='p#{offer.price}' class='row offer')
-              .col-xs-2(style='background-color:#eee')
+              .col-xs-2(style='background-color:#eee;border-left:1px solid #ddd;')
                 h2  #{offer.price}
               #enqnumber.col-xs-2.enqnumber(style='background-color: white;')
                 h2 #{offer.enquiries} 
@@ -253,7 +253,7 @@ head
               #checkenq.col-xs-2(style='background-color: white;')
                 //IS ABSENT , NEEDS TO BE WRITTEN
                 h2 R
-              div(id='delp#{offer.price}').col-xs-1.col-xs-offset-3.actshadow(style='border-left:1px solid #ddd;background-color:#ffd2d7;',action="$('#delp#{offer.price}').slideToggle();")
+              div(id='delp#{offer.price}').col-xs-1.col-xs-offset-3.actshadow(style='background-color:#ffd2d7;',action="$('#delp#{offer.price}').slideToggle();")
                 //IS ABSENT , NEEDS TO BE WRITTEN
                 .circle(style='border-radius:50%;border:3px solid #c35;text-align:center;height:8vh;width:8vh;margin:1vh;')
                   h2(style='color:#c35;display:inline;font-size:10vh;line-height:7vh;') -
