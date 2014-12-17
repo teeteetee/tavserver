@@ -705,7 +705,7 @@ head
       {weeknum=4}
       
       function datainsert(element,index,array) {
-      var rdata = "<div class='col-xs-12'><div class='row' style='text-align:center'><div class='col-xs-2'><h5>mail</h5></div><div class='col-xs-2'>"+element.mail+"</div></div>";
+      var rdata = "<div class='col-xs-12'><div class='row' style='text-align:center'><div class='col-xs-2'><h5>mail</h5></div></div><div class='row'><div class='col-xs-2'>"+element.mail+"</div></div></div>";
       eval('$("#details'+weeknum+'").append(rdata);');
       }
       parsed.forEach(datainsert);
