@@ -1048,7 +1048,7 @@ app.post('/enquery/:hostel', function(req,res){
    var month = req.body.month;
    var day = req.body.day;
    var dd = new Date();
-   var yearnow = dd.getUTCFUllYEar();
+   var yearnow = dd.getUTCFUllYear();
    //USED TO GET ORDERS DETAILS WHEN CLICKING ON THE DAY IN THE CALENDAR
   orders.find({hostelid:x,offerid:y,fmonth:month,fday:day,fyear:yearnow},function(err,results){
     res.send(results);
