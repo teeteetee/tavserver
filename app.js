@@ -1045,8 +1045,8 @@ app.post('/enquery/:hostel', function(req,res){
   
   switch ( z ) {
    case ("enquiries"):
-   var month = req.body.month;
-   var day = req.body.day;
+   var month = parseInt(req.body.month);
+   var day = parseInt(req.body.day);
    var dd = new Date();
    var yearnow = dd.getUTCFullYear();
    console.log("month is: "+month+", day is: "+day+", yearnow is: "+yearnow+", hostelid is: "+x+",price is: "+y);
