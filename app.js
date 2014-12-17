@@ -1118,6 +1118,7 @@ app.post('/enquery/:hostel', function(req,res){
    break;
    case ("addownclient"):
     //used to create a client enquiries which are not comming through our system
+    //DANGEROUS ASYNC BEHAVIOR - ENQNUM MIGHT NOT BE SET IN TIME TO FORM VENQID
   var enqnum;
   hostels.find({hostelid:x},function(err,result){
     if (err)
@@ -1130,9 +1131,6 @@ app.post('/enquery/:hostel', function(req,res){
         //WHAT ELSE ? 
       }
     }
-  });
-  break;
-  }
   });
 
   var venqid = enqnum++;
@@ -1164,7 +1162,7 @@ app.post('/enquery/:hostel', function(req,res){
    }
    });
    break;
-   case "confirm":
+   case ("confirm"):
     //used to confirm a request for a room came through our system
     var venqid = req.body.enqid;
     orders.find({enqid:venqid},function(err,result){
@@ -1249,7 +1247,7 @@ app.post('/enquery/:hostel', function(req,res){
          }
     });
    break;
-   case "dismiss":
+   case ("dismiss"):
     //used to dismiss a request for a room came through our system
      var venqid = req.body.enqid;
     orders.update({enqid:venqid},{$set:{accepted:2}});
