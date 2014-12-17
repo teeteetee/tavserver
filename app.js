@@ -1051,7 +1051,7 @@ app.post('/enquery/:hostel', function(req,res){
    var yearnow = dd.getUTCFullYear();
    console.log("month is: "+month+", day is: "+day+", yearnow is: "+yearnow+", hostelid is: "+x+",price is: "+y);
    //USED TO GET ORDERS DETAILS WHEN CLICKING ON THE DAY IN THE CALENDAR
-  orders.findOne({hostelid:x,offerid:y,fmonth:month,fday:day,fyear:yearnow},function(err,results){
+  orders.find({hostelid:x,offerid:y,fmonth:month,fday:day,fyear:yearnow},function(err,results){
     console.log("found :"+results);
     res.send(results);
   });

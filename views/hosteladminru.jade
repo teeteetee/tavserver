@@ -701,7 +701,7 @@ head
       else
       {weeknum=4}
       
-      for (kk in parsed) {
+      for (kk in request.responseText) {
       var rdata = "<div class='col-xs-12'>"+kk+"</div>";
       eval('$("#details'+weeknum+'").append(rdata);');
       }
