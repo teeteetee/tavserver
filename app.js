@@ -1106,14 +1106,24 @@ app.post('/enquery/:hostel', function(req,res){
    break;
    case ("remove"):
     //used to remove an offer 
-
-    hostels.find({hostel:x},function(err,result){
+    
+    var vmail = req.body.mail;
+    var vp = req.body.p;
+    users.findOne({mail:vmail},function(err,done){
+      if (err)
+      {
+        //SCREAM
+      }
+      else if (done){
+        if(bcrypt.compareSync(vp,done.phr))
+          {
+           hostels.findOne({hostel:x},function(err,result){
       var offrcnt =  result.offrqntt;
       if (offrcnt > 0){
       offrcnt--;
       hostels.update({hostelid:x},{$set:{offrqntt:offrcnt}});
       eval("hostels.update({hostelid:x},{$set:{offers:{offer"+y+":undefined}}});");
-      hostels.find({hotelid:x},function(err,result){
+      hostels.findOne({hotelid:x},function(err,result){
         offrcnt++;
         eval("if (result.offer"+offrcnt+" === undefined){console.log('OFFER SUCCESFULY DELETED');}else {console.log('OFFER SEEMS TO STILL BE PRESENT: '+results.offer"+offrcnt+");}");
       });
@@ -1122,7 +1132,16 @@ app.post('/enquery/:hostel', function(req,res){
         //WHAT SHOUD BE DONE IN THIS CASE ? 
         {res.send("NOTHING TO BE DELETED")}
     });
-     //SHOULD ANYTHING BE SENT TO CLIENT TO CONFIRM ???
+     //SHOULD ANYTHING BE SENT TO CLIENT TO CONFIRM ??? 
+          }
+        else{
+          //MAKE THIS BEAUTIFULL LATER
+          res.send('WRONG PASS/LOG');
+        }
+      }
+      else {}
+    });
+    
    break;
    case ("add"):
     //used to create an offer
