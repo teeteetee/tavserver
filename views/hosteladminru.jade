@@ -708,7 +708,7 @@ head
       $('.details').css("display","none");
       eval("$('#d"+xday+"m"+xmonth+"').attr('onclick','collapse("+weeknum+")');");
       eval("$('#details"+weeknum+"').slideToggle();");
-      console.log("was supposed to open details");
+      console.log("was supposed to open details with weeknum "+weknum);
       }
       };
       request.open('POST', '/enquery/#{hostel.hostelid}', true);
