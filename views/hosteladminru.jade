@@ -199,6 +199,12 @@ head
       #checkenq:hover {
        background-color:#ddd;
       }
+      #addoffer{
+      cursor:poiner;
+      }
+      #addofferbutton:hover {
+       background-color:#eee;
+      }
   body
     #searchbutton(style='position: fixed; z-index: 2001; right: 0.5vw; top: 1vh;')
       h3#hone
@@ -215,9 +221,30 @@ head
       .row(style='text-align:center;')
         .col-xs-11(style='border-left:1px solid #ddd;border-right:1px solid #ddd;')
           h2 Предложения
-        #del.col-xs-1
+        #addofferbutton.col-xs-1
+          //IS ABSENT, NEEDS TO BE WRITTEN
           .circle(style='border-radius:50%;border:3px solid #37db79;text-align:center;height:8vh;width:8vh;margin:1vh;')
             h2(style='color:#37bd79;display:inline;font-size:10vh;line-height:7vh;') +  
+      #addoffer.row(style='display:none')  
+        .col-xs-12
+          form(role='form',action='/enquery/#{hostel.hostelid}',method='post')
+            .row
+              .col-xs-3.col-xs-offset-3
+                h5 Цена
+              .col-xs-4
+                input(type='text',style='margin:1vh',name='price')
+            .row    
+              .col-xs-3.col-xs-offset-3
+                h5 Количество мест
+              .col-xs-4
+                input(type='text',style='margin:1vh',name='capacity')
+            .row(style='display:none;')
+              .col-xs-4.col-xs-offset-6
+               input(type='text',style='margin:1vh',name='coco',value='add')
+            .row
+              .col-xs-4.col-xs-offset-4(style='text-align:center;')
+                button(type='submit',style='margin:1vh;border-radius:4px;border:1px solid green;')    
+                  h5 Добавить             
       #offers.row
         .col-xs-12
           each offer, i in offers
@@ -229,23 +256,12 @@ head
               #calendarbutton1.col-xs-2.calendar
                 h2 Календарь
               #checkenq.col-xs-2(style='background-color: white;')
+                //IS ABSENT , NEEDS TO BE WRITTEN
                 h2 R
               #del.col-xs-1.col-xs-offset-3(style='border-left:1px solid #ddd;')
+                //IS ABSENT , NEEDS TO BE WRITTEN
                 .circle(style='border-radius:50%;border:3px solid #c35;text-align:center;height:8vh;width:8vh;margin:1vh;')
                   h2(style='color:#c35;display:inline;font-size:10vh;line-height:7vh;') -
-            //
-               #p1500.row.offer
-                 .col-xs-8
-                   h2  Price : 1500
-                 #calendarbutton1.col-xs-2.calendar
-                   h2 Календарь
-                 #enqnumber.col-xs-2.enqnumber(style='background-color: white;')
-                   h2 0 enquires
-                 #checkenq.col-xs-2(style='background-color: white;')
-                   h2 check
-               .row.enquiry
-            //
-               WHAT WAS THIS ONE SUPPOSED TO DO ?
           #calendarblock.row
             .col-xs-12
               #monthsselect.row
@@ -736,6 +752,9 @@ head
       $('#header').click(function(){
       window.location='http://topandviews.ru';
       });
+      $('#addofferbutton').click(function(){
+      $('#addoffer').slideToggle();
+      })
       $('#hone').click(function(){
       //check if any remove actions are present , discard on exit
       $('#offers').slideToggle();

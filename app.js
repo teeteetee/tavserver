@@ -999,7 +999,7 @@ app.post('/orders/simulate',function(req,res){
   console.log('going to simulate an order');
   vregistered = parseInt(req.body.registered);
   vhostelid = parseInt(req.body.hostel);
-  vofferid= parseInt(req.body.price);
+  vofferid =parseInt(req.body.offerid);
   vfyear = parseInt(req.body.fyear);
   vfmonth = parseInt(req.body.fmonth);
   vfday = parseInt(req.body.fday);
@@ -1015,6 +1015,7 @@ app.post('/orders/simulate',function(req,res){
      vphone = 79237364453;
      vregistered = 0;
      vhostelid = testcount;
+     vofferid = offer1;
      vfyear = 2014;
      vfmonth = 11;
      vfday = 07;
@@ -1023,11 +1024,35 @@ app.post('/orders/simulate',function(req,res){
      vtoday = 10;
      vnights = 3; 
     orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:vmail,phonep:vphonep,phone:vphone,fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday,nights:vnights,confirmed:0,reqip:req.ip,outer:0});
-    res.redirect('http://topandviews.ru/admin/orders');
+    hostels.findOne({hostelid:vhostelid},function(err,done){
+      if (err)
+      {
+        //SCREAM
+      }
+      else
+      {
+        eval('var enq = done.offers.'+vofferid+'.enquiries;');
+        enq++;
+        hostels.update({hostelid:vhostelid},{$set:{offers:{vofferid:{enquiries:enq}}});
+         res.redirect('http://topandviews.ru/admin/orders');
+      }
+    });
    }
    else {
   orders.insert({hostelid:vhostelid,offerid:vofferid,registered:vregistered,mail:'test@test.ru',phonep:1,phone:'+8293847293524',fyear:vfyear,fmonth:vfmonth,fday:vfday,toyear:vtoyear,tomonth:vtomonth,today:vtoday,nights:vnights,confirmed:0,reqip:req.ip,outer:0});
-   res.redirect('http://topandviews.ru/admin/orders');
+   hostels.findOne({hostelid:vhostelid},function(err,done){
+      if (err)
+      {
+        //SCREAM
+      }
+      else
+      {
+        eval('var enq = done.offers.'+vofferid+'.enquiries;');
+        enq++;
+        hostels.update({hostelid:vhostelid},{$set:{offers:{vofferid:{enquiries:enq}}});
+         res.redirect('http://topandviews.ru/admin/orders');
+      }
+    });
    }
 });
 
