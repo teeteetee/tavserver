@@ -38,6 +38,9 @@ app.use(function(req,res,next){
    if(req.session.admin === 1){
     lguser = req.session;
     next();}
+   else if(req.session.hostel === 1) 
+    {lguser = req.session;
+      nest();}
    else {
    if(req.session && req.session.lgn){
      users.findOne({mail:req.session.mail},function(err,user){
@@ -147,6 +150,9 @@ app.get('/',function(req,res) {
       {console.log(d+' request on .ru from '+req.ip);
        if (req.session.admin === 1) {
         res.render('adminindex',{'prfname':req.session.lgn});
+       }
+       else if(req.session.hostel === 1) {
+        res.render('hostelindex',{'pfrname':req.session.lgn,'hostelid':req.session.hostelid});
        }
        else if (req.session.mail != undefined && req.session.lgn != undefined)
         {res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});
@@ -1152,7 +1158,7 @@ app.post('/enquery/:hostel', function(req,res){
       var offrcnt = result.offrqntt;
        offrcnt++;
        console.log('OFFRCNT ID: '+offrcnt);
-      eval("hostels.update({hostelid:x},{$set:{offrqntt:"+offrcnt+",offers:{offer"+offrcnt+":{price:"+y+",capacity:"+vcapacity+",enquiries:0}}}});");
+      eval("hostels.update({hostelid:x},{$set:{offrqntt:"+offrcnt+",offers:{offer"+offrcnt+":{name:offer"+y+",price:"+y+",capacity:"+vcapacity+",enquiries:0}}}});");
     });
     res.redirect('http://topandviews.ru/manage/'+x);
 
