@@ -126,9 +126,7 @@ head
       display:none;
       }   
   body
-    script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js') 
-    script.
-      var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o');   
+    script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')   
     .container
       .row
         #menu.col-xs-2
@@ -250,8 +248,9 @@ head
         #hotel.col-xs-10.col-xs-offset-2(style='background-color:#eee;overflow:auto;')
           .row(style='background-color:white;')
             #sop.col-md-9.nopadding
-              #mapitself.map
+              #mapitselfhotel.map
                  script.
+                   var map = L.mapbox.map('mapitselfhotel', 'jesusjesus.ie7kb67o');
                    map.featureLayer.setFilter(function(f) {
                    return f.properties['sort'] === 'something';
                    });
@@ -259,8 +258,9 @@ head
         #restaurant.col-xs-10.col-xs-offset-2(style='background-color:#eee;overflow:auto;')
           .row(style='background-color:white;')
             #sop.col-md-9.nopadding
-              #mapitself.map
+              #mapitselfrest.map
                  script.
+                   var map = L.mapbox.map('mapitselfrest', 'jesusjesus.ie7kb67o');
                    map.featureLayer.setFilter(function(f) {
                    return f.properties['sort'] === 'toprestaurant';
                    });
@@ -268,8 +268,9 @@ head
         #bar.col-xs-10.col-xs-offset-2(style='background-color:#eee;overflow:auto;')
           .row(style='background-color:white;')
             #sop.col-md-9.nopadding
-              #mapitself.map
+              #mapitselfbar.map
                  script.
+                   var map = L.mapbox.map('mapitselfbar', 'jesusjesus.ie7kb67o');
                    map.featureLayer.setFilter(function(f) {
                    return f.properties['sort'] === 'topbar';
                    });
