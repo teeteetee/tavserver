@@ -308,7 +308,7 @@ head
       }
       function loadmap (id,type) {
       var name = "'#mapitself"+id+"'";
-      $(name).append("<script>var map=L.mapbox.map(name,'jesusjesus.ie7kb67o');map.setView([55.753,37.622],14);map.featureLayer.setFilter(function(f){return f.properties['sort']==='type';console.log('done');});</scritpt>");}
+      $(name).append("<script>var map=L.mapbox.map(type,'jesusjesus.ie7kb67o');map.setView([55.753,37.622],14);map.featureLayer.setFilter(function(f){return f.properties['sort']==='type';console.log('done');});</scritpt>");}
       $('#first').click(function(){
       itemchoose('first','HM Hostel');
       });
