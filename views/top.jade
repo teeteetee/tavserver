@@ -263,6 +263,7 @@ head
                    var map = L.mapbox.map('mapitselfrest', 'jesusjesus.ie7kb67o');
                    map.featureLayer.setFilter(function(f) {
                    return f.properties['sort'] === 'toprestaurant';
+                   console.log('done');
                    });
                     
         #bar.col-xs-10.col-xs-offset-2(style='background-color:#eee;overflow:auto;')
@@ -273,6 +274,7 @@ head
                    var map = L.mapbox.map('mapitselfbar', 'jesusjesus.ie7kb67o');
                    map.featureLayer.setFilter(function(f) {
                    return f.properties['sort'] === 'topbar';
+                   console.log('done');
                    });
                
         #rating.col-xs-10.col-xs-offset-2(style='background-color:#eee;overflow:auto;')
