@@ -258,7 +258,7 @@ head
         #restaurant.col-xs-10.col-xs-offset-2(style='background-color:#eee;overflow:auto;')
           .row(style='background-color:white;')
             #sop.col-md-9.nopadding
-              #mapitselfrest.map
+              #mapitselfrestaurant.map
 
                     
         #bar.col-xs-10.col-xs-offset-2(style='background-color:#eee;overflow:auto;')
@@ -294,7 +294,7 @@ head
       function displaysect (current) {
       var titles = ['hostel','hotel','bar','restaurant','rating'];
       for (i of titles)
-      {eval('if($("#'+i+'").css("display") != "none") {$("#'+i+'").css("display","none");} if($("#'+i+'button").css("background-color") != "#252525") {$("#'+i+'button").css("background-color","#252525");}')}
+      {eval('if($("#'+i+'").css("display") != "none") {$("#'+i+'").css("display","none");$("#mapitself'+i+'").empty();} if($("#'+i+'button").css("background-color") != "#252525") {$("#'+i+'button").css("background-color","#252525");}')}
       eval('$("#'+current+'").css("display","block");$("#'+current+'button").css("background-color","#2c2c2c"); ')
       }
       function itemchoose (buttonid,item) {
@@ -306,6 +306,11 @@ head
       map.setView(coord,14);
       eval("$('.item').css('background-color','#eee');$('#"+buttonid+"').css('background-color','#ddd');");
       }
+      function loadmap (id,type) {
+      var name = "'#maitself"+id+"'";
+       $(name).append("<script>var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o');
+      map.setView([55.753,  37.622], 14);map.featureLayer.setFilter(function(f) {return f.properties['sort'] === 'type';console.log('done');});</script>");
+      }
       $('#first').click(function(){
       itemchoose('first','HM Hostel');
       });
@@ -316,12 +321,8 @@ head
       displaysect('hotel');
       });
       $('#restaurantbutton').click(function(){
+      loadmap(restaurant,restaurant);
       displaysect('restaurant');
-      var map = L.mapbox.map('mapitselfrest', 'jesusjesus.ie7kb67o');
-      map.featureLayer.setFilter(function(f) {
-      return f.properties['sort'] === 'toprestaurant';
-      console.log('done');
-      });
       });
       $('#barbutton').click(function(){
       displaysect('bar');
