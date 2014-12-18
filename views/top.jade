@@ -307,8 +307,8 @@ head
       eval("$('.item').css('background-color','#eee');$('#"+buttonid+"').css('background-color','#ddd');");
       }
       function loadmap (id,type) {
-      var name = "'#maptself"+id+"'";
-      $(name).append("<script>var map = L.mapbox.map(name, 'jesusjesus.ie7kb67o');map.setView([55.753,  37.622], 14);map.featureLayer.setFilter(function(f) {return f.properties['sort'] === 'type';console.log('done');});</script>");}
+      var name = "'#mapitself"+id+"'";
+      $(name).append("<script>var map = L.mapbox.map(name, 'jesusjesus.ie7kb67o');map.setView([55.753,  37.622], 14);map.featureLayer.setFilter(function(f) {return f.properties['sort'] === 'type';console.log('done');})</script>");}
       $('#first').click(function(){
       itemchoose('first','HM Hostel');
       });
