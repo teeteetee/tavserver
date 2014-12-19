@@ -753,6 +753,7 @@ else
     if(vprice!=0)
       {query=query+',vprice:'+vprice;count++}
     if(count>0)
+      console.log(query);
     {hostels.find({query},function(err,hostels){
           console.log(" ID DID SEARCH THE DB");
           if (hostels.length != 0)
