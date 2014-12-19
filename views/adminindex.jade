@@ -238,64 +238,7 @@ head
   body
     script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
     
-    #search.container
-      .row(style='margin-top: 10vh; border: 1px solid black; border-bottom: 0px;')
-        .col-xs-12
-          h2 Цена
-      #pp.row.sides
-        #p1.col-xs-3.labelm
-          h5 Все
-        #p2.col-xs-3.labelm
-          h5 &lt1500
-        #p3.col-xs-3.labelm
-          h5 1500-3000
-        #p4.col-xs-3.labelml
-          h5 &gt3000
-      .row.sides
-        .col-xs-12
-          h2 Относительно центра (близко - далеко)
-      #cc.row.sides
-        #c1.col-xs-3.labelm
-          h5 Все
-        #c2.col-xs-3.labelm
-          h5 1
-        #c3.col-xs-3.labelm
-          h5 2
-        #c4.col-xs-3.labelml
-          h5 3
-      .row.sides
-        .col-xs-12
-          h2 Девочки\мальчики в отдельных комнатах
-      #dd.row.sides
-        #d1.col-xs-6.labelm
-          h5 не важно
-        #d2.col-xs-6.labelml
-          h5 Раздельно
-      .row.sides
-        .col-xs-12
-          h2 wifi
-      #ww.row.sides
-        #w1.col-xs-6.labelm
-          h5 не важно
-        #w2.col-xs-6.labelml
-          h5 есть
-      .row.sides
-        .col-xs-12
-          h2 Парковка
-      #zz.row.sides
-        #z1.col-xs-6.labelm
-          h5 не важно
-        #z2.col-xs-6.labelml
-          h5 есть
-      .row(style='margin-top: 3vh; margin-bottom: 7vh;')
-        .col-xs-4(style='text-align:left;margin-left:0px;padding-left:0px;')
-          button#findback(style='background-color:transparent; border-radius: 4px; border: 1px solid black;', )
-            h5(style='font-size: 3vw; font-family: attentica; letter-spacing: 2px; margin: 0px; margin-left: 2vw; margin-right: 2vw; margin-top: 0.4vh;') НАЗАД
-        .col-xs-4(style='text-align: center;')
-          button#find(style='background-color: #00b74a; border-radius: 4px; border: 2px solid black;', )
-            h5(style='font-size: 3vw; font-family: attentica; letter-spacing: 2px; color: white; margin: 0px; margin-left: 2vw; margin-right: 2vw; margin-top: 0.4vh;') НАЙТИ
-      
-        
+    
     #main.container
       #header.row
         .col-xs-12
@@ -330,18 +273,6 @@ head
               h5 &gt3000
           .row.sides(style='background-color:white;')
             .col-xs-12
-              h2 Относительно центра (близко - далеко)
-          #cc.row.sides
-            #c1.col-xs-3.labelm
-              h5 Все
-            #c2.col-xs-3.labelm
-              h5 1
-            #c3.col-xs-3.labelm
-              h5 2
-            #c4.col-xs-3.labelml
-              h5 3
-          .row.sides(style='background-color:white;')
-            .col-xs-12
               h2 Девочки\мальчики в отдельных комнатах
           #dd.row.sides
             #d1.col-xs-6.labelm
@@ -355,14 +286,6 @@ head
             #w1.col-xs-6.labelm
               h5 не важно
             #w2.col-xs-6.labelml
-              h5 есть
-          .row.sides(style='background-color:white;')
-            .col-xs-12
-              h2 Парковка
-          #zz.row.sides
-            #z1.col-xs-6.labelm
-              h5 не важно
-            #z2.col-xs-6.labelml
               h5 есть
           .row(style='margin-top: 3vh; margin-bottom: 7vh;')
             .col-xs-4(style='text-align: center;')
@@ -498,34 +421,6 @@ head
       $("#p5").css({"background-color":"black"});
       $("#p5").children().css({"color":"white"});
       });
-      $("#c1").click(function(){
-      criteriaTwo = 0;
-      $("#cc").children().css({"background-color":"transparent"});
-      $("#cc").find("h5").css({"color":"black"});
-      $("#c1").css({"background-color":"black"});
-      $("#c1").children().css({"color":"white"});
-      });
-      $("#c2").click(function(){
-      criteriaTwo = 1;
-      $("#cc").children().css({"background-color":"transparent"});
-      $("#cc").find("h5").css({"color":"black"});
-      $("#c2").css({"background-color":"black"});
-      $("#c2").children().css({"color":"white"});
-      });
-      $("#c3").click(function(){
-      criteriaTwo = 2;
-      $("#cc").children().css({"background-color":"transparent"});
-      $("#cc").find("h5").css({"color":"black"});
-      $("#c3").css({"background-color":"black"});
-      $("#c3").children().css({"color":"white"});
-      });
-      $("#c4").click(function(){
-      criteriaTwo = 3;
-      $("#cc").children().css({"background-color":"transparent"});
-      $("#cc").find("h5").css({"color":"black"});
-      $("#c4").css({"background-color":"black"});
-      $("#c4").children().css({"color":"white"});
-      });
       $("#d1").click(function(){
       criteriaThree = 0;
       $("#dd").children().css({"background-color":"transparent"});
@@ -553,20 +448,6 @@ head
       $("#ww").find("h5").css({"color":"black"});
       $("#w2").css({"background-color":"black"});
       $("#w2").children().css({"color":"white"});
-      });
-      $("#z1").click(function(){
-      criteriaFive = 0;
-      $("#zz").children().css({"background-color":"transparent"});
-      $("#zz").find("h5").css({"color":"black"});
-      $("#z1").css({"background-color":"black"});
-      $("#z1").children().css({"color":"white"});
-      });
-      $("#z2").click(function(){
-      criteriaFive = 1;
-      $("#zz").children().css({"background-color":"transparent"});
-      $("#zz").find("h5").css({"color":"black"});
-      $("#z2").css({"background-color":"black"});
-      $("#z2").children().css({"color":"white"});
       });
       $("#regb").click(function(){
       location.href = "/rrregisterrr";
