@@ -356,7 +356,7 @@ head
               h2 По названию     
           .row.sides
             .col-xs-12.labelml
-              input(name='placename',style='width:100%;border:0px;margin:0px;background-color:#eee;')   
+              input(name='placename',id='placename',style='width:100%;border:0px;margin:0px;background-color:#eee;')   
           .row(style='margin-top: 3vh; margin-bottom: 7vh;')
             .col-xs-4.col-xs-offset-4(style='text-align: center;')
               button#find(style='background-color: #00af64; border-radius: 4px; border: 1px solid white;', )
@@ -483,23 +483,6 @@ head
       else {
       }
       });
-      //$("#findback").click(function(){
-      //$("#search").css({'display':'none'});
-      //$('#main').css({'-webkit-filter':'blur(0)'});
-      //scount++
-      //});
-      //$("#searchbutton").click(function(){
-      //if (scount%2 === 0){
-      //$("#search").css({'display':'block'});
-      //$('#main').css({'-webkit-filter':'blur(5px)'});
-      //scount++
-      //}
-      //else {
-      //$("#search").css({'display':'none'});
-      //$('#main').css({'-webkit-filter':'blur(0)'});
-      //scount++
-      //}
-      //});
       $('#searchbutton').click(function(){
       $('#searchblock').slideToggle();
       location.href='#footer';
@@ -611,7 +594,9 @@ head
       }
       }); });
       $('#find').click(function(){
-      $.form('/search', { price: criteriaOne, ctype: criteriaTwo, mixgenders : criteriaThree, wifi : criteriaFour, parking : criteriaFive }).submit();
+      var vplacename = $('#placename').text();
+      if(!vplacename) {placename = 0;}
+      $.form('/search', { price: criteriaOne, mixgenders : criteriaThree, wifi : criteriaFour, placename: vplacename }).submit();
       });
       // AUTHSUBMIT FUNCTION
       var allowauth = 1;
