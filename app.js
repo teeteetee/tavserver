@@ -744,17 +744,40 @@ app.post('/search', function(req,res){
     });
   }
 else 
-  {hostels.find({price:vprice},function(err,hostels){
-      console.log(" ID DID SEARCH THE DB");
-      if (hostels.length != 0)
-        { cosnole.log(" , FOUND SOMETHING AND GOING TO SEND IT TO YOU");
-          res.render("sr",{"hostels":hostels});}
-      else {
-        console.log(" IT WAS EMPTY AND IM GOING TO RENDER");
-        //NO EMPTYSR YET EXISTS , MUST BE CREATED
-        res.render('emptysr');
-      }
-    });}
+  { var query;
+    var count =0;
+    if(vwifi===1)
+      {query='wifi:1';count++}
+    if(vmixgenders ===1)
+      {query=query+',mixgenders:1';count++}
+    if(vprice!=0)
+      {query=query+',vprice:'+vprice;count++}
+    if(count>0)
+    {hostels.find({query},function(err,hostels){
+          console.log(" ID DID SEARCH THE DB");
+          if (hostels.length != 0)
+            { cosnole.log(" , FOUND SOMETHING AND GOING TO SEND IT TO YOU");
+              res.render("sr",{"hostels":hostels});}
+          else {
+            console.log(" IT WAS EMPTY AND IM GOING TO RENDER");
+            //NO EMPTYSR YET EXISTS , MUST BE CREATED
+            res.render('emptysr');
+          }
+        });}
+  else {
+    hostels.find({},function(err,hostels){
+          console.log(" ID DID SEARCH THE DB");
+          if (hostels.length != 0)
+            { cosnole.log(" , FOUND SOMETHING AND GOING TO SEND IT TO YOU");
+              res.render("sr",{"hostels":hostels});}
+          else {
+            console.log(" IT WAS EMPTY AND IM GOING TO RENDER");
+            //NO EMPTYSR YET EXISTS , MUST BE CREATED
+            res.render('emptysr');
+          }
+        });
+  }
+}
 });
 
 //app.get('/emptysr',function(req,res){
