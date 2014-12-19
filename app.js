@@ -748,10 +748,14 @@ else
     var count =0;
     if(vwifi===1)
       {query='wifi:1';count++}
-    if(vmixgenders ===1)
+    if(vmixgenders ===1 && count ===1)
       {query=query+',mixgenders:1';count++}
-    if(vprice!=0)
+    if(vmixgenders ===1 && count ===0)
+      {query=query+'mixgenders:1';count++}
+    if(vprice!=0 && count>1)
       {query=query+',vprice:'+vprice;count++}
+    if(vprice!=0 && count===0)
+      {query=query+'vprice:'+vprice;count++}
     if(count>0)
       console.log(query);
     {eval('hostels.find({'+query+'},function(err,hostels){
