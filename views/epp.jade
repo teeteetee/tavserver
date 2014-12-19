@@ -207,7 +207,7 @@ head
                .row
                  .col-xs-8
                    #{offer.price}
-                 #book#{offer.price}.col-xs-4
+                 div.col-xs-4(id='book#{offer.price}')
                    h6 Заказ
                    script.
                      $('#book#{offer.price}').click(function(){
