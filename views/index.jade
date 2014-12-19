@@ -594,7 +594,7 @@ head
       }
       }); });
       $('#find').click(function(){
-      var vplacename = $('#placename').text();
+      var vplacename = $('#placename').val();
       if(!vplacename) {placename = 0;}
       $.form('/search', { price: criteriaOne, mixgenders : criteriaThree, wifi : criteriaFour, placename: vplacename }).submit();
       });
