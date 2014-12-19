@@ -729,6 +729,7 @@ app.post('/search', function(req,res){
   var vplacename = req.body.placename;
   var vprice = req.body.price;
   // ADD SEARCH CRITERIAS
+  console.log('VPLACENAME IS:'+vplacename);
   if(vplacename != 0)
   {
     hostels.findOne({placename:vplacename},function(err,done){
