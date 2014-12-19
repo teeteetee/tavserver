@@ -723,7 +723,7 @@ app.post('/admin/clear',function(req,res){
 //});
 
 app.post('/search', function(req,res){
-  console.log("INTO SEARCH , REQ.BODY:"+req.body.wifi);
+  console.log("INTO SEARCH ");
   var vmixgenders = req.body.mixgenders;
   var vwifi = req.body.wifi;
   var vplacename = req.body.placename;
