@@ -735,7 +735,7 @@ app.post('/search', function(req,res){
     hostels.findOne({placename:vplacename},function(err,done){
       console.log("PLACENAME: ID DID SEARCH THE DB");
       if (hostels.length != 0)
-        { cosnole.log(" , FOUND SOMETHING AND GOING TO SEND IT TO YOU");
+        { console.log(" , FOUND SOMETHING AND GOING TO SEND IT TO YOU");
           res.render("sr",{"hostels":done});}
       else {
         console.log(" IT WAS EMPTY AND IM GOING TO RENDER");
