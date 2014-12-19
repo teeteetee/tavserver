@@ -6,328 +6,208 @@ head
     |     
     meta(name='viewport', content='width=device-width, initial-scale=1')
     |     
-    title Top
+    title TOP
     // Bootstrap
     link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
     |     
     link(href='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css', rel='stylesheet')
-    style.
-      body {
-      min-width:768px;
-      }
-      @font-face {
-      font-family:roboto-thin;
-      src:url('/bootstrap/fonts/Roboto-Thin.ttf');
-      }
-      @font-face {
-      font-family:attentica;
-      src:url('/bootstrap/fonts/Attentica.ttf');
-      }
-      @font-face {
-      font-family:br;
-      src:url('/bootstrap/fonts/bebasneue_regular.ttf');
-      }
-      .container {
-      width:100%;
-      margin-left:0px;
-      padding-left:0px;
-      }
-      #header{
-      text-align:center;
-      }
-      h1 {
-      font-family:roboto-thin;
-      font-size:4vw;
-      display:inline;
-      }
-      h3{
-      font-family:roboto-thin;
-      text-transform:uppercase;
-      font-size:2vw;
-      color:#ddd;
-      }
-      h2 {
-      font-size:2vw;
-      font-family: arial,sans-serif;
-      color:#333;
-      font-weight:normal;
-      }
-      #menu {
-      position:fixed;
-      height:100%;
-      left:0px;
-      background-color:#252525;
-      padding-left:0px;
-      }
-      #logo {
-      text-align:center;
-      padding-top:1vh;
-      cursor:pointer;
-      }
-      p {
-      text-indent:2vw;
-      }
-      #hostelbutton {
-      cursor:pointer;
-      background-color:#2c2c2c;
-      }
-      #hotelbutton {
-      cursor:pointer;
-      }
-      #restaurantbutton {
-      cursor:pointer;
-      }
-      #barbutton {
-      cursor:pointer;
-      }
-      #ratingbutton {
-      cursor:pointer;
-      }
-      #rating {
-      display:none
-      }
-      #hostel {
-      }
-      #hotel {
-      display:none;
-      }
-      #bar {
-      display:none;
-      }
-      #restaurant {
-      display:none;
-      }
-      .row {
-      margin-left:0px;
-      }
-      .col-xs-10 {
-      padding-left:0px;
-      }
-      .nopadding {
-      padding:0px;
-      }
-      .nrmr {
-      margin:0px;
-      }
-      .map{
-      height:100vh;
-      width:100%;
-      background-color:#2c2c2c;
-      margin-right:auto;
-      margin-left:auto;
-      text-align:right;
-      }
-      .item {
-      cursor:pointer;
-      background-color:#eee;
-      border-top:1px solid #ddd;
-      }
-      #sop {
-      
-      }   
+    // HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      |       
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+  |   
+  style.
+    body {
+    min-width:768px;
+    }
+    @font-face {
+    font-family:roboto-thin;
+    src:url('/bootstrap/fonts/Roboto-Thin.ttf');
+    }
+    @font-face {
+    font-family:attentica;
+    src:url('/bootstrap/fonts/Attentica.ttf');
+    }
+    @font-face {
+    font-family:br;
+    src:url('/bootstrap/fonts/bebasneue_regular.ttf');
+    }
+    h2 {
+    font-family:roboto-thin;
+    font-size:3vw;
+    }
+    h1 {
+    font-family:attentica;
+    font-size:8vw;
+    line-height:6vw;
+    }
+    h3{
+    font-family:br;
+    font-size:2vw;
+    margin-top:0px;
+    margin-bottom:1vh;
+    color:gray;
+    }
+    h5 {
+    font-size:1vw;
+    font-family:arial;
+    letter-spacing:0.3vw;
+    text-transform:uppercase;
+    color:black;
+    }
+    #header{
+    margin-top:2vw;
+    text-align:center;
+    border:3px solid #ddd;
+    }
+    .map {
+    height:40vh;
+    width:100%;
+    }
+    a:active{
+    text-decoration:none;
+    color:black;
+    }
+    a:hover{
+    text-decoration:none;
+    color:black;
+    }
+    a:focus{
+    text-decoration:none;
+    color:black;
+    }
+    .athing {
+    font-weight:bold;
+    color:#00af64;
+    }
+  |   
   body
-    script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')   
     .container
+      #header.row
+        .col-xs-12
+          h1(style='color:#c35;') &mcy;&iecy;&scy;&tcy;&acy; &ncy;&acy; &kcy;&ocy;&tcy;&ocy;&rcy;&ycy;&iecy; &scy;&tcy;&ocy;&icy;&tcy; &ocy;&bcy;&rcy;&acy;&tcy;&icy;&tcy;&softcy; &vcy;&ncy;&icy;&mcy;&acy;&ncy;&icy;&iecy;
+      |       
+      script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
+      |       
+      |       
       .row
-        #menu.col-xs-2
-          #logo.row
-            .col-sx-12
-              h1(style='font-size:5vw; color:#ddd;font-family:attentica;')
-                | Top
-                span(style='color:#ff9900;') &amp;
-                | Views
-          #hostelbutton.row(style='border-top:1px solid #2c2c2c;')
-            .col-xs-12
-              h3 &KHcy;&ocy;&scy;&tcy;&iecy;&lcy;&ycy;
-          |        
-          #hotelbutton.row(style='border-top:1px solid #2c2c2c;')
-            .col-xs-12
-              h3 &Ocy;&tcy;&iecy;&lcy;&icy;
-          |        
-          #barbutton.row(style='border-top:1px solid #2c2c2c;')
-            .col-xs-12
-              h3 &Bcy;&acy;&rcy;&ycy;
-          |        
-          #restaurantbutton.row(style='border-top:1px solid #2c2c2c;')
-            .col-xs-12
-              h3 &Rcy;&iecy;&scy;&tcy;&ocy;&rcy;&acy;&ncy;&ycy;
-          |        
-          #ratingbutton.row(style='border-top:1px solid #2c2c2c;')
-            .col-xs-12
-              h3(style='color:#00dc52;') &Ocy; &rcy;&iecy;&jcy;&tcy;&icy;&ncy;&gcy;&iecy;
-        |      
-        #hostel.col-xs-10.col-xs-offset-2(style='background-color:#eee;overflow:auto;')
-          .row(style='background-color:white;')
-            #sop.col-md-9.nopadding
-              #mapitself.map
-            |         
-            .col-md-3.nopadding(style='height:100vh;overflow:auto;')
-              #first.row.nopadding.nrmr.item
-                .col-xs-12.nopadding
-                  .row.nopadding.nrmr
-                    .col-xs-12
-                      h1  &Pcy;&iecy;&rcy;&vcy;&ycy;&jcy;
-                  |              
-                  .row.nopadding.nrmr
-                    .col-xs-12
-                      h5 &Rcy;&acy;&zcy;&ncy;&ycy;&iecy; &dcy;&iecy;&tcy;&acy;&lcy;&icy; &tcy;&icy;&pcy;&acy; &acy;&dcy;&rcy;&iecy;&scy;&acy;
-              |           
-              .row.nopadding.nrmr.item
-                .col-xs-12.nopadding
-                  .row.nopadding.nrmr
-                    .col-xs-12
-                      h1  &Ncy;&acy;&zcy;&vcy;&acy;&ncy;&icy;&iecy;
-                  |              
-                  .row.nopadding.nrmr
-                    .col-xs-12
-                      h5 &Rcy;&acy;&zcy;&ncy;&ycy;&iecy; &dcy;&iecy;&tcy;&acy;&lcy;&icy; &tcy;&icy;&pcy;&acy; &acy;&dcy;&rcy;&iecy;&scy;&acy;
-              |           
-              .row.nopadding.nrmr.item
-                .col-xs-12.nopadding
-                  .row.nopadding.nrmr
-                    .col-xs-12
-                      h1  &Ncy;&acy;&zcy;&vcy;&acy;&ncy;&icy;&iecy;
-                  |              
-                  .row.nopadding.nrmr
-                    .col-xs-12
-                      h5 &Rcy;&acy;&zcy;&ncy;&ycy;&iecy; &dcy;&iecy;&tcy;&acy;&lcy;&icy; &tcy;&icy;&pcy;&acy; &acy;&dcy;&rcy;&iecy;&scy;&acy;
-              |           
-              .row.nopadding.nrmr.item
-                .col-xs-12.nopadding
-                  .row.nopadding.nrmr
-                    .col-xs-12
-                      h1  &Ncy;&acy;&zcy;&vcy;&acy;&ncy;&icy;&iecy;
-                  |              
-                  .row.nopadding.nrmr
-                    .col-xs-12
-                      h5 &Rcy;&acy;&zcy;&ncy;&ycy;&iecy; &dcy;&iecy;&tcy;&acy;&lcy;&icy; &tcy;&icy;&pcy;&acy; &acy;&dcy;&rcy;&iecy;&scy;&acy;
-              |           
-              .row.nopadding.nrmr.item
-                .col-xs-12.nopadding
-                  .row.nopadding.nrmr
-                    .col-xs-12
-                      h1  &Ncy;&acy;&zcy;&vcy;&acy;&ncy;&icy;&iecy;
-                  |              
-                  .row.nopadding.nrmr
-                    .col-xs-12
-                      h5 &Rcy;&acy;&zcy;&ncy;&ycy;&iecy; &dcy;&iecy;&tcy;&acy;&lcy;&icy; &tcy;&icy;&pcy;&acy; &acy;&dcy;&rcy;&iecy;&scy;&acy;
-              |           
-              .row.nopadding.nrmr.item
-                .col-xs-12.nopadding
-                  .row.nopadding.nrmr
-                    .col-xs-12
-                      h1  &Ncy;&acy;&zcy;&vcy;&acy;&ncy;&icy;&iecy;
-                  |              
-                  .row.nopadding.nrmr
-                    .col-xs-12
-                      h5 &Rcy;&acy;&zcy;&ncy;&ycy;&iecy; &dcy;&iecy;&tcy;&acy;&lcy;&icy; &tcy;&icy;&pcy;&acy; &acy;&dcy;&rcy;&iecy;&scy;&acy;
-              |           
-              .row.nopadding.nrmr.item
-                .col-xs-12.nopadding
-                  .row.nopadding.nrmr
-                    .col-xs-12
-                      h1  &Ncy;&acy;&zcy;&vcy;&acy;&ncy;&icy;&iecy;
-                  |              
-                  .row.nopadding.nrmr
-                    .col-xs-12
-                      h5 &Rcy;&acy;&zcy;&ncy;&ycy;&iecy; &dcy;&iecy;&tcy;&acy;&lcy;&icy; &tcy;&icy;&pcy;&acy; &acy;&dcy;&rcy;&iecy;&scy;&acy;
-              |           
-              .row.nopadding.nrmr.item
-                .col-xs-12.nopadding
-                  .row.nopadding.nrmr
-                    .col-xs-12
-                      h1  &Ncy;&acy;&zcy;&vcy;&acy;&ncy;&icy;&iecy;
-                  |              
-                  .row.nopadding.nrmr
-                    .col-xs-12
-                      h5 &Rcy;&acy;&zcy;&ncy;&ycy;&iecy; &dcy;&iecy;&tcy;&acy;&lcy;&icy; &tcy;&icy;&pcy;&acy; &acy;&dcy;&rcy;&iecy;&scy;&acy;
-            |         
-            #clear.col-md-9.nopadding(style='height:100vh;')
-              #mapitself.map
-        |      
-        #hotel.col-xs-10.col-xs-offset-2(style='background-color:#eee;overflow:auto;')
-          .row(style='background-color:white;')
-            #sop.col-md-9.nopadding
-              #mapitselfhotel.map
-                 script.
-                   var map = L.mapbox.map('mapitselfhotel', 'jesusjesus.ie7kb67o');
-                   map.featureLayer.setFilter(function(f) {
-                   return f.properties['sort'] === 'something';
-                   });
-            
-        #restaurant.col-xs-10.col-xs-offset-2(style='background-color:#eee;overflow:auto;')
-          .row(style='background-color:white;')
-            #sop.col-md-9.nopadding
-              #mapitselfrestaurant.map
-
-                    
-        #bar.col-xs-10.col-xs-offset-2(style='background-color:#eee;overflow:auto;')
-          .row(style='background-color:white;')
-            #sop.col-md-9.nopadding
-              #mapitselfbar.map
-                 script.
-                   var map = L.mapbox.map('mapitselfbar', 'jesusjesus.ie7kb67o');
-                   map.featureLayer.setFilter(function(f) {
-                   return f.properties['sort'] === 'topbar';
-                   console.log('done');
-                   });
-               
-        #rating.col-xs-10.col-xs-offset-2(style='background-color:#eee;overflow:auto;')
-          .row
-            .col-xs-12
-              h1 &Ocy; &rcy;&iecy;&jcy;&tcy;&icy;&ncy;&gcy;&iecy;
+        .col-xs-12
+          h2(style='font-weight:bold;margin-bottom:0px;')  &Bcy;&Acy;&Rcy;&Ycy;: 
+      |       
+      .row.center
+        .col-xs-12
+          h2
+            | Rolling Stone Bar 
+            span.athing &amp;#8226
+            |  &Kcy;&acy;&mcy;&chcy;&acy;&tcy;&kcy;&acy; 
+            span.athing &amp;#8226
+            |  &Dcy;&ocy;&rcy;&ocy;&gcy;&acy;&yacy;, &yacy; &pcy;&iecy;&rcy;&iecy;&zcy;&vcy;&ocy;&ncy;&yucy;  
+            span.athing &amp;#8226
+            |  Lawson&apos;s bar 
+            span.athing &amp;#8226
+            |  Churchill&apos;s pub 
+            span.athing &amp;#8226
+            |  &Bcy;&ucy;&dcy;&dcy;&acy; &Bcy;&acy;&rcy; 
+            span.athing &amp;#8226
+            |  City Space Bar Lounge 
+            span.athing &amp;#8226
+            |  Joy&apos;s bar 
+            span.athing &amp;#8226
+            |  WT4 
+            span.athing &amp;#8226
+            |  Strelka Bar 
+            span.athing &amp;#8226
+            |  &Lcy;&ucy;&chcy;
+      |       
+      .row
+        .col-xs-12
+          #mapbars.map
+      |     
+      |       
+      .row.center
+        .col-xs-12
+          h2(style='font-weight:bold;margin-bottom:0px')  &Rcy;&IEcy;&Scy;&Tcy;&Ocy;&Rcy;&Acy;&Ncy;&Ycy;: 
+      |       
+      .row.center
+        .col-xs-12
+          h2
+            | &Kcy;&acy;&rcy;&lcy;&scy;&ocy;&ncy; 
+            span.athing &amp;#8226
+            |  Maxim bar 
+            span.athing &amp;#8226
+            |  Sixty 
+            span.athing &amp;#8226
+            |  Luciano 
+            span.athing &amp;#8226
+            |  White Rabbit 
+            span.athing &amp;#8226
+            |  Sky Lounge 
+            span.athing &amp;#8226
+            |  Happy Bones
+      |       
+      .row
+        .col-xs-12
+          #maprestaurants.map
+      |       
+      .row.center
+        .col-xs-12
+          h2(style='font-weight:bold;margin-bottom:0px;')  &KHcy;&Ocy;&Scy;&Tcy;&IEcy;&Lcy;&Ycy;: 
+      |       
+      .row.center
+        .col-xs-12
+          h2
+            | &Vcy;&icy;&ncy;&iecy;&gcy;&rcy;&iecy;&tcy; &khcy;&ocy;&scy;&tcy;&iecy;&lcy; 
+            span.athing &amp;#8226
+            |  Happy hostel 
+            span.athing &amp;#8226
+            |  108 &mcy;&icy;&ncy;&ucy;&tcy; 
+            span.athing &amp;#8226
+            |  re forma hostel 
+            span.athing &amp;#8226
+            |  &Scy;&icy;&tcy;&icy; &lcy;&ocy;&fcy;&tcy; &khcy;&ocy;&scy;&tcy;&iecy;&lcy; 
+            span.athing &amp;#8226
+            |  Aaa-gindza hostel Sretenka 
+            span.athing &amp;#8226
+            |  Aaa-gindza hostel Patriarshie Ponds 
+            span.athing &amp;#8226
+            |  &Lcy;&acy;&pcy;&tcy;&icy;
+      |       
+      .row(style='margin-bottom:4vh;')
+        .col-xs-12
+          #maphostels.map
+      |       
+      .row
+        .col-xs-12(style='text-align:center;margin-bottom:4vh;')
+          a(href='http://topandviews.ru')
+            h5 &Ncy;&acy; &gcy;&lcy;&acy;&vcy;&ncy;&ucy;&yucy;
+    |     
+    script.
+      var map = L.mapbox.map('mapbars', 'jesusjesus.ie7kb67o').setView([55.753,  37.622], 12);
+      map.scrollWheelZoom.disable();
+      map.featureLayer.setFilter(function(f) {
+      return f.properties['sort'] === 'topbar';
+      console.log('done bars');
+      });
+      var map = L.mapbox.map('maprestaurants', 'jesusjesus.ie7kb67o').setView([55.753,  37.622], 12);
+      map.scrollWheelZoom.disable();
+      map.featureLayer.setFilter(function(f) {
+      return f.properties['sort'] === 'toprestaurant';
+      console.log('done restaurants');
+      });
+      var map = L.mapbox.map('maphostels', 'jesusjesus.ie7kb67o').setView([55.753,  37.622], 12);
+      map.scrollWheelZoom.disable();
+      map.featureLayer.setFilter(function(f) {
+      return f.properties['sort'] === undefined;
+      console.log('done hostels');
+      });
     // jQuery (necessary for Bootstrap's JavaScript plugins)
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     // Include all compiled plugins (below), or include individual files as needed
     script(src='/bootstrap/js/bootstrap.min.js')
     |     
     script.
-      if ( document.documentElement.clientWidth < 1024) {
-      $('#clear').empty();
-      $('.map').css('height','50vh');
-      $('#sop').css('display','block');
-      }
-      var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o');
-      map.setView([55.753,  37.622], 14);
-      map.scrollWheelZoom.disable();
-      var cl={'first':[55.7508191,37.5996429]};
-      function displaysect (current) {
-      var titles = ['hostel','hotel','bar','restaurant','rating'];
-      for (i of titles)
-      {eval('if($("#'+i+'").css("display") != "none") {$("#'+i+'").css("display","none");$("#mapitself'+i+'").empty();} if($("#'+i+'button").css("background-color") != "#252525") {$("#'+i+'button").css("background-color","#252525");}')}
-      eval('$("#'+current+'").css("display","block");$("#'+current+'button").css("background-color","#2c2c2c"); ')
-      }
-      function itemchoose (buttonid,item) {
-      map.featureLayer.setFilter(function(f) {
-      return f.properties['title'] === item;
-      });
-      eval('var coord = cl.'+buttonid+';');
-      console.log(coord);
-      map.setView(coord,14);
-      eval("$('.item').css('background-color','#eee');$('#"+buttonid+"').css('background-color','#ddd');");
-      }
-      function loadmap (id,type) {
-      id.append("<script>var map=L.mapbox.map(type,'jesusjesus.ie7kb67o');map.setView([55.753,37.622],14);map.featureLayer.setFilter(function(f){return f.properties['sort']==='type';console.log('done');});</scritpt>");}
-      $('#first').click(function(){
-      itemchoose('first','HM Hostel');
-      });
-      $('#hostelbutton').click(function(){
-      displaysect('hostel');
-      });
-      $('#hotelbutton').click(function(){
-      displaysect('hotel');
-      });
-      $('#restaurantbutton').click(function(){
-      loadmap($('#mapitselfrestaurant'),restaurant);
-      displaysect('restaurant');
-      });
-      $('#barbutton').click(function(){
-      loadmap($('#mapitselfbar'),bar);
-      displaysect('bar');
-      });
-      $('#ratingbutton').click(function(){
-      displaysect('rating');
-      });
-      $("#logo").click(function(){
-      window.location='http://topandviews.ru';
+      $('#header').click(function(){
+      window.location('http://topandviews.ru');
       });
