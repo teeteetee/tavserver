@@ -214,7 +214,7 @@ head
                        $('.orderblock').css('display','none');
                        $('#book#{offer.price}bb').slideToggle();
                      })
-               #book#{offer.price}bb.row.orderblock(style='display:none') 
+               div.row.orderblock(id='#{offer.price}bb',style='display:none') 
                  form(action='/orders/#{hostel.hostelid}/#{offer.price}',method='POST',role='form')
                    .row
                      .col-xs-6
