@@ -757,8 +757,8 @@ else
     if(vprice!=0 && count===0)
       {query=query+'vprice:'+vprice;count++}
     if(count>0)
-      console.log(query);
-    {eval('hostels.find({'+query+'},function(err,hostels){
+    {console.log(query);
+      eval('hostels.find({'+query+'},function(err,hostels){
           console.log(" ID DID SEARCH THE DB");
           if (hostels.length != 0)
             { cosnole.log(" , FOUND SOMETHING AND GOING TO SEND IT TO YOU");
@@ -766,7 +766,7 @@ else
           else {
             console.log(" IT WAS EMPTY AND IM GOING TO RENDER");
             //NO EMPTYSR YET EXISTS , MUST BE CREATED
-            res.render('emptysr');
+            res.render("emptysr");
           }
         });');}
   else {
