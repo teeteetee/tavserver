@@ -736,7 +736,7 @@ app.post('/search', function(req,res){
       console.log("PLACENAME: ID DID SEARCH THE DB");
       if (hostels.length != 0)
         { console.log(" , FOUND SOMETHING AND GOING TO SEND IT TO YOU");
-          res.render("sr",{"results":done});}
+          res.render("srsingle",{"result":done});}
       else {
         console.log(" IT WAS EMPTY AND IM GOING TO RENDER");
         //NO EMPTYSR YET EXISTS , MUST BE CREATED
@@ -1415,7 +1415,6 @@ if(req.body.pano === 0){
     req.body.nameru === undefined||
     req.body.nameen === undefined||
     req.body.coord === undefined||
-    req.body.ctype === undefined||
     req.body.postn === undefined||
      req.body.telephone === undefined||
     req.body.www === undefined||
@@ -1470,7 +1469,6 @@ if(req.body.pano === 0){
          aderssru: vadressru,
          adressen: vadressen,
          coord: vcoord,
-         ctype : vctype,
          postn: vpostn,
          vk : vvk,
          fb : vfb,
@@ -1500,7 +1498,6 @@ else
   req.body.nameru === undefined||
   req.body.nameen === undefined||
   req.body.coord === undefined||
-  req.body.ctype === undefined||
   req.body.postn === undefined||
    req.body.telephone === undefined||
   req.body.www === undefined||
@@ -1640,7 +1637,6 @@ else
          aderssru: vadressru,
          adressen: vadressen,
          coord: vcoord,
-         ctype : vctype,
          postn: vpostn,
          vk : vvk,
          fb : vfb,
