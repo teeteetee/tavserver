@@ -763,7 +763,7 @@ else
     hostels.find({},function(err,hostels){
           console.log(" ID DID SEARCH THE DB");
           if (hostels.length != 0)
-            { cosnole.log(" , FOUND SOMETHING AND GOING TO SEND IT TO YOU");
+            { console.log(" , FOUND SOMETHING AND GOING TO SEND IT TO YOU");
               res.render("sr",{"hostels":hostels});}
           else {
             console.log(" IT WAS EMPTY AND IM GOING TO RENDER");
