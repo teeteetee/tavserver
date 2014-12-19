@@ -120,29 +120,9 @@ head
                 .col-xs-3
                   h5 #{result.lp}-#{result.hp} р.
                 .col-xs-3(style='padding: 5px; overflow: auto; text-align: center;')
-                  .row
-                    .col-xs-4
-                      .circle
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35204;')
-                        h6(style='margin: auto;') P
-                    .col-xs-4
-                      .circle(style='background-color: #009e8e;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #f5ab4b;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #3e5da4;')
-                        h6(style='margin: auto;') P
-                    .col-xs-4
-                      .circle(style='background-color: #06799f;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35;')
-                        h6(style='margin: auto;') P
-                      .circle(style='background-color: #c35204;')
-                        h6(style='margin: auto;') P
+                  
                   
     script.
-      var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([55.753,  37.622], 14);
+      var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([#{result.coord[0]},#{result.coord[1]}], 14);
+      //[55.753,  37.622]
       
