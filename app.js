@@ -736,7 +736,7 @@ app.post('/search', function(req,res){
       console.log("PLACENAME: ID DID SEARCH THE DB");
       if (hostels.length != 0)
         { console.log(" , FOUND SOMETHING AND GOING TO SEND IT TO YOU");
-          res.render("sr",{"hostels":done});}
+          res.render("sr",{"results":done});}
       else {
         console.log(" IT WAS EMPTY AND IM GOING TO RENDER");
         //NO EMPTYSR YET EXISTS , MUST BE CREATED
@@ -765,7 +765,7 @@ else
           console.log(" ID DID SEARCH THE DB");
           if (hostels.length != 0)
             { console.log(" , FOUND SOMETHING AND GOING TO SEND IT TO YOU");
-              res.render("sr",{"hostels":hostels});}
+              res.render("sr",{"results":hostels});}
           else {
             console.log(" IT WAS EMPTY AND IM GOING TO RENDER");
             //NO EMPTYSR YET EXISTS , MUST BE CREATED
