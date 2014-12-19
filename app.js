@@ -729,7 +729,7 @@ app.post('/search', function(req,res){
   var vplacename = req.body.placename;
   var vprice = req.body.price;
   // ADD SEARCH CRITERIAS
-  if(placename != 0)
+  if(vplacename != 0)
   {
     hostels.findOne({placename:vplacename},function(err,done){
       console.log("PLACENAME: ID DID SEARCH THE DB");
