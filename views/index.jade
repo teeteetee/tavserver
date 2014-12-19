@@ -278,65 +278,7 @@ head
       cursor:pointer;
       }
   body
-    script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')
-    
-    #search.container(style='padding:0px;margin:0px; width:100%;')
-      .row(style='margin-top: 10vh; border: 1px solid black; border-bottom: 0px;')
-        .col-xs-12
-          h2 Цена
-      #pp.row.sides
-        #p1.col-xs-3.labelm
-          h5 Все
-        #p2.col-xs-3.labelm
-          h5 &lt1500
-        #p3.col-xs-3.labelm
-          h5 1500-3000
-        #p4.col-xs-3.labelml
-          h5 &gt3000
-      .row.sides
-        .col-xs-12
-          h2 Относительно центра (близко - далеко)
-      #cc.row.sides
-        #c1.col-xs-3.labelm
-          h5 Все
-        #c2.col-xs-3.labelm
-          h5 1
-        #c3.col-xs-3.labelm
-          h5 2
-        #c4.col-xs-3.labelml
-          h5 3
-      .row.sides
-        .col-xs-12
-          h2 Девочки\мальчики в отдельных комнатах
-      #dd.row.sides
-        #d1.col-xs-6.labelm
-          h5 не важно
-        #d2.col-xs-6.labelml
-          h5 Раздельно
-      .row.sides
-        .col-xs-12
-          h2 wifi
-      #ww.row.sides
-        #w1.col-xs-6.labelm
-          h5 не важно
-        #w2.col-xs-6.labelml
-          h5 есть
-      .row.sides
-        .col-xs-12
-          h2 Парковка
-      #zz.row.sides
-        #z1.col-xs-6.labelm
-          h5 не важно
-        #z2.col-xs-6.labelml
-          h5 есть
-      .row(style='margin-top: 3vh; margin-bottom: 7vh;')
-        .col-xs-4(style='text-align:left;margin-left:0px;padding-left:0px;')
-          button#findback(style='background-color:transparent; border-radius: 4px; border: 1px solid black;', )
-            h5(style='font-size: 3vw; font-family: attentica; letter-spacing: 2px; margin: 0px; margin-left: 2vw; margin-right: 2vw; margin-top: 0.4vh;') НАЗАД
-        .col-xs-4(style='text-align: center;')
-          button#find(style='background-color: #00b74a; border-radius: 4px; border: 1px solid black;', )
-            h5(style='font-size: 3vw; font-family: attentica; letter-spacing: 2px; color: white; margin: 0px; margin-left: 2vw; margin-right: 2vw; margin-top: 0.4vh;') НАЙТИ
-      
+    script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')     
     #login.container
       .row
         .col-xs-4.col-xs-offset-4(style='background-color:white;text-align:left;padding-top:3vh;border-radius:4px;')
@@ -376,6 +318,40 @@ head
       #choice1.row
         .col-xs-12(style='padding: 0px; margin: 0px;')
           #mapitself.map
+      #searchblock.row(style='display:none;background-color:#333;')
+        .col-xs-12
+          .row(style='margin-top: 10vh; border: 1px solid black; border-bottom: 0px;')
+            .col-xs-12
+              h2 Цена
+          #pp.row.sides
+            #p1.col-xs-3.labelm
+              h5 Все
+            #p2.col-xs-3.labelm
+              h5 &lt1500
+            #p3.col-xs-3.labelm
+              h5 1500-3000
+            #p4.col-xs-3.labelml
+              h5 &gt3000
+          .row.sides
+            .col-xs-12
+              h2 Девочки\мальчики в отдельных комнатах
+          #dd.row.sides
+            #d1.col-xs-6.labelm
+              h5 не важно
+            #d2.col-xs-6.labelml
+              h5 Раздельно
+          .row.sides
+            .col-xs-12
+              h2 wifi
+          #ww.row.sides
+            #w1.col-xs-6.labelm
+              h5 не важно
+            #w2.col-xs-6.labelml
+              h5 есть
+          .row(style='margin-top: 3vh; margin-bottom: 7vh;')
+            .col-xs-4(style='text-align: center;')
+              button#find(style='background-color: #00b74a; border-radius: 4px; border: 1px solid black;', )
+                h5(style='font-size: 3vw; font-family: attentica; letter-spacing: 2px; color: white; margin: 0px; margin-left: 2vw; margin-right:2vw; margin-top: 0.4vh;') НАЙТИ    
       #footer.row
         #searchbutton.col-xs-2.col-xs-offset-2.cursor
           h5 Поиск
@@ -498,22 +474,26 @@ head
       else {
       }
       });
-      $("#findback").click(function(){
-      $("#search").css({'display':'none'});
-      $('#main').css({'-webkit-filter':'blur(0)'});
-      scount++
-      });
-      $("#searchbutton").click(function(){
-      if (scount%2 === 0){
-      $("#search").css({'display':'block'});
-      $('#main').css({'-webkit-filter':'blur(5px)'});
-      scount++
-      }
-      else {
-      $("#search").css({'display':'none'});
-      $('#main').css({'-webkit-filter':'blur(0)'});
-      scount++
-      }
+      //$("#findback").click(function(){
+      //$("#search").css({'display':'none'});
+      //$('#main').css({'-webkit-filter':'blur(0)'});
+      //scount++
+      //});
+      //$("#searchbutton").click(function(){
+      //if (scount%2 === 0){
+      //$("#search").css({'display':'block'});
+      //$('#main').css({'-webkit-filter':'blur(5px)'});
+      //scount++
+      //}
+      //else {
+      //$("#search").css({'display':'none'});
+      //$('#main').css({'-webkit-filter':'blur(0)'});
+      //scount++
+      //}
+      //});
+      $('#searchbutton').click(function(){
+      $('#searchblock').slideToggle();
+      location.href='#footer';
       });
       // OPTIONS FOR SEARCH
       $("#p1").click(function(){
