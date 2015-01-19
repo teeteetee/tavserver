@@ -204,7 +204,8 @@ head
       .view{
         margin-bottom:5vh;
       }
-  body      
+  body  
+    script(type='text/javascript', src='pano2vr_player.js')     
     #main.container(style='padding:0px;margin:0px; width:100%;')
       #header.row
         .col-xs-12
@@ -219,7 +220,7 @@ head
             .col-xs-4.col-xs-offset-4
               h3(style='display: inline;') Агенство панорамной фотографии
       .row
-        .col-xs-12(style='padding: 0px; margin: 0px;')
+        .col-xs-12
           h4 Примеры:
       script.
         pano=new pano2vrPlayer("pano");
