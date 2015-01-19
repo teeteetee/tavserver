@@ -222,13 +222,6 @@ head
       .row
         .col-xs-12
           h4 Примеры:
-      script.
-        pano=new pano2vrPlayer("pano");
-        pano.readConfigUrl("/xml/krasnaya.xml");
-        //pano2=new pano2vrPlayer("pano2");
-        //pano2.readConfigUrl("/xml/mgu.xml");
-        //pano3=new pano2vrPlayer("pano3");
-        //pano3.readConfigUrl("/xml/room.xml");
       .row.view
         .col-xs-12
           #pano.container
@@ -237,7 +230,14 @@ head
           #pano2.container
       .row.view
         .col-xs-12
-          #pano3.container       
+          #pano3.container   
+      script.
+        pano=new pano2vrPlayer("pano");
+        pano.readConfigUrl("/xml/krasnaya.xml");
+        pano2=new pano2vrPlayer("pano2");
+        pano2.readConfigUrl("/xml/mgu.xml");
+        pano3=new pano2vrPlayer("pano3");
+        pano3.readConfigUrl("/xml/room.xml");        
 
       
       #footer.row
