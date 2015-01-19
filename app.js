@@ -1538,9 +1538,9 @@ else
   {res.send('Something wrong with your data, try again');}
 
      else{
-
+               //it was else{return true;}
          
-                   else {return true;}
+                   return true;
               }
           console.log('GOING TO CHECK IMAGES')
          if ( imgcheck(photonum) === true )
