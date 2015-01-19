@@ -1419,288 +1419,291 @@ app.post('/testnopanoupload',function(req,res){
     });
      
 });
-app.post('/upload',function(req,res) {
-	console.log('UPLOAD SEQUENCE');
- 
-//AUTH NEEDED HERE/ Something simple like hardcoded passphrase, can be passed through req.body
-if(req.body.pano === 0){
-    if(
-    req.body.hid === undefined ||
-    req.body.nameru === undefined||
-    req.body.nameen === undefined||
-    req.body.coord === undefined||
-    req.body.postn === undefined||
-     req.body.telephone === undefined||
-    req.body.www === undefined||
-    req.body.ppredir === undefined||
-    req.body.fid === undefined ||
-    req.body.oid === undefined ||
-    req.body.mid  === undefined ||
-    req.body.city  === undefined||
-    req.body.country === undefined||
-    req.body.yearnow  === undefined||
-    req.body.adressru === undefined||
-    req.body.adressen === undefined||
-    erq.body.wifi === undefined||
-    req.body.vk  === undefined||
-    req.body.fb === undefined||
-    req.body.tw === undefined||
-    req.body.skype === undefined||
-    req.body.placename  === undefined
-    )
-      
-    {
-      res.send('Some of the fields were empty, try again. If you see this tell IT to rewrite this so it would not submit the form until fuly cmpleted, and check if there is security');
-     }
-   else {
-       
-      var vhid = req.body.hid,
-      vnameru = req.body.nameru,
-          vnameen = req.body.nameen,
-          vtelephone = req.body.telephone,
-          vwww = req.body.www,
-          vctype = req.body.ctype,
-          vpostn = req.body.postn,
-          vcoord = req.body.coord,
-          vppredir = req.body.ppredir,
-          vfid = req.body.fid ,
-           foid = req.body.oid ,
-           vmid = req.body.mid ,
-          vcity = req.body.city,
-          vvk = req.body.vk,
-          vfb = req.body.fb,
-          vtw = req.body.tw,
-          vskype = req.body.skype,
-          vwifi  = req.body.wifi,
-          vcountry = req.body.country,
-          vyearnow = req.body.yearnow,
-           vadressru = req.body.adressru,
-           vadressen = req.body.adressen;
-
-      hostels.insert({placename : vplacename,
-         nameru : vnameru,
-         nameen : vnameen,
-         aderssru: vadressru,
-         adressen: vadressen,
-         coord: vcoord,
-         postn: vpostn,
-         vk : vvk,
-         fb : vfb,
-         tw: vtw,
-         skype:vskype,
-         wifi:vwifi,
-         telephone : vtelephone,
-         www : vwww,
-         ppredir : vppredir,
-         hostelid:vhid,
-         fid : vfid,
-         mid : vmid,
-         oid : foid,
-         city : vcity,
-         country : vcountry,
-         yearnow : vyearnow,
-         pano : 0,
-         offrqntt : 0,
-         enquiries : {all:0,accepted:0},
-         ownclients : 0,
-
-         });
-   }
-}
-else
-{if (req.body.hid === undefined||
-  req.body.nameru === undefined||
-  req.body.nameen === undefined||
-  req.body.coord === undefined||
-  req.body.postn === undefined||
-   req.body.telephone === undefined||
-  req.body.www === undefined||
-  req.body.ppredir === undefined||
-  req.files.mainpreview.name === undefined||
-  req.body.fid === undefined ||
-  req.body.oid === undefined ||
-  req.body.mid  === undefined ||
-  req.body.city  === undefined||
-  req.body.country === undefined||
-  req.body.yearnow  === undefined||
-  req.body.adressru === undefined||
-  req.body.adressen === undefined||
-  req.body.vk  === undefined||
-    req.body.fb === undefined||
-    req.body.tw === undefined||
-    req.body.wifi === undefined||
-    req.files.xml.name === undefined||
-  req.body.placename  === undefined||
-  req.body.xmlqntt === undefined||
-  req.body.imgqntt === undefined)
-  //ctype is for how close it is to the citycenter
- //wi-fi and parking should be added
-  {res.send('Something wrong with your data, try again');}
-
-     else{
-               //it was else{return true;}
-         
-                   return true;
-              }
-          console.log('GOING TO CHECK IMAGES')
-         if ( imgcheck(photonum) === true )
-         
-             {var checkdir = __dirname +"/public/images/places/"
-         fs.ensureDir(checkdir, function(err) {
-         if (err === null){
-         console.log(checkdir+'exists');}
-         });
-         var photonum = req.body.imgqntt;
-         var vplacename = req.body.placename;
-         for (i=0;i<photonum;i++) {
-           eval('var vimg_'+i+';');
-           console.log(i+' VARIABLE CREATED');
-         }
-         
-         var vmainpreviewimg;
-         var vxmlfile;
-         
-                   
-                  function upload(filepath,imageid,fieldid){
-                var oldPath = filepath;
-                console.log('UPLOAD 1 step, oldPath:'+ oldPath);
-              var newPath = __dirname +"/public/images/places/" +vplacename+"/"+ imageid;
-                  console.log('UPLOAD 2 step, newPath:' + newPath );
-              fs.readFile(oldPath , function(err, data) {
-                  fs.writeFile(newPath, data, function(err) {
-                      fs.unlink(oldPath, function(){
-                          if(err) throw err;
-                          res.send('UPLOAD '+imageid+"file uploaded to: " + newPath);
-                          fieldid = newPath;  });
-                  }); 
-              }); 
-              };
-           
-                function imgcheck (n) {
-                  var mistakes = 0;
-                  console.log('into IMAGECHECK');
-                  for (i=0;i<n;i++) {
-                    eval('if (req.files.images['+i+'].name == null) {mistakes++}');
-                    console.log('checked req.files.images['+i+'] , mistakes :'+mistakes);
-                  }
-                  if (mistakes>0) {return false;}
-             console.log('FILES:OK');
-
-
-             
-             function uploadloop(n) {
-               console.log('UPLOADLOOP START,'+n+' images will be processed');
-                for(i=0;i<n;i++) {
-                 eval("upload(req.files.images["+i+"].path,req.files.images["+i+"].name,vimg_"+i+");");
-                }
-                console.log('UPLOADLOOP EXIT');
-             }
-             function uploadloopxml(n) {
-               console.log('XMLUPLOADLOOP START,'+n+' files will be processed');
-                for(i=0;i<n;i++) {
-                 eval("upload(req.files.images["+i+"].path,req.files.images["+i+"].name,vimg_"+i+");");
-                }
-                console.log('UPLOADLOOP EXIT');
-             }
-              
-              var newplace = __dirname +"/public/images/places/" +vplacename;
-             fs.mkdirs(newplace , function(err){
-                      if (err) {return console.error(err);}
-                       console.log('NEW FOLDER CREATED , MOVING FILES');
-                       uploadloop(photonum);
-                       upload(req.files.mainpreview.path,req.files.mainpreview.name,vmainpreviewimg);
-                       upload(req.files.xml.path,req.files.xml.name,vxmlfile);
-                       });
-         
-         
-           
-
-         
-         	var vhid = req.body.hid,
-          vnameru = req.body.nameru,
-         	vnameen = req.body.nameen,
-         	vtelephone = req.body.telephone,
-         	vwww = req.body.www,
-          vcoord = req.body.coord,
-         	vppredir = req.body.ppredir,
-         	vmainpreview = "/images/places/"+req.body.placename+"/"+ req.files.mainpreview.name,
-         	vfid = req.body.fid ,
-           foid = req.body.oid ,
-           vmid = req.body.mid ,
-         	vcity = req.body.city,
-          vwifi = req.body.wifi,
-         	vcountry = req.body.country,
-         	vyearnow = req.body.yearnow,
-           vadressru = req.body.adressru,
-           vadressen = req.body.adressen,
-           vxmlqntt = req.body.xmlqntt,
-           vxml = "/images/places/"+req.body.placename+"/" + req.files.xml.name;
-         
-            console.log(vplacename);
-            console.log(vxml);
-
-             
-         
-           
-         	// CTYPE MUST BE ADDED - TELLS DISTANCE FROM THE CENTER
-         
-         	hostels.insert({hostelid:vhid,
-            placename : vplacename,
-         nameru : vnameru,
-         nameen : vnameen,
-         aderssru: vadressru,
-         adressen: vadressen,
-         coord: vcoord,
-         postn: vpostn,
-         vk : vvk,
-         fb : vfb,
-         tw: vtw,
-         wifi:vwifi,
-         telephone : vtelephone,
-         www : vwww,
-         ppredir : vppredir,
-         mainpreview : vmainpreview,
-         fid : vfid,
-         mid : vmid,
-         oid : foid,
-         city : vcity,
-         country : vcountry,
-         yearnow : vyearnow,
-         xml : vxml,
-         imgqntt : photonum,
-         xmlqntt : vxmlqntt,
-         offrqntt : 0,
-         enquiries : {all:0,accepted:0},
-         ownclients : 0,
-
-         });
-         
-         	
-         	
-         
-               var docs;
-             hostelss.find({placename:vplacename},function(err,docs){
-                 console.log('wrote to the places collection:' + docs);
-                 });
-           
-         
-            // news.find({placename:vplacename},function(err,docs){
-            //     console.log('wrote to the news collection:' + docs);
-            //     });
-            
-         
-         	
-         	console.log('UPLOAD DONE! REDIRECTING TO PP')
-         	res.redirect(vppredir);}
-         
-         	else { 
-         
-         		console.log('SHITTY FILES, UPLOAD ABORTED');
-         		res.redirect('/');
-         };
-     }
-  }//ELSE OF (pano===0)
-});
+//app.post('/upload',function(req,res) {
+//	console.log('UPLOAD SEQUENCE');
+// 
+////AUTH NEEDED HERE/ Something simple like hardcoded passphrase, can be passed through req.body
+//if(req.body.pano === 0){
+//    if(
+//    req.body.hid === undefined ||
+//    req.body.nameru === undefined||
+//    req.body.nameen === undefined||
+//    req.body.coord === undefined||
+//    req.body.postn === undefined||
+//     req.body.telephone === undefined||
+//    req.body.www === undefined||
+//    req.body.ppredir === undefined||
+//    req.body.fid === undefined ||
+//    req.body.oid === undefined ||
+//    req.body.mid  === undefined ||
+//    req.body.city  === undefined||
+//    req.body.country === undefined||
+//    req.body.yearnow  === undefined||
+//    req.body.adressru === undefined||
+//    req.body.adressen === undefined||
+//    erq.body.wifi === undefined||
+//    req.body.vk  === undefined||
+//    req.body.fb === undefined||
+//    req.body.tw === undefined||
+//    req.body.skype === undefined||
+//    req.body.placename  === undefined
+//    )
+//      
+//    {
+//      res.send('Some of the fields were empty, try again. If you see this tell IT to rewrite this so it would not submit the form until fuly cmpleted, and check if there is security');
+//     }
+//   else {
+//       
+//      var vhid = req.body.hid,
+//      vnameru = req.body.nameru,
+//          vnameen = req.body.nameen,
+//          vtelephone = req.body.telephone,
+//          vwww = req.body.www,
+//          vctype = req.body.ctype,
+//          vpostn = req.body.postn,
+//          vcoord = req.body.coord,
+//          vppredir = req.body.ppredir,
+//          vfid = req.body.fid ,
+//           foid = req.body.oid ,
+//           vmid = req.body.mid ,
+//          vcity = req.body.city,
+//          vvk = req.body.vk,
+//          vfb = req.body.fb,
+//          vtw = req.body.tw,
+//          vskype = req.body.skype,
+//          vwifi  = req.body.wifi,
+//          vcountry = req.body.country,
+//          vyearnow = req.body.yearnow,
+//           vadressru = req.body.adressru,
+//           vadressen = req.body.adressen;
+//
+//      hostels.insert({placename : vplacename,
+//         nameru : vnameru,
+//         nameen : vnameen,
+//         aderssru: vadressru,
+//         adressen: vadressen,
+//         coord: vcoord,
+//         postn: vpostn,
+//         vk : vvk,
+//         fb : vfb,
+//         tw: vtw,
+//         skype:vskype,
+//         wifi:vwifi,
+//         telephone : vtelephone,
+//         www : vwww,
+//         ppredir : vppredir,
+//         hostelid:vhid,
+//         fid : vfid,
+//         mid : vmid,
+//         oid : foid,
+//         city : vcity,
+//         country : vcountry,
+//         yearnow : vyearnow,
+//         pano : 0,
+//         offrqntt : 0,
+//         enquiries : {all:0,accepted:0},
+//         ownclients : 0,
+//
+//         });
+//   }
+//}
+//else
+//{if (req.body.hid === undefined||
+//  req.body.nameru === undefined||
+//  req.body.nameen === undefined||
+//  req.body.coord === undefined||
+//  req.body.postn === undefined||
+//   req.body.telephone === undefined||
+//  req.body.www === undefined||
+//  req.body.ppredir === undefined||
+//  req.files.mainpreview.name === undefined||
+//  req.body.fid === undefined ||
+//  req.body.oid === undefined ||
+//  req.body.mid  === undefined ||
+//  req.body.city  === undefined||
+//  req.body.country === undefined||
+//  req.body.yearnow  === undefined||
+//  req.body.adressru === undefined||
+//  req.body.adressen === undefined||
+//  req.body.vk  === undefined||
+//    req.body.fb === undefined||
+//    req.body.tw === undefined||
+//    req.body.wifi === undefined||
+//    req.files.xml.name === undefined||
+//  req.body.placename  === undefined||
+//  req.body.xmlqntt === undefined||
+//  req.body.imgqntt === undefined)
+//  //ctype is for how close it is to the citycenter
+// //wi-fi and parking should be added
+//  {res.send('Something wrong with your data, try again');}
+//
+//     //else{
+//     //          //it was else{return true;}
+//     //    
+//     //              return true;
+//     //         }
+//     else{
+//          console.log('GOING TO CHECK IMAGES')
+//         if ( imgcheck(photonum) === true )
+//         
+//             {var checkdir = __dirname +"/public/images/places/"
+//         fs.ensureDir(checkdir, function(err) {
+//         if (err === null){
+//         console.log(checkdir+'exists');}
+//         });
+//         var photonum = req.body.imgqntt;
+//         var vplacename = req.body.placename;
+//         for (i=0;i<photonum;i++) {
+//           eval('var vimg_'+i+';');
+//           console.log(i+' VARIABLE CREATED');
+//         }
+//         
+//         var vmainpreviewimg;
+//         var vxmlfile;
+//         
+//                   
+//                  function upload(filepath,imageid,fieldid){
+//                var oldPath = filepath;
+//                console.log('UPLOAD 1 step, oldPath:'+ oldPath);
+//              var newPath = __dirname +"/public/images/places/" +vplacename+"/"+ imageid;
+//                  console.log('UPLOAD 2 step, newPath:' + newPath );
+//              fs.readFile(oldPath , function(err, data) {
+//                  fs.writeFile(newPath, data, function(err) {
+//                      fs.unlink(oldPath, function(){
+//                          if(err) throw err;
+//                          res.send('UPLOAD '+imageid+"file uploaded to: " + newPath);
+//                          fieldid = newPath;  });
+//                  }); 
+//              }); 
+//              };
+//           
+//                function imgcheck (n) {
+//                  var mistakes = 0;
+//                  console.log('into IMAGECHECK');
+//                  for (i=0;i<n;i++) {
+//                    eval('if (req.files.images['+i+'].name == null) {mistakes++}');
+//                    console.log('checked req.files.images['+i+'] , mistakes :'+mistakes);
+//                  }
+//                  if (mistakes>0) {return false;}
+//             console.log('FILES:OK');}
+//
+//
+//             
+//             function uploadloop(n) {
+//               console.log('UPLOADLOOP START,'+n+' images will be processed');
+//                for(i=0;i<n;i++) {
+//                 eval("upload(req.files.images["+i+"].path,req.files.images["+i+"].name,vimg_"+i+");");
+//                }
+//                console.log('UPLOADLOOP EXIT');
+//             }
+//             function uploadloopxml(n) {
+//               console.log('XMLUPLOADLOOP START,'+n+' files will be processed');
+//                for(i=0;i<n;i++) {
+//                 eval("upload(req.files.images["+i+"].path,req.files.images["+i+"].name,vimg_"+i+");");
+//                }
+//                console.log('UPLOADLOOP EXIT');
+//             }
+//              
+//              var newplace = __dirname +"/public/images/places/" +vplacename;
+//             fs.mkdirs(newplace , function(err){
+//                      if (err) {return console.error(err);}
+//                       console.log('NEW FOLDER CREATED , MOVING FILES');
+//                       uploadloop(photonum);
+//                       upload(req.files.mainpreview.path,req.files.mainpreview.name,vmainpreviewimg);
+//                       upload(req.files.xml.path,req.files.xml.name,vxmlfile);
+//                       });
+//         
+//         
+//           
+//
+//         
+//         	var vhid = req.body.hid,
+//          vnameru = req.body.nameru,
+//         	vnameen = req.body.nameen,
+//         	vtelephone = req.body.telephone,
+//         	vwww = req.body.www,
+//          vcoord = req.body.coord,
+//         	vppredir = req.body.ppredir,
+//         	vmainpreview = "/images/places/"+req.body.placename+"/"+ req.files.mainpreview.name,
+//         	vfid = req.body.fid ,
+//           foid = req.body.oid ,
+//           vmid = req.body.mid ,
+//         	vcity = req.body.city,
+//          vwifi = req.body.wifi,
+//         	vcountry = req.body.country,
+//         	vyearnow = req.body.yearnow,
+//           vadressru = req.body.adressru,
+//           vadressen = req.body.adressen,
+//           vxmlqntt = req.body.xmlqntt,
+//           vxml = "/images/places/"+req.body.placename+"/" + req.files.xml.name;
+//         
+//            console.log(vplacename);
+//            console.log(vxml);
+//
+//             
+//         
+//           
+//         	// CTYPE MUST BE ADDED - TELLS DISTANCE FROM THE CENTER
+//         
+//         	hostels.insert({hostelid:vhid,
+//            placename : vplacename,
+//         nameru : vnameru,
+//         nameen : vnameen,
+//         aderssru: vadressru,
+//         adressen: vadressen,
+//         coord: vcoord,
+//         postn: vpostn,
+//         vk : vvk,
+//         fb : vfb,
+//         tw: vtw,
+//         wifi:vwifi,
+//         telephone : vtelephone,
+//         www : vwww,
+//         ppredir : vppredir,
+//         mainpreview : vmainpreview,
+//         fid : vfid,
+//         mid : vmid,
+//         oid : foid,
+//         city : vcity,
+//         country : vcountry,
+//         yearnow : vyearnow,
+//         xml : vxml,
+//         imgqntt : photonum,
+//         xmlqntt : vxmlqntt,
+//         offrqntt : 0,
+//         enquiries : {all:0,accepted:0},
+//         ownclients : 0,
+//
+//
+//         });
+//         
+//         	
+//         	
+//         
+//               var docs;
+//             hostelss.find({placename:vplacename},function(err,docs){
+//                 console.log('wrote to the places collection:' + docs);
+//                 });
+//           
+//         
+//            // news.find({placename:vplacename},function(err,docs){
+//            //     console.log('wrote to the news collection:' + docs);
+//            //     });
+//            
+//         
+//         	
+//         	console.log('UPLOAD DONE! REDIRECTING TO PP')
+//         	res.redirect(vppredir);
+//         }
+//         
+//         	else { 
+//         
+//         		console.log('SHITTY FILES, UPLOAD ABORTED');
+//         		res.redirect('/');
+//         };
+//     }
+//  }//ELSE OF (pano===0)
+//});
 
 
 
