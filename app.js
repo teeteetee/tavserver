@@ -1337,6 +1337,20 @@ app.post('/enquery/:hostel', function(req,res){
      var venqid = req.body.enqid;
     orders.update({enqid:venqid},{$set:{accepted:2}});
    break;
+   case("clientenquery"):
+   //ENQUERY COMMING FROM PP
+     if(req.session && req.session.mail)
+     {
+       var totalordnum = orders.find().toArray();
+       if (totalordnum.length>0)
+       {
+        var venqid = totalordnum++;
+        orders.insert({enqid:venqid,mail:req.session.mail,accepted:0,hostelid:x,message:vmessage})
+       }
+     }
+     else
+     {}
+   break;
    default:
    //ADD SOME TYPE OF ERROR HERE
    break;
@@ -1525,7 +1539,13 @@ else
 
      else{
 
-         var checkdir = __dirname +"/public/images/places/"
+         
+                   else {return true;}
+              }
+          console.log('GOING TO CHECK IMAGES')
+         if ( imgcheck(photonum) === true )
+         
+             {var checkdir = __dirname +"/public/images/places/"
          fs.ensureDir(checkdir, function(err) {
          if (err === null){
          console.log(checkdir+'exists');}
@@ -1542,8 +1562,8 @@ else
          
                    
                   function upload(filepath,imageid,fieldid){
-              	var oldPath = filepath;
-              	console.log('UPLOAD 1 step, oldPath:'+ oldPath);
+                var oldPath = filepath;
+                console.log('UPLOAD 1 step, oldPath:'+ oldPath);
               var newPath = __dirname +"/public/images/places/" +vplacename+"/"+ imageid;
                   console.log('UPLOAD 2 step, newPath:' + newPath );
               fs.readFile(oldPath , function(err, data) {
@@ -1564,12 +1584,6 @@ else
                     console.log('checked req.files.images['+i+'] , mistakes :'+mistakes);
                   }
                   if (mistakes>0) {return false;}
-                   else {return true;}
-              }
-          console.log('GOING TO CHECK IMAGES')
-         if ( imgcheck(photonum) === true )
-         
-             {
              console.log('FILES:OK');
 
 

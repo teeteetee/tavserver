@@ -164,6 +164,7 @@ head
       -webkit-filter:grayscale(0);
       }
       #footer{
+      background-color:black;
       text-align:center;
       margin-top:1vh;
       margin-bottom:1vh;
@@ -184,16 +185,6 @@ head
       #aboutbutton:hover{
       background-color:#ddd;
       }
-      h6 {
-      border:3px solid #ff9900;
-      border-radius:10px;
-      display:inline;
-      padding-left:20px;
-      padding-right:20px;
-      }
-      #mapitself {
-      -webkit-filter:grayscale(0);
-      }
       #main {
       -webkit-filter:grayscale(0);
       -webkit-filter:blur(0);
@@ -202,109 +193,18 @@ head
       .col-xs-1 {
       padding:0px;
       }
-      .form-control:focus {
-      outline:none;
-      text-decoration:none;
-      box-shadow:none;
-      -webkit-box-shadow:none;
-      }
-      .form-control:active {
-      outline:none;
-      text-decoration:none;
-      box-shadow:none;
-      -webkit-box-shadow:none;
-      }
-      .form-control {
-      height:8vh;
-      border:0px;
-      box-shadow:none;
-      -webkit-box-shadow:none;
-      }
-      button:focus {
-      outline:none;
-      }
-      button:active {
-      outline:none;
-      }
-      input:focus {
-      outline:none;!important
-      text-decoration:none;
-      border:1px solid white;!important
-      box-shadow:none;!important
-      -webkit-box-shadow:none;!important
-      }
-      input:active {
-      outline:none;!important
-      text-decoration:none;
-      border:1px solid white;!important
-      box-shadow:none;!important
-      -webkit-box-shadow:none;!important
-      }
-      #search {
-      background-color:white;
-      opacity:0.7;
-      position:fixed;
-      display:none;
-      z-index:3000;
-      background-color:transparent;
-      padding-left:5vw;
-      padding-right:5vw;
-      height:100%;
-      overflow:auto;
-      }
-      #bottomb {
-      border:1px solid black;
-      border-top:0px;
-      }
-      .sides{
-      border-left:1px solid black;
-      border-right:1px solid black;
-      background-color:white;
-      }
-      .labelm{
-      border-right:1px solid black;
-      border-bottom:1px solid black;
-      border-top:1px solid black;
-      background-color:#eee;
-      }
-      .labelml {
-      border-bottom:1px solid black;
-      border-top:1px solid black;
-      background-color:#eee;
-      }
-      #message {
-      margin-bottom:2vh;
-      margin-top:2vh;
-      text-align:center;
-      }
       .cursor {
       cursor:pointer;
       }
-  body
-    script(src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js')     
-    #login.container
-      .row
-        .col-xs-4.col-xs-offset-4(style='background-color:white;text-align:left;padding-top:3vh;border-radius:4px;')
-          .row
-            #message.col-xs-4.col-xs-offset-4(style='text-align:center;baclground-color:white;')
-          form#entform(role='form', action='/check', method='post')
-            .row
-              .col-xs-4
-                h5 Email
-              .col-xs-8
-                input(type='text',id='vlgn', name='vlgn',style='margin-bottom:1vh;width:100%;border:1px solid #ddd;padding-left:1vh;')
-            .row
-              .col-xs-4
-                h5 Пароль
-              .col-xs-8
-                input(type='password',id='vphr', name='vphr',style='width:100%;border:1px solid #ddd;padding-left:1vh;')
-            .row(style='text-align: left; margin-top: 2vh;')
-              #loginb.col-xs-4(style='padding: 0px; text-align:center;border-radius: 4px; border: 1px solid #ddd; background-color: transparent;cursor:pointer;')
-                  h5(style=' margin: 0.7vw;')  войти   
-              .col-xs-8(style='text-align:center;')   
-                a#regb(style='margin-left:2vw;')
-                  h5(style=' margin: 0.7vw;color:#00bb3f;')  Регистрация
-        
+      h4 {
+      font-weight:bold;
+      font-family:br;
+      font-size:4vw;
+      }
+      .view{
+        margin-bottom:5vh;
+      }
+  body      
     #main.container(style='padding:0px;margin:0px; width:100%;')
       #header.row
         .col-xs-12
@@ -317,50 +217,28 @@ head
               
           #choice.row
             .col-xs-4.col-xs-offset-4
-              h3(style='display: inline;') 3D ТУРЫ И РЕЙТИНГИ
-      #choice1.row
+              h3(style='display: inline;') Агенство панорамной фотографии
+      .row
         .col-xs-12(style='padding: 0px; margin: 0px;')
-          #mapitself.map
-      #searchblock.row(style='display:none;background-color:#333;')
+          h4 Примеры:
+      script.
+        pano=new pano2vrPlayer("pano");
+        pano.readConfigUrl("/xml/krasnaya.xml");
+        pano2=new pano2vrPlayer("pano2");
+        pano2.readConfigUrl("/xml/mgu.xml");
+        pano3=new pano2vrPlayer("pano3");
+        pano3.readConfigUrl("/xml/room.xml");
+      .row.view
         .col-xs-12
-          .row(style='margin-top: 10vh; border: 1px solid black; border-bottom: 0px;background-color:white;')
-            .col-xs-12
-              h2 Цена
-          #pp.row.sides
-            #p1.col-xs-3.labelm
-              h5 Все
-            #p2.col-xs-3.labelm
-              h5 &lt1500
-            #p3.col-xs-3.labelm
-              h5 1500-3000
-            #p4.col-xs-3.labelml
-              h5 &gt3000
-          .row.sides
-            .col-xs-12
-              h2 Девочки\мальчики в отдельных комнатах
-          #dd.row.sides
-            #d1.col-xs-6.labelm
-              h5 не важно
-            #d2.col-xs-6.labelml
-              h5 Раздельно
-          .row.sides
-            .col-xs-12
-              h2 wifi
-          #ww.row.sides
-            #w1.col-xs-6.labelm
-              h5 не важно
-            #w2.col-xs-6.labelml
-              h5 есть
-          .row.sides
-            .col-xs-12
-              h2 По названию     
-          .row.sides
-            .col-xs-12.labelml
-              input(name='placename',id='placename',style='width:100%;border:0px;margin:0px;background-color:#eee;')   
-          .row(style='margin-top: 3vh; margin-bottom: 7vh;')
-            .col-xs-4.col-xs-offset-4(style='text-align: center;')
-              button#find(style='background-color: #00af64; border-radius: 4px; border: 1px solid white;', )
-                h5(style='margin:2vh;color:white') НАЙТИ    
+          #pano
+      .row.view
+        .col-xs-12
+          #pano2 
+      .row.view
+        .col-xs-12
+          #pano3       
+
+      
       #footer.row
         #searchbutton.col-xs-2.col-xs-offset-2.cursor
           h5 Поиск
@@ -371,288 +249,7 @@ head
         #aboutbutton.col-xs-2.cursor
           h5 Инфо
       script.
-        if ( document.documentElement.clientWidth <= 1024)
-        {
-        document.getElementById('footer').innerHTML = "<div class='col-xs-3' id='searchbutton'><h5>Поиск</h5></div><div class='col-xs-3'   id='topbutton'><h5>Рейтинг</h5></div><div class='col-xs-3' id='loginbutton'><h5>Войти</h5></div><div class='col-xs-3' id='aboutbutton'><h5>  Инфо</h5></div> ";    }    
-    //
-       jQuery (necessary for Bootstrap's JavaScript plugins) 
+
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
-    //
-       Include all compiled plugins (below), or include individual files as needed 
     script(src='/bootstrap/js/bootstrap.min.js')
-    script.
-      var map = L.mapbox.map('mapitself', 'jesusjesus.ie7kb67o').setView([55.753,  37.622], 14);
-      var myLayer = L.mapbox.featureLayer().addTo(map);
-      //myLayer.on('layeradd', function(e) {
-      //var marker = e.layer,
-      //feature = marker.feature;
-      //// Create custom popup content
-      //var popupContent =  '<a target="_blank" class="popup" href="' + feature.properties.url + '">'+ feature.properties.title +'</a>';
-      //// http://leafletjs.com/reference.html#popup
-      //marker.bindPopup(popupContent,{
-      //closeButton: true,
-      //minWidth: 320
-      //});
-      //});
-      // The GeoJSON representing the two point features
-      var geojson = {
-      type: 'FeatureCollection',
-      features: [{
-      type: 'Feature',
-      properties: {
-      title: '<a href="http://en.wikipedia.org/wiki/Washington,_D.C."><h5>Washington, D.C.</h5></a>',
-      'marker-color': '#f86767',
-      'marker-size': 'large',
-      'marker-symbol': 'star',
-      url: 'http://en.wikipedia.org/wiki/Washington,_D.C.'
-      },
-      geometry: {
-      type: 'Point',
-      coordinates: [37.594493,55.769543]
-      }
-      }]
-      };
-      myLayer.setGeoJSON(geojson);
-      //myLayer.on('click', function(e) {
-      //e.layer.unbindPopup();
-      //window.open(e.layer.feature.properties.url);
-      //});
-      map.scrollWheelZoom.disable();
-      //MAP END
-      var criteriaOne=0;
-      var criteriaTwo=0;
-      var criteriaThree=0;
-      var criteriaFour=0;
-      var criteriaFive=0;
-      var count=0;
-      var scount=0;
-      $("#loginbutton").click(function(){
-      if (count%2 === 0){
-      $("#login").css({'display':'block'});
-      $('#main').css({'-webkit-filter':'blur(4px)'});
-      count++
-      }
-      else {
-      $("#login").css({'display':'none'});
-      $('#main').css({'-webkit-filter':'blur(0)'});
-      count++
-      }
-      });
-      $("#topbutton").click(function(){
-      if (count%2 === 0){
-      $("#login").css({'display':'block'});
-      $('#main').css({'-webkit-filter':'blur(4px)'});
-      count++
-      }
-      else {
-      $("#login").css({'display':'none'});
-      $('#main').css({'-webkit-filter':'blur(0)'});
-      count++
-      }
-      });
-      $('#aboutbutton').click(function(){
-        window.location='http://topandviews.ru/about';
-      });
-      $("#mapitself").mousedown(function(){
-      if(count%2 !=0)
-      {
-      $("#login").css({'display':'none'});
-      $('#main').css({'-webkit-filter':'blur(0)'});
-      count++
-      }
-      else {
-      }
-      });
-      $('#header').mousedown(function(){
-      if(count%2 !=0)
-      {
-      $("#login").css({'display':'none'});
-      $('#main').css({'-webkit-filter':'blur(0)'});
-      count++
-      }
-      else {
-      }
-      });
-      $('#footer').mousedown(function(){
-      if(count%2 !=0)
-      {
-      $("#login").css({'display':'none'});
-      $('#main').css({'-webkit-filter':'blur(0)'});
-      count++
-      }
-      else {
-      }
-      });
-      $('#searchbutton').click(function(){
-      $('#searchblock').slideToggle();
-      location.href='#footer';
-      });
-      // OPTIONS FOR SEARCH
-      $("#p1").click(function(){
-      criteriaOne = 0;
-      $("#pp").children().css({"background-color":"#eee"});
-      $("#pp").find("h5").css({"color":"black"});
-      $("#p1").css({"background-color":"#00af64"});
-      $("#p1").children().css({"color":"white"});
-      });
-      $("#p2").click(function(){
-      criteriaOne = 1;
-      $("#pp").children().css({"background-color":"#eee"});
-      $("#pp").find("h5").css({"color":"black"});
-      $("#p2").css({"background-color":"#00af64"});
-      $("#p2").children().css({"color":"white"});
-      });
-      $("#p3").click(function(){
-      criteriaOne = 2;
-      $("#pp").children().css({"background-color":"#eee"});
-      $("#pp").find("h5").css({"color":"black"});
-      $("#p3").css({"background-color":"#00af64"});
-      $("#p3").children().css({"color":"white"});
-      });
-      $("#p4").click(function(){
-      criteriaOne = 3;
-      $("#pp").children().css({"background-color":"#eee"});
-      $("#pp").find("h5").css({"color":"black"});
-      $("#p4").css({"background-color":"#00af64"});
-      $("#p4").children().css({"color":"white"});
-      });
-      $("#p5").click(function(){
-      criteriaOne = 4;
-      $("#pp").children().css({"background-color":"#eee"});
-      $("#pp").find("h5").css({"color":"black"});
-      $("#p5").css({"background-color":"#00af64"});
-      $("#p5").children().css({"color":"white"});
-      });
-      $("#d1").click(function(){
-      criteriaThree = 0;
-      $("#dd").children().css({"background-color":"#eee"});
-      $("#dd").find("h5").css({"color":"black"});
-      $("#d1").css({"background-color":"#00af64"});
-      $("#d1").children().css({"color":"white"});
-      });
-      $("#d2").click(function(){
-      criteriaThree = 1;
-      $("#dd").children().css({"background-color":"#eee"});
-      $("#dd").find("h5").css({"color":"black"});
-      $("#d2").css({"background-color":"#00af64"});
-      $("#d2").children().css({"color":"white"});
-      });
-      $("#w1").click(function(){
-      criteriaFour = 0;
-      $("#ww").children().css({"background-color":"#eee"});
-      $("#ww").find("h5").css({"color":"black"});
-      $("#w1").css({"background-color":"#00af64"});
-      $("#w1").children().css({"color":"white"});
-      });
-      $("#w2").click(function(){
-      criteriaFour = 1;
-      $("#ww").children().css({"background-color":"#eee"});
-      $("#ww").find("h5").css({"color":"black"});
-      $("#w2").css({"background-color":"#00af64"});
-      $("#w2").children().css({"color":"white"});
-      });
-      $("#regb").click(function(){
-      location.href = "/rrregisterrr";
-      });
-      //BARBARIC
-      jQuery(function($) { $.extend({
-      form: function(url, data, method) {
-      if (method == null) method = 'POST';
-      if (data == null) data = {};
-      var form = $('<form>').attr({
-      method: method,
-      action: url
-      }).css({
-      display: 'none'
-      });
-      var addData = function(name, data) {
-      if ($.isArray(data)) {
-      for (var i = 0; i < data.length; i++) {
-      var value = data[i];
-      addData(name + '[]', value);
-      }
-      } else if (typeof data === 'object') {
-      for (var key in data) {
-      if (data.hasOwnProperty(key)) {
-      addData(name + '[' + key + ']', data[key]);
-      }
-      }
-      } else if (data != null) {
-      form.append($('<input>').attr({
-      type: 'hidden',
-      name: String(name),
-      value: String(data)
-      }));
-      }
-      };
-      for (var key in data) {
-      if (data.hasOwnProperty(key)) {
-      addData(key, data[key]);
-      }
-      }
-      return form.appendTo('body');
-      }
-      }); });
-      $('#find').click(function(){
-      var vplacename = $('#placename').val();
-      if(!vplacename) {placename = 0;}
-      $.form('/search', { price: criteriaOne, mixgenders : criteriaThree, wifi : criteriaFour, placename: vplacename }).submit();
-      });
-      // AUTHSUBMIT FUNCTION
-      var allowauth = 1;
-      function authsubmit() {
-      allowauth = 0;
-      var vlgn = $('#vlgn').val();
-      var vphr = $('#vphr').val();
-      console.log(vlgn +" , "+vphr);
-      request = new XMLHttpRequest();
-      request.onreadystatechange = function () {
-      var DONE = this.DONE || 4;
-      if (this.readyState === DONE){
-      var index;
-      parsed = JSON.parse(request.responseText);
-      console.log(parsed);
-      if(parsed.trouble === 1)
-      {
-      console.log('TROUBLE === 1');
-      switch (parsed.mtext){
-      case('db'):
-      $('#message').empty();
-      $('#message').append("<h5 style='color:#fc454e;'>Sorry, omething is slightly off with the DB, try again in a couple of minutes or contact support</h5>");
-      allowauth = 1;
-      break;
-      case('wrong pas'):
-      $('#message').empty();
-      $('#message').append("<h5 style='color:#fc454e;'>Wrong password</h5>");
-      allowauth = 1;
-      break;
-      case('wronguser'):
-      $('#message').empty();
-      $('#message').append("<h5 style='color:#fc454e;'>Wrong email</h5>");
-      allowauth =1;
-      break;
-      }}
-      else {
-      if(parsed.mhostel)
-      {window.location='http://topandviews.ru/manage/'+parsed.mhostel;}
-      else
-      {window.location = 'http://topandviews.ru';}
-      }
-      }
-      };
-      request.open('POST', '/check', true);
-      request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  // Tells server that this call is made for ajax purposes.
-      request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      //Most libraries like jQuery/Prototype/Dojo do this
-      request.send("phr="+vphr+"&lgn="+vlgn);
-      }
-      $('#loginb').click(authsubmit);
-      window.onkeypress = khandle;
-      function khandle(e) {
-      e = e || event
-      if (e.keyCode == 13 && $('#login').css("display") === "block" && allowauth === 1 && $('#vphr').val() && $('#vlgn').val())
-      {
-        console.log($('#vphr').val()+' '+$('#vlgn').val());
-        authsubmit();
-      }
-      }
+    
