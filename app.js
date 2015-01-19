@@ -134,37 +134,37 @@ app.get('/logout',function(req,res){
 
 
 app.get('/',function(req,res) {
-  
-  console.log('entered "/" route');
-  console.log('User-Agent: ' + req.headers['user-agent']);
-  var userAgent=req.headers['user-agent'];
-  var uacheck = userAgent.indexOf("iPhone") != -1 ;
-  console.log(uacheck);
-  var d = new Date();
-  if(uacheck === true) {
-    res.render('mindex');
-  }
-  //MIGH ADD AN ELSE
-  else
-  {if(req.headers.host === 'topandviews.ru') 
-      {console.log(d+' request on .ru from '+req.ip);
-       if (req.session.admin === 1) {
-        res.render('adminindex',{'prfname':req.session.lgn});
-       }
-       else if(req.session.hostel === 1) {
-        res.render('hostelindex',{'pfrname':req.session.lgn,'hostelid':req.session.hostelid});
-       }
-       else if (req.session.mail != undefined && req.session.lgn != undefined)
-        {res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});
-    console.log('!!! REGISTERED USER CAME BACK !!!');}
-       else {
-       res.render('index');}
-     }
-    if(req.headers.host === 'topandviews.com') 
-      {res.redirect('http://topandviews.ru')}
-     
-    if(req.headers.host === 'topandviews.co.uk') 
-      {res.redirect('http://topandviews.ru')}}
+  res.render('index');
+  //console.log('entered "/" route');
+  //console.log('User-Agent: ' + req.headers['user-agent']);
+  //var userAgent=req.headers['user-agent'];
+  //var uacheck = userAgent.indexOf("iPhone") != -1 ;
+  //console.log(uacheck);
+  //var d = new Date();
+  //if(uacheck === true) {
+  //  res.render('mindex');
+  //}
+  ////MIGH ADD AN ELSE
+  //else
+  //{if(req.headers.host === 'topandviews.ru') 
+  //    {console.log(d+' request on .ru from '+req.ip);
+  //     if (req.session.admin === 1) {
+  //      res.render('adminindex',{'prfname':req.session.lgn});
+  //     }
+  //     else if(req.session.hostel === 1) {
+  //      res.render('hostelindex',{'pfrname':req.session.lgn,'hostelid':req.session.hostelid});
+  //     }
+  //     else if (req.session.mail != undefined && req.session.lgn != undefined)
+  //      {res.render('indexreg',{'prfname':"Привет, "+req.session.lgn+"!"});
+  //  console.log('!!! REGISTERED USER CAME BACK !!!');}
+  //     else {
+  //     res.render('index');}
+  //   }
+  //  if(req.headers.host === 'topandviews.com') 
+  //    {res.redirect('http://topandviews.ru')}
+  //   
+  //  if(req.headers.host === 'topandviews.co.uk') 
+  //    {res.redirect('http://topandviews.ru')}}
    
 });
 
