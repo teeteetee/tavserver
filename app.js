@@ -169,6 +169,9 @@ app.get('/',function(req,res) {
    
 });
 
+app.get('/example',function(req,res){
+  res.render('examples');
+});
 
 app.get('/about',function(req,res){
   res.render('about');
