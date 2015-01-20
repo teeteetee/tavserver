@@ -24,62 +24,62 @@ app.use(logger('dev'));
 app.use(require('connect').bodyParser());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(sessions({
-  cookieName: 'session',
-  secret:'2342kjhkj2h3i2uh32j3hk2jDKLKSl23kh42u3ih4',
-  duration:4320 * 60 *1000,
-  activeduration:1440 * 60 * 1000,
-  httpOnly: true
-}));
+//app.use(sessions({
+//  cookieName: 'session',
+//  secret:'2342kjhkj2h3i2uh32j3hk2jDKLKSl23kh42u3ih4',
+//  duration:4320 * 60 *1000,
+//  activeduration:1440 * 60 * 1000,
+//  httpOnly: true
+//}));
 
-var lguser = {};
-app.use(function(req,res,next){
-  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.lgn);
-   if(req.session.admin === 1){
-    lguser = req.session;
-    next();}
-   else if(req.session.hostel === 1) 
-    {lguser = req.session;
-      next();}
-   else {
-   if(req.session && req.session.lgn){
-     users.findOne({mail:req.session.mail},function(err,user){
-      console.log('found user: '+JSON.stringify(user));
-      if(err){
-        next();
-      }
-      else {
-        if(user.length>0 && user.hostel != 1){
-        lguser = user;
-        delete lguser.phr;
-        delete lguser._id;
-        delete lguser.enquiries;
-        delete lguser.regdate;
-        req.session = lguser;
-        console.log('USER WITH COOOOOKIEES !');
-        next();}
-      else {next();}
-      } 
-     });
-   }
-   else {
-    next();
-   }
- }
-});
+//var lguser = {};
+//app.use(function(req,res,next){
+//  console.log("CHECKING COOKIES: "+JSON.stringify(req.session)+" "+req.session.lgn);
+//   if(req.session.admin === 1){
+//    lguser = req.session;
+//    next();}
+//   else if(req.session.hostel === 1) 
+//    {lguser = req.session;
+//      next();}
+//   else {
+//   if(req.session && req.session.lgn){
+//     users.findOne({mail:req.session.mail},function(err,user){
+//      console.log('found user: '+JSON.stringify(user));
+//      if(err){
+//        next();
+//      }
+//      else {
+//        if(user.length>0 && user.hostel != 1){
+//        lguser = user;
+//        delete lguser.phr;
+//        delete lguser._id;
+//        delete lguser.enquiries;
+//        delete lguser.regdate;
+//        req.session = lguser;
+//        console.log('USER WITH COOOOOKIEES !');
+//        next();}
+//      else {next();}
+//      } 
+//     });
+//   }
+//   else {
+//    next();
+//   }
+// }
+//});
 
 
-app.get('/hostel', function(req,res) {
-  console.log('JESUS !!!');
-  res.render('hostel');
-});
+//app.get('/hostel', function(req,res) {
+//  console.log('JESUS !!!');
+//  res.render('hostel');
+//});
 
-app.get('/logout',function(req,res){
-  console.log('trying to logout');
-  req.session.reset();
-  console.log(JSON.stringify(req.session));
-  res.redirect('/');
-});
+//app.get('/logout',function(req,res){
+//  console.log('trying to logout');
+//  req.session.reset();
+//  console.log(JSON.stringify(req.session));
+//  res.redirect('/');
+//});
 
 
  //app.get('/index',function(req,res){
@@ -134,13 +134,14 @@ app.get('/logout',function(req,res){
 
 
 app.get('/',function(req,res) {
+  
+  console.log('entered "/" route');
+  console.log('User-Agent: ' + req.headers['user-agent']);
+  var userAgent=req.headers['user-agent'];
+  var uacheck = userAgent.indexOf("iPhone") != -1 ;
+  console.log(uacheck);
+  var d = new Date();
   res.render('index');
-  //console.log('entered "/" route');
-  //console.log('User-Agent: ' + req.headers['user-agent']);
-  //var userAgent=req.headers['user-agent'];
-  //var uacheck = userAgent.indexOf("iPhone") != -1 ;
-  //console.log(uacheck);
-  //var d = new Date();
   //if(uacheck === true) {
   //  res.render('mindex');
   //}
