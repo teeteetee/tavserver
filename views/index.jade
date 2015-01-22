@@ -81,8 +81,8 @@ head
       margin-bottom:4vh;
       -webkit-filter:grayscale(0);
       }
-      .view{
-        margin-bottom:5vh;
+      #footer{
+        height:5vh;
       }
       .row{
       padding:0px;
@@ -228,7 +228,14 @@ head
       .row.view
         .col-xs-12(style='padding:0px;')
           #pano(style='height:70vh;width:100%;')
-        
+      .row
+        .col-xs-6
+          h5
+            a(href='tel:+79166667766') +79166667766
+        .col-xs-6 
+          h5
+            a(href='mailto:team@topandviews.com') team@topandviews.com
+
       script.
         pano=new pano2vrPlayer("pano");
         pano.readConfigUrl("/images/krasnaya.xml");       
