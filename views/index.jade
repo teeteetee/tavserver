@@ -81,8 +81,8 @@ head
       margin-bottom:4vh;
       -webkit-filter:grayscale(0);
       }
-      #footer{
-        height:5vh;
+      .view{
+        margin-bottom:5vh;
       }
       .row{
       padding:0px;
@@ -208,6 +208,9 @@ head
       font-family:br;
       font-size:4vw;
       }
+      a {
+        color:white;
+      }
   body  
     script(type='text/javascript', src='/js/pano2vr_player.js')     
     #main.container(style='padding:0px;margin:0px; width:100%;')
@@ -227,14 +230,11 @@ head
             h4 Примеры:
       .row.view
         .col-xs-12(style='padding:0px;')
+          #overlay(style='position:absolute;bottom:0px;width:100%;text-align:center')
+            h5(style='text-transform:none;')
+              a(href='tel:+79166667766') +79166667766
+              a(href='mailto:team@topandviews.com') team@topandviews.com
           #pano(style='height:70vh;width:100%;')
-      #footer.row(style='text-align:center;')
-        .col-xs-6
-          h5
-            a(href='tel:+79166667766') +79166667766
-        .col-xs-6 
-          h5
-            a(href='mailto:team@topandviews.com') team@topandviews.com
 
       script.
         pano=new pano2vrPlayer("pano");
