@@ -64,7 +64,12 @@ app.get('/',function(req,res) {
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
   var d = new Date();
+  if(req.headers.host === 'vntrlst.com') {
+    res.render('cesi');
+  }
+    else{
   res.render('index');
+  }
   //if(uacheck === true) {
   //  res.render('mindex');
   //}
