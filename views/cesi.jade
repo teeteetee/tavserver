@@ -82,9 +82,9 @@ html(lang='en')
       }
   body
     .language
-      a#eng.active ENG
+      a#eng.active ENG 
       span(style='color:#ddd;') |
-      a#ru RU
+      a#ru  RU
     #apply_eng.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
       .modal-dialog(role='document')
         .modal-content
@@ -97,14 +97,9 @@ html(lang='en')
               .form-group
                 label(for='pagetitle')  Email
                 input#article_title.form-control(type='email', autocomplete='off', placeholder='Neuroscience')
-              |               .form-group
-              |                 label(for="pagelink") Link
-              |                 input(type="text" class="form-control" id="article_link" autocomplete='off' placeholder="https://en.wikipedia.org/wiki/Neuroscience")
-              |             .form-group
-              |               label(for='new_old') Statistics
-              |               .btn-group#new_old(style='margin-bottom:50px;display:block;')
-              |                 button(class='btn btn-iosdark active' id='newarticle' type='button') New
-              |                 button(class=' btn btn-iosdark' id='oldarticle'  type='button' )  I've read it
+              .form-group
+                label(for="pagelink") Additional info:
+                textarea( class="form-control")
           .modal-footer
             button#submitarticle.btn.btn-primary  Submit
     #apply_ru.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
