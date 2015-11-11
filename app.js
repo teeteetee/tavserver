@@ -64,12 +64,13 @@ app.get('/',function(req,res) {
   var uacheck = userAgent.indexOf("iPhone") != -1 ;
   console.log(uacheck);
   var d = new Date();
-  if(req.headers.host === 'cesi-research.com' || req.headers.host === 'cesi-research.ru') {
-    res.render('cesi');
-  }
-    else{
+  //if(req.headers.host === 'cesi-research.com' || req.headers.host === 'cesi-research.ru') {
+  //  res.render('cesi');
+  //}
+  //  else{
   res.render('index');
-  }
+  //}
+  //-----------------------------
   //if(uacheck === true) {
   //  res.render('mindex');
   //}
